@@ -1,14 +1,14 @@
-﻿@model IEnumerable<AGENDAR.Models.Provincia>
+﻿@model IEnumerable<AGENDAR.Models.Localidad>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Provincias</h1>
+<h1>Localidades</h1>
 
 <p>
     <!-- Boton Modal -->
-    <button class="btn btn-outline-success" onclick="AbrirModal()"><i class="bi bi-folder-plus"></i> Agregar Provincia</button>
+    <button class="btn btn-outline-success" onclick="AbrirModal()"><i class="bi bi-folder-plus"></i> Agregar Localidad</button>
 </p>
 
 <table class="table table-bordered">
@@ -17,47 +17,52 @@
             <th>
                 Descripción
             </th>
+            <th class="text-center" style="width:300px">
+                Provincia
+            </th>
             <th class="text-center" style="width:300px">Opciones</th>
         </tr>
     </thead>
-    <tbody id="tbody-provincias">
+    <tbody id="tbody-localidades">
     </tbody>
 </table>
-
-
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="titulo-Modal-Provincias"></h5>
+                <h5 class="modal-title" id="titulo-Modal-Localidades"></h5>
                 <button type="button" class="close" data-dismiss="modal" onclick="VaciarFormulario()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
 
             <!--Agregado de Formulario dentro del Modal-->
             <div class="modal-body">
                 <form>
-                    <input type="hidden" id="ProvinciaID" value="0" />
+                    <input type="hidden" id="LocalidadID" value="0" />
                     <div class="form-group">
                         <label for="recipient-name" class="control-label font-weight-bold">Descripción</label>
-                        <input type="text" class="form-control" autocomplete="off" required id="ProvinciaNombre">
-                        <p class="text-danger font-weight-bold" style="font-size:small" id="Error-ProvinciaNombre"></p>
+                        <input type="text" class="form-control" autocomplete="off" required id="LocalidadNombre">
+                        <p class="text-danger font-weight-bold" style="font-size:small" id="Error-LocalidadNombre"></p>
+                    </div>
+                    <!--Lista de Provincias dentro del Dropdown de Localidades-->
+                    <div class="form-group">
+                        <label class="control-label font-weight-bold">Provincia</label>
+                        @Html.DropDownList("ProvinciaID", null, htmlAttributes: new { @class = "form-control" })
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" onclick="VaciarFormulario()" class="btn btn-outline-danger" data-dismiss="modal"><i class="bi bi-backspace"></i> Cerrar</button>
-                <button type="button" onclick="GuardarProvincia()" class="btn btn-outline-success"><i class="bi bi-folder-check"></i> Guardar</button>
+                <button type="button" onclick="GuardarLocalidad()" class="btn btn-outline-success"><i class="bi bi-folder-check"></i> Guardar</button>
             </div>
         </div>
     </div>
 </div>
-
-@*//Funcion para Completar la Tabla de Provincias*@
+@*//Funcion para Completar la Tabla de Localidades*@
 
 @section Scripts {
-    <script src="~/js/Provincia-1.0.js"></script>
+    <script src="~/js/Localidad-1.0.js"></script>
     <script>
-        window.onload = CompletarTablaProvincias();
+        window.onload = CompletarTablaLocalidades();
     </script>
 }

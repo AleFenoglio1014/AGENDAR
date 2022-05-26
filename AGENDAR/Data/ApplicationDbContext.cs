@@ -14,5 +14,6 @@ namespace AGENDAR.Data
         {
         }
         public DbSet<AGENDAR.Models.Provincia> Provincia { get; set; }
+        public DbSet<AGENDAR.Models.Localidad> Localidad { get; set; }
     }
 }
