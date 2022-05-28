@@ -11,6 +11,8 @@ namespace AGENDAR.Models
 
         public string Descripcion { get; set; }
 
+        public bool Eliminado { get; set; }
+
         public virtual ICollection<Empresa> Empresas { get; set; }
 
     }
