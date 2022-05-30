@@ -1,0 +1,63 @@
+﻿@model IEnumerable<AGENDAR.Models.ClasificacionProfesional>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Tipo De Profesional</h1>
+
+<p>
+    <!-- Boton Modal -->
+    <button class="btn btn-outline-success" onclick="AbrirModal()"><i class="bi bi-folder-plus"></i> Agregar Actividad del Profesional</button>
+</p>
+
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>
+                Descripción
+            </th>
+            <th class="text-center" style="width:300px">Opciones</th>
+        </tr>
+    </thead>
+    <tbody id="tbody-tipoProfesional">
+    </tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="titulo-Modal-TipoProfesional"></h5>
+                <button type="button" class="close" data-dismiss="modal" onclick="VaciarFormulario()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+
+            <!--Agregado de Formulario dentro del Modal-->
+            <div class="modal-body">
+                <form>
+                    <input type="hidden" id="ClasificacionProfesionalID" value="0" />
+                    <div class="form-group">
+                        <label for="recipient-name" class="control-label font-weight-bold">Actividad del Profesional</label>
+                        <input type="text" class="form-control" autocomplete="off" required id="TipoProfesionalNombre">
+                        <p class="text-danger font-weight-bold" style="font-size:small" id="Error-TipoProfesionalNombre"></p>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="VaciarFormulario()" class="btn btn-outline-danger" data-dismiss="modal"><i class="bi bi-backspace"></i> Cerrar</button>
+                <button type="button" onclick="GuardarTipoProfesional()" class="btn btn-outline-success"><i class="bi bi-folder-check"></i> Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*//Funcion para Completar la Tabla del Tipo de Empresa*@
+
+@section Scripts {
+
+    <script src="~/js/TipoProfesional-1.0.js"></script>
+    <script>
+        window.onload = CompletarTablaTipoProfesionales();
+    </script>
+}

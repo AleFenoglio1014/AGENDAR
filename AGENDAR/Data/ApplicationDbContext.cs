@@ -16,5 +16,8 @@ namespace AGENDAR.Data
         public DbSet<AGENDAR.Models.Provincia> Provincia { get; set; }
         public DbSet<AGENDAR.Models.Localidad> Localidad { get; set; }
         public DbSet<AGENDAR.Models.ClasificacionEmpresa> ClasificacionEmpresa { get; set; }
+        public DbSet<AGENDAR.Models.ClasificacionProfesional> ClasificacionProfesional { get; set; }
+        public DbSet<AGENDAR.Models.Empresa> Empresa { get; set; }
+        public DbSet<AGENDAR.Models.Profesional> Profesional { get; set; }
     }
 }
