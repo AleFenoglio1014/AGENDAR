@@ -25,7 +25,7 @@ namespace AGENDAR.Controllers
         }
 
         // Funcion para Completar la Tabla del Tipo de Empresa
-        public JsonResult BuscarTipoEmpresa()
+        public JsonResult BuscarTipoEmpresas()
         {
             var tipoEmpresa = _context.ClasificacionEmpresa.ToList();
 

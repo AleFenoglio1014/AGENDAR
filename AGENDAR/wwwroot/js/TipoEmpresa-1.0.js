@@ -3,7 +3,7 @@ function CompletarTablaTipoEmpresas() {
     VaciarFormulario();
     $.ajax({
         type: "POST",
-        url: '../../ClasificacionEmpresas/BuscarTipoEmpresa',
+        url: '../../ClasificacionEmpresas/BuscarTipoEmpresas',
         data: {},
         success: function (listadoTipoEmpresa) {
             $("#tbody-tipoEmpresa").empty();
@@ -11,16 +11,15 @@ function CompletarTablaTipoEmpresas() {
 
                 let claseEliminado = '';
                 let botones = '<button type="button" onclick="BuscarTipoEmpresa(' + tipoEmpresa.clasificacionEmpresaID + ')" class="btn btn-outline-primary btn-sm" style="margin-right:5px"><i class="bi bi-pencil-square"></i> Editar</button>' +
-                    '<button type="button" onclick="DesactivarTipoEmpresa(' + tipoEmpresa.clasificacionEmpresaID + ',1)" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash-fill"></i> Desacctivar</button>';
+                    '<button type="button" onclick="DesactivarActividad(' + tipoEmpresa.clasificacionEmpresaID + ',1)" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash-fill"></i> Desactivar</button>';
 
                 if (tipoEmpresa.eliminado) {
                     claseEliminado = 'table-danger';
-                    botones = '<button type="button" onclick="DesactivarTipoEmpresa(' + tipoEmpresa.clasificacionEmpresaID + ',0)" class="btn btn-outline-success btn-sm"><i class="bi bi-folder-symlink"></i> Activar</button>';
+                    botones = '<button type="button" onclick="DesactivarActividad(' + tipoEmpresa.clasificacionEmpresaID + ',0)" class="btn btn-outline-success btn-sm"><i class="bi bi-folder-symlink"></i> Activar</button>';
                 }
 
                 $("#tbody-tipoEmpresa").append('<tr class=' + claseEliminado + '>' +
                     '<td>' + tipoEmpresa.descripcion + '</td>' +
-                    '<td>' + tipoEmpresa.TipoEmpresaNombre + '</td>' +
                     '<td class="text-center">' +
                     botones +
                     '</td>' +
@@ -76,7 +75,7 @@ function BuscarTipoEmpresa(clasificacionEmpresaID) {
         url: '../../ClasificacionEmpresas/BuscarTipoEmpresa',
         data: { ClasificacionEmpresaID: clasificacionEmpresaID },
         success: function (tipoEmpresa) {
-            $("#TipoEmpresaNombre").val(clasificaionempresa.descripcion);
+            $("#TipoEmpresaNombre").val(tipoEmpresa.descripcion);
             $("#exampleModal").modal("show");
         },
         error: function (data) {
