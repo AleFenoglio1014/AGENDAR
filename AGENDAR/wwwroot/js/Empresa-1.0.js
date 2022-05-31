@@ -34,7 +34,7 @@ function CompletarTablaEmpresas() {
 }
 
 //Funcion Abrir Modal
-function AbrirModal() {
+function AbrirModall() {
     $("#titulo-Modal-Empresa").text("Registrar una Nueva Empresa");
     $("#EmpresaID").val(0);
     $("#exampleModal").modal("show");
