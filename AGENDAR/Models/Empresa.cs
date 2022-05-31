@@ -18,6 +18,7 @@ namespace AGENDAR.Models
         public string Direccion { get; set; }
 
         public int Telefono { get; set; }
+        public bool Eliminado { get; set; }
 
         public virtual Localidad Localidades { get; set; }
 
@@ -25,4 +26,17 @@ namespace AGENDAR.Models
 
         public virtual ICollection<Profesional> Profesionales { get; set; }
     }
+
+    //public class EmpresasMostrar{
+
+    //    public int EmpresaID { get; set; }
+    //    public string RazonSocial { get; set; }
+    //    public string CUIT { get; set; }
+    //    public string Direccion { get; set; }
+    //    public int Telefono { get; set; }
+    //    public int LocalidadID { get; set; }
+    //    public int ClasificacionEmpresaID { get; set; }
+    //    public bool Eliminado { get; set; }
+
+    //}
 }
