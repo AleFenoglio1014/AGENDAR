@@ -14,6 +14,7 @@ namespace AGENDAR.Controllers
     {
         private readonly ApplicationDbContext _context;
 
+        //COMENTARIO
         public EmpresasController(ApplicationDbContext context)
         {
             _context = context;
