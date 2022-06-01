@@ -3,7 +3,7 @@ function CompletarTablaEmpresas() {
     VaciarFormulario();
     $.ajax({
         type: "POST",
-        url: '../../Empresas/BuscarEmpresas',
+        url: '../../Empresas/BuscarEmpresa',
         data: {},
         success: function (listadoEmpresasMostrar) {
             $("#tbody-empresa").empty();
@@ -34,59 +34,59 @@ function CompletarTablaEmpresas() {
 }
 
 //Funcion Abrir Modal
-function AbrirModall() {
+function AbrirModal() {
     $("#titulo-Modal-Empresa").text("Registrar una Nueva Empresa");
     $("#EmpresaID").val(0);
     $("#exampleModal").modal("show");
 }
 
 // FUncion para Guardar las Empresas
-//function GuardarLocalidad() {
-//    $("#Error-LocalidadNombre").text("");
-//    let localidadID = $('#LocalidadID').val();
-//    let guardarlocalidad = $('#LocalidadNombre').val().trim();
-//    let provinciaID = $('#ProvinciaID').val();
-//    if (guardarlocalidad != "" && guardarlocalidad != null) {
-//        $.ajax({
-//            type: "POST",
-//            url: '../../Localidades/GuardarLocalidad',
-//            data: { LocalidadID: localidadID, Descripcion: guardarlocalidad, ProvinciaID: provinciaID },
-//            success: function (resultado) {
-//                if (resultado == 0) {
-//                    $("#exampleModal").modal("hide");
-//                    CompletarTablaLocalidades();
-//                }
-//                if (resultado == 2) {
-//                    $("#Error-LocalidadNombre").text("La Localidad ingresada Ya Existe. Ingrese una Nueva Localidad");
-//                }
-//            },
-//            error: function (data) {
-//            }
-//        });
-//    }
-//    else {
-//        $("#Error-LocalidadNombre").text("Debe ingresar un Nombre para la Localidad.");
-//    }
-//}
+function GuardarEmpresas() {
+    $("#Error-LocalidadNombre").text("");
+    let localidadID = $('#LocalidadID').val();
+    let guardarlocalidad = $('#LocalidadNombre').val().trim();
+    let provinciaID = $('#ProvinciaID').val();
+    if (guardarlocalidad != "" && guardarlocalidad != null) {
+        $.ajax({
+            type: "POST",
+            url: '../../Localidades/GuardarLocalidad',
+            data: { LocalidadID: localidadID, Descripcion: guardarlocalidad, ProvinciaID: provinciaID },
+            success: function (resultado) {
+                if (resultado == 0) {
+                    $("#exampleModal").modal("hide");
+                    CompletarTablaLocalidades();
+                }
+                if (resultado == 2) {
+                    $("#Error-LocalidadNombre").text("La Localidad ingresada Ya Existe. Ingrese una Nueva Localidad");
+                }
+            },
+            error: function (data) {
+            }
+        });
+    }
+    else {
+        $("#Error-LocalidadNombre").text("Debe ingresar un Nombre para la Localidad.");
+    }
+}
 
-// Funcion para Buscar las Empresas
+ // Funcion para Buscar las Empresas
 
-//function BuscarEmpresas(empresaID, localidadID, provinciaID) {
-//    $("#titulo-Modal-Empresas").text("Editar Empresa");
-//    $("#EmpresaID").val(empresaID);
-//    $("#LocalidadID").val(localidadID);
-//    $("#ProvinciaID").val(provinciaID);
-//    $.ajax({
-//        type: "POST",
-//        url: '../../Empresas/BuscarEmpresas',
-//        data: { EmpresaID: empresaID, LocalidadID: localidadID, ProvinciaID: provinciaID },
-//        success: function (empresa) {
-//            $("#EmpresaNombre").val(empresa.descripcion);
-//            $("#LocalidadNombre").val(empresa.localidadID);
-//            $("#ProvinciaNombre").val(empresa.provinciaID);
-//            $("#exampleModal").modal("show");
-//        },
-//        error: function (data) {
-//        }
-//    });
-//}
+function BuscarEmpresas(empresaID, localidadID, provinciaID) {
+    $("#titulo-Modal-Empresas").text("Editar Empresa");
+    $("#EmpresaID").val(empresaID);
+    $("#LocalidadID").val(localidadID);
+    $("#ProvinciaID").val(provinciaID);
+    $.ajax({
+        type: "POST",
+        url: '../../Empresas/BuscarEmpresas',
+        data: { EmpresaID: empresaID, LocalidadID: localidadID, ProvinciaID: provinciaID },
+        success: function (empresa) {
+            $("#EmpresaNombre").val(empresa.descripcion);
+            $("#LocalidadNombre").val(empresa.localidadID);
+            $("#ProvinciaNombre").val(empresa.provinciaID);
+            $("#exampleModal").modal("show");
+        },
+        error: function (data) {
+        }
+    });
+}

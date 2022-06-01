@@ -22,44 +22,116 @@ namespace AGENDAR.Controllers
         // GET: Empresas
         public IActionResult Index()
         {
-            var provincias = _context.Provincia.Where(p => p.Eliminado == false).ToList();
-            provincias.Add(new Provincia { ProvinciaID = 0, Descripcion = "[SELECCIONE UNA PROVINCIA]" });
-            ViewBag.ProvinciaID = new SelectList(provincias.OrderBy(p => p.Descripcion), "ProvinciaID", "Descripcion");
+            var localidades = _context.Localidad.Where(p => p.Eliminado == false).ToList();
+            localidades.Add(new Localidad { LocalidadID = 0, Descripcion = "[SELECCIONE UNA LOCALIDAD]" });
+            ViewBag.LocalidadID = new SelectList(localidades.OrderBy(p => p.Descripcion), "LocalidadID", "Descripcion");
 
-            List<Localidad> localidad = new List<Localidad>();
-            localidad.Add(new Localidad { LocalidadID = 0, Descripcion = "[SELECCIONE UNA PROVINCIA]" });
-
-            List<ClasificacionEmpresa> clasificacionEmpresas = new List<ClasificacionEmpresa>();
-            clasificacionEmpresas.Add(new ClasificacionEmpresa { ClasificacionEmpresaID = 0, Descripcion = "[SELECCIONE UNA PROVINCIA]" });
-
-            ViewBag.ClasificacionEmpresaID = new SelectList(clasificacionEmpresas.OrderBy(p => p.Descripcion), "ClasificacionEmpresaID", "Descripcion");
-
-            ViewBag.LocalidadID = new SelectList(localidad.OrderBy(p => p.Descripcion), "LocalidadID", "Descripcion");
+            var clasificacionempresas = _context.ClasificacionEmpresa.Where(p => p.Eliminado == false).ToList();
+            clasificacionempresas.Add(new ClasificacionEmpresa { ClasificacionEmpresaID = 0, Descripcion = "[SELECCIONE TIPO DE EMPRESA]" });
+            ViewBag.ClasificacionEmpresaID = new SelectList(clasificacionempresas.OrderBy(p => p.Descripcion), "ClasificacionEmpresaID", "Descripcion");
 
             return View();
         }
 
         // Funcion para Completar la Tabla  de Empresas 
-        //public JsonResult BuscarEmpresas()
-        //{
-        //    var articulos = _context.Empresa.Include(r => r.Localidades).Include(p => p.Localidades.Provincias).ToList();
-        //    List<EmpresasMostrar> listadoLocalidadesMostrar = new List<LocalidadMostrar>();
-        //    foreach (var localidad in localidades)
-        //    {
-        //        var localidadMostrar = new LocalidadMostrar()
-        //        {
-        //            LocalidadID = localidad.LocalidadID,
-        //            Descripcion = localidad.Descripcion,
-        //            ProvinciaID = localidad.ProvinciaID,
-        //            ProvinciaNombre = localidad.Provincias.Descripcion,
-        //            Eliminado = localidad.Eliminado,
+        public JsonResult BuscarEmpresa()
+        {
+            var empresas = _context.Empresa.Include(r => r.Localidades).Include(p => p.ClasificacionEmpresas).ToList();
+            List<EmpresasMostrar> listadoEmpresasMostrar = new List<EmpresasMostrar>();
+            foreach (var empresa in empresas)
+            {
+                var empresasMostrar = new EmpresasMostrar()
+                {
+                    EmpresaID = empresa.EmpresaID,
+                    RazonSocial = empresa.RazonSocial,
+                    CUIT = empresa.CUIT,
+                    Direccion = empresa.Direccion,
+                    Telefono = empresa.Telefono,
+                    LocalidadID = empresa.Localidades.LocalidadID,
+                    LocalidadNombre = empresa.Localidades.Descripcion,
+                    ClasificacionEmpresaID = empresa.ClasificacionEmpresas.ClasificacionEmpresaID,
+                    TipoEmpresa = empresa.ClasificacionEmpresas.Descripcion,
+                    Eliminado = empresa.Eliminado
 
-        //        };
-        //        listadoLocalidadesMostrar.Add(localidadMostrar);
-        //    }
+                };
+                listadoEmpresasMostrar.Add(empresasMostrar);
+            }
 
-        //    return Json(listadoLocalidadesMostrar);
-        //}
+            return Json(listadoEmpresasMostrar);
+        }
+
+        // Funcion Guardar y Editar las Localidades
+
+        public JsonResult GuardarLocalidad(int LocalidadID, string Descripcion, int ProvinciaID)
+        {
+            int resultado = 0;
+            // Si es 0 es CORRECTO
+            // Si es 1 el Campo Descripcion esta VACIO
+            // Si es 2 el Registro YA EXISTE con la misma Descripcion
+
+            if (!string.IsNullOrEmpty(Descripcion))
+            {
+                Descripcion = Descripcion.ToUpper();
+                if (LocalidadID == 0)
+                {
+                    // Antes de CREAR el registro debemos preguntar si existe una Localidad con la misma Descripcion
+                    if (_context.Localidad.Any(e => e.Descripcion == Descripcion && e.ProvinciaID == ProvinciaID))
+                    {
+                        resultado = 2;
+                    }
+                    else
+                    {
+                        // Aca va a ir el codigo para CREAR una Localidad
+                        // Para eso creamos un objeto de tipo localidadNueva con los datos necesarios
+                        var localidadNueva = new Localidad
+                        {
+                            Descripcion = Descripcion,
+                            ProvinciaID = ProvinciaID
+                        };
+                        _context.Add(localidadNueva);
+                        _context.SaveChanges();
+                    }
+
+                }
+                else
+                {
+                    // Antes de EDITAR el registro debemos preguntar si existe una Localidad con la misma Descripcion
+                    if (_context.Localidad.Any(e => e.Descripcion == Descripcion && e.LocalidadID != LocalidadID))
+                    {
+                        resultado = 2;
+                    }
+                    else
+                    {
+                        // Aca va a ir el codigo para EDITAR una Localidad
+                        // Buscamos el registro en la Base de Datos
+                        var localidad = _context.Localidad.Single(m => m.LocalidadID == LocalidadID);
+                        // Cambiamos la Descripcion por la que ingreso el Usuario en la Vista
+                        localidad.Descripcion = Descripcion;
+                        localidad.ProvinciaID = ProvinciaID;
+                        _context.SaveChanges();
+                    }
+
+                }
+            }
+            else
+            {
+                if (_context.Localidad.Any(e => e.Descripcion == Descripcion && e.LocalidadID != LocalidadID))
+                {
+                    resultado = 1;
+                }
+                else
+                {
+                    var localidad = _context.Localidad.Single(m => m.LocalidadID == LocalidadID);
+                    // Cambiamos la Descripcion por la que ingreso el Usuario en la Vista
+                    localidad.Descripcion = Descripcion;
+                    localidad.ProvinciaID = ProvinciaID;
+                    _context.SaveChanges();
+                }
+            };
+
+
+            return Json(resultado);
+        }
 
         private bool EmpresaExists(int id)
         {
