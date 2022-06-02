@@ -7,7 +7,7 @@ function CompletarTablaEmpresas() {
         data: {},
         success: function (listadoEmpresasMostrar) {
             $("#tbody-empresa").empty();
-            $.each(listadoLocalidadesMostrar, function (index, empresa) {
+            $.each(listadoEmpresasMostrar, function (index, empresa) {
 
                 let claseEliminado = '';
                 let botones = '<button type="button" onclick="BuscarEmpresa(' + empresa.empresaID + ',' + empresa.localidadID + ')" class="btn btn-outline-primary btn-sm" style="margin-right:5px"><i class="bi bi-pencil-square"></i> Editar</button>' +
@@ -19,9 +19,13 @@ function CompletarTablaEmpresas() {
                 }
 
                 $("#tbody-empresa").append('<tr class=' + claseEliminado + '>' +
-                    '<td>' + empresa.descripcion + '</td>' +
-                    '<td>' + empresa.localidadID + '</td>' +
-                    '<td>' + empresa.clasificacionEmpresaID + '</td>' +
+                    '<td>' + empresa.razonSocial + '</td>' +
+                    '<td>' + empresa.cUIT + '</td>' +
+                    '<td>' + empresa.direccion + '</td>' +
+                    '<td>' + empresa.telefono + '</td>' +
+                    '<td>' + empresa.localidadNombre + '</td>' +
+                    '<td>' + empresa.tipoEmpresa + '</td>' +
+
                     '<td class="text-center">' +
                     botones +
                     '</td>' +
@@ -39,25 +43,41 @@ function AbrirModal() {
     $("#EmpresaID").val(0);
     $("#exampleModal").modal("show");
 }
+//Funcion para Vaciar el Formulario
+
+function VaciarFormulario() {
+    $("#EmpresaID").val(0);
+    $("#ClasificacionEmpresaID").val(0);
+    $("#LocalidadID").val(0);
+    $("#CUIT").val('');
+    $("#Direccion").val('');
+    $("#Telefono").val('');
+    $("#Error-RazonSocial").text("");
+}
+
 
 // FUncion para Guardar las Empresas
-function GuardarEmpresas() {
-    $("#Error-LocalidadNombre").text("");
+function GuardarEmpresa() {
+    $("#Error-RazonSocial").text("");
+    let empresaID = $('#EmpresaID').val();
+    let cUIT = $('#CUIT').val();
+    let direccion = $('#Direccion').val();
+    let telefono = $('#Telefono').val();
+    let guardarempresa = $('#RazonSocial').val().trim();
     let localidadID = $('#LocalidadID').val();
-    let guardarlocalidad = $('#LocalidadNombre').val().trim();
-    let provinciaID = $('#ProvinciaID').val();
-    if (guardarlocalidad != "" && guardarlocalidad != null) {
+    let clasificacionEmpresaID = $('#ClasificacionEmpresaID').val();
+    if (guardarempresa != "" && guardarempresa != null) {
         $.ajax({
             type: "POST",
-            url: '../../Localidades/GuardarLocalidad',
-            data: { LocalidadID: localidadID, Descripcion: guardarlocalidad, ProvinciaID: provinciaID },
+            url: '../../Empresas/GuardarEmpresa',
+            data: { EmpresaID: empresaID, RazonSocial: guardarempresa, CUIT: cUIT, Direccion: direccion, Telefono: telefono, LocalidadID: localidadID, ClasificacionEmpresaID: clasificacionEmpresaID},
             success: function (resultado) {
                 if (resultado == 0) {
                     $("#exampleModal").modal("hide");
-                    CompletarTablaLocalidades();
+                    CompletarTablaEmpresas();
                 }
                 if (resultado == 2) {
-                    $("#Error-LocalidadNombre").text("La Localidad ingresada Ya Existe. Ingrese una Nueva Localidad");
+                    $("#Error-RazonSocial").text("La Empresa ingresada Ya Existe. Ingrese una Nueva Empresa");
                 }
             },
             error: function (data) {
@@ -65,28 +85,28 @@ function GuardarEmpresas() {
         });
     }
     else {
-        $("#Error-LocalidadNombre").text("Debe ingresar un Nombre para la Localidad.");
+        $("#Error-RazonSocial").text("Debe ingresar una RazonSocial para la Empresa.");
     }
 }
 
  // Funcion para Buscar las Empresas
 
-function BuscarEmpresas(empresaID, localidadID, provinciaID) {
-    $("#titulo-Modal-Empresas").text("Editar Empresa");
-    $("#EmpresaID").val(empresaID);
-    $("#LocalidadID").val(localidadID);
-    $("#ProvinciaID").val(provinciaID);
-    $.ajax({
-        type: "POST",
-        url: '../../Empresas/BuscarEmpresas',
-        data: { EmpresaID: empresaID, LocalidadID: localidadID, ProvinciaID: provinciaID },
-        success: function (empresa) {
-            $("#EmpresaNombre").val(empresa.descripcion);
-            $("#LocalidadNombre").val(empresa.localidadID);
-            $("#ProvinciaNombre").val(empresa.provinciaID);
-            $("#exampleModal").modal("show");
-        },
-        error: function (data) {
-        }
-    });
-}
+//function BuscarEmpresas(empresaID, localidadID, provinciaID) {
+//    $("#titulo-Modal-Empresas").text("Editar Empresa");
+//    $("#EmpresaID").val(empresaID);
+//    $("#LocalidadID").val(localidadID);
+//    $("#ProvinciaID").val(provinciaID);
+//    $.ajax({
+//        type: "POST",
+//        url: '../../Empresas/BuscarEmpresas',
+//        data: { EmpresaID: empresaID, LocalidadID: localidadID, ProvinciaID: provinciaID },
+//        success: function (empresa) {
+//            $("#EmpresaNombre").val(empresa.descripcion);
+//            $("#LocalidadNombre").val(empresa.localidadID);
+//            $("#ProvinciaNombre").val(empresa.provinciaID);
+//            $("#exampleModal").modal("show");
+//        },
+//        error: function (data) {
+//        }
+//    });
+//}

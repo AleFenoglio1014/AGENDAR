@@ -14,7 +14,7 @@ namespace AGENDAR.Controllers
     {
         private readonly ApplicationDbContext _context;
 
-        //COMENTARIO
+       
         public EmpresasController(ApplicationDbContext context)
         {
             _context = context;
@@ -28,7 +28,7 @@ namespace AGENDAR.Controllers
             ViewBag.LocalidadID = new SelectList(localidades.OrderBy(p => p.Descripcion), "LocalidadID", "Descripcion");
 
             var clasificacionempresas = _context.ClasificacionEmpresa.Where(p => p.Eliminado == false).ToList();
-            clasificacionempresas.Add(new ClasificacionEmpresa { ClasificacionEmpresaID = 0, Descripcion = "[SELECCIONE TIPO DE EMPRESA]" });
+            clasificacionempresas.Add(new ClasificacionEmpresa { ClasificacionEmpresaID = 0, Descripcion = "[SELECCIONE EL TIPO DE EMPRESA]" });
             ViewBag.ClasificacionEmpresaID = new SelectList(clasificacionempresas.OrderBy(p => p.Descripcion), "ClasificacionEmpresaID", "Descripcion");
 
             return View();
@@ -38,77 +38,88 @@ namespace AGENDAR.Controllers
         public JsonResult BuscarEmpresa()
         {
             var empresas = _context.Empresa.Include(r => r.Localidades).Include(p => p.ClasificacionEmpresas).ToList();
-            List<EmpresasMostrar> listadoEmpresasMostrar = new List<EmpresasMostrar>();
+
+            List<EmpresasMostrar> listadoEmpresas = new List<EmpresasMostrar>();
+            
             foreach (var empresa in empresas)
             {
-                var empresasMostrar = new EmpresasMostrar()
+                var empresasMostrar = new EmpresasMostrar
                 {
                     EmpresaID = empresa.EmpresaID,
                     RazonSocial = empresa.RazonSocial,
                     CUIT = empresa.CUIT,
                     Direccion = empresa.Direccion,
                     Telefono = empresa.Telefono,
-                    LocalidadID = empresa.Localidades.LocalidadID,
+                    LocalidadID = empresa.LocalidadID,
                     LocalidadNombre = empresa.Localidades.Descripcion,
-                    ClasificacionEmpresaID = empresa.ClasificacionEmpresas.ClasificacionEmpresaID,
+                    ClasificacionEmpresaID = empresa.ClasificacionEmpresaID,
                     TipoEmpresa = empresa.ClasificacionEmpresas.Descripcion,
                     Eliminado = empresa.Eliminado
+                  
 
                 };
-                listadoEmpresasMostrar.Add(empresasMostrar);
+                listadoEmpresas.Add(empresasMostrar);
             }
 
-            return Json(listadoEmpresasMostrar);
+            return Json(listadoEmpresas);
         }
 
-        // Funcion Guardar y Editar las Localidades
+        // Funcion Guardar y Editar las Empresa
 
-        public JsonResult GuardarLocalidad(int LocalidadID, string Descripcion, int ProvinciaID)
+        public JsonResult GuardarEmpresa(int EmpresaID, string RazonSocial, string CUIT, string Direccion, int Telefono, int LocalidadID, int ClasificacionEmpresaID)
         {
             int resultado = 0;
             // Si es 0 es CORRECTO
             // Si es 1 el Campo Descripcion esta VACIO
             // Si es 2 el Registro YA EXISTE con la misma Descripcion
 
-            if (!string.IsNullOrEmpty(Descripcion))
+            if (!string.IsNullOrEmpty(RazonSocial))
             {
-                Descripcion = Descripcion.ToUpper();
-                if (LocalidadID == 0)
+                RazonSocial = RazonSocial.ToUpper();
+                if (EmpresaID == 0)
                 {
-                    // Antes de CREAR el registro debemos preguntar si existe una Localidad con la misma Descripcion
-                    if (_context.Localidad.Any(e => e.Descripcion == Descripcion && e.ProvinciaID == ProvinciaID))
+                    // Antes de CREAR el registro debemos preguntar si existe una Empresa con la misma Descripcion
+                    if (_context.Empresa.Any(e => e.RazonSocial == RazonSocial))
                     {
                         resultado = 2;
                     }
                     else
                     {
-                        // Aca va a ir el codigo para CREAR una Localidad
-                        // Para eso creamos un objeto de tipo localidadNueva con los datos necesarios
-                        var localidadNueva = new Localidad
+                        // Aca va a ir el codigo para CREAR una Empresa
+                        // Para eso creamos un objeto de tipo empresaNueva con los datos necesarios
+                        var empresaNueva = new Empresa
                         {
-                            Descripcion = Descripcion,
-                            ProvinciaID = ProvinciaID
+                            RazonSocial = RazonSocial,
+                            CUIT = CUIT,
+                            Direccion = Direccion,
+                            Telefono = Telefono,
+                            LocalidadID = LocalidadID,
+                            ClasificacionEmpresaID = ClasificacionEmpresaID
+
                         };
-                        _context.Add(localidadNueva);
+                        _context.Add(empresaNueva);
                         _context.SaveChanges();
                     }
 
                 }
                 else
                 {
-                    // Antes de EDITAR el registro debemos preguntar si existe una Localidad con la misma Descripcion
-                    if (_context.Localidad.Any(e => e.Descripcion == Descripcion && e.LocalidadID != LocalidadID))
+                    // Antes de EDITAR el registro debemos preguntar si existe una Empresa con la misma Razon Social
+                    if (_context.Empresa.Any(e => e.RazonSocial == RazonSocial))
                     {
                         resultado = 2;
                     }
                     else
                     {
-                        // Aca va a ir el codigo para EDITAR una Localidad
+                        // Aca va a ir el codigo para EDITAR una Empresa
                         // Buscamos el registro en la Base de Datos
-                        var localidad = _context.Localidad.Single(m => m.LocalidadID == LocalidadID);
-                        // Cambiamos la Descripcion por la que ingreso el Usuario en la Vista
-                        localidad.Descripcion = Descripcion;
-                        localidad.ProvinciaID = ProvinciaID;
+                        var empresa = _context.Empresa.Single(m => m.EmpresaID == EmpresaID);
+                        // Cambiamos la RazonSocial por la que ingreso el Usuario en la Vista
+                        empresa.RazonSocial = RazonSocial;
+                        empresa.Direccion = Direccion;
+                        empresa.Telefono = Telefono;
+                        empresa.LocalidadID = LocalidadID;
+                        empresa.ClasificacionEmpresaID = ClasificacionEmpresaID;
                         _context.SaveChanges();
                     }
 
@@ -116,16 +127,18 @@ namespace AGENDAR.Controllers
             }
             else
             {
-                if (_context.Localidad.Any(e => e.Descripcion == Descripcion && e.LocalidadID != LocalidadID))
+                if (_context.Empresa.Any(e => e.RazonSocial == RazonSocial))
                 {
                     resultado = 1;
                 }
                 else
                 {
-                    var localidad = _context.Localidad.Single(m => m.LocalidadID == LocalidadID);
-                    // Cambiamos la Descripcion por la que ingreso el Usuario en la Vista
-                    localidad.Descripcion = Descripcion;
-                    localidad.ProvinciaID = ProvinciaID;
+                    var empresa = _context.Empresa.Single(m => m.EmpresaID == EmpresaID);
+                    // Cambiamos la RazonSocial por la que ingreso el Usuario en la Vista
+                    empresa.RazonSocial = RazonSocial;
+                    empresa.Direccion = Direccion;
+                    empresa.Telefono = Telefono;
+                    empresa.LocalidadID = LocalidadID;
                     _context.SaveChanges();
                 }
             };

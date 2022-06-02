@@ -19,9 +19,9 @@ namespace AGENDAR.Models
 
         public int Telefono { get; set; }
         public bool Eliminado { get; set; }
-
+        public int LocalidadID { get; set; }
         public virtual Localidad Localidades { get; set; }
-
+        public int ClasificacionEmpresaID { get; set; }
         public virtual ClasificacionEmpresa ClasificacionEmpresas { get; set; }
 
         public virtual ICollection<Profesional> Profesionales { get; set; }
