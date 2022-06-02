@@ -28,14 +28,14 @@ namespace AGENDAR.Controllers
             ViewBag.LocalidadID = new SelectList(localidades.OrderBy(p => p.Descripcion), "LocalidadID", "Descripcion");
 
             var clasificacionempresas = _context.ClasificacionEmpresa.Where(p => p.Eliminado == false).ToList();
-            clasificacionempresas.Add(new ClasificacionEmpresa { ClasificacionEmpresaID = 0, Descripcion = "[SELECCIONE EL TIPO DE EMPRESA]" });
+            clasificacionempresas.Add(new ClasificacionEmpresa { ClasificacionEmpresaID = 0, Descripcion = "[SELECCIONE TIPO DE EMPRESA]" });
             ViewBag.ClasificacionEmpresaID = new SelectList(clasificacionempresas.OrderBy(p => p.Descripcion), "ClasificacionEmpresaID", "Descripcion");
 
             return View();
         }
 
         // Funcion para Completar la Tabla  de Empresas 
-        public JsonResult BuscarEmpresa()
+        public JsonResult BuscarEmpresas()
         {
             var empresas = _context.Empresa.Include(r => r.Localidades).Include(p => p.ClasificacionEmpresas).ToList();
 
@@ -116,6 +116,7 @@ namespace AGENDAR.Controllers
                         var empresa = _context.Empresa.Single(m => m.EmpresaID == EmpresaID);
                         // Cambiamos la RazonSocial por la que ingreso el Usuario en la Vista
                         empresa.RazonSocial = RazonSocial;
+                        empresa.CUIT = CUIT;
                         empresa.Direccion = Direccion;
                         empresa.Telefono = Telefono;
                         empresa.LocalidadID = LocalidadID;
@@ -136,9 +137,11 @@ namespace AGENDAR.Controllers
                     var empresa = _context.Empresa.Single(m => m.EmpresaID == EmpresaID);
                     // Cambiamos la RazonSocial por la que ingreso el Usuario en la Vista
                     empresa.RazonSocial = RazonSocial;
+                    empresa.CUIT = CUIT;
                     empresa.Direccion = Direccion;
                     empresa.Telefono = Telefono;
                     empresa.LocalidadID = LocalidadID;
+                    empresa.ClasificacionEmpresaID = ClasificacionEmpresaID;
                     _context.SaveChanges();
                 }
             };

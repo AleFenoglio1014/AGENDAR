@@ -3,7 +3,7 @@ function CompletarTablaEmpresas() {
     VaciarFormulario();
     $.ajax({
         type: "POST",
-        url: '../../Empresas/BuscarEmpresa',
+        url: '../../Empresas/BuscarEmpresas',
         data: {},
         success: function (listadoEmpresasMostrar) {
             $("#tbody-empresa").empty();
@@ -20,7 +20,7 @@ function CompletarTablaEmpresas() {
 
                 $("#tbody-empresa").append('<tr class=' + claseEliminado + '>' +
                     '<td>' + empresa.razonSocial + '</td>' +
-                    '<td>' + empresa.cUIT + '</td>' +
+                    '<td>' + empresa.cuit + '</td>' +
                     '<td>' + empresa.direccion + '</td>' +
                     '<td>' + empresa.telefono + '</td>' +
                     '<td>' + empresa.localidadNombre + '</td>' +
@@ -60,7 +60,7 @@ function VaciarFormulario() {
 function GuardarEmpresa() {
     $("#Error-RazonSocial").text("");
     let empresaID = $('#EmpresaID').val();
-    let cUIT = $('#CUIT').val();
+    let cuit = $('#CUIT').val();
     let direccion = $('#Direccion').val();
     let telefono = $('#Telefono').val();
     let guardarempresa = $('#RazonSocial').val().trim();
@@ -70,7 +70,7 @@ function GuardarEmpresa() {
         $.ajax({
             type: "POST",
             url: '../../Empresas/GuardarEmpresa',
-            data: { EmpresaID: empresaID, RazonSocial: guardarempresa, CUIT: cUIT, Direccion: direccion, Telefono: telefono, LocalidadID: localidadID, ClasificacionEmpresaID: clasificacionEmpresaID},
+            data: { EmpresaID: empresaID, RazonSocial: guardarempresa, CUIT: cuit, Direccion: direccion, Telefono: telefono, LocalidadID: localidadID, ClasificacionEmpresaID: clasificacionEmpresaID},
             success: function (resultado) {
                 if (resultado == 0) {
                     $("#exampleModal").modal("hide");
