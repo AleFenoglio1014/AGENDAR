@@ -63,6 +63,8 @@ namespace AGENDAR.Controllers
 
             return Json(listadoEmpresas);
         }
+   
+
 
         // Funcion Guardar y Editar las Empresa
 
@@ -146,6 +148,40 @@ namespace AGENDAR.Controllers
                 }
             };
 
+
+            return Json(resultado);
+        }
+
+
+        // Funcion para Buscar la empresa
+        public JsonResult BuscarEmpresa(int EmpresaID)
+        {
+            var empresa = _context.Empresa.FirstOrDefault(m => m.EmpresaID == EmpresaID);
+
+            return Json(empresa);
+        }
+
+
+        //ELIMINAR ARTICULOS
+
+        public JsonResult DesactivarEmpresa(int EmpresaID, int Elimina)
+        {
+            bool resultado = true;
+
+            var empresa = _context.Empresa.Find(EmpresaID);
+            if (empresa != null)
+            {
+                if (Elimina == 0)
+                {
+                    empresa.Eliminado = false;
+                }
+                else
+                {
+                    empresa.Eliminado = true;
+                }
+
+                _context.SaveChanges();
+            }
 
             return Json(resultado);
         }
