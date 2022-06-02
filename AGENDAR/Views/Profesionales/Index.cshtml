@@ -1,0 +1,86 @@
+﻿@model IEnumerable<AGENDAR.Models.Profesional>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Profesionales</h1>
+
+<p>
+    <!-- Boton Modal -->
+    <button class="btn btn-outline-success" onclick="AbrirModal()"><i class="bi bi-folder-plus"></i> Agregar Profesional</button>
+</p>
+
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>
+                Nombre del Profesional
+            </th>
+            <th class="text-center" style="width:300px">
+                Empresa
+            </th>
+            <th class="text-center" style="width:300px">
+                Tipo Profesional
+            </th>
+            <th class="text-center" style="width:300px">Opciones</th>
+        </tr>
+    </thead>
+    <tbody id="tbody-profesional">
+    </tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="titulo-Modal-Profesional"></h5>
+                <button type="button" class="close" data-dismiss="modal" onclick="VaciarFormulario()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+
+            <!--Agregado de Formulario dentro del Modal-->
+            <div class="modal-body">
+                <form>
+                    <input type="hidden" id="ProfesionalID" value="0" />
+                    <div class="form-group">
+                        <label for="recipient-name" class="control-label font-weight-bold">Nombre</label>
+                        <input type="text" class="form-control" autocomplete="off" required id="Nombre">
+                       
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="control-label font-weight-bold">Apellido</label>
+                        <input type="text" class="form-control" autocomplete="off" required id="Apellido">
+                        <p class="text-danger font-weight-bold" style="font-size:small" id="Error-Nombre"></p>
+                    </div>
+                    <!--Lista de Localidades dentro del Dropdown de Empresa-->
+                        <div class="form-group">
+                            <label class="control-label font-weight-bold">Empresa</label>
+                            @Html.DropDownList("EmpresaID", null, htmlAttributes: new { @class = "form-control " })
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label font-weight-bold">Tipo de Profesional</label>
+                            @Html.DropDownList("ClasificacionProfesionalID", null, htmlAttributes: new { @class = "form-control " })
+                        </div>
+
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="VaciarFormulario()" class="btn btn-outline-danger" data-dismiss="modal"><i class="bi bi-backspace"></i> Cerrar</button>
+                <button type="button" onclick="GuardarProfesional()" class="btn btn-outline-success"><i class="bi bi-folder-check"></i> Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*//Funcion para Completar la Tabla de Profesional*@
+
+@section Scripts {
+
+    <script src="~/js/Profesional-1.0.js"></script>
+    <script>
+        window.onload = CompletarTablaProfesionales();
+    </script>
+}

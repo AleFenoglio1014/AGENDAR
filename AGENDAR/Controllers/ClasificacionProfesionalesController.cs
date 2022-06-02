@@ -99,27 +99,27 @@ namespace AGENDAR.Controllers
             return Json(tipoProfesional);
         }
 
-        // Funcion para Desactivar una Actividad
-        public JsonResult DesactivarActividad(int ClasificacionProfesionalID, int Elimina)
-        {
-            bool resultado = true;
+        //// Funcion para Desactivar una Actividad
+        //public JsonResult DesactivarActividad(int ClasificacionProfesionalID, int Elimina)
+        //{
+        //    bool resultado = true;
 
-            var tipoProfesional = _context.ClasificacionProfesional.Find(ClasificacionProfesionalID);
-            if (tipoProfesional != null)
-            {
-                if (Elimina == 0)
-                {
-                    tipoProfesional.Eliminado = false;
-                }
-                else
-                {
-                    tipoProfesional.Eliminado = true;
-                }
-                _context.SaveChanges();
-            }
+        //    var tipoProfesional = _context.ClasificacionProfesional.Find(ClasificacionProfesionalID);
+        //    if (tipoProfesional != null)
+        //    {
+        //        if (Elimina == 0)
+        //        {
+        //            tipoProfesional.Eliminado = false;
+        //        }
+        //        else
+        //        {
+        //            tipoProfesional.Eliminado = true;
+        //        }
+        //        _context.SaveChanges();
+        //    }
 
-            return Json(resultado);
-        }
+        //    return Json(resultado);
+        //}
         private bool ClasificacionProfesionalExists(int id)
         {
             return _context.ClasificacionProfesional.Any(e => e.ClasificacionProfesionalID == id);

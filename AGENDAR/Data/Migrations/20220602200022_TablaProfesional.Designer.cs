@@ -4,14 +4,16 @@ using AGENDAR.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AGENDAR.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220602200022_TablaProfesional")]
+    partial class TablaProfesional
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -125,11 +127,14 @@ namespace AGENDAR.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Apellido")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ClasificacionProfesionalID")
+                    b.Property<int>("ClasificacionEmpresaID")
                         .HasColumnType("int");
+
+                    b.Property<int?>("ClasificacionProfesionalesClasificacionProfesionalID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Descripcion")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("Eliminado")
                         .HasColumnType("bit");
@@ -137,12 +142,9 @@ namespace AGENDAR.Data.Migrations
                     b.Property<int>("EmpresaID")
                         .HasColumnType("int");
 
-                    b.Property<string>("Nombre")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("ProfesionalID");
 
-                    b.HasIndex("ClasificacionProfesionalID");
+                    b.HasIndex("ClasificacionProfesionalesClasificacionProfesionalID");
 
                     b.HasIndex("EmpresaID");
 
@@ -395,9 +397,7 @@ namespace AGENDAR.Data.Migrations
                 {
                     b.HasOne("AGENDAR.Models.ClasificacionProfesional", "ClasificacionProfesionales")
                         .WithMany("Profesionales")
-                        .HasForeignKey("ClasificacionProfesionalID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ClasificacionProfesionalesClasificacionProfesionalID");
 
                     b.HasOne("AGENDAR.Models.Empresa", "Empresas")
                         .WithMany("Profesionales")

@@ -1,0 +1,151 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using AGENDAR.Data;
+using AGENDAR.Models;
+
+namespace AGENDAR.Controllers
+{
+    public class ProfesionalesController : Controller
+    {
+        private readonly ApplicationDbContext _context;
+
+        public ProfesionalesController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        // GET: Profesionales
+        public IActionResult Index()
+        {
+            var empresa = _context.Empresa.Where(p => p.Eliminado == false).ToList();
+            empresa.Add(new Empresa { EmpresaID = 0, RazonSocial = "[SELECCIONE UNA EMPRESA]" });
+            ViewBag.EmpresaID = new SelectList(empresa.OrderBy(p => p.RazonSocial), "EmpresaID", "RazonSocial");
+
+            var clasificacionprofesional = _context.ClasificacionProfesional.Where(p => p.Eliminado == false).ToList();
+            clasificacionprofesional.Add(new ClasificacionProfesional { ClasificacionProfesionalID = 0, Descripcion = "[SELECCIONE TIPO DE PROFESIONAL]" });
+            ViewBag.ClasificacionProfesionalID = new SelectList(clasificacionprofesional.OrderBy(p => p.Descripcion), "ClasificacionProfesionalID", "Descripcion");
+
+            return View();
+        }
+        // Funcion para Completar la Tabla  de Profesionales 
+        public JsonResult BuscarProfesionales()
+        {
+            var profesionales = _context.Profesional.Include(r => r.Empresas).Include(p => p.ClasificacionProfesionales).ToList();
+
+            List<ProfesionalesMostrar> listadoProfesional = new List<ProfesionalesMostrar>();
+
+            foreach (var profesional in profesionales)
+            {
+                var profesionalesMostrar = new ProfesionalesMostrar
+                {
+                    ProfesionalID = profesional.ProfesionalID,
+                    Nombre = profesional.Nombre,
+                    Apellido = profesional.Apellido,
+                    ProfesionalNombreCompleto = profesional.ProfesionalNombreCompleto,
+                    ClasificacionProfesionalID = profesional.ClasificacionProfesionalID,
+                    TipoProfesional = profesional.ClasificacionProfesionales.Descripcion,
+                    EmpresaID = profesional.EmpresaID,
+                    EmpresaNombre = profesional.Empresas.RazonSocial,
+                    Eliminado = profesional.Eliminado
+
+
+                };
+                listadoProfesional.Add(profesionalesMostrar);
+            }
+
+            return Json(listadoProfesional);
+        }
+        // Funcion Guardar y Editar los Porfesionales
+
+        public JsonResult GuardarProfesional(int ProfesionalID, string Nombre, string Apellido,  int EmpresaID, int ClasificacionProfesionalID)
+        {
+            int resultado = 0;
+            // Si es 0 es CORRECTO
+            // Si es 1 el Campo Descripcion esta VACIO
+            // Si es 2 el Registro YA EXISTE con la misma Descripcion
+
+            if (!string.IsNullOrEmpty(Nombre))
+            {
+                Nombre = Nombre.ToUpper();
+                Apellido = Apellido.ToUpper();
+                if (ProfesionalID == 0)
+                {
+                    // Antes de CREAR el registro debemos preguntar si existe un Profesional con el mismo nombre y apellido
+                    if (_context.Profesional.Any(e => e.Nombre == Nombre && e.Apellido == Apellido))
+                    {
+                        resultado = 2;
+                    }
+                    else
+                    {
+                        // Aca va a ir el codigo para CREAR un Profesional
+                        // Para eso creamos un objeto de tipo profesionalNuevo con los datos necesarios
+                        var profesionalNuevo = new Profesional
+                        {
+                            Nombre = Nombre,
+                            Apellido = Apellido,
+                            EmpresaID = EmpresaID,
+                            ClasificacionProfesionalID = ClasificacionProfesionalID
+
+                        };
+                        _context.Add(profesionalNuevo);
+                        _context.SaveChanges();
+                    }
+
+                }
+                else
+                {
+                    // Antes de EDITAR el registro debemos preguntar si existe un Profesional con el mismo nombre y apellido
+                    if (_context.Profesional.Any(e => e.Nombre == Nombre && e.Apellido == Apellido))
+                    {
+                        resultado = 2;
+                    }
+                    else
+                    {
+                        // Aca va a ir el codigo para EDITAR un Profesional
+                        // Buscamos el registro en la Base de Datos
+                        var profesional = _context.Profesional.Single(m => m.ProfesionalID == ProfesionalID);
+                        // Cambiamos el nombre por la que ingreso el Usuario en la Vista
+                        profesional.Nombre = Nombre;
+                        profesional.Apellido = Apellido;
+                        profesional.ClasificacionProfesionalID = ClasificacionProfesionalID;
+                        profesional.EmpresaID = EmpresaID;
+                        _context.SaveChanges();
+                    }
+
+                }
+            }
+            else
+            {
+                if (_context.Profesional.Any(e => e.Nombre == Nombre && e.Apellido == Apellido))
+                {
+                    resultado = 1;
+                }
+                else
+                {
+                    var profesional = _context.Profesional.Single(m => m.ProfesionalID == ProfesionalID);
+                    // Cambiamos el nombre por la que ingreso el Usuario en la Vista
+                    profesional.Nombre = Nombre;
+                    profesional.Apellido = Apellido;
+                    profesional.ClasificacionProfesionalID = ClasificacionProfesionalID;
+                    profesional.EmpresaID = EmpresaID;
+                    _context.SaveChanges();
+                }
+            };
+
+
+            return Json(resultado);
+        }
+
+
+
+        private bool ProfesionalExists(int id)
+        {
+            return _context.Profesional.Any(e => e.ProfesionalID == id);
+        }
+    }
+}

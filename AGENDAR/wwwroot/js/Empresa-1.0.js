@@ -96,7 +96,7 @@ function BuscarEmpresa(razonSocial ,empresaID, localidadID, clasificacionEmpresa
         data: { RazonSocial: razonSocial, EmpresaID: empresaID, LocalidadID: localidadID, ClasificacionEmpresaID: clasificacionEmpresaID },
         success: function (empresa) {
             $("#RazonSocial").val(empresa.razonSocial);
-            $("#LocalidadNombre").val(empresa.localidadID);
+            $("#LocalidadID").val(empresa.localidadID);
             $("#ClasificacionEmpresaID").val(empresa.clasificacionEmpresaID);
             $("#exampleModal").modal("show");
         },
