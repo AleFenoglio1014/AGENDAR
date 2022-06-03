@@ -69,7 +69,7 @@ namespace AGENDAR.Controllers
             // Si es 1 el Campo Descripcion esta VACIO
             // Si es 2 el Registro YA EXISTE con la misma Descripcion
 
-            if (!string.IsNullOrEmpty(Nombre))
+            if (!string.IsNullOrEmpty(Nombre) && Apellido != null)
             {
                 Nombre = Nombre.ToUpper();
                 Apellido = Apellido.ToUpper();
@@ -140,6 +140,30 @@ namespace AGENDAR.Controllers
 
             return Json(resultado);
         }
+
+        // Funcion para Buscar el Profesional
+        public JsonResult BuscarProfesional(int ProfesionalID)
+        {
+            var profesional = _context.Profesional.FirstOrDefault(m => m.ProfesionalID == ProfesionalID);
+
+            return Json(profesional);
+        }
+        //Eliminar Profesional
+
+        public JsonResult Eliminarprofesional(int ProfesionalID)
+        {
+            bool resultado = true;
+
+            var profesional = _context.Profesional.Find(ProfesionalID);
+            if (profesional != null)
+            {
+                _context.Profesional.Remove(profesional);
+                _context.SaveChanges();
+            }
+
+            return Json(resultado);
+        }
+
 
 
 

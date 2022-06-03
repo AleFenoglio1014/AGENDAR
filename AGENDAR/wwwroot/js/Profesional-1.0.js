@@ -8,23 +8,13 @@ function CompletarTablaProfesionales() {
         success: function (listadoProfesionalesMostrar) {
             $("#tbody-profesional").empty();
             $.each(listadoProfesionalesMostrar, function (index, profesional) {
-
-                let claseEliminado = '';
-                let botones = '<button type="button" onclick="BuscarProfesional(' + profesional.profesionalID + ',' + profesional.empresaID + ')" class="btn btn-outline-primary btn-sm" style="margin-right:5px"><i class="bi bi-pencil-square"></i> Editar</button>' +
-                    '<button type="button" onclick="DesactivarProfesional(' + profesional.profesionalID + ',1)" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash-fill"></i> Desacctivar</button>';
-
-                if (profesional.eliminado) {
-                    claseEliminado = 'table-danger';
-                    botones = '<button type="button" onclick="DesactivarProfesional(' + profesional.profesionalID + ',0)" class="btn btn-outline-success btn-sm"><i class="bi bi-folder-symlink"></i> Activar</button>';
-                }
-
-                $("#tbody-profesional").append('<tr class=' + claseEliminado + '>' +
+                $("#tbody-profesional").append('<tr>' +
                     '<td>' + profesional.profesionalNombreCompleto + '</td>' +
                     '<td>' + profesional.empresaNombre + '</td>' +
                     '<td>' + profesional.tipoProfesional + '</td>' +
-                    '<td class="text-center">' +
-                    botones +
-                    '</td>' +
+                    '<td>' +  '<button type="button" onclick="BuscarProfesional(' + profesional.profesionalID + ',' + profesional.empresaID + ')" class="btn btn-outline-primary btn-sm" style="margin-right:5px"><i class="bi bi-pencil-square"></i> Editar</button>' +
+                    '<button type="button" onclick="Eliminarprofesional(' + profesional.profesionalID + ',1)" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash-fill"></i> Eliminar</button>' + '</td>' +
+
                     '</tr>');
             });
         },
@@ -75,4 +65,44 @@ function GuardarProfesional() {
     else {
         $("#Error-Nombre").text("Debe ingresar un Nombre para el  Profesional.");
     }
+}
+
+// Funcion para Buscar el Profesional
+
+function BuscarProfesional(profesionalID, nombre, apellido, empresaID,clasificacionProfesionalID) {
+    $("#titulo-Modal-Profesional").text("Editar Profesional");
+    $("#ProfesionalID").val(profesionalID);
+    $("#Nombre").val(nombre);
+    $("#Apellido").val(apellido);
+    $("#EmpresaID").val(empresaID);
+    $("#ClasificacionProfesionalID").val(clasificacionProfesionalID);
+    $.ajax({
+        type: "POST",
+        url: '../../Profesionales/BuscarProfesional',
+        data: { ProfesionalID: profesionalID, Nombre: nombre, Apellido: apellido, EmpresaID: empresaID, ClasificacionProfesionalID: clasificacionProfesionalID },
+        success: function (profesional) {
+            $("#Nombre").val(profesional.nombre);
+            $("#Apellido").val(profesional.apellido);
+            $("#EmpresaID").val(profesional.empresaID);
+            $("#ClasificacionProfesionalID").val(profesional.clasificacionProfesionalID);
+            $("#exampleModal").modal("show");
+        },
+        error: function (data) {
+        }
+    });
+}
+//Funcion para eliminar el profesional
+
+
+function Eliminarprofesional(profesionalID) {
+    $.ajax({
+        type: "POST",
+        url: '../../Profesionales/Eliminarprofesional',
+        data: { ProfesionalID: profesionalID },
+        success: function (profesional) {
+            CompletarTablaProfesionales();
+        },
+        error: function (data) {
+        }
+    });
 }

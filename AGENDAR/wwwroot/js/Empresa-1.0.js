@@ -8,27 +8,15 @@ function CompletarTablaEmpresas() {
         success: function (listadoEmpresasMostrar) {
             $("#tbody-empresa").empty();
             $.each(listadoEmpresasMostrar, function (index, empresa) {
-
-                let claseEliminado = '';
-                let botones = '<button type="button" onclick="BuscarEmpresa(' + empresa.empresaID + ',' + empresa.localidadID + ')" class="btn btn-outline-primary btn-sm" style="margin-right:5px"><i class="bi bi-pencil-square"></i> Editar</button>' +
-                    '<button type="button" onclick="DesactivarEmpresa(' + empresa.empresaID + ',1)" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash-fill"></i> Desacctivar</button>';
-
-                if (empresa.eliminado) {
-                    claseEliminado = 'table-danger';
-                    botones = '<button type="button" onclick="DesactivarEmpresa(' + empresa.empresaID + ',0)" class="btn btn-outline-success btn-sm"><i class="bi bi-folder-symlink"></i> Activar</button>';
-                }
-
-                $("#tbody-empresa").append('<tr class=' + claseEliminado + '>' +
+                $("#tbody-empresa").append('<tr>' +
                     '<td>' + empresa.razonSocial + '</td>' +
                     '<td>' + empresa.cuit + '</td>' +
                     '<td>' + empresa.direccion + '</td>' +
                     '<td>' + empresa.telefono + '</td>' +
                     '<td>' + empresa.localidadNombre + '</td>' +
                     '<td>' + empresa.tipoEmpresa + '</td>' +
-
-                    '<td class="text-center">' +
-                    botones +
-                    '</td>' +
+                    '<td>' + '<button type="button" onclick="BuscarEmpresa(' + empresa.empresaID + ',' + empresa.localidadID + ')" class="btn btn-outline-primary btn-sm" style="margin-right:5px"><i class="bi bi-pencil-square"></i> Editar</button>'  +
+                    '<button type="button" onclick="EliminarEmpresa(' + empresa.empresaID + ',1)" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash-fill"></i> Eliminar</button>' + '</td>' +
                     '</tr>');
             });
         },
@@ -84,10 +72,10 @@ function GuardarEmpresa() {
 
  // Funcion para Buscar las Empresas
 
-function BuscarEmpresa(razonSocial ,empresaID, localidadID, clasificacionEmpresaID) {
+function BuscarEmpresa(empresaID,razonSocial, localidadID, clasificacionEmpresaID) {
     $("#titulo-Modal-Empresa").text("Editar Empresa");
-    $("#RazonSocial").val(razonSocial);
     $("#EmpresaID").val(empresaID);
+    $("#RazonSocial").val(razonSocial);
     $("#LocalidadID").val(localidadID);
     $("#ClasificacionEmpresaID").val(clasificacionEmpresaID);
     $.ajax({
@@ -118,23 +106,18 @@ function VaciarFormulario() {
     $("#Error-RazonSocial").text("");
 }
 
-//Funcion para Desactivar la Localidad
-function DesactivarEmpresa(empresID, elimina) {
-    if (elimina == 1) {
-        var mensajeEliminar = "¿Esta seguro que quiere ELIMINAR la EMPRESA?"
-    } else {
-        var mensajeEliminar = "¿Esta seguro que quiere ACTIVAR la EMPRESA?"
-    }
-    if (confirm(mensajeEliminar)) {
-        $.ajax({
-            type: "POST",
-            url: '../../Empresas/DesactivarEmpresa',
-            data: { EmpresaID: empresID, Elimina: elimina },
-            success: function (empresa) {
-                CompletarTablaEmpresas();
-            },
-            error: function (data) {
-            }
-        });
-    }
+//Funcion para eliminar la empresa
+
+
+function EliminarEmpresa(empresID) {
+    $.ajax({
+        type: "POST",
+        url: '../../Empresas/EliminarEmpresa',
+        data: { EmpresaID: empresID },
+        success: function (empresa) {
+            CompletarTablaEmpresas();
+        },
+        error: function (data) {
+        }
+    });
 }

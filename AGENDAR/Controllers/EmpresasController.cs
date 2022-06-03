@@ -162,24 +162,16 @@ namespace AGENDAR.Controllers
         }
 
 
-        //ELIMINAR ARTICULOS
+        //Eliminar Empresa
 
-        public JsonResult DesactivarEmpresa(int EmpresaID, int Elimina)
+        public JsonResult EliminarEmpresa(int EmpresaID)
         {
             bool resultado = true;
 
             var empresa = _context.Empresa.Find(EmpresaID);
             if (empresa != null)
             {
-                if (Elimina == 0)
-                {
-                    empresa.Eliminado = false;
-                }
-                else
-                {
-                    empresa.Eliminado = true;
-                }
-
+                _context.Empresa.Remove(empresa);
                 _context.SaveChanges();
             }
 
