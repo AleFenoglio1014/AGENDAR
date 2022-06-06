@@ -40,7 +40,7 @@ function AbrirModal() {
 function GuardarEmpresa() {
     $("#Error-RazonSocial").text("");
     let empresaID = $('#EmpresaID').val();
-    let cuit = $('#CUIT').val();
+    let cuit = $('#Cuit').val();
     let direccion = $('#Direccion').val();
     let telefono = $('#Telefono').val();
     let guardarempresa = $('#RazonSocial').val().trim();
@@ -50,7 +50,7 @@ function GuardarEmpresa() {
         $.ajax({
             type: "POST",
             url: '../../Empresas/GuardarEmpresa',
-            data: { EmpresaID: empresaID, RazonSocial: guardarempresa, CUIT: cuit, Direccion: direccion, Telefono: telefono, LocalidadID: localidadID, ClasificacionEmpresaID: clasificacionEmpresaID},
+            data: { EmpresaID: empresaID, RazonSocial: guardarempresa, Cuit: cuit, Direccion: direccion, Telefono: telefono, LocalidadID: localidadID, ClasificacionEmpresaID: clasificacionEmpresaID},
             success: function (resultado) {
                 if (resultado == 0) {
                     $("#exampleModal").modal("hide");
@@ -100,7 +100,7 @@ function VaciarFormulario() {
     $("#EmpresaID").val(0);
     $("#ClasificacionEmpresaID").val(0);
     $("#LocalidadID").val(0);
-    $("#CUIT").val('');
+    $("#Cuit").val('');
     $("#Direccion").val('');
     $("#Telefono").val('');
     $("#Error-RazonSocial").text("");
