@@ -110,14 +110,18 @@ function VaciarFormulario() {
 
 
 function EliminarEmpresa(empresID) {
+    var mensajeEliminar = "¿Esta seguro que quiere ELIMINAR la Empresa?"
+    if (confirm(mensajeEliminar)) {
     $.ajax({
         type: "POST",
         url: '../../Empresas/EliminarEmpresa',
         data: { EmpresaID: empresID },
         success: function (empresa) {
+
             CompletarTablaEmpresas();
         },
         error: function (data) {
         }
     });
+    }
 }

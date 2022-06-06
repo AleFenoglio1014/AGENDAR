@@ -95,6 +95,8 @@ function BuscarProfesional(profesionalID, nombre, apellido, empresaID,clasificac
 
 
 function Eliminarprofesional(profesionalID) {
+    var mensajeEliminar = "¿Esta seguro que quiere ELIMINAR al Profesional?"
+    if (confirm(mensajeEliminar)) {
     $.ajax({
         type: "POST",
         url: '../../Profesionales/Eliminarprofesional',
@@ -105,4 +107,5 @@ function Eliminarprofesional(profesionalID) {
         error: function (data) {
         }
     });
+    }
 }
