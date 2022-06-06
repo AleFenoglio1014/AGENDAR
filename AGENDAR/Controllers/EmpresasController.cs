@@ -81,7 +81,7 @@ namespace AGENDAR.Controllers
                 if (EmpresaID == 0)
                 {
                     // Antes de CREAR el registro debemos preguntar si existe una Empresa con la misma Descripcion
-                    if (_context.Empresa.Any(e => e.RazonSocial == RazonSocial))
+                    if (_context.Empresa.Any(e => e.RazonSocial == RazonSocial && e.LocalidadID == LocalidadID ))
                     {
                         resultado = 2;
                     }
@@ -107,7 +107,7 @@ namespace AGENDAR.Controllers
                 else
                 {
                     // Antes de EDITAR el registro debemos preguntar si existe una Empresa con la misma Razon Social
-                    if (_context.Empresa.Any(e => e.RazonSocial == RazonSocial))
+                    if (_context.Empresa.Any(e => e.RazonSocial == RazonSocial && e.LocalidadID == LocalidadID))
                     {
                         resultado = 2;
                     }
@@ -130,7 +130,7 @@ namespace AGENDAR.Controllers
             }
             else
             {
-                if (_context.Empresa.Any(e => e.RazonSocial == RazonSocial))
+                if (_context.Empresa.Any(e => e.RazonSocial == RazonSocial && e.LocalidadID == LocalidadID))
                 {
                     resultado = 1;
                 }
