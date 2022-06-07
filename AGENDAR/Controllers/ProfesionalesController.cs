@@ -76,7 +76,7 @@ namespace AGENDAR.Controllers
                 if (ProfesionalID == 0)
                 {
                     // Antes de CREAR el registro debemos preguntar si existe un Profesional con el mismo nombre y apellido
-                    if (_context.Profesional.Any(e => e.Nombre == Nombre && e.Apellido == Apellido))
+                    if (_context.Profesional.Any(e => e.Nombre == Nombre && e.Apellido == Apellido && e.EmpresaID == EmpresaID))
                     {
                         resultado = 2;
                     }
@@ -100,7 +100,7 @@ namespace AGENDAR.Controllers
                 else
                 {
                     // Antes de EDITAR el registro debemos preguntar si existe un Profesional con el mismo nombre y apellido
-                    if (_context.Profesional.Any(e => e.Nombre == Nombre && e.Apellido == Apellido))
+                    if (_context.Profesional.Any(e => e.Nombre == Nombre && e.Apellido == Apellido && e.EmpresaID == EmpresaID && e.ProfesionalID != ProfesionalID))
                     {
                         resultado = 2;
                     }
@@ -121,7 +121,7 @@ namespace AGENDAR.Controllers
             }
             else
             {
-                if (_context.Profesional.Any(e => e.Nombre == Nombre && e.Apellido == Apellido))
+                if (_context.Profesional.Any(e => e.Nombre == Nombre ))
                 {
                     resultado = 1;
                 }
