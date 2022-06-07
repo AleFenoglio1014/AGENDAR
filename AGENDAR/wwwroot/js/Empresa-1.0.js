@@ -9,14 +9,14 @@ function CompletarTablaEmpresas() {
             $("#tbody-empresa").empty();
             $.each(listadoEmpresasMostrar, function (index, empresa) {
                 $("#tbody-empresa").append('<tr>' +
-                    '<td>' + empresa.razonSocial + '</td>' +
-                    '<td>' + empresa.cuit + '</td>' +
-                    '<td>' + empresa.direccion + '</td>' +
-                    '<td>' + empresa.telefono + '</td>' +
-                    '<td>' + empresa.localidadNombre + '</td>' +
-                    '<td>' + empresa.tipoEmpresa + '</td>' +
-                    '<td>' + '<button type="button" onclick="BuscarEmpresa(' + empresa.empresaID + ',' + empresa.localidadID + ')" class="btn btn-outline-primary btn-sm" style="margin-right:5px"><i class="bi bi-pencil-square"></i> Editar</button>'  +
-                    '<button type="button" onclick="EliminarEmpresa(' + empresa.empresaID + ',1)" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash-fill"></i> Eliminar</button>' + '</td>' +
+                    '<td class="text-center">' + empresa.razonSocial + '</td>' +
+                    '<td class="text-center">' + empresa.cuit + '</td>' +
+                    '<td class="text-center">' + empresa.direccion + '</td>' +
+                    '<td class="text-center">' + empresa.telefono + '</td>' +
+                    '<td class="text-center">' + empresa.localidadNombre + '</td>' +
+                    '<td class="text-center">' + empresa.tipoEmpresa + '</td>' +
+                    '<td class="text-center">' + '<button type="button" onclick="BuscarEmpresa(' + empresa.empresaID + ',' + empresa.localidadID + ')" class="btn btn-outline-primary btn-sm" style="margin-right:5px"><i class="bi bi-pencil-square"></i></button>'  +
+                    '<button type="button" onclick="EliminarEmpresa(' + empresa.empresaID + ',1)" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash-fill"></i></button>' + '</td>' +
                     '</tr>');
             });
         },
@@ -72,20 +72,22 @@ function GuardarEmpresa() {
 
  // Funcion para Buscar las Empresas
 
-function BuscarEmpresa(empresaID,razonSocial, localidadID, clasificacionEmpresaID) {
+function BuscarEmpresa(empresaID,razonSocial, localidadID, clasificacionEmpresaID, telefono) {
     $("#titulo-Modal-Empresa").text("Editar Empresa");
     $("#EmpresaID").val(empresaID);
     $("#RazonSocial").val(razonSocial);
     $("#LocalidadID").val(localidadID);
     $("#ClasificacionEmpresaID").val(clasificacionEmpresaID);
+    $("#Telefono").val(telefono)
     $.ajax({
         type: "POST",
         url: '../../Empresas/BuscarEmpresa',
-        data: { RazonSocial: razonSocial, EmpresaID: empresaID, LocalidadID: localidadID, ClasificacionEmpresaID: clasificacionEmpresaID },
+        data: { RazonSocial: razonSocial, EmpresaID: empresaID, LocalidadID: localidadID, ClasificacionEmpresaID: clasificacionEmpresaID, Telefono: telefono },
         success: function (empresa) {
             $("#RazonSocial").val(empresa.razonSocial);
             $("#LocalidadID").val(empresa.localidadID);
             $("#ClasificacionEmpresaID").val(empresa.clasificacionEmpresaID);
+            $("#Telefono").val(empresa.telefono);
             $("#exampleModal").modal("show");
         },
         error: function (data) {
