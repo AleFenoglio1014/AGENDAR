@@ -33,6 +33,10 @@ function AbrirModal() {
 
 function VaciarFormulario() {
     $("#ProfesionalID").val(0);
+    $("#Nombre").val('');
+    $("#Apellido").val('');
+    $("#EmpresaID").val(0);
+    $("#ClasificacionProfesionalID").val(0);
     $("#Error-Nombre").text("");
 }
 
