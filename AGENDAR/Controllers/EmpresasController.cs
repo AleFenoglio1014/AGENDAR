@@ -68,7 +68,7 @@ namespace AGENDAR.Controllers
 
         // Funcion Guardar y Editar las Empresa
 
-        public JsonResult GuardarEmpresa(int EmpresaID, string RazonSocial, string CUIT, string Direccion, int Telefono, int LocalidadID, int ClasificacionEmpresaID)
+        public JsonResult GuardarEmpresa(int EmpresaID, string RazonSocial, string CUIT, string Direccion, Int64 Telefono, int LocalidadID, int ClasificacionEmpresaID)
         {
             int resultado = 0;
             // Si es 0 es CORRECTO
