@@ -96,7 +96,7 @@ function VaciarFormulario() {
 
 function DesactivarLocalidad(localidadID, elimina) {
     if (elimina == 1) {
-        var mensajeEliminar = "¿Esta seguro que quiere ELIMINAR la Localidad?"
+        var mensajeEliminar = "¿Esta seguro que quiere DESACTIVAR la Localidad?"
     } else {
         var mensajeEliminar = "¿Esta seguro que quiere ACTIVAR la Localidad?"
     }
