@@ -99,27 +99,7 @@ namespace AGENDAR.Controllers
             return Json(tipoEmpresa);
         }
 
-        // Funcion para Desactivar una Actividad
-        //public JsonResult DesactivarActividad(int ClasificacionEmpresaID, int Elimina)
-        //{
-        //    bool resultado = true;
-
-        //    var tipoEmpresa = _context.ClasificacionEmpresa.Find(ClasificacionEmpresaID);
-        //    if (tipoEmpresa != null)
-        //    {
-        //        if (Elimina == 0)
-        //        {
-        //            tipoEmpresa.Eliminado = false;
-        //        }
-        //        else
-        //        {
-        //            tipoEmpresa.Eliminado = true;
-        //        }
-        //        _context.SaveChanges();
-        //    }
-
-        //    return Json(resultado);
-        //}
+        
         private bool ClasificacionEmpresaExists(int id)
         {
             return _context.ClasificacionEmpresa.Any(e => e.ClasificacionEmpresaID == id);

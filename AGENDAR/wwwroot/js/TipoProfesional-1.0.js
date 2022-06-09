@@ -11,13 +11,7 @@ function CompletarTablaTipoProfesionales() {
 
                 let claseEliminado = '';
                 let botones = '<button type="button" onclick="BuscarTipoProfesional(' + tipoProfesional.clasificacionProfesionalID + ')" class="btn btn-outline-primary btn-sm" style="margin-right:5px"><i class="bi bi-pencil-square"></i> Editar</button>' 
-                //    '<button type="button" onclick="DesactivarActividad(' + tipoProfesional.clasificacionProfesionalID + ',1)" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash-fill"></i> Desactivar</button>';
-
-                //if (tipoProfesional.eliminado) {
-                //    claseEliminado = 'table-danger';
-                //    botones = '<button type="button" onclick="DesactivarActividad(' + tipoProfesional.clasificacionProfesionalID + ',0)" class="btn btn-outline-success btn-sm"><i class="bi bi-folder-symlink"></i> Activar</button>';
-                //}
-
+               
                 $("#tbody-tipoProfesional").append('<tr class=' + claseEliminado + '>' +
                     '<td>' + tipoProfesional.descripcion + '</td>' +
                     '<td class="text-center">' +
@@ -83,27 +77,7 @@ function BuscarTipoProfesional(clasificacionProfesionalID) {
     });
 }
 
-////Funcion para Desactivar la Actividad
 
-//function DesactivarActividad(clasificacionProfesionalID, elimina) {
-//    if (elimina == 1) {
-//        var mensajeEliminar = "¿Esta seguro que quiere DESACTIVAR la Actividad?"
-//    } else {
-//        var mensajeEliminar = "¿Esta seguro que quiere ACTIVAR la Actividad?"
-//    }
-//    if (confirm(mensajeEliminar)) {
-//        $.ajax({
-//            type: "POST",
-//            url: '../../ClasificacionProfesionales/DesactivarActividad',
-//            data: { ClasificacionProfesionalID: clasificacionProfesionalID, Elimina: elimina },
-//            success: function (tipoEmpresa) {
-//                CompletarTablaTipoProfesionales();
-//            },
-//            error: function (data) {
-//            }
-//        });
-//    }
-//}
 //Funcion para Vaciar el Formulario
 
 function VaciarFormulario() {

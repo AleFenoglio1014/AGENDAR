@@ -1,0 +1,67 @@
+﻿@model IEnumerable<AGENDAR.Models.Horario>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Horarios</h1>
+
+<p>
+    <!-- Boton Modal -->
+    <button class="btn btn-outline-success" onclick="AbrirModal()"><i class="bi bi-folder-plus"></i> Agregar Horario</button>
+</p>
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>
+                Hora Inicio del Turno
+            </th>
+            <th>
+                Hora Fin del Turno
+            </th>
+            <th class="text-center" style="width:300px">Opciones</th>
+        </tr>
+    </thead>
+    <tbody id="tbody-horario">
+    </tbody>
+</table>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="titulo-Modal-Horario"></h5>
+                <button type="button" class="close" data-dismiss="modal" onclick="VaciarFormulario()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+
+            <!--Agregado de Formulario dentro del Modal-->
+            <div class="modal-body">
+                <form>
+                    <input type="hidden" id="HorarioID" value="0" />
+                    <div class="form-group">
+                        <label for="recipient-name" class="control-label font-weight-bold">Hora Inicio</label>
+                        <input type="time" name="hora" class="form-control" autocomplete="off" required id="HoraInicio">
+                    </div>
+                   
+                    <div class="form-group">
+                        <label for="recipient-name" class="control-label font-weight-bold">Hora Fin</label>
+                        <input type="time" name="hora" class="form-control" autocomplete="off" required id="HoraFin">
+                        <p class="text-danger font-weight-bold" style="font-size:small" id="Error-Hora"></p>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="VaciarFormulario()" class="btn btn-outline-danger" data-dismiss="modal"><i class="bi bi-backspace"></i> Cerrar</button>
+                <button type="button" onclick="GuardarHorario()" class="btn btn-outline-success"><i class="bi bi-folder-check"></i> Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+@*//Funcion para Completar la Tabla del Tipo de Empresa*@
+
+@section Scripts {
+    <script src="~/js/Horario-1.0.js"></script>
+    <script>
+        window.onload = CompletarTablaHorario();
+    </script>
+}

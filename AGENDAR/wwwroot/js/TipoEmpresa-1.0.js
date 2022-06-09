@@ -11,13 +11,7 @@ function CompletarTablaTipoEmpresas() {
 
                 let claseEliminado = '';
                 let botones = '<button type="button" onclick="BuscarTipoEmpresa(' + tipoEmpresa.clasificacionEmpresaID + ')" class="btn btn-outline-primary btn-sm" style="margin-right:5px"><i class="bi bi-pencil-square"></i> Editar</button>' 
-                //    '<button type="button" onclick="DesactivarActividad(' + tipoEmpresa.clasificacionEmpresaID + ',1)" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash-fill"></i> Desactivar</button>';
-
-                //if (tipoEmpresa.eliminado) {
-                //    claseEliminado = 'table-danger';
-                //    botones = '<button type="button" onclick="DesactivarActividad(' + tipoEmpresa.clasificacionEmpresaID + ',0)" class="btn btn-outline-success btn-sm"><i class="bi bi-folder-symlink"></i> Activar</button>';
-                //}
-
+               
                 $("#tbody-tipoEmpresa").append('<tr class=' + claseEliminado + '>' +
                     '<td>' + tipoEmpresa.descripcion + '</td>' +
                     '<td class="text-center">' +
@@ -83,27 +77,7 @@ function BuscarTipoEmpresa(clasificacionEmpresaID) {
     });
 }
 
-////Funcion para Desactivar la Actividad
 
-//function DesactivarActividad(clasificacionempresaID, elimina) {
-//    if (elimina == 1) {
-//        var mensajeEliminar = "¿Esta seguro que quiere DESACTIVAR la Actividad?"
-//    } else {
-//        var mensajeEliminar = "¿Esta seguro que quiere ACTIVAR la Actividad?"
-//    }
-//    if (confirm(mensajeEliminar)) {
-//        $.ajax({
-//            type: "POST",
-//            url: '../../ClasificacionEmpresas/DesactivarActividad',
-//            data: { ClasificacionEmpresaID: clasificacionempresaID, Elimina: elimina },
-//            success: function (tipoEmpresa) {
-//                CompletarTablaTipoEmpresas();
-//            },
-//            error: function (data) {
-//            }
-//        });
-//    }
-//}
 //Funcion para Vaciar el Formulario
 
 function VaciarFormulario() {
