@@ -32,25 +32,52 @@ function AbrirModal() {
     $("#exampleModal").modal("show");
 }
 
-
-
-
-
 // FUncion para Guardar las Empresas
 function GuardarEmpresa() {
+    VaciarFormulario();
     $("#Error-RazonSocial").text("");
+    $("#Error-CamposEmpresas").text("");
     let empresaID = $('#EmpresaID').val();
     let cuit = $('#Cuit').val();
     let direccion = $('#Direccion').val();
     let telefono = $('#Telefono').val();
-    let guardarempresa = $('#RazonSocial').val().trim();
+    let razonSocial = $('#RazonSocial').val().trim();
     let localidadID = $('#LocalidadID').val();
     let clasificacionEmpresaID = $('#ClasificacionEmpresaID').val();
-    if (guardarempresa != "" && guardarempresa != null) {
+
+    let guardarEmpresa = true;
+
+    if (razonSocial == "" || razonSocial == null) {
+        guardarEmpresa = false;
+        $("#Error-CamposEmpresas").text("Los campos son OBLIGATORIOS.");
+    }
+    if (localidadID == "" || localidadID == null) {
+        guardarEmpresa = false;
+        $("#Error-CamposEmpresas").text("Los campos son OBLIGATORIOS.");
+    }
+    if (clasificacionEmpresaID == "" || clasificacionEmpresaID == null) {
+        guardarEmpresa = false;
+        $("#Error-CamposEmpresas").text("Los campos son OBLIGATORIOS.");
+    }
+    if (cuit == "" || cuit == null) {
+        guardarEmpresa = false;
+        $("#Error-CamposEmpresas").text("Los campos son OBLIGATORIOS.");
+    }
+    if (direccion == "" || direccion == null) {
+            guardarEmpresa = false;
+            $("#Error-CamposEmpresas").text("Los campos son OBLIGATORIOS.");
+    }
+    if (telefono == "" || telefono == null) {
+        guardarEmpresa = false;
+        $("#Error-CamposEmpresas").text("Los campos son OBLIGATORIOS.");
+    }
+
+
+    if (guardarEmpresa) {
         $.ajax({
             type: "POST",
             url: '../../Empresas/GuardarEmpresa',
-            data: { EmpresaID: empresaID, RazonSocial: guardarempresa, Cuit: cuit, Direccion: direccion, Telefono: telefono, LocalidadID: localidadID, ClasificacionEmpresaID: clasificacionEmpresaID},
+            data: { EmpresaID: empresaID, RazonSocial: razonSocial, Cuit: cuit, Direccion: direccion, Telefono: telefono, LocalidadID: localidadID, ClasificacionEmpresaID: clasificacionEmpresaID},
             success: function (resultado) {
                 if (resultado == 0) {
                     $("#exampleModal").modal("hide");
@@ -65,29 +92,34 @@ function GuardarEmpresa() {
         });
     }
     else {
-        $("#Error-RazonSocial").text("Debe ingresar una RazonSocial para la Empresa.");
+        $("#Error-CamposEmpresas").text("Los campos son OBLIGATORIOS.");
     }
 }
 
 
  // Funcion para Buscar las Empresas
 
-function BuscarEmpresa(empresaID,razonSocial, localidadID, clasificacionEmpresaID, telefono) {
+function BuscarEmpresa(empresaID,razonSocial, localidadID, clasificacionEmpresaID, telefono, cuit, direccion) {
+    VaciarFormulario();
     $("#titulo-Modal-Empresa").text("Editar Empresa");
     $("#EmpresaID").val(empresaID);
     $("#RazonSocial").val(razonSocial);
     $("#LocalidadID").val(localidadID);
     $("#ClasificacionEmpresaID").val(clasificacionEmpresaID);
-    $("#Telefono").val(telefono)
+    $("#Telefono").val(telefono);
+    $("#Cuit").val(cuit);
+    $("#Direccion").val(direccion);
     $.ajax({
         type: "POST",
         url: '../../Empresas/BuscarEmpresa',
-        data: { RazonSocial: razonSocial, EmpresaID: empresaID, LocalidadID: localidadID, ClasificacionEmpresaID: clasificacionEmpresaID, Telefono: telefono },
+        data: { RazonSocial: razonSocial, EmpresaID: empresaID, LocalidadID: localidadID, ClasificacionEmpresaID: clasificacionEmpresaID, Telefono: telefono, Cuit: cuit, Direccion: direccion },
         success: function (empresa) {
             $("#RazonSocial").val(empresa.razonSocial);
             $("#LocalidadID").val(empresa.localidadID);
             $("#ClasificacionEmpresaID").val(empresa.clasificacionEmpresaID);
             $("#Telefono").val(empresa.telefono);
+            $("#Cuit").val(empresa.cuit);
+            $("#Direccion").val(empresa.direccion);
             $("#exampleModal").modal("show");
         },
         error: function (data) {
@@ -100,6 +132,7 @@ function BuscarEmpresa(empresaID,razonSocial, localidadID, clasificacionEmpresaI
 
 function VaciarFormulario() {
     $("#EmpresaID").val(0);
+    $("#RazonSocial").val('');
     $("#ClasificacionEmpresaID").val(0);
     $("#LocalidadID").val(0);
     $("#Cuit").val('');

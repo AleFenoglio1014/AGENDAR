@@ -33,6 +33,10 @@ function AbrirModal() {
 
 function VaciarFormulario() {
     $("#ProfesionalID").val(0);
+    $("#Nombre").val('');
+    $("#Apellido").val('');
+    $("#EmpresaID").val(0);
+    $("#ClasificacionProfesionalID").val(0);
     $("#Error-Nombre").text("");
 }
 
@@ -64,6 +68,7 @@ function GuardarProfesional() {
     }
     else {
         $("#Error-Nombre").text("Debe ingresar un Nombre para el  Profesional.");
+        $("#Error-Apellido").text("Debe ingresar un Apellido para el  Profesional.");
     }
 }
 

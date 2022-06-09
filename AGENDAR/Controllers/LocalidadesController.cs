@@ -58,14 +58,14 @@ namespace AGENDAR.Controllers
         }
         // Funcion Guardar y Editar las Localidades
 
-        public JsonResult GuardarLocalidad(int LocalidadID, string Descripcion, int ProvinciaID)
+        public JsonResult GuardarLocalidad(int LocalidadID, string Descripcion, int ProvinciaID, string ProvinciaNombre)
         {
             int resultado = 0;
             // Si es 0 es CORRECTO
             // Si es 1 el Campo Descripcion esta VACIO
             // Si es 2 el Registro YA EXISTE con la misma Descripcion
 
-            if (!string.IsNullOrEmpty(Descripcion))
+            if (!string.IsNullOrEmpty(Descripcion) && ProvinciaID != 0)
             {
                 Descripcion = Descripcion.ToUpper();
                 if (LocalidadID == 0)
@@ -82,7 +82,7 @@ namespace AGENDAR.Controllers
                         var localidadNueva = new Localidad
                         {
                             Descripcion = Descripcion,
-                            ProvinciaID = ProvinciaID
+                            ProvinciaID = ProvinciaID,
                         };
                         _context.Add(localidadNueva);
                         _context.SaveChanges();

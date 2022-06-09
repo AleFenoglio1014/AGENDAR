@@ -39,11 +39,13 @@ function AbrirModal() {
 }
 // FUncion para Guardar las Localidades
 function GuardarLocalidad() {
+    VaciarFormulario();
     $("#Error-LocalidadNombre").text("");
+    $("#Error-ProvinciaNombre").text("");
     let localidadID = $('#LocalidadID').val();
     let guardarlocalidad = $('#LocalidadNombre').val().trim();
     let provinciaID = $('#ProvinciaID').val();
-    if (guardarlocalidad != "" && guardarlocalidad != null) {
+    if (guardarlocalidad != "" && guardarlocalidad != null && provinciaID != "" && provinciaID != 0) {
         $.ajax({
             type: "POST",
             url: '../../Localidades/GuardarLocalidad',
@@ -62,12 +64,13 @@ function GuardarLocalidad() {
         });
     }
     else {
-        $("#Error-LocalidadNombre").text("Debe ingresar un Nombre para la Localidad.");
+        $("#Error-ProvinciaNombre").text("Los campos son OBLIGATORIOS.");
     }
 }
 // Funcion para Buscar las Localidades
 
 function BuscarLocalidad(localidadID, provinciaID) {
+    VaciarFormulario();
     $("#titulo-Modal-Localidades").text("Editar Localidad");
     $("#LocalidadID").val(localidadID);
     $("#ProvinciaID").val(provinciaID);
@@ -91,12 +94,13 @@ function VaciarFormulario() {
     $("#ProvinciaID").val(0);
     $("#LocalidadNombre").val('');
     $("#Error-LocalidadNombre").text("");
+    $("#Error-ProvinciaNombre").text("");
 }
 //Funcion para Desactivar la Localidad
 
 function DesactivarLocalidad(localidadID, elimina) {
     if (elimina == 1) {
-        var mensajeEliminar = "¿Esta seguro que quiere ELIMINAR la Localidad?"
+        var mensajeEliminar = "¿Esta seguro que quiere DESACTIVAR la Localidad?"
     } else {
         var mensajeEliminar = "¿Esta seguro que quiere ACTIVAR la Localidad?"
     }
