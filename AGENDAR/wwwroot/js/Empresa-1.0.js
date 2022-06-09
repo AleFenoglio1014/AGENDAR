@@ -34,7 +34,7 @@ function AbrirModal() {
 
 // FUncion para Guardar las Empresas
 function GuardarEmpresa() {
-    VaciarFormulario();
+    /*VaciarFormulario();*/
     $("#Error-RazonSocial").text("");
     $("#Error-CamposEmpresas").text("");
     let empresaID = $('#EmpresaID').val();
