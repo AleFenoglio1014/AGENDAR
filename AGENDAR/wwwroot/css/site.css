@@ -73,3 +73,11 @@ body {
 .letrainput{
     font-size:11px;
 }
+
+.inputInicio{
+    padding-left:160px;
+}
+
+.tamañoLetra{
+    font-size:2rem;
+}
