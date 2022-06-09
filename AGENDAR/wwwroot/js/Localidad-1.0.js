@@ -39,7 +39,7 @@ function AbrirModal() {
 }
 // FUncion para Guardar las Localidades
 function GuardarLocalidad() {
-    VaciarFormulario();
+    /*VaciarFormulario();*/
     $("#Error-LocalidadNombre").text("");
     $("#Error-ProvinciaNombre").text("");
     let localidadID = $('#LocalidadID').val();
