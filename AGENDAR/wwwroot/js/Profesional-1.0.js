@@ -48,7 +48,26 @@ function GuardarProfesional() {
     let apellido = $('#Apellido').val();
     let empresaID = $('#EmpresaID').val();
     let clasificacionProfesionalID = $('#ClasificacionProfesionalID').val();
-    if (nombre != "" && nombre != null) {
+    let guardarProfesional = true;
+
+    if (nombre == "" || nombre == null) {
+        guardarProfesional = false;
+        $("#Error-CamposProfesional").text("Los campos son OBLIGATORIOS.");
+    }
+    if (apellido == "" || apellido == null) {
+        guardarProfesional = false;
+        $("#Error-CamposProfesional").text("Los campos son OBLIGATORIOS.");
+    }
+    if (clasificacionProfesionalID == "" || clasificacionProfesionalID == null) {
+        guardarProfesional = false;
+        $("#Error-CamposProfesional").text("Los campos son OBLIGATORIOS.");
+    }
+    if (empresaID == "" || empresaID == null) {
+        guardarProfesional = false;
+        $("#Error-CamposProfesional").text("Los campos son OBLIGATORIOS.");
+    }
+   
+    if (guardarProfesional) {
         $.ajax({
             type: "POST",
             url: '../../Profesionales/GuardarProfesional',
@@ -67,8 +86,7 @@ function GuardarProfesional() {
         });
     }
     else {
-        $("#Error-Nombre").text("Debe ingresar un Nombre para el  Profesional.");
-        $("#Error-Apellido").text("Debe ingresar un Apellido para el  Profesional.");
+        $("#Error-CamposProfesional").text("Los campos son OBLIGATORIOS.");
     }
 }
 
