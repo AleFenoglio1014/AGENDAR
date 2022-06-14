@@ -10,6 +10,7 @@
     <Content Remove="Views\ClasificacionProfesionales\Delete.cshtml" />
     <Content Remove="Views\ClasificacionProfesionales\Details.cshtml" />
     <Content Remove="Views\ClasificacionProfesionales\Edit.cshtml" />
+    <Content Remove="Views\Shared\VistaPublica.cshtml" />
     <Content Remove="wwwroot\lib\Imagenes\banner.png" />
     <Content Remove="wwwroot\lib\Imagenes\banner2.jpg" />
     <Content Remove="wwwroot\lib\Imagenes\banner3.jpg" />
@@ -19,6 +20,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.25" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.25" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.25" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.25" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.25" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
