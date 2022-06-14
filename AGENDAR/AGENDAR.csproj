@@ -1,9 +1,21 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>aspnet-AGENDAR-5876067E-0B92-460D-8047-CB5A46E195BD</UserSecretsId>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Views\DisponibilidadHorarias\**" />
+    <Content Remove="Views\DisponibilidadHorarias\**" />
+    <EmbeddedResource Remove="Views\DisponibilidadHorarias\**" />
+    <None Remove="Views\DisponibilidadHorarias\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\DisponibilidadHorariasController.cs" />
+    <Compile Remove="Models\DisponibilidadHoraria.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <Content Remove="Views\ClasificacionProfesionales\Create.cshtml" />
