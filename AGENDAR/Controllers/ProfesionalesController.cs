@@ -69,7 +69,7 @@ namespace AGENDAR.Controllers
             // Si es 1 el Campo Descripcion esta VACIO
             // Si es 2 el Registro YA EXISTE con la misma Descripcion
 
-            if (!string.IsNullOrEmpty(Nombre) && Apellido != null)
+            if (!string.IsNullOrEmpty(Nombre) && !string.IsNullOrEmpty(Apellido))
             {
                 Nombre = Nombre.ToUpper();
                 Apellido = Apellido.ToUpper();

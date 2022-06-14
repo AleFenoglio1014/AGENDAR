@@ -38,16 +38,19 @@ function VaciarFormulario() {
     $("#EmpresaID").val(0);
     $("#ClasificacionProfesionalID").val(0);
     $("#Error-Nombre").text("");
+    $("#Error-CamposProfesional").text("");
 }
 
 // FUncion para Guardar los Profesionales
 function GuardarProfesional() {
     $("#Error-Nombre").text("");
+    $("#Error-CamposProfesional").text("");
     let profesionalID = $('#ProfesionalID').val();
-    let nombre = $('#Nombre').val();
-    let apellido = $('#Apellido').val();
+    let nombre = $('#Nombre').val().trim();
+    let apellido = $('#Apellido').val().trim();
     let empresaID = $('#EmpresaID').val();
     let clasificacionProfesionalID = $('#ClasificacionProfesionalID').val();
+
     let guardarProfesional = true;
 
     if (nombre == "" || nombre == null) {
@@ -78,7 +81,7 @@ function GuardarProfesional() {
                     CompletarTablaProfesionales();
                 }
                 if (resultado == 2) {
-                    $("#Error-Nombre").text("El Profesional ingresada Ya Existe. Ingrese un nuevo Profesional");
+                    $("#Error-Nombre").text("El Profesional ingresado Ya Existe. Ingrese un nuevo Profesional");
                 }
             },
             error: function (data) {
