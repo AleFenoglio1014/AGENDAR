@@ -52,7 +52,7 @@ function GuardarHorario() {
                     CompletarTablaHorario();
                 }
                 if (resultado == 2) {
-                    $("#Error-Hora").text("El horario ingresada Ya Existe. Ingrese un Nuevo horario");
+                    $("#Error-Hora").text("El horario ingresado Ya Existe. Ingrese un Nuevo horario");
                 }
             },
             error: function (data) {
@@ -74,8 +74,8 @@ function BuscarHorario(horarioID) {
         url: '../../Horarios/BuscarHorario',
         data: { HorarioID: horarioID  },
         success: function (horario) {
-            $("#HoraInicio").val(horario.horaIniciostring);
-            $("#HoraFin").val(horario.horaFinstring);
+            $("#HoraInicio").val(horario.horaInicio);
+            $("#HoraFin").val(horario.horaFin.horaFinstring);
             $("#exampleModal").modal("show");
         },
         error: function (data) {
