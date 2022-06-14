@@ -6,6 +6,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\DisponibilidadHorarias\**" />
+    <Content Remove="Views\DisponibilidadHorarias\**" />
+    <EmbeddedResource Remove="Views\DisponibilidadHorarias\**" />
+    <None Remove="Views\DisponibilidadHorarias\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\DisponibilidadHorariasController.cs" />
+    <Compile Remove="Models\DisponibilidadHoraria.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="Views\ClasificacionProfesionales\Create.cshtml" />
     <Content Remove="Views\ClasificacionProfesionales\Delete.cshtml" />
     <Content Remove="Views\ClasificacionProfesionales\Details.cshtml" />
