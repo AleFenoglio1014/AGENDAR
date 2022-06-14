@@ -13,7 +13,7 @@ namespace AGENDAR.Models
 
         public DateTime HoraInicio { get; set; }
         public DateTime HoraFin { get; set; }
-        public virtual ICollection<DisponibilidadHoraria> DisponibilidadHorarias { get; set; }
+        
 
 
     }
