@@ -12,7 +12,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 ">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/lib/Imagenes/AGENDAR_LOGO_COLOR_01.png" class="img-fluid" width="120" alt="5px"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -21,7 +21,7 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <partial name="_LoginPartial" />
-                    <ul class="navbar-nav flex-grow-1">
+                    <ul class="navbar-nav flex-grow-1 tamañoLetraLayout ">
 
                         <li class="nav-item">
                             <a class="nav-link font-weight-bold" asp-area="" asp-controller="Provincias" asp-action="Index">Provincias</a>
@@ -44,7 +44,9 @@
                         <li class="nav-item">
                             <a class="nav-link font-weight-bold" asp-area="" asp-controller="Horarios" asp-action="Index">Horarios</a>
                         </li>
-
+                        <li class="nav-item">
+                            <a class="nav-link text-dark font-weight-bold" asp-area="" asp-controller="DisponibilidadHorarias" asp-action="Index">Dis.Horaria</a>
+                        </li>
                     </ul>
                 </div>
             </div>
