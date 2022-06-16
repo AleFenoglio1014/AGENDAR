@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AGENDAR.Data;
 using AGENDAR.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AGENDAR.Controllers
 {
+    [Authorize]
     public class ProvinciasController : Controller
     {
         private readonly ApplicationDbContext _context;
