@@ -4,3 +4,190 @@
 .navbar-light .navbar-nav .nav-link {
     color: rgb(4 56 114) !important;
 }
+/*BANNER*/
+
+.banner {
+    position: relative;
+    background: url(../lib/Imagenes/diseño_web.png);
+    height: 100vh;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center center;
+}
+
+.contenedor {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: rgb(4, 56, 114);
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 40px;
+    padding: 60px 30px;
+    background: rgba(134, 134, 134, 0.5);
+}
+
+.seccionAgendar{
+    background-color:lavender;
+}
+
+/* NOSOTROS *//*PRESENTACION*/
+
+.presentacion {
+    grid-area: present;
+    width: 95%;
+    padding: 20px;
+    margin-top: 100px;
+}
+
+.texto-presentacion {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 50px;
+    text-align: center;
+    text-transform: uppercase;
+    color:cornflowerblue;
+}
+/*MIEMBROS DEL EQUIPO*/
+.titulo-miembros {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    bottom: 30px;
+}
+
+.div-miembros, .miembro, .redes-sociales {
+    width: 100%;
+    border-radius: 500%;
+
+}
+
+.miembros {
+    /*grid-area: nosotros;*/
+    max-width: 1100px;
+    margin: auto;
+    margin-top: 30px;
+    text-align: center;
+    color: rgb(4, 56, 114);
+    line-height: 1.7;
+}
+
+.box {
+    display: flex;
+}
+
+.div-miembros {
+    width: 100%;
+    margin-bottom: 10px;
+    position: relative;
+    padding: 30px;
+    flex-wrap: wrap-reverse;
+}
+
+.div-miembros img {
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover; /*LAS IMAGENES NO SE VEN FORZADAS*/
+    }
+
+.logoMiembro {
+    align-content:center;
+}
+
+.redes-sociales {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(247, 247, 247, 0.6);
+    color: rgb(236, 23, 128, 0.3);
+    height: 0%; /*PARA APLICAR EL HOVER QUE SALGA DESDE ABAJO*/
+    line-height: 280px;
+    transition: all 500ms ease;
+    opacity: 0; /*TODO LO SOLIDO PASA A SER TRANSPARENTE*/
+       visibility: hidden; /*ICONOS DE REDES OCULTOS*/
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    top: -10px;
+ /*   opacity: 1;
+    visibility: visible;
+    height: 100%;*/
+}
+
+.div-miembros:hover .redes-sociales {
+    opacity: 1;
+    visibility: visible;
+    height: 90%; /*HOVER SALIENDO DESDE ABAJO*/
+  width:90%; 
+  left:5%;
+}
+
+.redes-sociales i {
+    padding: 20px;
+    font-size: 35px;
+    color: rgb(4, 56, 114);
+}
+
+.redes-sociales i:hover {
+        color:mediumvioletred;
+    }
+
+.box:hover h4 {
+    color: rgb(4, 56, 114);
+}
+
+/* FOOTER GRID */
+
+.footer-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(11,1fr);
+    grid-template-rows: repeat(1,1fr);
+    background-color:lightslategray;
+    align-items: center;
+    margin-top: 50px;
+    justify-content: space-around;
+}
+
+.logo-footerGrid {
+    grid-column: 2 /4;
+}
+
+.logo-footerGrid img {
+   width: 253px;
+   height: 53px;
+}
+
+.contactos-grid {
+    grid-column: 5/8;
+    line-height: 30px;
+    text-align: left;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.redes-grid {
+    grid-column: 8/11;
+    line-height: 30px;
+    text-align: left;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.footer-grid h2 {
+    color: rgb(4, 56, 114);
+    text-transform: uppercase;
+    padding-bottom: 5px;
+    padding-top: 20px;
+}
+a:hover {
+    color: aliceblue !important;
+}
+a {
+    color: rgb(4, 56, 114) !important;
+}
