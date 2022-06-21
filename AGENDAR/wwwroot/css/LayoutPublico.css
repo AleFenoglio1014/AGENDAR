@@ -48,14 +48,14 @@
     border-top-right-radius: 5px;
     width: 100%;
     min-height: 185px;
-    position:center;
-    background: #91B3D1;
+    position: relative;
+    background: #91B3D1 url(https://image.freepik.com/free-vector/cyber-data-security-online-concept-illustration-internet-security-information-privacy-protection_1150-37330.jpg) no-repeat;
     background-size: auto;
     background-position: center
 }
 
     .login_topimg img {
-        width: 400px;
+        width: 100%;
         height: auto
     }
 
@@ -207,7 +207,7 @@ input {
 
 :-ms-input-placeholder {
     opacity: 1;
-/*    -ms-transition: opacity .5s;*/
+    -ms-transition: opacity .5s;
     transition: opacity .5s
 }
 
@@ -254,7 +254,7 @@ input {
     display: -ms-flexbox;
     display: flex;
     justify-content: space-between;
-    /*-ms-align-items: center;*/
+    -ms-align-items: center;
     align-items: center
 }
 
@@ -387,7 +387,7 @@ input {
 
 #login button {
     outline: none !important;
-    border: medium
+    border: none
 }
 
 @media (max-width: 768px) {
@@ -398,12 +398,9 @@ input {
     #login .wrap-login100 {
         padding: 27px
     }
-    wrap-login100"
+
     .login_topimg .logo_wrap {
         padding: 5px 55px
     }
 }
 
-.txt1{
-    color: black;
-}

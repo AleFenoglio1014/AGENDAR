@@ -4,26 +4,32 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - AGENDAR</title>
-    <link href="~/css/Login-1.css" rel="stylesheet" />  
+    <link href="~/css/estilosPropios.css" rel="stylesheet" />
+    <link href="~/css/LayoutPublico.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 ">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/lib/Imagenes/AGENDAR_LOGO_COLOR_01.png" class="img-fluid" width="120" alt="5px"></a>
+                <ul class="navbar-nav  ">
 
-               
+
+                    <li class="nav-item">
+                        <a class="btn btn-outline-primary " asp-area="Identity" asp-page="/Account/Login">Iniciar Sesion</a>
+                    </li>
+                </ul>
             </div>
         </nav>
     </header>
 
     <div class="container body-content mt-5">
-        
-            @RenderBody()
        
+            @RenderBody()
+     
     </div>
 
 
