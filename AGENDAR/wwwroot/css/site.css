@@ -82,6 +82,11 @@ body {
     font-size:2rem;
 }
 
-.tamañoLetraLayout {
-    font-size: 15px;
+
+.logo {
+    padding-left: 5px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: rgb(4 56 114) !important;
 }
