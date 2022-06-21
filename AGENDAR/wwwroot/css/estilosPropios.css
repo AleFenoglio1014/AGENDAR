@@ -91,7 +91,7 @@
 .div-miembros img {
     height: 250px;
     border-radius: 50%;
-    object-fit: cover; /*LAS IMAGENES NO SE VEN FORZADAS*/
+    object-fit: cover; 
     }
 
 .logoMiembro {
@@ -191,3 +191,17 @@ a:hover {
 a {
     color: rgb(4, 56, 114) !important;
 }
+
+/*@media (max-width: 1366px) {
+    .nav-menu .drop-down .drop-down ul {
+        left: -90%;
+    }
+
+    .nav-menu .drop-down .drop-down:hover > ul {
+        left: -100%;
+    }
+
+    .nav-menu .drop-down .drop-down > a:after {
+        content: "\ea9d";
+    }
+}*/
