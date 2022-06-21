@@ -14,24 +14,19 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 ">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/lib/Imagenes/AGENDAR_LOGO_COLOR_01.png" class="img-fluid" width="120" alt="5px"></a>
-           
-                    <ul class="navbar-nav flex-grow-1 tamañoLetraLayout ">
 
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Iniciar Sesion</a>
-                        </li>
-                    </ul>
-                </div>
+               
+            </div>
         </nav>
     </header>
 
-    <div class="container">
-        <main role="main" class="pb-3">
+    <div class="container body-content mt-5">
+        
             @RenderBody()
-        </main>
+       
     </div>
 
-  
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/Sweetalert.js" asp-append-version="true"></script>
