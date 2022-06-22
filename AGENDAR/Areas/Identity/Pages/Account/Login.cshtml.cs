@@ -43,7 +43,7 @@ namespace AGENDAR.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required(ErrorMessage = "El Correo Electrónico es obligatorio.")]
-            [EmailAddress]
+            [EmailAddress(ErrorMessage = "El Correo Electrónico es incorrecto.")]
             [Display(Name = "Correo Electronico")]
             public string Email { get; set; }
 
@@ -51,9 +51,13 @@ namespace AGENDAR.Areas.Identity.Pages.Account
             [DataType(DataType.Password)]
             [Display(Name = "Contraseña")]
             public string Password { get; set; }
+           
+
 
             [Display(Name = "Recordame")]
             public bool RememberMe { get; set; }
+
+           
         }
 
         public async Task OnGetAsync(string returnUrl = null)

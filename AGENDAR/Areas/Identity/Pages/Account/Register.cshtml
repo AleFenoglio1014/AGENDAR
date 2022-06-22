@@ -7,9 +7,8 @@
     Layout = "~/Views/Shared/Layout-Login.cshtml";
 }
 
-<h1>@ViewData["Title"]</h1>
 
-<div class="row">
+@*<div class="row">
     <div class="col-md-4">
         <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
             <h4>Create a new account.</h4>
@@ -34,8 +33,48 @@
         </form>
     </div>
    
+</div>*@
+<div class="limiter" id="login">
+    <div class="container-login100" style="background-image:url(@*https://image.freepik.com/free-photo/happy-woman-doing-online-shopping-home_329181-4301.jpg*@)">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6"></div>
+                <div class="col-md-5 col-md-offset-1">
+                    <div class="login_topimg">
+                    </div>
+                    <div class="wrap-login100">
+                        <form id="account" method="post">
+
+                            <hr />
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="Input.Email"></label>
+                                <input asp-for="Input.Email" class="form-control" />
+                                <span asp-validation-for="Input.Email" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Input.Password"></label>
+                                <input asp-for="Input.Password" class="form-control" />
+                                <span asp-validation-for="Input.Password" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Input.ConfirmPassword"></label>
+                                <input asp-for="Input.ConfirmPassword" class="form-control" />
+                                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Registrarse</button>
+
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
+<link href="~/css/Login-1.css" rel="stylesheet" />

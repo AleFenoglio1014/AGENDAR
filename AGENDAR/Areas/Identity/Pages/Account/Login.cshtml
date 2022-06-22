@@ -9,7 +9,7 @@
     Layout = "~/Views/Shared/Layout-Login.cshtml";
 }
 
-    @*<div class="row">
+@*<div class="row">
         <div class="col-md-4">
             <section>
                 <form id="account" method="post">
@@ -48,65 +48,93 @@
                 </form>
             </section>
         </div>
-        
+
     </div>*@
 
-    <div class="limiter" id="login">
-        <div class="container-login100" style="background-image:url(@*https://image.freepik.com/free-photo/happy-woman-doing-online-shopping-home_329181-4301.jpg*@)">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6"></div>
-                    <div class="col-md-5 col-md-offset-1">
-                        <div class="login_topimg">
-                        </div>
-                        <div class="wrap-login100">
-                            <form id="account" method="post">
-
-                                <hr />
-                                @*<div asp-validation-summary="All" class="text-danger"></div>*@
-                                <div class="form-group">
-                                    <label asp-for="Input.Email"></label>
-                                    <input asp-for="Input.Email" class="form-control" />
-                                    <span asp-validation-for="Input.Email" class="text-danger"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label asp-for="Input.Password"></label>
-                                    <input asp-for="Input.Password" class="form-control" />
-                                    <span asp-validation-for="Input.Password" class="text-danger"></span>
-                                </div>
-                                <div class="form-group">
-                                    <div class="checkbox">
-                                        <label asp-for="Input.RememberMe">
-                                            <input asp-for="Input.RememberMe" />
-                                            @Html.DisplayNameFor(m => m.Input.RememberMe)
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">Iniciar sesión</button>
-                                </div>
-                                <div>
-                                    <a asp-page="/Account/ForgotPassword" class="txt1">
-                                        ¿Has olvidado tu contraseña?
-                                    </a>
-                                </div>
-                                <div>
-                                    <a class="txt1" asp-page="/Account/Register">
-                                        Registrarse
-                                    </a>
-                                </div>
-
-                            </form>
-                        </div>
-
+<div class="limiter" id="login">
+    <div class="container-login100" style="background-image:url(@*https://image.freepik.com/free-photo/happy-woman-doing-online-shopping-home_329181-4301.jpg*@)">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6"></div>
+                <div class="col-md-5 col-md-offset-1">
+                    <div class="login_topimg">
                     </div>
+                    <div class="wrap-login100">
+                        <form id="account" method="post">
+
+                            <hr />
+                            @*<div asp-validation-summary="All" class="text-danger"></div>*@
+                            <div class="form-group">
+                                <label asp-for="Input.Email"></label>
+                                <input asp-for="Input.Email" class="form-control" />
+                                <span asp-validation-for="Input.Email" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Input.Password"></label>
+                                <input asp-for="Input.Password" class="form-control" />
+
+                                <span asp-validation-for="Input.Password" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <label asp-for="Input.RememberMe">
+                                        <input asp-for="Input.RememberMe" />
+                                        @Html.DisplayNameFor(m => m.Input.RememberMe)
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                            </div>
+                            <div>
+                                <button class="txt1" onclick="AbrirModal()"> ¿Has olvidado tu contrasela?</button>
+
+                            </div>
+                            <div>
+                                <a class="txt1" asp-page="/Account/Register">
+                                    Registrarse
+                                </a>
+                            </div>
+
+                        </form>
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="titulo-Modal-OlvideContraseña"></h5>
+                <button type="button" class="close" data-dismiss="modal" onclick="VaciarFormulario()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+
+            <!--Agregado de Formulario dentro del Modal-->
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label asp-for="Input.Email"></label>
+                        <input asp-for="Input.Email" id="OlvideContraseñaID" class="form-control" />
+                       
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="VaciarFormulario()" class="btn btn-outline-danger" data-dismiss="modal"><i class="bi bi-backspace"></i> Cerrar</button>
+                <button type="button" onclick="()" class="btn btn-outline-success"><i class="bi bi-folder-check"></i> Enviar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/OlvideContraseña.js"></script>
 }
 
 <link href="~/css/Login-1.css" rel="stylesheet" />
