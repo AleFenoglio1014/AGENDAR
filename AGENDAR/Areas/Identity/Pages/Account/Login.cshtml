@@ -9,7 +9,7 @@
     Layout = "~/Views/Shared/Layout-Login.cshtml";
 }
 
-    @*<div class="row">
+@*<div class="row">
         <div class="col-md-4">
             <section>
                 <form id="account" method="post">
@@ -48,62 +48,65 @@
                 </form>
             </section>
         </div>
-        
+
     </div>*@
 
-    <div class="limiter" id="login">
-        <div class="container-login"> 
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6"></div>
-                    <div class="col-md-5 col-md-offset-1">
-                        <div class="login_topimg"> <img src="~/lib/Imagenes/AGENDAR_LOGO_COLOR_01.png" />
-                        </div>
-                        <div class="wrap-login100">
-                            <form id="account" method="post">
+<div class="limiter" id="login">
+    <div class="container-login" style="background-color:lightsteelblue; outline:groove">
 
-                                <hr />
-                                @*<div asp-validation-summary="All" class="text-danger"></div>*@
-                                <div class="form-group">
-                                    <label asp-for="Input.Email"></label>
-                                    <input asp-for="Input.Email" class="form-control" />
-                                    <span asp-validation-for="Input.Email" class="text-danger"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label asp-for="Input.Password"></label>
-                                    <input asp-for="Input.Password" class="form-control" />
-                                    <span asp-validation-for="Input.Password" class="text-danger"></span>
-                                </div>
-                                <div class="form-group">
-                                    <div class="checkbox">
-                                        <label asp-for="Input.RememberMe">
-                                            <input asp-for="Input.RememberMe" />
-                                            @Html.DisplayNameFor(m => m.Input.RememberMe)
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">Iniciar sesión</button>
-                                </div>
-                                <div>
-                                    <a asp-page="/Account/ForgotPassword" class="txt1">
-                                        ¿Has olvidado tu contraseña?
-                                    </a>
-                                </div>
-                                <div>
-                                    <a class="txt1" asp-page="/Account/Register">
-                                        Registrarse
-                                    </a>
-                                </div>
+        <div class="container" style="background-image: url('https://www.gba.gob.ar/sites/default/files/transporte/noticias/images/WhatsApp%20Image%202018-12-04%20at%2012.15.14.jpeg'); ">
+            <div class="row">
+                <div class="col-md-6"></div>
 
-                            </form>
-                        </div>
-
+                <div class="col-md-5 col-md-offset-1 formulario">
+                    <div class="login_topimg">
+                        <img src="~/lib/Imagenes/AGENDAR_LOGO_COLOR_01.png" />
                     </div>
+                    <div class="wrap-login100">
+                        <form id="account" method="post">
+
+                            <hr />
+                            @*<div asp-validation-summary="All" class="text-danger"></div>*@
+                            <div class="form-group">
+                                <label asp-for="Input.Email"></label>
+                                <input asp-for="Input.Email" class="form-control" />
+                                <span asp-validation-for="Input.Email" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Input.Password"></label>
+                                <input asp-for="Input.Password" class="form-control" />
+                                <span asp-validation-for="Input.Password" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <label asp-for="Input.RememberMe">
+                                        <input asp-for="Input.RememberMe" />
+                                        @Html.DisplayNameFor(m => m.Input.RememberMe)
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                            </div>
+                            <div>
+                                <a asp-page="/Account/ForgotPassword" class="txt1">
+                                    ¿Has olvidado tu contraseña?
+                                </a>
+                            </div>
+                            <div>
+                                <a class="txt1" asp-page="/Account/Register">
+                                    Registrarse
+                                </a>
+                            </div>
+
+                        </form>
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
