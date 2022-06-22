@@ -1,4 +1,8 @@
-﻿
+﻿/*COLOR DE BODY*/
+Body {
+    padding-bottom: 100px;
+    background: #22252a;
+}
 
 @charset "utf-8";
 
@@ -399,7 +403,8 @@ input {
 
 #login button {
     outline: none !important;
-    border: none
+    border-color: #007bff;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 @media (max-width: 768px) {
@@ -422,4 +427,18 @@ input {
 .formulario{
     margin-bottom: 8px;
     margin-top: 8px
+}
+.txt1 {
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+label {
+    font-family: 'Times New Roman', Times, serif;
+}
+.modal-title {
+    font-family: 'Times New Roman', Times, serif;
 }

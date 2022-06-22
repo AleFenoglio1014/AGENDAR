@@ -43,7 +43,7 @@ namespace AGENDAR.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required(ErrorMessage = "El Correo Electrónico es obligatorio.")]
-            [EmailAddress(ErrorMessage = "El Correo Electrónico es incorrecto.")]
+            //[EmailAddress(ErrorMessage = "El Correo Electrónico es incorrecto.")]
             [Display(Name = "Correo Electronico")]
             public string Email { get; set; }
 
