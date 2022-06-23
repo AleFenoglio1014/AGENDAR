@@ -45,20 +45,20 @@ namespace AGENDAR.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
-            [EmailAddress]
-            [Display(Name = "Email")]
+            [Required(ErrorMessage = "El Correo Electrónico es obligatorio.")]
+            [EmailAddress(ErrorMessage = " Correo Electrónico no  válido.")]
+            [Display(Name = "Correo Electronico")]
             public string Email { get; set; }
 
-            [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [Required(ErrorMessage = "La Contraseña es obligatoria.")]
+            [StringLength(15, ErrorMessage = "La Contraseña debe tener entre de 5 y 15 caracteres", MinimumLength = 5)]
             [DataType(DataType.Password)]
-            [Display(Name = "Password")]
+            [Display(Name = "Contraseña")]
             public string Password { get; set; }
 
             [DataType(DataType.Password)]
-            [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            [Display(Name = "Confirmar Contraseña")]
+            [Compare("Password", ErrorMessage = "Las Contraseñas no coinciden")]
             public string ConfirmPassword { get; set; }
         }
 

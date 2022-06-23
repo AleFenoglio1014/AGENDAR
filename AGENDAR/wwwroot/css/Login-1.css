@@ -1,4 +1,9 @@
-﻿
+﻿/*COLOR DE BODY*/
+Body {
+    padding-bottom: 100px;
+    background: #22252a;
+}
+
 @charset "utf-8";
 
 * {
@@ -24,11 +29,15 @@
     justify-content: center;
     align-items: center;
     padding: 15px;
-    background-repeat: no-repeat;
-    background-position: center;
+    outline-style: solid;
     background-size: cover;
     position: relative;
-    z-index: 1
+    z-index: 1;
+    /*background-color: darkcyan;
+    background-image: src();*/
+    background: darkcyan url('https://www.gba.gob.ar/sites/default/files/transporte/noticias/images/WhatsApp%20Image%202018-12-04%20at%2012.15.14.jpeg');
+    padding-bottom: 3px;
+    padding-top: 5px
 }
 
     .container-login100::before {
@@ -40,16 +49,19 @@
         height: 100%;
         top: 0;
         left: 0;
-        background-color: rgba(0,0,0,0.80)
+        background-color: brown;
+        outline: dotted
     }
 
 .login_topimg {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
     width: 100%;
-    min-height: 185px;
+    min-height: auto;
     position: relative;
-    background: #91B3D1 url(https://image.freepik.com/free-vector/cyber-data-security-online-concept-illustration-internet-security-information-privacy-protection_1150-37330.jpg) no-repeat;
+    background-color:cadetblue;
     background-size: auto;
     background-position: center
 }
@@ -74,7 +86,7 @@
     padding: 20px 45px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-    width: 100%
+    width: 100%; 
 }
 
 .login100-form {
@@ -85,7 +97,8 @@
     display: -ms-flexbox;
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap
+    flex-wrap: wrap;
+    padding-bottom: 5px
 }
 
 .login100-form-title {
@@ -114,13 +127,16 @@
 }
 
 #login input {
-    outline: none;
-    border: none
+    outline:auto;
+    border:double
 }
 
 #login label {
     display: inline-block;
-    margin-bottom: .5rem
+    margin-bottom: .5rem;
+    font-family: 'Times New Roman', Times, serif;
+    font-style:italic
+    
 }
 
 .input-checkbox100 {
@@ -128,8 +144,8 @@
 }
 
 input {
-    outline: none;
-    border: none
+    outline:auto;
+    border:double
 }
 
 .wrap-input100 {
@@ -207,7 +223,7 @@ input {
 
 :-ms-input-placeholder {
     opacity: 1;
-    -ms-transition: opacity .5s;
+    
     transition: opacity .5s
 }
 
@@ -254,7 +270,7 @@ input {
     display: -ms-flexbox;
     display: flex;
     justify-content: space-between;
-    -ms-align-items: center;
+    
     align-items: center
 }
 
@@ -387,7 +403,8 @@ input {
 
 #login button {
     outline: none !important;
-    border: none
+    border-color: #007bff;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 @media (max-width: 768px) {
@@ -396,14 +413,32 @@ input {
     }
 
     #login .wrap-login100 {
-        padding: 27px
+        padding: 50px
+
     }
-    wrap-login100"
+
     .login_topimg .logo_wrap {
-        padding: 5px 55px
+        padding: 5px 55px;
+        
+
     }
 }
 
-.txt1{
-    color: black;
+.formulario{
+    margin-bottom: 8px;
+    margin-top: 8px
+}
+.txt1 {
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+label {
+    font-family: 'Times New Roman', Times, serif;
+}
+.modal-title {
+    font-family: 'Times New Roman', Times, serif;
 }
