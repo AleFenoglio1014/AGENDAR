@@ -1,7 +1,7 @@
 ﻿/*COLOR DE BODY*/
 Body {
     padding-bottom: 100px;
-    background: #22252a;
+    /*background:;*/
 }
 
 @charset "utf-8";
@@ -35,7 +35,7 @@ Body {
     z-index: 1;
     /*background-color: darkcyan;
     background-image: src();*/
-    background: darkcyan url('https://www.gba.gob.ar/sites/default/files/transporte/noticias/images/WhatsApp%20Image%202018-12-04%20at%2012.15.14.jpeg');
+    background: darkcyan;
     padding-bottom: 3px;
     padding-top: 5px
 }
@@ -61,7 +61,7 @@ Body {
     width: 100%;
     min-height: auto;
     position: relative;
-    background-color:cadetblue;
+    background-color:lightslategray;
     background-size: auto;
     background-position: center
 }
