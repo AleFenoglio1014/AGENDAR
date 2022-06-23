@@ -18,6 +18,7 @@ namespace AGENDAR.Areas.Identity.Pages.Account
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IEmailSender _emailSender;
+        private string returnUrl;
 
         public ForgotPasswordModel(UserManager<IdentityUser> userManager, IEmailSender emailSender)
         {
@@ -30,20 +31,22 @@ namespace AGENDAR.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
-            [EmailAddress]
+            [Required(ErrorMessage = "El Correo Electrónico es obligatorio.")]
+            [EmailAddress(ErrorMessage = "El Correo Electrónico es incorrecto.")]
             public string Email { get; set; }
         }
 
         public async Task<IActionResult> OnPostAsync()
+
         {
+            returnUrl = returnUrl ?? Url.Content("~/Account/Login");
             if (ModelState.IsValid)
             {
                 var user = await _userManager.FindByEmailAsync(Input.Email);
                 if (user == null || !(await _userManager.IsEmailConfirmedAsync(user)))
                 {
                     // Don't reveal that the user does not exist or is not confirmed
-                    return RedirectToPage("./ForgotPasswordConfirmation");
+                    return RedirectToPage("./Login");
                 }
 
                 // For more information on how to enable account confirmation and password reset please 
@@ -61,7 +64,7 @@ namespace AGENDAR.Areas.Identity.Pages.Account
                     "Reset Password",
                     $"Please reset your password by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
-                return RedirectToPage("./ForgotPasswordConfirmation");
+                return RedirectToPage("./Login");
             }
 
             return Page();
