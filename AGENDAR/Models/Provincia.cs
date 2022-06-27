@@ -14,8 +14,7 @@ namespace AGENDAR.Models
 
         public string Descripcion { get; set; }
 
-        public bool Eliminado { get; set; }
-
+       
         public virtual ICollection<Localidad> Localidades { get; set; }
 
     }
