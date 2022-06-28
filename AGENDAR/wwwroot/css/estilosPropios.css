@@ -1,9 +1,11 @@
-﻿.logo {
-    padding-left: 5px;
-}
+﻿
 .navbar-light .navbar-nav .nav-link {
     color: rgb(4 56 114) !important;
 
+}
+
+.colorNav {
+    background-color: #BFC9CA;
 }
 
 /*BANNER*/
@@ -16,6 +18,7 @@
     background-size: cover;
     background-attachment: fixed;
     background-position: center center;
+    
 }
 
 .contenedor {
@@ -24,6 +27,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+    -webkit-text-stroke: 2px black;
     color: rgb(4, 56, 114);
     border-radius: 10px;
     font-weight: 700;
@@ -38,25 +42,31 @@
     grid-area: present;
     width: 95%;
     padding: 20px;
-    margin-top: 100px;
 }
-
+.img-presentacion {
+    width: 90%;
+    margin-top: 110px;
+}
 .texto-presentacion {
-    font-size: 20px;
     font-weight: 700;
-    line-height: 50px;
-    text-align: center;
     text-transform: uppercase;
-    color:black;
+    color: #dee2e6;
 }
-
-
+.colorTitulo {
+    color: black;
+}
+.titulo {
+    padding-top: 50px;
+    color: black;
+}
 /*MIEMBROS DEL EQUIPO*/
-.titulo-miembros {
+.sumbrayado {
     display: flex;
-    position: relative;
-    justify-content: center;
-    bottom: 30px;
+    max-width: 40rem;
+    margin-top: 0rem;
+    margin-bottom: 2rem;
+    box-shadow: 3px 2px 4px 2px;
+    color: black;
 }
 
 .div-miembros, .miembro, .redes-sociales {
@@ -75,6 +85,7 @@
     line-height: 1.7;
 }
 
+
 .box {
     display: flex;
 }
@@ -85,6 +96,7 @@
     position: relative;
     padding: 30px;
     flex-wrap: wrap-reverse;
+
 }
 
 .div-miembros img {
@@ -136,8 +148,8 @@
         color:mediumvioletred;
     }
 
-.box:hover h4 {
-    color: rgb(4, 56, 114);
+.box:hover h4,h6 {
+    color: black;
 }
 
 /* FOOTER GRID */
@@ -168,6 +180,7 @@
     text-align: left;
     text-transform: uppercase;
     font-weight: 600;
+
 }
 
 .redes-grid {
@@ -185,7 +198,8 @@
     padding-top: 20px;
 }
 a:hover {
-    color: aliceblue !important;
+    color: rgb(4, 56, 114)
+    !important;
 }
 a {
     color: black !important;

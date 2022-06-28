@@ -20,6 +20,7 @@ function CompletarTablaLocalidades() {
 
                 $("#tbody-localidades").append('<tr class=' + claseEliminado + '>' +
                     '<td>' + localidad.descripcion + '</td>' +
+                    '<td>' + localidad.codPostal + '</td>' +
                     '<td>' + localidad.provinciaNombre + '</td>' +
                     '<td class="text-center">' +
                     botones +
@@ -44,12 +45,13 @@ function GuardarLocalidad() {
     $("#Error-ProvinciaNombre").text("");
     let localidadID = $('#LocalidadID').val();
     let guardarlocalidad = $('#LocalidadNombre').val().trim();
+    let codPostal = $('#CodPostal').val().trim();
     let provinciaID = $('#ProvinciaID').val();
     if (guardarlocalidad != "" && guardarlocalidad != null && provinciaID != "" && provinciaID != 0) {
         $.ajax({
             type: "POST",
             url: '../../Localidades/GuardarLocalidad',
-            data: { LocalidadID: localidadID, Descripcion: guardarlocalidad, ProvinciaID: provinciaID },
+            data: { LocalidadID: localidadID, Descripcion: guardarlocalidad, CodPostal :codPostal, ProvinciaID: provinciaID },
             success: function (resultado) {
                 if (resultado == 0) {
                     $("#exampleModal").modal("hide");
@@ -69,10 +71,11 @@ function GuardarLocalidad() {
 }
 // Funcion para Buscar las Localidades
 
-function BuscarLocalidad(localidadID, provinciaID) {
+function BuscarLocalidad(localidadID, codPostal, provinciaID) {
     VaciarFormulario();
     $("#titulo-Modal-Localidades").text("Editar Localidad");
     $("#LocalidadID").val(localidadID);
+    $("#CodPostal").val(codPostal);
     $("#ProvinciaID").val(provinciaID);
     $.ajax({
         type: "POST",
@@ -80,6 +83,8 @@ function BuscarLocalidad(localidadID, provinciaID) {
         data: { LocalidadID: localidadID },
         success: function (localidad) {
             $("#LocalidadNombre").val(localidad.descripcion);
+            $("#CodPostal").val(localidad.codPostal);
+            $("#ProvinciaID").val(localidad.provinciaID);
             $("#exampleModal").modal("show");
         },
         error: function (data) {
@@ -92,6 +97,7 @@ function BuscarLocalidad(localidadID, provinciaID) {
 function VaciarFormulario() {
     $("#LocalidadID").val(0);
     $("#ProvinciaID").val(0);
+    $("#CodPostal").val('');
     $("#LocalidadNombre").val('');
     $("#Error-LocalidadNombre").text("");
     $("#Error-ProvinciaNombre").text("");

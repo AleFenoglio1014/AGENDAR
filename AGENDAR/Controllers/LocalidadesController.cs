@@ -16,11 +16,11 @@ namespace AGENDAR.Controllers
     public class LocalidadesController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private readonly UserManager<IdentityUser> _userManager ;
-        public LocalidadesController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
+        //private readonly UserManager<IdentityUser> _userManager ;
+        public LocalidadesController(ApplicationDbContext context/*, UserManager<IdentityUser> userManager*/)
         {
             _context = context;
-            _userManager = userManager;
+            //_userManager = userManager;
         }
 
         // GET: Localidades
@@ -47,14 +47,14 @@ namespace AGENDAR.Controllers
         // Funcion para Completar la Tabla  de Localidades 
         public JsonResult BuscarLocalidades()
         {
-            //PRIMERO BUSCAMOS EL USUARIO ACTUAL
-            var usuarioActual = _userManager.GetUserId(HttpContext.User);
+            ////PRIMERO BUSCAMOS EL USUARIO ACTUAL
+            //var usuarioActual = _userManager.GetUserId(HttpContext.User);
 
-            //LUEGO EN BASE A ESE BUSCARIO BUSCAMOS LA EMPRESA CON LA QUE ESTA RELACIONADA
-            var empresaUsuarioActual = _context.EmpresasUsuarios.Where(p => p.UsuarioID == usuarioActual).SingleOrDefault();
+            ////LUEGO EN BASE A ESE BUSCARIO BUSCAMOS LA EMPRESA CON LA QUE ESTA RELACIONADA
+            //var empresaUsuarioActual = _context.EmpresasUsuarios.Where(p => p.UsuarioID == usuarioActual).SingleOrDefault();
 
 
-            var localidades = _context.Localidad.Where(l=> l.EmpresaID == empresaUsuarioActual.EmpresaID).Include(r => r.Provincias).ToList();
+            var localidades = _context.Localidad/*.Where(l=> l.EmpresaID == empresaUsuarioActual.EmpresaID)*/.Include(r => r.Provincias).ToList();
             List<LocalidadMostrar> listadoLocalidadesMostrar = new List<LocalidadMostrar>();
             foreach (var localidad in localidades)
             {
@@ -62,6 +62,7 @@ namespace AGENDAR.Controllers
                 {
                     LocalidadID = localidad.LocalidadID,
                     Descripcion = localidad.Descripcion,
+                    CodPostal = localidad.CodPostal,
                     ProvinciaID = localidad.ProvinciaID,
                     ProvinciaNombre = localidad.Provincias.Descripcion,
                     Eliminado = localidad.Eliminado,
@@ -74,7 +75,7 @@ namespace AGENDAR.Controllers
         }
         // Funcion Guardar y Editar las Localidades
 
-        public JsonResult GuardarLocalidad(int LocalidadID, string Descripcion, int ProvinciaID, string ProvinciaNombre)
+        public JsonResult GuardarLocalidad(int LocalidadID, string Descripcion,string CodPostal, int ProvinciaID, string ProvinciaNombre)
         {
             int resultado = 0;
             // Si es 0 es CORRECTO
@@ -87,7 +88,7 @@ namespace AGENDAR.Controllers
                 if (LocalidadID == 0)
                 {
                     // Antes de CREAR el registro debemos preguntar si existe una Localidad con la misma Descripcion
-                    if (_context.Localidad.Any(e => e.Descripcion == Descripcion && e.ProvinciaID == ProvinciaID))
+                    if (_context.Localidad.Any(e => e.Descripcion == Descripcion && e.ProvinciaID == ProvinciaID && e.CodPostal == CodPostal))
                     {
                         resultado = 2;
                     }
@@ -98,6 +99,7 @@ namespace AGENDAR.Controllers
                         var localidadNueva = new Localidad
                         {
                             Descripcion = Descripcion,
+                            CodPostal = CodPostal,
                             ProvinciaID = ProvinciaID,
                         };
                         _context.Add(localidadNueva);
@@ -119,6 +121,7 @@ namespace AGENDAR.Controllers
                         var localidad = _context.Localidad.Single(m => m.LocalidadID == LocalidadID);
                         // Cambiamos la Descripcion por la que ingreso el Usuario en la Vista
                         localidad.Descripcion = Descripcion;
+                        localidad.CodPostal = CodPostal;
                         localidad.ProvinciaID = ProvinciaID;
                         _context.SaveChanges();
                     }
@@ -136,6 +139,7 @@ namespace AGENDAR.Controllers
                     var localidad = _context.Localidad.Single(m => m.LocalidadID == LocalidadID);
                     // Cambiamos la Descripcion por la que ingreso el Usuario en la Vista
                     localidad.Descripcion = Descripcion;
+                    localidad.CodPostal = CodPostal;
                     localidad.ProvinciaID = ProvinciaID;
                     _context.SaveChanges();
                 }

@@ -15,7 +15,10 @@
     <thead class="table-dark">
         <tr>
             <th>
-                Descripción
+                Localidad
+            </th>
+            <th>
+                Codigo Postal
             </th>
             <th class="text-center" style="width:300px">
                 Provincia
@@ -40,8 +43,13 @@
                 <form>
                     <input type="hidden" id="LocalidadID" value="0" />
                     <div class="form-group">
-                        <label for="recipient-name" class="control-label font-weight-bold">Descripción</label>
+                        <label for="recipient-name" class="control-label font-weight-bold">Localidad</label>
                         <input type="text" class="form-control" autocomplete="off" required id="LocalidadNombre">
+                        <p class="text-danger font-weight-bold" style="font-size:small" id="Error-LocalidadNombre"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="control-label font-weight-bold">Codigo Postal</label>
+                        <input type="number" class="form-control" autocomplete="off" required id="CodPostal">
                     </div>
                     <!--Lista de Provincias dentro del Dropdown de Localidades-->
                     <div class="form-group">

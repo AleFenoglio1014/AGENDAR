@@ -1,17 +1,17 @@
 ﻿
-using System.ComponentModel.DataAnnotations;
+//using System.ComponentModel.DataAnnotations;
 
 
-namespace AGENDAR.Models
-{
-    public class EmpresaUsuario
-    {
-        [Key]
+//namespace AGENDAR.Models
+//{
+//    public class EmpresaUsuario
+//    {
+//        [Key]
 
-        public int EmpresaUsuarioID { get; set; }
+//        public int EmpresaUsuarioID { get; set; }
 
-        public string UsuarioID { get; set; }
-        public int EmpresaID { get; set; }
+//        public string UsuarioID { get; set; }
+//        public int EmpresaID { get; set; }
 
-    }
-}
+//    }
+//}

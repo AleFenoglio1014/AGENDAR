@@ -57,6 +57,9 @@ html {
   position: relative;
   min-height: 100%;
 }
+.colorNav {
+    background-color: #BFC9CA;
+}
 
 body {
   /* Margin bottom by footer height */
