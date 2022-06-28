@@ -43,7 +43,7 @@ namespace AGENDAR
                 options.Password.RequireLowercase = false;
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = false;
-                options.Password.RequiredLength = 6;
+                options.Password.RequiredLength = 5;
                 options.Password.RequiredUniqueChars = 0;
             });
         }

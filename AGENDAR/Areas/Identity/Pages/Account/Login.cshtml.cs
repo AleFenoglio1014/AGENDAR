@@ -43,7 +43,7 @@ namespace AGENDAR.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required(ErrorMessage = "El Correo Electrónico es obligatorio.")]
-            //[EmailAddress(ErrorMessage = "El Correo Electrónico es incorrecto.")]
+           
             [Display(Name = "Correo Electronico")]
             public string Email { get; set; }
 
@@ -102,6 +102,7 @@ namespace AGENDAR.Areas.Identity.Pages.Account
                 }
                 else
                 {
+                     
                     ModelState.AddModelError(string.Empty, "Intento de inicio de sesión no válido.");
                     return Page();
                 }

@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using AGENDAR.Data;
 using AGENDAR.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace AGENDAR.Controllers
 {
@@ -15,24 +16,30 @@ namespace AGENDAR.Controllers
     public class LocalidadesController : Controller
     {
         private readonly ApplicationDbContext _context;
-
-        public LocalidadesController(ApplicationDbContext context)
+        private readonly UserManager<IdentityUser> _userManager ;
+        public LocalidadesController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Localidades
         public IActionResult Index()
         {
-            var provincias = _context.Provincia.Where(p => p.Eliminado == false).ToList();
+           
+
+            var provincias = _context.Provincia.ToList();
             provincias.Add(new Provincia { ProvinciaID = 0, Descripcion = "[SELECCIONE UNA PROVINCIA]" });
             ViewBag.ProvinciaID = new SelectList(provincias.OrderBy(p => p.Descripcion), "ProvinciaID", "Descripcion");
             return View();
         }
         public JsonResult ComboLocalidad(int id)//PROVINCIA ID
         {
+
+           
+
             //BUSCAR LOCALIDADES
-            var localidades = (from o in _context.Localidad where o.ProvinciaID == id && o.Eliminado == false select o).ToList();
+            var localidades = (from o in _context.Localidad where o.ProvinciaID == id  &&  o.Eliminado == false select o).ToList();
 
             return Json(new SelectList(localidades, "LocalidadID", "Descripcion"));
 
@@ -40,7 +47,14 @@ namespace AGENDAR.Controllers
         // Funcion para Completar la Tabla  de Localidades 
         public JsonResult BuscarLocalidades()
         {
-            var localidades = _context.Localidad.Include(r => r.Provincias).ToList();
+            //PRIMERO BUSCAMOS EL USUARIO ACTUAL
+            var usuarioActual = _userManager.GetUserId(HttpContext.User);
+
+            //LUEGO EN BASE A ESE BUSCARIO BUSCAMOS LA EMPRESA CON LA QUE ESTA RELACIONADA
+            var empresaUsuarioActual = _context.EmpresasUsuarios.Where(p => p.UsuarioID == usuarioActual).SingleOrDefault();
+
+
+            var localidades = _context.Localidad.Where(l=> l.EmpresaID == empresaUsuarioActual.EmpresaID).Include(r => r.Provincias).ToList();
             List<LocalidadMostrar> listadoLocalidadesMostrar = new List<LocalidadMostrar>();
             foreach (var localidad in localidades)
             {
