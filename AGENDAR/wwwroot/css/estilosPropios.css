@@ -1,11 +1,11 @@
 ﻿.logo {
-    padding-left: 5px;
+    padding-left: 500px;
 }
 .navbar-light .navbar-nav .nav-link {
     color: rgb(4 56 114) !important;
 }
-/*BANNER*/
 
+/*BANNER*/
 .banner {
     position: relative;
     background: url(../lib/Imagenes/diseño_web.png);

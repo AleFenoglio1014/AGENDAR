@@ -16,11 +16,11 @@ namespace AGENDAR.Controllers
     public class LocalidadesController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private readonly UserManager<IdentityUser> _userManager1 ;
-        public LocalidadesController(ApplicationDbContext context, UserManager<IdentityUser> userManager1)
+        private readonly UserManager<IdentityUser> _userManager ;
+        public LocalidadesController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
-            _userManager1 = userManager1;
+            _userManager = userManager;
         }
 
         // GET: Localidades
@@ -48,7 +48,7 @@ namespace AGENDAR.Controllers
         public JsonResult BuscarLocalidades()
         {
             //PRIMERO BUSCAMOS EL USUARIO ACTUAL
-            var usuarioActual = _userManager1.GetUserId(HttpContext.User);
+            var usuarioActual = _userManager.GetUserId(HttpContext.User);
 
             //LUEGO EN BASE A ESE BUSCARIO BUSCAMOS LA EMPRESA CON LA QUE ESTA RELACIONADA
             var empresaUsuarioActual = _context.EmpresasUsuarios.Where(p => p.UsuarioID == usuarioActual).SingleOrDefault();
