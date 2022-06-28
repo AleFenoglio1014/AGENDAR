@@ -3,9 +3,13 @@
 }
 .navbar-light .navbar-nav .nav-link {
     color: rgb(4 56 114) !important;
+
+}
+
+.colornav {
+    background-color: #BFC9CA;
 }
 /*BANNER*/
-
 .banner {
     position: relative;
     background: url(../lib/Imagenes/diseño_web.png);
@@ -46,8 +50,10 @@
     line-height: 50px;
     text-align: center;
     text-transform: uppercase;
-    color:cornflowerblue;
+    color:black;
 }
+
+
 /*MIEMBROS DEL EQUIPO*/
 .titulo-miembros {
     display: flex;
@@ -68,7 +74,7 @@
     margin: auto;
     margin-top: 30px;
     text-align: center;
-    color: rgb(4, 56, 114);
+    color: #dee2e6;
     line-height: 1.7;
 }
 
@@ -144,7 +150,7 @@
     display: grid;
     grid-template-columns: repeat(11,1fr);
     grid-template-rows: repeat(1,1fr);
-    background-color:lightslategray;
+    background-color: #BFC9CA;
     align-items: center;
     margin-top: 50px;
     justify-content: space-around;
@@ -176,7 +182,7 @@
 }
 
 .footer-grid h2 {
-    color: rgb(4, 56, 114);
+    color: black;
     text-transform: uppercase;
     padding-bottom: 5px;
     padding-top: 20px;
@@ -185,7 +191,7 @@ a:hover {
     color: aliceblue !important;
 }
 a {
-    color: rgb(4, 56, 114) !important;
+    color: black !important;
 }
 
 @media (max-width: 991px){
