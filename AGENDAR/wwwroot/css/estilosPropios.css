@@ -11,7 +11,7 @@
 /*BANNER*/
 .banner {
     position: relative;
-    background: url(../lib/Imagenes/diseño_web.png);
+    background: url('../lib/Imagenes/persona-y-computador-2.jpg');
     height: 100vh;
     overflow: hidden;
     background-repeat: no-repeat;
