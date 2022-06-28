@@ -409,10 +409,10 @@ input {
 
 /*//Boton inicioSesion*/
 .bn31 {
-    background-image: linear-gradient(to right, #006175 0%, #00a950 100%);
+    background-image: linear-gradient(to right, #468FAF 0%, #2C7DA0 100%);
     border-radius: 40px;
     box-sizing: border-box;
-    color: #00a84f;
+    color: black;
     display: block;
     height: 50px;
     font-size: 1.2em;
@@ -436,6 +436,8 @@ input {
         height: 100%;
         transition: background 0.5s ease;
         width: 100%;
+        color: black;
+        font-size: 18px;
     }
 
     .bn31:hover .bn31span {
@@ -443,7 +445,7 @@ input {
     }
 /*//Boton solicitarTurno*/
 .bn31 {
-    background-image: linear-gradient(to right, #006175 0%, #00a950 100%);
+    background-image: linear-gradient(to right, #468FAF 0%, #2C7DA0 100%);
     border-radius: 40px;
     box-sizing: border-box;
     color: #00a84f;
