@@ -82,16 +82,21 @@ namespace AGENDAR.Controllers
             // Si es 1 el Campo Descripcion esta VACIO
             // Si es 2 el Registro YA EXISTE con la misma Descripcion
 
-            if (!string.IsNullOrEmpty(Descripcion) && ProvinciaID != 0)
+            if (!string.IsNullOrEmpty(Descripcion ) && ProvinciaID != 0 && CodPostal != "")
             {
                 Descripcion = Descripcion.ToUpper();
                 if (LocalidadID == 0)
                 {
                     // Antes de CREAR el registro debemos preguntar si existe una Localidad con la misma Descripcion
-                    if (_context.Localidad.Any(e => e.Descripcion == Descripcion && e.ProvinciaID == ProvinciaID && e.CodPostal == CodPostal))
+                    if (_context.Localidad.Any(e => e.Descripcion == Descripcion && e.ProvinciaID == ProvinciaID ||  e.CodPostal == CodPostal))
                     {
                         resultado = 2;
                     }
+                    if (_context.Localidad.Any(e => e.CodPostal == CodPostal))
+                    {
+                        resultado = 3;
+                    }
+                    
                     else
                     {
                         // Aca va a ir el codigo para CREAR una Localidad
