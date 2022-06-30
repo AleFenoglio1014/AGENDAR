@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using AGENDAR.Data;
 using AGENDAR.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace AGENDAR.Controllers
 {
@@ -16,11 +17,36 @@ namespace AGENDAR.Controllers
     public class EmpresasController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<IdentityUser> _userManager;
+        //public EmpresasController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
+        //{
+        //    _context = context;
+        //    _userManager = userManager;
+        //}
 
-       
         public EmpresasController(ApplicationDbContext context)
         {
             _context = context;
+        }
+
+        //Funcion para Guardar Usuario Completo
+        public async Task<JsonResult> GuardarUsuarioCompleto()
+        {
+            var email = "usuario@gmail.com";
+            var password = "123456";
+
+            //CREAR LA VARIABLE USUARIO CON TODOS LOS DATOS
+            var user = new IdentityUser
+            { UserName = email, Email = email };
+            //EJECUTAR EL METODO CREAR USUARIO PASANDO COMO PARAMETRO EL OBJETO CREADO ANTERIORMENTE Y LA CONTRASEÑA DE INGRESO
+            var result = await _userManager.CreateAsync(user, password);
+
+            //BUSCAR POR MEDIO DE CORREO ELECTRONICO ESE USUARIO CREADO PARA BUSCAR EL ID
+            var usuario = _context.Users.Where(u => u.Email == email).SingleOrDefault();
+
+            //LUEGO EL CODIGO DE REGISTRAR EMPRESA O CLUB SEGUN CORRESPONDA SU SISTEMA
+
+            return Json(result.Succeeded);
         }
 
         // GET: Empresas

@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace AGENDAR.Data.Migrations
+namespace AGENDAR.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220608001626_CampoInt64aModeloEmpresaTelefono")]
-    partial class CampoInt64aModeloEmpresaTelefono
+    [Migration("20220630223942_MigracionInicialCompleta")]
+    partial class MigracionInicialCompleta
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -94,6 +94,42 @@ namespace AGENDAR.Data.Migrations
                     b.ToTable("Empresa");
                 });
 
+            modelBuilder.Entity("AGENDAR.Models.EmpresaUsuario", b =>
+                {
+                    b.Property<int>("EmpresaUsuarioID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("EmpresaID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UsuarioID")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("EmpresaUsuarioID");
+
+                    b.ToTable("EmpresasUsuarios");
+                });
+
+            modelBuilder.Entity("AGENDAR.Models.Horario", b =>
+                {
+                    b.Property<int>("HorarioID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("HoraFin")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("HoraInicio")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("HorarioID");
+
+                    b.ToTable("Horario");
+                });
+
             modelBuilder.Entity("AGENDAR.Models.Localidad", b =>
                 {
                     b.Property<int>("LocalidadID")
@@ -109,6 +145,9 @@ namespace AGENDAR.Data.Migrations
 
                     b.Property<bool>("Eliminado")
                         .HasColumnType("bit");
+
+                    b.Property<int>("EmpresaID")
+                        .HasColumnType("int");
 
                     b.Property<int>("ProvinciaID")
                         .HasColumnType("int");
@@ -160,9 +199,6 @@ namespace AGENDAR.Data.Migrations
 
                     b.Property<string>("Descripcion")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("Eliminado")
-                        .HasColumnType("bit");
 
                     b.HasKey("ProvinciaID");
 

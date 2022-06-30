@@ -4,16 +4,14 @@ using AGENDAR.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace AGENDAR.Data.Migrations
+namespace AGENDAR.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220525001838_PrimeraMigracion")]
-    partial class PrimeraMigracion
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,6 +29,9 @@ namespace AGENDAR.Data.Migrations
                     b.Property<string>("Descripcion")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("Eliminado")
+                        .HasColumnType("bit");
+
                     b.HasKey("ClasificacionEmpresaID");
 
                     b.ToTable("ClasificacionEmpresa");
@@ -45,6 +46,9 @@ namespace AGENDAR.Data.Migrations
 
                     b.Property<string>("Descripcion")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Eliminado")
+                        .HasColumnType("bit");
 
                     b.HasKey("ClasificacionProfesionalID");
 
@@ -61,28 +65,67 @@ namespace AGENDAR.Data.Migrations
                     b.Property<string>("CUIT")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ClasificacionEmpresasClasificacionEmpresaID")
+                    b.Property<int>("ClasificacionEmpresaID")
                         .HasColumnType("int");
 
                     b.Property<string>("Direccion")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("LocalidadesLocalidadID")
+                    b.Property<bool>("Eliminado")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("LocalidadID")
                         .HasColumnType("int");
 
                     b.Property<string>("RazonSocial")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Telefono")
-                        .HasColumnType("int");
+                    b.Property<long>("Telefono")
+                        .HasColumnType("bigint");
 
                     b.HasKey("EmpresaID");
 
-                    b.HasIndex("ClasificacionEmpresasClasificacionEmpresaID");
+                    b.HasIndex("ClasificacionEmpresaID");
 
-                    b.HasIndex("LocalidadesLocalidadID");
+                    b.HasIndex("LocalidadID");
 
                     b.ToTable("Empresa");
+                });
+
+            modelBuilder.Entity("AGENDAR.Models.EmpresaUsuario", b =>
+                {
+                    b.Property<int>("EmpresaUsuarioID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("EmpresaID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UsuarioID")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("EmpresaUsuarioID");
+
+                    b.ToTable("EmpresasUsuarios");
+                });
+
+            modelBuilder.Entity("AGENDAR.Models.Horario", b =>
+                {
+                    b.Property<int>("HorarioID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("HoraFin")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("HoraInicio")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("HorarioID");
+
+                    b.ToTable("Horario");
                 });
 
             modelBuilder.Entity("AGENDAR.Models.Localidad", b =>
@@ -98,12 +141,18 @@ namespace AGENDAR.Data.Migrations
                     b.Property<string>("Descripcion")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ProvinciasProvinciaID")
+                    b.Property<bool>("Eliminado")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("EmpresaID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProvinciaID")
                         .HasColumnType("int");
 
                     b.HasKey("LocalidadID");
 
-                    b.HasIndex("ProvinciasProvinciaID");
+                    b.HasIndex("ProvinciaID");
 
                     b.ToTable("Localidad");
                 });
@@ -115,20 +164,26 @@ namespace AGENDAR.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ClasificacionProfesionalesClasificacionProfesionalID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Descripcion")
+                    b.Property<string>("Apellido")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("EmpresasEmpresaID")
+                    b.Property<int>("ClasificacionProfesionalID")
                         .HasColumnType("int");
+
+                    b.Property<bool>("Eliminado")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("EmpresaID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Nombre")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ProfesionalID");
 
-                    b.HasIndex("ClasificacionProfesionalesClasificacionProfesionalID");
+                    b.HasIndex("ClasificacionProfesionalID");
 
-                    b.HasIndex("EmpresasEmpresaID");
+                    b.HasIndex("EmpresaID");
 
                     b.ToTable("Profesional");
                 });
@@ -352,29 +407,39 @@ namespace AGENDAR.Data.Migrations
                 {
                     b.HasOne("AGENDAR.Models.ClasificacionEmpresa", "ClasificacionEmpresas")
                         .WithMany("Empresas")
-                        .HasForeignKey("ClasificacionEmpresasClasificacionEmpresaID");
+                        .HasForeignKey("ClasificacionEmpresaID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("AGENDAR.Models.Localidad", "Localidades")
                         .WithMany("Empresas")
-                        .HasForeignKey("LocalidadesLocalidadID");
+                        .HasForeignKey("LocalidadID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("AGENDAR.Models.Localidad", b =>
                 {
                     b.HasOne("AGENDAR.Models.Provincia", "Provincias")
                         .WithMany("Localidades")
-                        .HasForeignKey("ProvinciasProvinciaID");
+                        .HasForeignKey("ProvinciaID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("AGENDAR.Models.Profesional", b =>
                 {
                     b.HasOne("AGENDAR.Models.ClasificacionProfesional", "ClasificacionProfesionales")
                         .WithMany("Profesionales")
-                        .HasForeignKey("ClasificacionProfesionalesClasificacionProfesionalID");
+                        .HasForeignKey("ClasificacionProfesionalID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("AGENDAR.Models.Empresa", "Empresas")
                         .WithMany("Profesionales")
-                        .HasForeignKey("EmpresasEmpresaID");
+                        .HasForeignKey("EmpresaID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
