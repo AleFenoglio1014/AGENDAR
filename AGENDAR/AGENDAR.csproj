@@ -28,6 +28,7 @@
     <Content Remove="wwwroot\lib\Imagenes\banner3.jpg" />
     <Content Remove="wwwroot\lib\Imagenes\fotoperfil.jpeg" />
     <Content Remove="wwwroot\lib\Imagenes\invitado1.jpg" />
+    <Content Remove="wwwroot\lib\Imagenes\Vale.jpg" />
   </ItemGroup>
 
   <ItemGroup>
