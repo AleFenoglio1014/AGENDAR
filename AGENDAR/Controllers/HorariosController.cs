@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using AGENDAR.Data;
 using AGENDAR.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace AGENDAR.Controllers
 {
@@ -15,6 +16,12 @@ namespace AGENDAR.Controllers
     public class HorariosController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<IdentityUser> _userManager;
+        public HorariosController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
+        {
+            _context = context;
+            _userManager = userManager;
+        }
 
         public HorariosController(ApplicationDbContext context)
         {
@@ -25,9 +32,22 @@ namespace AGENDAR.Controllers
         {
             return View(await _context.Horario.ToListAsync());
         }
+
+        //Funcion para Buscar Empresa y Usuario
+        public void BuscarEmpresaActual(string usuarioActual, EmpresaUsuario empresaUsuarioActual)
+        {
+            empresaUsuarioActual = _context.EmpresasUsuarios.Where(p => p.UsuarioID == usuarioActual).SingleOrDefault();
+        }
+
         // Funcion para Completar la Tabla de Horario
         public JsonResult BuscarHorarios()
         {
+            //PRIMERO BUSCAMOS EL USUARIO ACTUAL
+            var usuarioActual = _userManager.GetUserId(HttpContext.User);
+            //LUEGO EN BASE A ESE USUARIO BUSCAMOS LA EMPRESA CON LA QUE ESTA RELACIONADA
+            EmpresaUsuario empresaUsuarioActual = new EmpresaUsuario();
+            BuscarEmpresaActual(usuarioActual, empresaUsuarioActual);
+
             var horarios = _context.Horario.ToList();
             List<HorarioMostrar> listadohorario = new List<HorarioMostrar>();
 

@@ -11,7 +11,7 @@ namespace AGENDAR.Models
     {
         [Key]
         public int ProfesionalID { get; set; }
-
+        public int EmpresaID { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string ProfesionalNombreCompleto
