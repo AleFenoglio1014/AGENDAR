@@ -19,6 +19,7 @@ namespace AGENDAR.Models
 
         public Int64 Telefono { get; set; }
         public bool Eliminado { get; set; }
+        
         public int LocalidadID { get; set; }
         public virtual Localidad Localidades { get; set; }
         public int ClasificacionEmpresaID { get; set; }
@@ -38,6 +39,7 @@ namespace AGENDAR.Models
         public Int64 Telefono { get; set; }
         public int LocalidadID { get; set; }
         public string LocalidadNombre { get; set; }
+        
         public int ClasificacionEmpresaID { get; set; }
         public string TipoEmpresa { get; set; }
         public bool Eliminado { get; set; }

@@ -62,17 +62,17 @@
 /*MIEMBROS DEL EQUIPO*/
 .sumbrayado {
     display: flex;
-    max-width: 40rem;
+    max-width: 15rem;
     margin-top: 0rem;
     margin-bottom: 2rem;
     box-shadow: 3px 2px 4px 2px;
     color: black;
 }
 
+
 .div-miembros, .miembro, .redes-sociales {
     width: 100%;
     border-radius: 500%;
-
 }
 
 .miembros {
@@ -150,4 +150,40 @@
 
 .box:hover h4,h6 {
     color: black;
+}
+
+
+/*Empresas tarjetas*/
+
+.card {
+    max-width: 200px;
+    margin: 1.75rem auto;
+    border: black 2px solid !important;
+}
+
+
+
+.card-title {
+    color: black;
+    font-weight: bold;
+    font-size: 15px;
+    margin-bottom: 0rem !important;
+}
+
+.card-body {
+    padding: 2px !important;
+    font-size: 10px;
+    color: black;
+    background-color:#d8e2dc
+}
+.localidadTamaño {
+    margin-bottom: 0rem;
+    color: black;
+    
+}
+.hrEmpresa {
+   
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+   
 }

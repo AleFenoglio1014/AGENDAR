@@ -37,7 +37,9 @@ namespace AGENDAR.Controllers
             return View();
         }
 
+
         // Funcion para Completar la Tabla  de Empresas 
+        [AllowAnonymous]
         public JsonResult BuscarEmpresas()
         {
             var empresas = _context.Empresa.Include(r => r.Localidades).Include(p => p.ClasificacionEmpresas).ToList();
@@ -66,6 +68,7 @@ namespace AGENDAR.Controllers
 
             return Json(listadoEmpresas);
         }
+
    
 
 
@@ -180,6 +183,8 @@ namespace AGENDAR.Controllers
 
             return Json(resultado);
         }
+        
+
 
         private bool EmpresaExists(int id)
         {
