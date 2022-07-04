@@ -131,8 +131,15 @@
 }
 
 input {
-    outline: none;
-    border: none
+    outline: auto;
+    border: double !important;
+    color: #495057 !important;
+}
+textarea {
+    outline: auto;
+    border: double !important;
+    color: #495057 !important;
+
 }
 
 .wrap-input100 {

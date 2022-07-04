@@ -9,6 +9,7 @@ function CompletarTablaEmpresas() {
         data: {},
         success: function (listadoEmpresasMostrar) {
             $.each(listadoEmpresasMostrar, function (index, empresa) {
+                
                 $('#razonSocialEmpresa').append(empresa.razonSocial); 
                 
                 $("#body-empresa").append("<div>" +

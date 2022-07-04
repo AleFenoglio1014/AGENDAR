@@ -24,7 +24,7 @@ namespace AGENDAR.Models
 
         public int ClasificacionProfesionalID { get; set; }
         public virtual ClasificacionProfesional ClasificacionProfesionales { get; set; }
-        public int EmpresaID { get; set; }
+        
         public virtual Empresa Empresas { get; set; }
         public bool Eliminado { get; set; }
 

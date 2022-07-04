@@ -19,7 +19,8 @@ namespace AGENDAR.Models
 
         public Int64 Telefono { get; set; }
         public bool Eliminado { get; set; }
-        
+        public byte[] ImagenEmpresa { get; set; }
+        public string ImagenEmpresaString { get; set; }
         public int LocalidadID { get; set; }
         public virtual Localidad Localidades { get; set; }
         public int ClasificacionEmpresaID { get; set; }
