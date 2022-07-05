@@ -444,7 +444,7 @@ input {
         background: transparent;
     }
 /*//Boton solicitarTurno*/
-.bn31 {
+/*.bn31 {
     background-image: linear-gradient(to right, #468FAF 0%, #2C7DA0 100%);
     border-radius: 40px;
     box-sizing: border-box;
@@ -476,4 +476,4 @@ input {
 
     .bn31:hover .bn31span {
         background: transparent;
-    }
+    }*/

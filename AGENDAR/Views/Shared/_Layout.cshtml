@@ -6,7 +6,7 @@
     <title>@ViewData["Title"] - AGENDAR</title>
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/estilosPropios.css"/>
+    <link rel="stylesheet" href="~/css/estilosPropios.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
 </head>
@@ -14,14 +14,14 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm  colorNav box-shadow mb-3 ">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/lib/Imagenes/AGENDAR_LOGO_POSITIVO_02.png"class="img-fluid" width="120" alt="5px"></a>
+                <a class="navbar-brand" asp-area="" asp-action="Index"><img src="~/lib/Imagenes/AGENDAR_LOGO_POSITIVO_02.png" class="img-fluid" width="120" alt="5px"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <partial name="_LoginPartial" />
-                    <ul class="navbar-nav flex-grow-1">
+                    <ul class=" navbar-nav flex-grow-1 colortexto">
 
                         <li class="nav-item">
                             <a class="nav-link font-weight-bold" asp-area="" asp-controller="Provincias" asp-action="Index">Provincias</a>
@@ -30,10 +30,10 @@
                             <a class="nav-link font-weight-bold" asp-area="" asp-controller="Localidades" asp-action="Index">Localidades</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link font-weight-bold" asp-area="" asp-controller="ClasificacionEmpresas" asp-action="Index">Tipo de Empresa</a>
+                            <a class="nav-link font-weight-bold" asp-area="" asp-controller="ClasificacionEmpresas" asp-action="Index">Tipo Empresa</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link font-weight-bold" asp-area="" asp-controller="ClasificacionProfesionales" asp-action="Index">Tipo de Profesional</a>
+                            <a class="nav-link font-weight-bold" asp-area="" asp-controller="ClasificacionProfesionales" asp-action="Index">Tipo Profesional</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link font-weight-bold" asp-area="" asp-controller="Empresas" asp-action="Index">Empresas</a>
@@ -44,9 +44,14 @@
                         <li class="nav-item">
                             <a class="nav-link font-weight-bold" asp-area="" asp-controller="Horarios" asp-action="Index">Horarios</a>
                         </li>
-
+                        <li class="nav-item">
+                        </li>
+                        <li class="nav-item">
+                            <a class="bn31" style="margin-right:10px" asp-area="" asp-controller="Home" asp-action="Index"><span class="bn31span font-weight-bold"> Cerrar Sesion </span></a>
+                        </li>
                     </ul>
                 </div>
+
             </div>
         </nav>
     </header>
@@ -61,7 +66,6 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/Sweetalert.js" asp-append-version="true"></script>
-    @*<script src="~/css/estilosPropios.css"></script>*@
 
     @RenderSection("Scripts", required: false)
 </body>

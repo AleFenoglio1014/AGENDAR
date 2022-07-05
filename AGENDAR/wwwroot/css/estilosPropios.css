@@ -151,3 +151,40 @@
 .box:hover h4,h6 {
     color: black;
 }
+
+/*//Boton inicioSesion*/
+.bn31 {
+    background-image: linear-gradient(to right, #468FAF 0%, #2C7DA0 100%);
+    border-radius: 40px;
+    box-sizing: border-box;
+    color: black;
+    display: block;
+    height: 40px;
+    font-size: 1.2em;
+    padding: 4px;
+    position: relative;
+    text-decoration: none;
+    width: 7em;
+    z-index: 2;
+}
+
+    .bn31:hover {
+        color: #fff;
+    }
+
+    .bn31 .bn31span {
+        align-items: center;
+        background: #BFC9CA;
+        border-radius: 40px;
+        display: flex;
+        justify-content: center;
+        height: 100%;
+        transition: background 0.5s ease;
+        width: 100%;
+        color: black;
+        font-size: 18px;
+    }
+
+    .bn31:hover .bn31span {
+        background: transparent;
+    }

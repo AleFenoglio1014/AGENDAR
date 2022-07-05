@@ -1,7 +1,7 @@
 ﻿@page
 @model RegisterModel
 @{
-    ViewData["Title"] = "Register";
+    ViewData["Title"] = "Registrar";
 }
 @{
     Layout = "~/Views/Shared/Layout-Login.cshtml";
@@ -69,13 +69,14 @@
                             <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
                         </div>
 
-                        <button type="submit" class="btn btn-outline-primary">Registrarse</button>
-
-
-
+                        
+                        <button type="submit" class="btn btn-outline-success">Registrar Usuario</button>
+                        
+       
+                        <button type="submit" class="btn btn-outline-primary">Registrar Empresa</button>
+                       
                     </form>
                 </div>
-
             </div>
         </div>
     </div>

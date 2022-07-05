@@ -407,9 +407,11 @@ input {
 }
 
 #login button {
-    outline: none !important;
+    outline: none;
     border-color: #007bff;
+    width: 220px;
     font-family: 'Times New Roman', Times, serif;
+    font-weight:bold;
 }
 
 @media (max-width: 400px) {
