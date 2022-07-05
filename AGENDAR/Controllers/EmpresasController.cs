@@ -65,7 +65,7 @@ namespace AGENDAR.Controllers
 
 
         // Funcion para Completar la Tabla  de Empresas 
-        [AllowAnonymous]
+      
         public JsonResult BuscarEmpresas()
         {
             var empresas = _context.Empresa.Include(r => r.Localidades).Include(p => p.ClasificacionEmpresas).ToList();
@@ -193,7 +193,30 @@ namespace AGENDAR.Controllers
             return Json(empresa);
         }
 
+        [AllowAnonymous]
+        public JsonResult BuscarUltimasEmpresas()
+        {
+            List<EmpresasMostrar> listadoUltimasEmpresa = new List<EmpresasMostrar>();
 
+            var empresa = _context.Empresa.Include(r => r.Localidades).ToList();
+
+            foreach (var itemEmpresa in empresa)
+            {
+
+                var empresas = new EmpresasMostrar()
+                {
+                    EmpresaID = itemEmpresa.EmpresaID,
+                    RazonSocial = itemEmpresa.RazonSocial,
+                    LocalidadID = itemEmpresa.LocalidadID,
+                    LocalidadNombre = itemEmpresa.Localidades.Descripcion,
+
+                };
+                listadoUltimasEmpresa.Add(empresas);
+            }
+            JsonResult resultado = Json(listadoUltimasEmpresa);
+            
+            return resultado;
+        }
         //Eliminar Empresa
 
         public JsonResult EliminarEmpresa(int EmpresaID)

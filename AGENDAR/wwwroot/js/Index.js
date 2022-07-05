@@ -1,25 +1,30 @@
 ﻿
 // Funcion para Completar la Tabla de Empresas
-function CompletarTablaEmpresas() {
-    $('#tituloNoticia').empty();
-    $('#bodyNoticia').empty();
+function BuscarUltimasEmpresas() {
+   
     $.ajax({
         type: "POST",
-        url: '../../Empresas/BuscarEmpresas',
+        url: '../../Empresas/BuscarUltimasEmpresas',
         data: {},
-        success: function (listadoEmpresasMostrar) {
-            $.each(listadoEmpresasMostrar, function (index, empresa) {
-                
-                $('#razonSocialEmpresa').append(empresa.razonSocial); 
-                
-                $("#body-empresa").append("<div>" +
-                    "<hr class='hrEmpresa'/>" +
-                    "<p class='localidadTamaño'>" + 'Ciudad: ' + empresa.localidadNombre + "</p>" +
-                    "</div>" 
+        success: function (listadoUltimasEmpresa) {
+            $.each(listadoUltimasEmpresa, function (i, empresa) {
+                $('#empresa').append("<div class='col mb-4'>" +
+                    "<div class='card h-100'>" +
+                    "<img class='card-img-top card-alto' src='data:image/jpeg;base64," + empresa.ImagenEmpresaString + "' />" +
+                    "<div class='card-body'>" +
+                    "<h3 class='card-title'>" + empresa.razonSocial + "</h5>" +
+                    "</div>" +
+                    "<div class='card-footer'>" +
+                    
+                    "<small class='text-muted text-uppercase'>" + 'Ciudad: '  + empresa.localidadNombre + "</small>" +
+                    "</div>" +
+                    "</div>" +
+                    "</div>"
                 );
             });
         },
-        error: function (data) {
+        error: function (result) {
+            alert("error success de carga de empresa principal.");
         }
     });
 }

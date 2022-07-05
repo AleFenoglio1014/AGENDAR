@@ -126,16 +126,9 @@
     </div>
     <div class="clientes">
 
-
-        <div class="card" id="CardNoticias" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-
-            <div class="card-body">
-                <h3 class="card-title text-center" id="razonSocialEmpresa"></h3>
-                <div class="card-body" id="body-empresa"></div>
-
-            </div>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3" id="empresa"></div>
+    
         </div>
-    </div>
 
 </section>
 
@@ -167,8 +160,8 @@
                 </div>
             </div>
             <div class="  flex-grow-1 centradobotones">
-                <button class="btn btn-primary " type="submit" name="submit">Enviar</button>
-                <button class="btn btn-success " type="reset" name="reset">Borrar</button>
+                <button class="btn btn-success tamañobotones " type="submit" name="submit">Enviar</button>
+                <button class="btn btn-danger tamañobotones " type="reset" name="reset">Borrar</button>
             </div>
         </form>
     </div>
@@ -232,6 +225,6 @@
 
     <script src="~/js/Index.js"></script>
     <script>
-        window.onload = CompletarTablaEmpresas();
+        window.onload = BuscarUltimasEmpresas();
     </script>
 }

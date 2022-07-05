@@ -168,25 +168,22 @@
     font-weight: bold;
     font-size: 15px;
     margin-bottom: 0rem !important;
+    text-align:center;
 }
 
 .card-body {
     padding: 2px !important;
     font-size: 10px;
     color: black;
-    background-color:#d8e2dc
+    background-color: #d8e2dc;
+  
 }
 .localidadTamaño {
     margin-bottom: 0rem;
     color: black;
     
 }
-.hrEmpresa {
-   
-    margin-top: 0rem;
-    margin-bottom: 0rem;
-   
-}
+
 /*CONTACTO*/
 .contacto{
     padding-bottom: 20px;
@@ -198,17 +195,21 @@
     padding-left: 50px;
      margin-right: 0px !important;
 }
-.centradobotones{
-    padding-left:52px
+.centradobotones {
+    padding-left: 52px;
+   
 }
+.tamañobotones {
+    width: 310px;
 
+}
 /*BOTON PARA VOLVER HACIA ARRIBA*/
-    .top {
-    background-color: white;
-    color: black;
+.top {
+    background-color: black;
+    color: white;
     position: fixed;
     width: 40px;
-    height: 40px;
+    height: 43px;
     border-radius: 3px;
     right: 15px;
     bottom: 15px;
