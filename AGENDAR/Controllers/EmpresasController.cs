@@ -20,6 +20,8 @@ namespace AGENDAR.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<IdentityUser> _userManager;
+        private byte[] img;
+
         //public EmpresasController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         //{
         //    _context = context;
@@ -182,8 +184,11 @@ namespace AGENDAR.Controllers
                         empresa.Telefono = telefono;
                         empresa.LocalidadID = LocalidadID;
                         empresa.ClasificacionEmpresaID = ClasificacionEmpresaID;
-                        empresa.ImagenEmpresaString = tipoImg;
-                        empresa.ImagenEmpresa = img;
+                        if (tipoImg != null)
+                        {
+                            empresa.ImagenEmpresaString = tipoImg;
+                            empresa.ImagenEmpresa = img;
+                        }
                         _context.SaveChanges();
                     }
 
@@ -205,7 +210,12 @@ namespace AGENDAR.Controllers
                     empresa.Telefono = telefono;
                     empresa.LocalidadID = LocalidadID;
                     empresa.ClasificacionEmpresaID = ClasificacionEmpresaID;
-                    
+                     if (tipoImg != null)
+                        {
+                            empresa.ImagenEmpresaString = tipoImg;
+                            empresa.ImagenEmpresa = img;
+                        }
+
                     _context.SaveChanges();
                 }
             };
@@ -239,6 +249,7 @@ namespace AGENDAR.Controllers
                     RazonSocial = itemEmpresa.RazonSocial,
                     LocalidadID = itemEmpresa.LocalidadID,
                     LocalidadNombre = itemEmpresa.Localidades.Descripcion,
+                    ImagenEmpresaString = Convert.ToBase64String(itemEmpresa.ImagenEmpresa)
 
                 };
                 listadoUltimasEmpresa.Add(empresas);

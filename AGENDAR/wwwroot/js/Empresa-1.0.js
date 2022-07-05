@@ -99,7 +99,7 @@ function AbrirModal() {
 
  // Funcion para Buscar las Empresas
 
-function BuscarEmpresa(empresaID,razonSocial, localidadID, clasificacionEmpresaID, telefono, cuit, direccion) {
+function BuscarEmpresa(empresaID, razonSocial, localidadID, clasificacionEmpresaID, telefono, cuit, direccion) {
     VaciarFormulario();
     $("#titulo-Modal-Empresa").text("Editar Empresa");
     $("#EmpresaID").val(empresaID);
@@ -109,6 +109,7 @@ function BuscarEmpresa(empresaID,razonSocial, localidadID, clasificacionEmpresaI
     $("#Telefono").val(telefono);
     $("#Cuit").val(cuit);
     $("#Direccion").val(direccion);
+  
     $.ajax({
         type: "POST",
         url: '../../Empresas/BuscarEmpresa',
@@ -120,6 +121,8 @@ function BuscarEmpresa(empresaID,razonSocial, localidadID, clasificacionEmpresaI
             $("#Telefono").val(empresa.telefono);
             $("#Cuit").val(empresa.cuit);
             $("#Direccion").val(empresa.direccion);
+           
+            
             $("#exampleModal").modal("show");
         },
         error: function (data) {
@@ -161,6 +164,8 @@ function EliminarEmpresa(empresID) {
     });
     }
 }
+// FUncion para Guardar las Empresas
+
 //sobreescribimos el metodo submit para que envie la solicitud por ajax
 $("#frmFormulario").submit(function (e) {
 
@@ -245,3 +250,5 @@ $("#frmFormulario").submit(function (e) {
         $("#Error-CamposEmpresas").text("Los campos son OBLIGATORIOS.");
     }
 })
+
+
