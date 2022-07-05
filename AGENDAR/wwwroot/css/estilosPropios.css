@@ -178,10 +178,13 @@
     background-color: #d8e2dc;
   
 }
+.card-footer {
+    padding: 0px !important;
+}
 .localidadTamaño {
     margin-bottom: 0rem;
     color: black;
-    
+   
 }
 .empresaModals {
     margin-right: 0px !important;
