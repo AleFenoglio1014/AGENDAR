@@ -49,12 +49,13 @@
             </div>
 
             <!--Agregado de Formulario dentro del Modal-->
-            <div class="modal-body">
-                <form>
+            <form id="frmFormulario" enctype="multipart/form-data">
+                <div class="modal-body">
+
                     <input type="hidden" id="EmpresaID" value="0" />
                     <div class="form-group">
                         <label for="recipient-name" class="control-label font-weight-bold">Razon Social</label>
-                        <input type="text" class="form-control" autocomplete="off" required id="RazonSocial">
+                        <input type="text" class="form-control" autocomplete="off" required name="razonSocial" id="RazonSocial">
                     </div>
                     <!--Lista de Localidades dentro del Dropdown de Empresa-->
                     <div class="row">
@@ -71,18 +72,18 @@
 
                     <div class="form-group">
                         <label for="recipient-name" class="control-label font-weight-bold">CUIT</label>
-                        <input type="number" class="form-control" autocomplete="off" required id="Cuit">
+                        <input type="number" class="form-control" autocomplete="off" required name="cuit" id="Cuit">
                     </div>
                     <div class="form-group">
                         <label for="recipient-name" class="control-label font-weight-bold">Dirreccion</label>
-                        <input type="text" class="form-control" autocomplete="off" required id="Direccion">
+                        <input type="text" class="form-control" autocomplete="off" required name="direccion" id="Direccion">
                     </div>
                     <div class="form-group">
                         <label for="recipient-name" class="control-label font-weight-bold">Telefono</label>
-                        <input type="number" class="form-control" autocomplete="off" required id="Telefono">
+                        <input type="number" class="form-control" autocomplete="off" required name="telefono" id="Telefono">
                         <p class="text-danger font-weight-bold" style="font-size:small" id="Error-CamposEmpresas"></p>
                     </div>
-                   
+
 
                     <div class="row">
                         <div class="col-lg-9">
@@ -91,16 +92,19 @@
                             <br />
                             <br />
                             <br />
-                            <input type="file" class="form-control" autocomplete="off" required id="ImagenEmpresa">
+                            <input type="file" class="form-control" autocomplete="off" required name="archivo" id="Archivo">
+
                         </div>
 
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" onclick="VaciarFormulario()" class="btn btn-outline-danger" data-dismiss="modal"><i class="bi bi-backspace"></i> Cerrar</button>
-                <button type="button" onclick="GuardarEmpresa()" class="btn btn-outline-success"><i class="bi bi-folder-check"></i> Guardar</button>
-            </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" onclick="VaciarFormulario()" class="btn btn-outline-danger" data-dismiss="modal"><i class="bi bi-backspace"></i> Cerrar</button>
+                    <input type="submit" value="Guardar" class="btn btn-outline-success">
+                    @*<button type="button" onclick="GuardarEmpresa()" class="btn btn-outline-success"><i class="bi bi-folder-check"></i> Guardar</button>*@
+                </div>
+            </form>
         </div>
     </div>
 </div>
