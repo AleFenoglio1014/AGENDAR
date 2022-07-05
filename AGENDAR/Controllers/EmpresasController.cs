@@ -9,6 +9,8 @@ using AGENDAR.Data;
 using AGENDAR.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace AGENDAR.Controllers
 {
@@ -60,6 +62,10 @@ namespace AGENDAR.Controllers
             clasificacionempresas.Add(new ClasificacionEmpresa { ClasificacionEmpresaID = 0, Descripcion = "[SELECCIONE TIPO DE EMPRESA]" });
             ViewBag.ClasificacionEmpresaID = new SelectList(clasificacionempresas.OrderBy(p => p.Descripcion), "ClasificacionEmpresaID", "Descripcion");
 
+
+          
+
+
             return View();
         }
 
@@ -70,8 +76,12 @@ namespace AGENDAR.Controllers
         {
             var empresas = _context.Empresa.Include(r => r.Localidades).Include(p => p.ClasificacionEmpresas).ToList();
 
+           
+
+
             List<EmpresasMostrar> listadoEmpresas = new List<EmpresasMostrar>();
-            
+
+           
             foreach (var empresa in empresas)
             {
                 var empresasMostrar = new EmpresasMostrar
@@ -85,6 +95,7 @@ namespace AGENDAR.Controllers
                     LocalidadNombre = empresa.Localidades.Descripcion,
                     ClasificacionEmpresaID = empresa.ClasificacionEmpresaID,
                     TipoEmpresa = empresa.ClasificacionEmpresas.Descripcion,
+                   
                     Eliminado = empresa.Eliminado
                   
 
@@ -100,20 +111,35 @@ namespace AGENDAR.Controllers
 
         // Funcion Guardar y Editar las Empresa
 
-        public JsonResult GuardarEmpresa(int EmpresaID, string RazonSocial, string CUIT, string Direccion, Int64 Telefono, int LocalidadID, int ClasificacionEmpresaID)
+        public JsonResult GuardarEmpresa(int EmpresaID, string razonSocial, string cUIT, string direccion, Int64 telefono, int LocalidadID, int ClasificacionEmpresaID, IFormFile archivo)
         {
             int resultado = 0;
             // Si es 0 es CORRECTO
             // Si es 1 el Campo Descripcion esta VACIO
             // Si es 2 el Registro YA EXISTE con la misma Descripcion
 
-            if (!string.IsNullOrEmpty(RazonSocial))
+            
+            string tipoImg = null;
+
+            if (!string.IsNullOrEmpty(razonSocial))
             {
-                RazonSocial = RazonSocial.ToUpper();
+                byte[] img = new byte[0];
+                if (archivo.Length > 0)
+                {
+                    using (var ms = new MemoryStream())
+                    {
+                        archivo.CopyTo(ms);
+                         img = ms.ToArray();
+                         tipoImg = archivo.ContentType;
+                        string base64 = Convert.ToBase64String(img);
+                        // act on the Base64 data
+                    }
+                }
+                razonSocial = razonSocial.ToUpper();
                 if (EmpresaID == 0)
                 {
                     // Antes de CREAR el registro debemos preguntar si existe una Empresa con la misma Descripcion
-                    if (_context.Empresa.Any(e => e.RazonSocial == RazonSocial && e.LocalidadID == LocalidadID ))
+                    if (_context.Empresa.Any(e => e.RazonSocial == razonSocial && e.LocalidadID == LocalidadID ))
                     {
                         resultado = 2;
                     }
@@ -123,14 +149,15 @@ namespace AGENDAR.Controllers
                         // Para eso creamos un objeto de tipo empresaNueva con los datos necesarios
                         var empresaNueva = new Empresa
                         {
-                            RazonSocial = RazonSocial,
-                            CUIT = CUIT,
-                            Direccion = Direccion,
-                            Telefono = Telefono,
+                            RazonSocial = razonSocial,
+                            CUIT = cUIT,
+                            Direccion = direccion,
+                            Telefono = telefono,
                             LocalidadID = LocalidadID,
-                            ClasificacionEmpresaID = ClasificacionEmpresaID
-
+                            ClasificacionEmpresaID = ClasificacionEmpresaID,
+                           ImagenEmpresaString = tipoImg
                         };
+                        empresaNueva.ImagenEmpresa = img;
                         _context.Add(empresaNueva);
                         _context.SaveChanges();
                     }
@@ -139,7 +166,7 @@ namespace AGENDAR.Controllers
                 else
                 {
                     // Antes de EDITAR el registro debemos preguntar si existe una Empresa con la misma Razon Social
-                    if (_context.Empresa.Any(e => e.RazonSocial == RazonSocial && e.EmpresaID != EmpresaID))
+                    if (_context.Empresa.Any(e => e.RazonSocial == razonSocial && e.EmpresaID != EmpresaID))
                     {
                         resultado = 2;
                     }
@@ -149,12 +176,14 @@ namespace AGENDAR.Controllers
                         // Buscamos el registro en la Base de Datos
                         var empresa = _context.Empresa.Single(m => m.EmpresaID == EmpresaID);
                         // Cambiamos la RazonSocial por la que ingreso el Usuario en la Vista
-                        empresa.RazonSocial = RazonSocial;
-                        empresa.CUIT = CUIT;
-                        empresa.Direccion = Direccion;
-                        empresa.Telefono = Telefono;
+                        empresa.RazonSocial = razonSocial;
+                        empresa.CUIT = cUIT;
+                        empresa.Direccion = direccion;
+                        empresa.Telefono = telefono;
                         empresa.LocalidadID = LocalidadID;
                         empresa.ClasificacionEmpresaID = ClasificacionEmpresaID;
+                        empresa.ImagenEmpresaString = tipoImg;
+                        empresa.ImagenEmpresa = img;
                         _context.SaveChanges();
                     }
 
@@ -162,7 +191,7 @@ namespace AGENDAR.Controllers
             }
             else
             {
-                if (_context.Empresa.Any(e => e.RazonSocial == RazonSocial))
+                if (_context.Empresa.Any(e => e.RazonSocial == razonSocial))
                 {
                     resultado = 1;
                 }
@@ -170,12 +199,13 @@ namespace AGENDAR.Controllers
                 {
                     var empresa = _context.Empresa.Single(m => m.EmpresaID == EmpresaID);
                     // Cambiamos la RazonSocial por la que ingreso el Usuario en la Vista
-                    empresa.RazonSocial = RazonSocial;
-                    empresa.CUIT = CUIT;
-                    empresa.Direccion = Direccion;
-                    empresa.Telefono = Telefono;
+                    empresa.RazonSocial = razonSocial;
+                    empresa.CUIT = cUIT;
+                    empresa.Direccion = direccion;
+                    empresa.Telefono = telefono;
                     empresa.LocalidadID = LocalidadID;
                     empresa.ClasificacionEmpresaID = ClasificacionEmpresaID;
+                    
                     _context.SaveChanges();
                 }
             };
