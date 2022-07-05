@@ -11,6 +11,7 @@ namespace AGENDAR.Models
         [Key]
         public int HorarioID { get; set; }
 
+        public int EmpresaID { get; set; }
         public DateTime HoraInicio { get; set; }
         public DateTime HoraFin { get; set; }
         

@@ -17,8 +17,8 @@ namespace AGENDAR.Models
         public int ProvinciaID { get; set; }
         public string CodPostal { get; set; }
 
-        //public int EmpresaID { get; set; }
         public bool Eliminado { get; set; }
+        public int EmpresaID { get; set; }
 
         public virtual Provincia Provincias { get; set; }
 

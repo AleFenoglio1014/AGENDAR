@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using AGENDAR.Data;
 using AGENDAR.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace AGENDAR.Controllers
 {
@@ -15,6 +16,12 @@ namespace AGENDAR.Controllers
     public class ProfesionalesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<IdentityUser> _userManager;
+        public ProfesionalesController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
+        {
+            _context = context;
+            _userManager = userManager;
+        }
 
         public ProfesionalesController(ApplicationDbContext context)
         {
@@ -34,9 +41,22 @@ namespace AGENDAR.Controllers
 
             return View();
         }
+
+        //Funcion para Buscar Empresa y Usuario
+        public void BuscarEmpresaActual(string usuarioActual, EmpresaUsuario empresaUsuarioActual)
+        {
+            empresaUsuarioActual = _context.EmpresasUsuarios.Where(p => p.UsuarioID == usuarioActual).SingleOrDefault();
+        }
+
         // Funcion para Completar la Tabla  de Profesionales 
         public JsonResult BuscarProfesionales()
         {
+            //PRIMERO BUSCAMOS EL USUARIO ACTUAL
+            var usuarioActual = _userManager.GetUserId(HttpContext.User);
+            //LUEGO EN BASE A ESE USUARIO BUSCAMOS LA EMPRESA CON LA QUE ESTA RELACIONADA
+            EmpresaUsuario empresaUsuarioActual = new EmpresaUsuario();
+            BuscarEmpresaActual(usuarioActual, empresaUsuarioActual);
+
             var profesionales = _context.Profesional.Include(r => r.Empresas).Include(p => p.ClasificacionProfesionales).ToList();
 
             List<ProfesionalesMostrar> listadoProfesional = new List<ProfesionalesMostrar>();

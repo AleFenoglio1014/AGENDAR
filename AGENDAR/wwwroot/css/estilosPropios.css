@@ -1,6 +1,6 @@
 ﻿
 .navbar-light .navbar-nav .nav-link {
-    color: rgb(4 56 114) !important;
+    color: black !important;
 
 }
 
@@ -18,7 +18,6 @@
     background-size: cover;
     background-attachment: fixed;
     background-position: center center;
-    
 }
 
 .contenedor {
@@ -52,27 +51,25 @@
     text-transform: uppercase;
     color: #dee2e6;
 }
-.colorTitulo {
-    color: black;
-}
+
 .titulo {
-    padding-top: 50px;
+    text-align:center;
     color: black;
 }
 /*MIEMBROS DEL EQUIPO*/
 .sumbrayado {
     display: flex;
-    max-width: 40rem;
+    max-width: 15rem;
     margin-top: 0rem;
     margin-bottom: 2rem;
     box-shadow: 3px 2px 4px 2px;
     color: black;
 }
 
+
 .div-miembros, .miembro, .redes-sociales {
     width: 100%;
     border-radius: 500%;
-
 }
 
 .miembros {
@@ -83,6 +80,7 @@
     text-align: center;
     color: #dee2e6;
     line-height: 1.7;
+    padding-bottom: 20px;
 }
 
 
@@ -152,39 +150,83 @@
     color: black;
 }
 
-/*//Boton inicioSesion*/
-.bn31 {
-    background-image: linear-gradient(to right, #468FAF 0%, #2C7DA0 100%);
-    border-radius: 40px;
-    box-sizing: border-box;
-    color: black;
-    display: block;
-    height: 40px;
-    font-size: 1.2em;
-    padding: 4px;
-    position: relative;
-    text-decoration: none;
-    width: 7em;
-    z-index: 2;
+
+/*Empresas tarjetas*/
+.clientes {
+    padding-bottom: 20px;
+}
+.card {
+    max-width: 200px;
+    margin: 1.75rem auto;
+    border: black 2px solid !important;
 }
 
-    .bn31:hover {
-        color: #fff;
+
+
+.card-title {
+    color: black;
+    font-weight: bold;
+    font-size: 15px;
+    margin-bottom: 0rem !important;
+    text-align:center;
+}
+
+.card-body {
+    padding: 2px !important;
+    font-size: 10px;
+    color: black;
+    background-color: #d8e2dc;
+  
+}
+.card-footer {
+    padding: 0px !important;
+}
+.localidadTamaño {
+    margin-bottom: 0rem;
+    color: black;
+   
+}
+.empresaModals {
+    margin-right: 0px !important;
+}
+/*CONTACTO*/
+.contacto {
+    padding-bottom: 20px;
+}
+.inputContacto {
+    padding: 5px !important;
+}
+.centrado {
+    padding-left: 50px;
+     margin-right: 0px !important;
+}
+.centradobotones {
+    padding-left: 52px;
+   
+}
+.tamañobotones {
+    width: 310px;
+
+}
+/*BOTON PARA VOLVER HACIA ARRIBA*/
+.top {
+    background-color: black;
+    color: white;
+    position: fixed;
+    width: 40px;
+    height: 43px;
+    border-radius: 3px;
+    right: 15px;
+    bottom: 15px;
+    transition: display 0.5s ease-in-out;
+    border-width: 0px;
+    z-index: 998;
+}
+
+    .top i {
+        font-size: 24px;
+        position: absolute;
+        top: 8px;
+        left: 9px;
     }
 
-    .bn31 .bn31span {
-        align-items: center;
-        background: #BFC9CA;
-        border-radius: 40px;
-        display: flex;
-        justify-content: center;
-        height: 100%;
-        transition: background 0.5s ease;
-        width: 100%;
-        color: black;
-        font-size: 18px;
-    }
-
-    .bn31:hover .bn31span {
-        background: transparent;
-    }

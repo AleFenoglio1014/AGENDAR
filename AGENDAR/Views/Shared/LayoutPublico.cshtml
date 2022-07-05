@@ -7,39 +7,49 @@
     <link href="~/css/estilosPropios.css" rel="stylesheet" />
     <link href="~/css/LayoutPublico.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+ 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light   box-shadow  colorNav">
-            <div class="container">
-                <a class="navbar-brand  " asp-area="" asp-controller="Home" asp-action="Index"><img src="~/lib/Imagenes/AGENDAR_LOGO_POSITIVO_02.png" class="img-fluid" width="120" alt="5px"></a>
-                <ul class="navbar-nav  ">
-
-                        <li class="nav-item">
-                            <a class="bn31" style="margin-right:10px" asp-area="Identity" asp-page="/Account/Login"><span class="bn31span font-weight-bold"> Mi Cuenta </span></a>
-                        </li>
-
-                        @*<li class="nav-item">
-                            <a class="bn31" asp-area="" asp-controller="Home" asp-action="IndexHomePublico"><span class="bn31span"> Solicitar Turno</span></a>
-                        </li>*@                   
+            <div class="container ">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/lib/Imagenes/AGENDAR_LOGO_POSITIVO_02.png" class="img-fluid" width="120" alt="5px"></a>
+                <ul class="navbar-nav flex-grow-1 ">
+                    <li class="nav-item">
+                        <a class="nav-link font-weight-bold" href="#Nosotros">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link font-weight-bold" href="#Equipo">Equipo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link font-weight-bold" href="#Clientes">Clientes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link font-weight-bold" href="#Contacto">Contacto</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ">
+                    <li class="nav-item">
+                        <a class="bn31" style="margin-right:10px" asp-area="Identity" asp-page="/Account/Login"><span class="bn31span font-weight-bold"> Mi Cuenta </span></a>
+                    </li>
                 </ul>
             </div>
         </nav>
     </header>
 
     <div class="body-content ">
-       
-            @RenderBody()
-     
-    </div>
 
+        @RenderBody()
+
+    </div>
+    <button id="top1" onclick="top1();" class="top" style="display: none;"><i class="bi bi-arrow-up"></i></button>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/Sweetalert.js" asp-append-version="true"></script>
-
+    <script src="~/js/backToTop.js.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>
