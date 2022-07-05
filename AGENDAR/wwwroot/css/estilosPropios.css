@@ -183,9 +183,11 @@
     color: black;
     
 }
-
+.empresaModals {
+    margin-right: 0px !important;
+}
 /*CONTACTO*/
-.contacto{
+.contacto {
     padding-bottom: 20px;
 }
 .inputContacto {
