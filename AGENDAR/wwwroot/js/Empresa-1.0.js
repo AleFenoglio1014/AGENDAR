@@ -15,6 +15,7 @@ function CompletarTablaEmpresas() {
                     '<td class="text-center">' + empresa.telefono + '</td>' +
                     '<td class="text-center">' + empresa.localidadNombre + '</td>' +
                     '<td class="text-center">' + empresa.tipoEmpresa + '</td>' +
+                    '<td>' + "<img class=' card-tamaño' src='data:img/jpeg;base64," + empresa.imagenEmpresaString + "' />" + '</td >' +
                     '<td class="text-center">' + '<button type="button" onclick="BuscarEmpresa(' + empresa.empresaID + ',' + empresa.localidadID + ')" class="btn btn-outline-primary btn-sm" style="margin-right:5px"><i class="bi bi-pencil-square"></i></button>'  +
                     '<button type="button" onclick="EliminarEmpresa(' + empresa.empresaID + ',1)" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash-fill"></i></button>' + '</td>' +
                     '</tr>');

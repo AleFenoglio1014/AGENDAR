@@ -98,7 +98,8 @@ namespace AGENDAR.Controllers
                     LocalidadNombre = empresa.Localidades.Descripcion,
                     ClasificacionEmpresaID = empresa.ClasificacionEmpresaID,
                     TipoEmpresa = empresa.ClasificacionEmpresas.Descripcion,
-                   
+                    ImagenEmpresa = empresa.ImagenEmpresa,
+                    ImagenEmpresaString = Convert.ToBase64String(empresa.ImagenEmpresa),
                     Eliminado = empresa.Eliminado
                   
 

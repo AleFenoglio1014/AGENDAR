@@ -23,6 +23,8 @@
     <Content Remove="Views\ClasificacionProfesionales\Details.cshtml" />
     <Content Remove="Views\ClasificacionProfesionales\Edit.cshtml" />
     <Content Remove="Views\Shared\VistaPublica.cshtml" />
+    <Content Remove="wwwroot\css\owl.carousel.min.css" />
+    <Content Remove="wwwroot\js\owl.carousel.min.js" />
     <Content Remove="wwwroot\lib\Imagenes\banner.png" />
     <Content Remove="wwwroot\lib\Imagenes\banner2.jpg" />
     <Content Remove="wwwroot\lib\Imagenes\banner3.jpg" />
