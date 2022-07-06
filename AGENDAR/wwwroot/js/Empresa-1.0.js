@@ -99,30 +99,25 @@ function AbrirModal() {
 
  // Funcion para Buscar las Empresas
 
-function BuscarEmpresa(empresaID, razonSocial, localidadID, clasificacionEmpresaID, telefono, cuit, direccion) {
-    VaciarFormulario();
+function BuscarEmpresa(empresaID) {
+    
     $("#titulo-Modal-Empresa").text("Editar Empresa");
     $("#EmpresaID").val(empresaID);
-    $("#RazonSocial").val(razonSocial);
-    $("#LocalidadID").val(localidadID);
-    $("#ClasificacionEmpresaID").val(clasificacionEmpresaID);
-    $("#Telefono").val(telefono);
-    $("#Cuit").val(cuit);
-    $("#Direccion").val(direccion);
-  
+ 
     $.ajax({
         type: "POST",
         url: '../../Empresas/BuscarEmpresa',
-        data: { RazonSocial: razonSocial, EmpresaID: empresaID, LocalidadID: localidadID, ClasificacionEmpresaID: clasificacionEmpresaID, Telefono: telefono, Cuit: cuit, Direccion: direccion },
+        data: {  EmpresaID: empresaID },
         success: function (empresa) {
+            $("#EmpresaID").val(empresa.empresaID);
             $("#RazonSocial").val(empresa.razonSocial);
             $("#LocalidadID").val(empresa.localidadID);
             $("#ClasificacionEmpresaID").val(empresa.clasificacionEmpresaID);
             $("#Telefono").val(empresa.telefono);
             $("#Cuit").val(empresa.cuit);
             $("#Direccion").val(empresa.direccion);
-           
             
+    
             $("#exampleModal").modal("show");
         },
         error: function (data) {
@@ -143,6 +138,7 @@ function VaciarFormulario() {
     $("#Telefono").val('');
     $("#Archivo").val('');
     $("#Error-RazonSocial").text("");
+    $("#Error-CamposEmpresas").text("");
 }
 
 //Funcion para eliminar la empresa
@@ -166,21 +162,17 @@ function EliminarEmpresa(empresID) {
 }
 // FUncion para Guardar las Empresas
 
-//sobreescribimos el metodo submit para que envie la solicitud por ajax
-$("#frmFormulario").submit(function (e) {
 
-    //esto evita que se haga la petición común, es decir evita que se refresque la pagina
-    e.preventDefault();
 
-    //ruta la cual recibira nuestro archivo
-    url = "../../Empresas/GuardarEmpresa";
 
-    //FormData es necesario para el envio de archivo,
-    //y de la siguiente manera capturamos todos los elementos del formulario
-    var parametros = new FormData($(this)[0])
-    $("#Error-RazonSocial").text("");
-    $("#Error-CamposEmpresas").text("");
-    
+function GuardarEmpresa() {
+ $("#Error-RazonSocial").text("");
+ $("#Error-CamposEmpresas").text("");
+
+    let url = "../../Empresas/GuardarEmpresa";
+    var parametros = new FormData($("#frmFormulario")[0]);
+
+  
     let cuit = $('#Cuit').val();
     let direccion = $('#Direccion').val();
     let telefono = $('#Telefono').val();
@@ -249,6 +241,5 @@ $("#frmFormulario").submit(function (e) {
     else {
         $("#Error-CamposEmpresas").text("Los campos son OBLIGATORIOS.");
     }
-})
-
+}
 

@@ -20,7 +20,7 @@ namespace AGENDAR.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<IdentityUser> _userManager;
-        private byte[] img;
+     
 
         //public EmpresasController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         //{
@@ -120,21 +120,23 @@ namespace AGENDAR.Controllers
             // Si es 1 el Campo Descripcion esta VACIO
             // Si es 2 el Registro YA EXISTE con la misma Descripcion
 
-            
-            string tipoImg = null;
-
             if (!string.IsNullOrEmpty(razonSocial))
             {
-                byte[] img = new byte[0];
-                if (archivo.Length > 0)
+                byte[] img = null;
+                string tipoImg = null;
+
+                if (archivo != null)
                 {
-                    using (var ms = new MemoryStream())
+                    if (archivo.Length > 0)
                     {
-                        archivo.CopyTo(ms);
-                         img = ms.ToArray();
-                         tipoImg = archivo.ContentType;
-                        string base64 = Convert.ToBase64String(img);
-                        // act on the Base64 data
+                        using (var ms = new MemoryStream())
+                        {
+                            archivo.CopyTo(ms);
+                            img = ms.ToArray();
+                            tipoImg = archivo.ContentType;
+                            //string base64 = Convert.ToBase64String(img);
+                            // act on the Base64 data
+                        }
                     }
                 }
                 razonSocial = razonSocial.ToUpper();
@@ -194,36 +196,12 @@ namespace AGENDAR.Controllers
 
                 }
             }
-            else
-            {
-                if (_context.Empresa.Any(e => e.RazonSocial == razonSocial))
+                else
                 {
                     resultado = 1;
                 }
-                else
-                {
-                    var empresa = _context.Empresa.Single(m => m.EmpresaID == EmpresaID);
-                    // Cambiamos la RazonSocial por la que ingreso el Usuario en la Vista
-                    empresa.RazonSocial = razonSocial;
-                    empresa.CUIT = cUIT;
-                    empresa.Direccion = direccion;
-                    empresa.Telefono = telefono;
-                    empresa.LocalidadID = LocalidadID;
-                    empresa.ClasificacionEmpresaID = ClasificacionEmpresaID;
-                     if (tipoImg != null)
-                        {
-                            empresa.ImagenEmpresaString = tipoImg;
-                            empresa.ImagenEmpresa = img;
-                        }
-
-                    _context.SaveChanges();
-                }
-            };
-
-
-            return Json(resultado);
-        }
-
+                return Json(resultado);
+            }
 
         // Funcion para Buscar la empresa
         public JsonResult BuscarEmpresa(int EmpresaID)
@@ -232,6 +210,7 @@ namespace AGENDAR.Controllers
 
             return Json(empresa);
         }
+       
 
         [AllowAnonymous]
         public JsonResult BuscarUltimasEmpresas()

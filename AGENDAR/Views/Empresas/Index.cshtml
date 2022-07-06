@@ -52,7 +52,7 @@
             <form id="frmFormulario" enctype="multipart/form-data">
                 <div class="modal-body">
 
-                    <input type="hidden" id="EmpresaID" value="0" />
+                    <input type="hidden" id="EmpresaID" name="EmpresaID" value="0" />
                     <div class="form-group">
                         <label for="recipient-name" class="control-label font-weight-bold">Razon Social</label>
                         <input type="text" class="form-control" autocomplete="off" required name="razonSocial" id="RazonSocial">
@@ -87,10 +87,10 @@
 
                     <div class="row">
                         <div class="col-lg-9">
-                            
+
                             <label for="recipient-name" class="control-label font-weight-bold">Imagen:</label>
                             <input type="file" class="form-control" autocomplete="off" required name="archivo" id="Archivo">
-
+                            
                         </div>
 
                     </div>
@@ -98,8 +98,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" onclick="VaciarFormulario()" class="btn btn-outline-danger" data-dismiss="modal"><i class="bi bi-backspace"></i> Cerrar</button>
-                    <input type="submit" value="Guardar" class="btn btn-outline-success">
-                    @*<button type="button" onclick="GuardarEmpresa()" class="btn btn-outline-success"><i class="bi bi-folder-check"></i> Guardar</button>*@
+                    <button type="button" onclick="GuardarEmpresa()" class="btn btn-outline-success"><i class="bi bi-folder-check"></i> Guardar</button>
                 </div>
             </form>
         </div>
