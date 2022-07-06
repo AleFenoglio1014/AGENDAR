@@ -9,8 +9,8 @@ function BuscarUltimasEmpresas() {
         success: function (listadoUltimasEmpresa) {
             $.each(listadoUltimasEmpresa, function (i, empresa) {
                 $('#empresa').append("<div class='col mb-4'>" +
-                    "<div class='card h-100'>" +
-                    "<img class='card-img-top card-alto' src='data:image/jpeg;base64," + empresa.ImagenEmpresaString + "' />" +
+                    "<div class='card h-95'>" +
+                    "<img class='card-img-top card-alto' src='data:img/jpeg;base64," + empresa.imagenEmpresaString + "' />" +
                     "<div class='card-body'>" +
                     "<h3 class='card-title'>" + empresa.razonSocial + "</h5>" +
                     "</div>" +
