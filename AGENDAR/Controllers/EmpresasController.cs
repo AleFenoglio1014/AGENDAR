@@ -20,6 +20,7 @@ namespace AGENDAR.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<IdentityUser> _userManager;
+
         //public EmpresasController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         //{
         //    _context = context;
