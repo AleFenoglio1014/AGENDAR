@@ -9,6 +9,7 @@
 }
 
 
+
 /*BANNER*/
 .banner {
     position: relative;
@@ -72,6 +73,10 @@
     margin-bottom: 2rem;
     box-shadow: 5px 2px 5px 2px;
     color: black;
+}
+.justify-content-center {
+    width: 1300px;
+   padding-left:80px;
 }
 .team .member {
     text-align: center;
@@ -161,6 +166,8 @@
     align-content:center;
 }
 
+
+
 /*REDES SOCIALES FOOTER*/
 .redes-sociales i {
     padding: 20px;
@@ -182,6 +189,7 @@
     padding-bottom: 20px;
     padding-right: 200px;
     padding-left: 200px;
+    padding-top: 100px;
 }
 .card {
     max-width: 200px;
@@ -227,14 +235,17 @@
 
 /*CONTACTO*/
 .contacto {
-    padding-bottom: 20px;
+    padding-bottom: 60px;
+   
 }
 .inputContacto {
     padding: 5px !important;
 }
 .centrado {
     padding-left: 50px;
-     margin-right: 0px !important;
+    margin-right: 0px !important;
+    padding-top: 70px;
+   
 }
 .centradobotones {
     padding-left: 52px;
