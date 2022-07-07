@@ -51,69 +51,70 @@
 
 <!-- SECCION EQUIPO -->
 
-<section id="Equipo">
+<section id="Equipo" class="team">
     <div class=" titulo ">
         <h1>  Equipo </h1>
         <hr class="sumbrayado" />
     </div>
-    <div class="miembros">
-        <div class="row box">
-            <div class="div-miembros col-lg-6">
-                <div class="miembro">
-                    <img class="logoMiembro" src="~/lib/Imagenes/AGENDAR_ISO_POSITIVO.png" />
-                    <div class="redes-sociales">
-                        <a href="#"><i class="bi bi-facebook"></i></a>
-                        <a href="#"><i class="bi bi-instagram"></i></a>
-                    </div>
-                    <div>
-                        <h4>AGENDAR</h4>
-                        <h6>Software Premium</h6>
-                    </div>
-                </div>
-            </div>
-            <div class="div-miembros col-lg-6">
-                <div class="miembro">
-                    <img src="~/lib/Imagenes/GONZALO.jpg" alt="">
-                    <div class="redes-sociales">
-                        <a href="https://www.facebook.com/gonzi.pagliano" target="_blank"><i class="bi bi-facebook"></i></a>
-                        <a href="https://www.instagram.com/gonzipagliano/" target="_blank"><i class="bi bi-instagram"></i></a>
-                    </div>
-                    <div>
-                        <h4>GONZALO PAGLIANO</h4>
-                        <h6>Tec. en Desarrollo de Software</h6>
-                    </div>
-                </div>
+    <div class="row justify-content-center">
+        <div class="col-xl-10">
+            <div class="row">
 
-            </div>
-            <div class="div-miembros col-lg-6">
-                <div class="miembro">
-                    <img src="~/lib/Imagenes/Vale2.jpg" alt="">
-                    <div class="redes-sociales">
-                        <a href="https://www.facebook.com/beletti7" target="_blank"><i class="bi bi-facebook"></i></a>
-                        <a href="https://www.instagram.com/vale_beletti7/" target="_blank"><i class="bi bi-instagram"></i></a>
-
+                <div class="col-xl-4 col-lg-3 col-md-6">
+                    <div class="member">
+                        <img src="~/lib/Imagenes/GONZALO2.1.0.jpg" class="img-fluid" alt="">
+                        <div class="member-info">
+                            <div class="member-info-content">
+                                <h4>Gonzalo Pagliano</h4>
+                                <span>Tec. en Desarrollo de Software</span>
+                            </div>
+                            <div class="social">
+                                <a href="https://www.facebook.com/gonzi.pagliano" target="_blank"><i class="bi bi-facebook"></i></a>
+                                <a href="https://www.instagram.com/gonzipagliano/" target="_blank"><i class="bi bi-instagram"></i></a>
+                                <a href=""><i class="bi bi-linkedin"></i></a>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <h4>VALENTIN BELETTI</h4>
-                        <h6>Tec. en Desarrollo de Software</h6>
+                </div> <!-- Fin Mienmbro nro3 -->
+                <div class="col-xl-4 col-lg-3 col-md-6">
+                    <div class="member">
+                        <img src="~/lib/Imagenes/ale2.1.0.jpg" class="img-fluid" alt="">
+                        <div class="member-info">
+                            <div class="member-info-content">
+                                <h4>Alejandro Fenoglio</h4>
+                                <span>Tec. en Desarrollo de Software</span>
+                            </div>
+                            <div class="social">
+                                <a href="https://www.facebook.com/ale10.fenoglio/" target="_blank"><i class="bi bi-facebook"></i></a>
+                                <a href="https://www.instagram.com/fenoglioale/" target="_blank"><i class="bi bi-instagram"></i></a>
+                                <a href=""><i class="bi bi-linkedin"></i></a>
+                            </div>
+                        </div>
                     </div>
+                </div> <!-- Fin Miembro nro2 -->
+                <div class="col-xl-4 col-lg-3 col-md-6">
+                    <div class="member">
+                        <img src="~/lib/Imagenes/Vale2.1.0.jpg" class="img-fluid" alt="">
+                        <div class="member-info">
+                            <div class="member-info-content">
+                                <h4>VALENTIN BELETTI</h4>
+                                <span>Tec. en Desarrollo de Software</span>
+                            </div>
+                            <div class="social">
+                                <a href="https://www.facebook.com/beletti7" target="_blank"><i class="bi bi-facebook"></i></a>
+                                <a href="https://www.instagram.com/vale_beletti7/" target="_blank"><i class="bi bi-instagram"></i></a>
+                                <a href=""><i class="bi bi-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- Fin Miembro nro3 -->
+                <div class="col-md-12 text-center">
+                    <img src="~/lib/Imagenes/AGENDAR_LOGO_COLOR_02.png" class="img-logoEquipo" />
                 </div>
+                
             </div>
-            <div class="div-miembros col-lg-6">
-                <div class="miembro">
-                    <img src="~/lib/Imagenes/ale2.1.jpg" alt="">
-                    <div class="redes-sociales">
-                        <a href="https://www.facebook.com/ale10.fenoglio/" target="_blank"><i class="bi bi-facebook"></i></a>
-                        <a href="https://www.instagram.com/fenoglioale/" target="_blank"><i class="bi bi-instagram"></i></a>
-                    </div>
-                    <div>
-                        <h4>ALEJANDRO FENOGLIO</h4>
-                        <h6>Tec. en Desarrollo de Software</h6>
-                    </div>
-                </div>
-            </div>
+         </div>
         </div>
-    </div>
 </section>
 
 <!-- SECCION EMPRESAS -->
@@ -226,5 +227,43 @@
     <script src="~/js/Index.js"></script>
     <script>
         window.onload = BuscarUltimasEmpresas();
+    </script>
+
+    @*FUNCION PARA QUE CADA SECCION OCUPE EL ALTO DE LA PANTALLA*@
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            var height = $(window).height();
+
+            $('#Nosotros').height(height);
+        });
+    </script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            var height = $(window).height();
+
+            $('#Equipo').height(height);
+        });
+    </script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            var height = $(window).height();
+
+            $('#Clientes').height(height);
+        });
+    </script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            var height = $(window).height();
+
+            $('#Contacto').height(height);
+        });
     </script>
 }
