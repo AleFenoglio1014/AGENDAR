@@ -23,10 +23,10 @@ namespace AGENDAR.Controllers
             _userManager = userManager;
         }
 
-        public ProfesionalesController(ApplicationDbContext context)
-        {
-            _context = context;
-        }
+        //public ProfesionalesController(ApplicationDbContext context)
+        //{
+        //    _context = context;
+        //}
 
         // GET: Profesionales
         public IActionResult Index()
