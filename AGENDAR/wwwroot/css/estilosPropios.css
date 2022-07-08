@@ -9,6 +9,7 @@
 }
 
 
+
 /*BANNER*/
 .banner {
     position: relative;
@@ -53,90 +54,121 @@
     color: #dee2e6;
 }
 
+
+
+/*--------------------------------------------------------------
+# Equipo
+--------------------------------------------------------------*/
 .titulo {
-    text-align:center;
+    padding-top: 25px;
+    text-align: center;
+    -webkit-text-stroke: 0.7px white;
+    font-family: 'Arial Rounded MT';
     color: black;
 }
-/*MIEMBROS DEL EQUIPO*/
 .sumbrayado {
     display: flex;
     max-width: 15rem;
     margin-top: 0rem;
     margin-bottom: 2rem;
-    box-shadow: 3px 2px 4px 2px;
+    box-shadow: 5px 2px 5px 2px;
     color: black;
 }
-
-
-.div-miembros, .miembro, .redes-sociales {
-    width: 100%;
-    border-radius: 500%;
+.justify-content-center {
+    width: 1300px;
+   padding-left:80px;
 }
-
-.miembros {
-    /*grid-area: nosotros;*/
-    max-width: 1100px;
-    margin: auto;
-    margin-top: 30px;
+.team .member {
     text-align: center;
-    color: #dee2e6;
-    line-height: 1.7;
-    padding-bottom: 20px;
-}
-
-
-.box {
-    display: flex;
-}
-
-.div-miembros {
-    width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    background: #343a40;
     position: relative;
-    padding: 30px;
-    flex-wrap: wrap-reverse;
-
+    overflow: hidden;
+    border-radius: 4px;
 }
 
-.div-miembros img {
-    height: 250px;
-    border-radius: 50%;
-    object-fit: cover; 
+    .team .member .member-info {
+        opacity: 0;
+        position: absolute;
+        bottom: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+        transition: 0.2s;
     }
 
-.logoMiembro {
+    .team .member .member-info-content {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 10px;
+        transition: bottom 0.4s;
+    }
+
+        .team .member .member-info-content h4 {
+            font-weight: 700;
+            margin-bottom: 2px;
+            font-size: 18px;
+            color: #fff;
+        }
+
+        .team .member .member-info-content span {
+            font-style: italic;
+            display: block;
+            font-size: 13px;
+            color: #fff;
+        }
+
+    .team .member .social {
+        position: absolute;
+        left: 0;
+        bottom: -38px;
+        right: 0;
+        height: 48px;
+        transition: bottom ease-in-out 0.4s;
+        text-align: center;
+    }
+
+        .team .member .social a {
+            transition: color 0.3s;
+            color: #fff;
+            margin: 0 10px;
+            display: inline-block;
+        }
+
+            .team .member .social a:hover {
+                color: #428bca;
+            }
+
+        .team .member .social i {
+            font-size: 18px;
+            margin: 0 2px;
+        }
+
+    .team .member:hover .member-info {
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.8) 20%, rgba(0, 212, 255, 0) 100%);
+        opacity: 1;
+        transition: 0.4s;
+    }
+
+    .team .member:hover .member-info-content {
+        bottom: 60px;
+        transition: bottom 0.4s;
+    }
+
+    .team .member:hover .social {
+        bottom: 0;
+        transition: bottom ease-in-out 0.4s;
+    }
+.img-logoEquipo {
+    width: 80%;
+    margin-top: 40px;
     align-content:center;
 }
 
-.redes-sociales {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(247, 247, 247, 0.6);
-    color: rgb(236, 23, 128, 0.3);
-    height: 0%; /*PARA APLICAR EL HOVER QUE SALGA DESDE ABAJO*/
-    line-height: 280px;
-    transition: all 500ms ease;
-    opacity: 0; /*TODO LO SOLIDO PASA A SER TRANSPARENTE*/
-       visibility: hidden; /*ICONOS DE REDES OCULTOS*/
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-    top: -10px;
- /*   opacity: 1;
-    visibility: visible;
-    height: 100%;*/
-}
 
-.div-miembros:hover .redes-sociales {
-    opacity: 1;
-    visibility: visible;
-    height: 90%; /*HOVER SALIENDO DESDE ABAJO*/
-  width:90%; 
-  left:5%;
-}
 
+/*REDES SOCIALES FOOTER*/
 .redes-sociales i {
     padding: 20px;
     font-size: 35px;
@@ -157,6 +189,7 @@
     padding-bottom: 20px;
     padding-right: 200px;
     padding-left: 200px;
+    padding-top: 100px;
 }
 .card {
     max-width: 200px;
@@ -202,14 +235,17 @@
 
 /*CONTACTO*/
 .contacto {
-    padding-bottom: 20px;
+    padding-bottom: 60px;
+   
 }
 .inputContacto {
     padding: 5px !important;
 }
 .centrado {
     padding-left: 50px;
-     margin-right: 0px !important;
+    margin-right: 0px !important;
+    padding-top: 70px;
+   
 }
 .centradobotones {
     padding-left: 52px;
