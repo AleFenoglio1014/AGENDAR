@@ -1,5 +1,5 @@
 ﻿
-// Funcion para Completar la Tabla de Empresas
+
 function BuscarUltimasEmpresas() {
    
     $.ajax({
@@ -8,7 +8,7 @@ function BuscarUltimasEmpresas() {
         data: {},
         success: function (listadoUltimasEmpresa) {
             $.each(listadoUltimasEmpresa, function (i, empresa) {
-                $('#empresa').append("<div class='col mb-4'>" +
+                $('#empresa').append("<div class='col mb-4 '>" +
                     "<div class='card h-95'>" +
                     "<img class='card-img-top card-alto' src='data:img/jpeg;base64," + empresa.imagenEmpresaString + "' />" +
                     "<div class='card-body'>" +
@@ -28,4 +28,9 @@ function BuscarUltimasEmpresas() {
         }
     });
 }
+
+ 
+    
+
+  
 

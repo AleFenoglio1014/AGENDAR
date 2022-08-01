@@ -74,7 +74,7 @@ body {
 }
 
 .letrainput{
-    font-size:11px;
+    font-size:11px !important;
 }
 
 .inputInicio{
@@ -112,6 +112,7 @@ body {
     position: relative;
     text-decoration: none;
     width: 7em;
+    height: 50px;
     z-index: 2;
 }
 
@@ -134,4 +135,27 @@ body {
 
     .bn31:hover .bn31span {
         background: transparent;
+    }
+
+
+/*Boton subir archivo*/
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+    .btn-file input[type=file] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        min-width: 100%;
+        min-height: 100%;
+        font-size: 100px;
+        text-align: right;
+        filter: alpha(opacity=0);
+        opacity: 0;
+        outline: none;
+        background: white;
+        cursor: inherit;
+        display: block;
     }

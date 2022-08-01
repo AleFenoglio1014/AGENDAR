@@ -290,3 +290,16 @@
 .card-tamaño {
     height: 50px !important;
 }
+ /*CLASES MODAL PRIVADO */
+.modal-header {
+    background-color: #454d55;
+    color: white;
+}
+
+.close{
+    color:white !important;
+}
+
+.margen{
+    margin-bottom:0px !important;
+}

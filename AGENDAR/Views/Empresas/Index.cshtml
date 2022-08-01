@@ -72,38 +72,42 @@
                             @Html.DropDownList("ClasificacionEmpresaID", null, htmlAttributes: new { @class = "form-control letrainput" })
                         </div>
                     </div>
-
-                    <div class="form-group">
-                        <label for="recipient-name" class="control-label font-weight-bold">CUIT</label>
-                        <input type="number" class="form-control" autocomplete="off" required name="cuit" id="Cuit">
+                    <div class="row ">
+                        <div class="form-group col-md-6 margen ">
+                            <label for="recipient-name" class="control-label font-weight-bold">CUIT</label>
+                            <input type="number" class="form-control" autocomplete="off" required name="cuit" id="Cuit">
+                        </div>
+                        <div class="form-group col-md-6 margen">
+                            <label for="recipient-name" class="control-label font-weight-bold">Telefono</label>
+                            <input type="number" class="form-control" autocomplete="off" required name="telefono" id="Telefono">
+                            <p class="text-danger font-weight-bold" style="font-size:small" id="Error-CamposEmpresas"></p>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="recipient-name" class="control-label font-weight-bold">Dirreccion</label>
-                        <input type="text" class="form-control" autocomplete="off" required name="direccion" id="Direccion">
-                    </div>
-                    <div class="form-group">
-                        <label for="recipient-name" class="control-label font-weight-bold">Telefono</label>
-                        <input type="number" class="form-control" autocomplete="off" required name="telefono" id="Telefono">
-                        <p class="text-danger font-weight-bold" style="font-size:small" id="Error-CamposEmpresas"></p>
-                    </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="control-label font-weight-bold">Dirreccion</label>
+                            <input type="text" class="form-control" autocomplete="off" required name="direccion" id="Direccion">
+                        </div>
+                    
+                       
 
 
-                    <div class="row">
-                        <div class="col-lg-9">
+                        <div class="row">
+                            <div class="col-lg-9">
 
-                            <label for="recipient-name" class="control-label font-weight-bold">Imagen:</label>
-                            <input type="file" class="form-control" autocomplete="off" required name="archivo" id="Archivo">
-                            
+
+                                <span class="btn btn-success btn-file">
+                                    <i class="bi bi-cloud-arrow-up-fill"></i> Subir archivo <input type="file" autocomplete="off" required name="archivo" id="Archivo">
+                                </span>
+                            </div>
+
                         </div>
 
                     </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" onclick="VaciarFormulario()" class="btn btn-outline-danger" data-dismiss="modal"><i class="bi bi-backspace"></i> Cerrar</button>
-                    <button type="button" onclick="GuardarEmpresa()" class="btn btn-outline-success"><i class="bi bi-folder-check"></i> Guardar</button>
-                </div>
-            </form>
+                    <div class="modal-footer">
+                        <button type="button" onclick="VaciarFormulario()" class="btn btn-outline-danger" data-dismiss="modal"><i class="bi bi-backspace"></i> Cerrar</button>
+                        <button type="button" onclick="GuardarEmpresa()" class="btn btn-outline-success"><i class="bi bi-folder-check"></i> Guardar</button>
+                    </div>
+</form>
         </div>
     </div>
 </div>

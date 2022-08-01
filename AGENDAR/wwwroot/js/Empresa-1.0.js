@@ -104,6 +104,7 @@ function BuscarEmpresa(empresaID) {
     
     $("#titulo-Modal-Empresa").text("Editar Empresa");
     $("#EmpresaID").val(empresaID);
+
  
     $.ajax({
         type: "POST",
@@ -118,7 +119,6 @@ function BuscarEmpresa(empresaID) {
             $("#Cuit").val(empresa.cuit);
             $("#Direccion").val(empresa.direccion);
             
-    
             $("#exampleModal").modal("show");
         },
         error: function (data) {
