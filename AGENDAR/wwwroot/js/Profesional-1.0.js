@@ -25,7 +25,7 @@ function CompletarTablaProfesionales() {
 
 //Funcion Abrir Modal
 function AbrirModal() {
-    $("#titulo-Modal-Profesional").text("Registrar un Nuevo Profesional");
+    $("#titulo-Modal-Profesional").text("REGISTRAR UN NUEVO PROFESIONAL");
     $("#ProfesionalID").val(0);
     $("#exampleModal").modal("show");
 }
@@ -96,7 +96,7 @@ function GuardarProfesional() {
 // Funcion para Buscar el Profesional
 
 function BuscarProfesional(profesionalID, nombre, apellido, empresaID,clasificacionProfesionalID) {
-    $("#titulo-Modal-Profesional").text("Editar Profesional");
+    $("#titulo-Modal-Profesional").text("EDITAR PROFESIONAL");
     $("#ProfesionalID").val(profesionalID);
     $("#Nombre").val(nombre);
     $("#Apellido").val(apellido);

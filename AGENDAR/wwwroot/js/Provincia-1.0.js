@@ -30,7 +30,7 @@ function CompletarTablaProvincias() {
 //Funcion Abrir Modal
 
 function AbrirModal() {
-    $("#titulo-Modal-Provincias").text("Registrar Nueva Provincia");
+    $("#titulo-Modal-Provincias").text("REGISTRAR UNA NUEVA PROVINCIA");
     $("#ProvinciaID").val(0);
     $("#exampleModal").modal("show");
 }
@@ -65,7 +65,7 @@ function GuardarProvincia() {
 // Funcion para Buscar las Provincias
 
 function BuscarProvincia(provinciaID) {
-    $("#titulo-Modal-Provincias").text("Editar Provincia");
+    $("#titulo-Modal-Provincias").text("EDITAR PROVINCIA");
     $("#ProvinciaID").val(provinciaID);
     $.ajax({
         type: "POST",
