@@ -103,6 +103,7 @@ function VaciarFormulario() {
     $("#LocalidadNombre").val('');
     $("#Error-LocalidadNombre").text("");
     $("#Error-ProvinciaNombre").text("");
+    $("#Error-CodPostal").text("");
 }
 //Funcion para Desactivar la Localidad
 

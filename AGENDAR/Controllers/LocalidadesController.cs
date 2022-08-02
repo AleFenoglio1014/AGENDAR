@@ -121,6 +121,11 @@ namespace AGENDAR.Controllers
                     {
                         resultado = 2;
                     }
+                    if (_context.Localidad.Any(e => e.CodPostal == CodPostal))
+                    {
+                        resultado = 3;
+                    }
+
                     else
                     {
                         // Aca va a ir el codigo para EDITAR una Localidad
