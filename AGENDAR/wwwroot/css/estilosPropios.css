@@ -13,7 +13,8 @@
 
 
 .header.sticked {
-    background: rgba(14, 29, 52, 0.9);
+    background: #677297;
+    transition: 0.8s;
 }
 
 
@@ -53,10 +54,10 @@
 }
 .img-presentacion {
     width: 90%;
-    margin-top: 110px;
+    margin-top: 10px;
 }
 .texto-presentacion {
-    font-weight: 700;
+    font-weight:300;
     text-transform: uppercase;
     color: #dee2e6;
 }
@@ -69,9 +70,10 @@
 .titulo {
     padding-top: 25px;
     text-align: center;
-    -webkit-text-stroke: 0.7px white;
-    font-family: 'Arial Rounded MT';
-    color: black;
+    /*-webkit-text-stroke: 0.7px white;*/
+    font-family: Candara;
+    font-weight:900;
+    color: #bab0b0;
 }
 .sumbrayado {
     display: flex;
@@ -79,7 +81,7 @@
     margin-top: 0rem;
     margin-bottom: 2rem;
     box-shadow: 5px 2px 5px 2px;
-    color: black;
+    color: white;
 }
 .tamañoEquipo {
     padding-bottom: 20px;
