@@ -11,8 +11,7 @@ function CompletarTablaLocalidades() {
 
                 let claseEliminado = '';
                 let botones = '<button type="button" onclick="BuscarLocalidad(' + localidad.localidadID + ',' + localidad.provinciaID + ')" class="btn btn-outline-primary btn-sm" style="margin-right:5px"><i class="bi bi-pencil-square"></i> Editar</button>' +
-                    '<button type="button" onclick="DesactivarLocalidad(' + localidad.localidadID + ',1)" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash-fill"></i> Desacctivar</button>';
-
+                    '<button type="button" onclick="DesactivarLocalidad(' + localidad.localidadID + ',1)" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash-fill"></i> Desactivar</button>';
                 if (localidad.eliminado) {
                     claseEliminado = 'table-danger';
                     botones = '<button type="button" onclick="DesactivarLocalidad(' + localidad.localidadID + ',0)" class="btn btn-outline-success btn-sm"><i class="bi bi-folder-symlink"></i> Activar</button>';
@@ -34,7 +33,7 @@ function CompletarTablaLocalidades() {
 }
 //Funcion Abrir Modal
 function AbrirModal() {
-    $("#titulo-Modal-Localidades").text("Registrar una Nueva Localidad");
+    $("#titulo-Modal-Localidades").text("REGISTRAR UNA NUEVA LOCALIDAD");
     $("#LocalidadID").val(0);
     $("#exampleModal").modal("show");
 }
@@ -76,7 +75,7 @@ function GuardarLocalidad() {
 
 function BuscarLocalidad(localidadID, codPostal, provinciaID) {
     VaciarFormulario();
-    $("#titulo-Modal-Localidades").text("Editar Localidad");
+    $("#titulo-Modal-Localidades").text("EDITAR LOCALIDAD");
     $("#LocalidadID").val(localidadID);
     $("#CodPostal").val(codPostal);
     $("#ProvinciaID").val(provinciaID);

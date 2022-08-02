@@ -28,7 +28,7 @@ function CompletarTablaHorario() {
 //Funcion Abrir Modal
 
 function AbrirModal() {
-    $("#titulo-Modal-Horario").text("Nuevo Horario");
+    $("#titulo-Modal-Horario").text("NUEVO HORARIO");
     $("#HorarioID").val(0);
     $("#HoraInicio").val('00:00');
     $("#HoraFin").val('00:00');
@@ -67,7 +67,7 @@ function GuardarHorario() {
 
 function BuscarHorario(horarioID) {
     VaciarFormulario();
-    $("#titulo-Modal-Horario").text("Editar Horario ");
+    $("#titulo-Modal-Horario").text("EDITAR HORARIO");
     $("#HorarioID").val(horarioID);
     $.ajax({
         type: "POST",

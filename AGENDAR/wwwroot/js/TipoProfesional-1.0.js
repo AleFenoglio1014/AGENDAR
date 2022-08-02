@@ -27,7 +27,7 @@ function CompletarTablaTipoProfesionales() {
 //Funcion Abrir Modal
 
 function AbrirModal() {
-    $("#titulo-Modal-TipoProfesional").text("Registrar Actividad del Profesional");
+    $("#titulo-Modal-TipoProfesional").text("REGISTRAR ACTIVIDAD DEL PROFESIONAL");
     $("#ClasificacionProfesionalID").val(0);
     $("#exampleModal").modal("show");
 }
@@ -62,7 +62,7 @@ function GuardarTipoProfesional() {
 // Funcion para Buscar las Actividades del Profesional
 
 function BuscarTipoProfesional(clasificacionProfesionalID) {
-    $("#titulo-Modal-TipoProfesional").text("Editar Actividad del Profesional");
+    $("#titulo-Modal-TipoProfesional").text("EDITAR ACTIVIDAD DEL PROFESIONAL");
     $("#ClasificacionProfesionalID").val(clasificacionProfesionalID);
     $.ajax({
         type: "POST",

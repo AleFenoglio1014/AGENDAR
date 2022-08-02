@@ -67,6 +67,7 @@ namespace AGENDAR.Controllers
                     CodPostal = localidad.CodPostal,
                     ProvinciaID = localidad.ProvinciaID,
                     ProvinciaNombre = localidad.Provincias.Descripcion,
+                    Eliminado = localidad.Eliminado
 
                 };
                 listadoLocalidadesMostrar.Add(localidadMostrar);
