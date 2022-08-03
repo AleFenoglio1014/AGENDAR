@@ -6,10 +6,7 @@
 
 <h1>Empresas</h1>
 
-<p>
-    <!-- Boton Modal -->
-    <button class="btn btn-outline-success" onclick="AbrirModal()"><i class="bi bi-folder-plus"></i> Agregar Empresa</button>
-</p>
+
 
 <table class="table table-bordered">
     <thead class="table-dark">
@@ -43,25 +40,25 @@
 </table>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+<!--<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="titulo-Modal-Empresa"></h5>
                 <button type="button" class="close" data-dismiss="modal" onclick="VaciarFormulario()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            </div>
+            </div>-->
 
             <!--Agregado de Formulario dentro del Modal-->
-            <form id="frmFormulario" enctype="multipart/form-data">
+            <!--<form id="frmFormulario" enctype="multipart/form-data">
                 <div class="modal-body">
 
                     <input type="hidden" id="EmpresaID" name="EmpresaID" value="0" />
                     <div class="form-group">
                         <label for="recipient-name" class="control-label font-weight-bold">Razon Social</label>
                         <input type="text" class="form-control" autocomplete="off" required name="razonSocial" id="RazonSocial">
-                    </div>
+                    </div>-->
                     <!--Lista de Localidades dentro del Dropdown de Empresa-->
-                    <div class="row">
+                    <!--<div class="row">
                         <div class="form-group col-md-6">
                             <label class="control-label font-weight-bold">Localidad</label>
                             @Html.DropDownList("LocalidadID", null, htmlAttributes: new { @class = "form-control letrainput" })
@@ -110,7 +107,7 @@
 </form>
         </div>
     </div>
-</div>
+</div>-->
 
 @*//Funcion para Completar la Tabla de Empresas*@
 
