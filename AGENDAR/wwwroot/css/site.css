@@ -5,7 +5,7 @@ Body {
     image-resolution: 300dpi;
 
 }
-.bodyCrearEmpresa, h1, label {
+.bodyCrearEmpresa, h1, labelCrearEmpresa {
     color: white;
 }
 a.navbar-brand {

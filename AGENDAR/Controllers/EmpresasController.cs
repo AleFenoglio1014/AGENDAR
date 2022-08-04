@@ -28,10 +28,10 @@ namespace AGENDAR.Controllers
             _userManager = userManager;
         }
 
-        public EmpresasController(ApplicationDbContext context)
-        {
-            _context = context;
-        }
+        //public EmpresasController(ApplicationDbContext context)
+        //{
+        //    _context = context;
+        //}
 
 
         //Funcion para Guardar Usuario Completo
@@ -88,7 +88,7 @@ namespace AGENDAR.Controllers
             clasificacionempresas.Add(new ClasificacionEmpresa { ClasificacionEmpresaID = 0, Descripcion = "[SELECCIONE TIPO DE EMPRESA]" });
             ViewBag.ClasificacionEmpresaID = new SelectList(clasificacionempresas.OrderBy(p => p.Descripcion), "ClasificacionEmpresaID", "Descripcion");
             return View();
-            return View();
+           
         }
         public IActionResult Create()
         {
