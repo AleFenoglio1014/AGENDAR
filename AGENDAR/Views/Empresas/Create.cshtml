@@ -14,34 +14,34 @@
 
         <input type="hidden" id="EmpresaID" name="EmpresaID" value="0" />
         <div class="form-group">
-            <label for="recipient-name" class="control-label font-weight-bold">Razon Social</label>
+            <label for="recipient-name" class="control-label font-weight-bold labelCrearEmpresa">Razon Social</label>
             <input type="text" class="form-control" autocomplete="off" required name="razonSocial" id="RazonSocial">
         </div>
         <!--Lista de Localidades dentro del Dropdown de Empresa-->
         <div class="row">
             <div class="form-group col-md-6">
-                <label class="control-label font-weight-bold">Localidad</label>
+                <label class="control-label font-weight-bold labelCrearEmpresa">Localidad</label>
                 @Html.DropDownList("LocalidadID", null, htmlAttributes: new { @class = "form-control letrainput" })
             </div>
 
             <div class="form-group col-md-6">
-                <label class="control-label font-weight-bold">Tipo de Empresa</label>
+                <label class="control-label font-weight-bold labelCrearEmpresa">Tipo de Empresa</label>
                 @Html.DropDownList("ClasificacionEmpresaID", null, htmlAttributes: new { @class = "form-control letrainput" })
             </div>
         </div>
         <div class="row ">
             <div class="form-group col-md-6 margen ">
-                <label for="recipient-name" class="control-label font-weight-bold">CUIT</label>
+                <label for="recipient-name" class="control-label font-weight-bold labelCrearEmpresa">CUIT</label>
                 <input type="number" class="form-control" autocomplete="off" required name="cuit" id="Cuit">
             </div>
             <div class="form-group col-md-6 margen">
-                <label for="recipient-name" class="control-label font-weight-bold">Telefono</label>
+                <label for="recipient-name" class="control-label font-weight-bold labelCrearEmpresa">Telefono</label>
                 <input type="number" class="form-control" autocomplete="off" required name="telefono" id="Telefono">
                 <p class="text-danger font-weight-bold" style="font-size:small" id="Error-CamposEmpresas"></p>
             </div>
         </div>
         <div class="form-group">
-            <label for="recipient-name" class="control-label font-weight-bold">Dirreccion</label>
+            <label for="recipient-name" class="control-label font-weight-bold labelCrearEmpresa">Dirreccion</label>
             <input type="text" class="form-control" autocomplete="off" required name="direccion" id="Direccion">
         </div>
 
