@@ -71,10 +71,14 @@ namespace AGENDAR.Controllers
 
             return View();
         }
+        public IActionResult Create()
+        {
+            return View();
+        }
 
 
         // Funcion para Completar la Tabla  de Empresas 
-      
+
         public JsonResult BuscarEmpresas()
         {
             var empresas = _context.Empresa.Include(r => r.Localidades).Include(p => p.ClasificacionEmpresas).ToList();
