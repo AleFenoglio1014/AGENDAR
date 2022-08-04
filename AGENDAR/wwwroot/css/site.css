@@ -1,8 +1,12 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 Body {
-    background-image: url(../lib/Imagenes/persona-y-computador-4.jpg);
+    background-image: url('../lib/Imagenes/persona-y-computador-4.jpg');
     image-resolution: 300dpi;
+
+}
+.bodyCrearEmpresa, h1, label {
+    color: white;
 }
 a.navbar-brand {
   white-space: normal;
@@ -149,6 +153,7 @@ body {
 .btn-file {
     position: relative;
     overflow: hidden;
+    width: 200px;
 }
 
     .btn-file input[type=file] {
@@ -167,3 +172,12 @@ body {
         display: block;
         
     }
+.espacioBotones{
+    padding-bottom:16px;
+}
+thead {
+    background: #a5a5a5 !important;
+}
+table, th, td {
+    border: 1px solid black !important;
+}

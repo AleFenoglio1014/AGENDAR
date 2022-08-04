@@ -8,7 +8,7 @@ function CompletarTablaEmpresas() {
         success: function (listadoEmpresasMostrar) {
             $("#tbody-empresa").empty();
             $.each(listadoEmpresasMostrar, function (index, empresa) {
-                $("#tbody-empresa").append('<tr>' +
+                $("#tbody-empresa ").append('<tr>' +
                     '<td class="text-center">' + empresa.razonSocial + '</td>' +
                     '<td class="text-center">' + empresa.cuit + '</td>' +
                     '<td class="text-center">' + empresa.direccion + '</td>' +

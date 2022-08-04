@@ -3,11 +3,10 @@
 @{
     ViewData["Title"] = "Create";
 }
-
-<body class="bodycrear">
-
+<body class="bodyCrearEmpresa">
 
 
+    <h1 class="text-center"><u> CREAR EMPRESA</u></h1>
 
     <!--Agregado de Formulario dentro del Modal-->
     <form id="frmFormulario" enctype="multipart/form-data">
@@ -50,23 +49,22 @@
 
 
         <div class="row">
-            <div class="col-lg-9">
+            <div class="col-lg-9 espacioBotones">
 
 
-                <span class="btn btn-success btn-file">
+                <span class="btn btn-secondary btn-file">
                     <i class="bi bi-cloud-arrow-up-fill"></i> Subir Imagen <input type="file" autocomplete="off" required name="archivo" id="Archivo">
                 </span>
             </div>
 
         </div>
-
-
-        <button type="button" onclick="VaciarFormulario()" class="btn btn-outline-danger" data-dismiss="modal"><i class="bi bi-backspace"></i> Borrar</button>
-        <button type="button" onclick="GuardarEmpresa()" class="btn btn-outline-success"><i class="bi bi-folder-check"></i> Guardar</button>
-
+        <div class="form-group">
+            <button type="button" onclick="GuardarEmpresa()" class="btn btn-success"><i class="bi bi-folder-check"></i> Guardar</button>
+            <button type="button" onclick="VaciarFormulario()" class="btn btn-danger" data-dismiss="modal"><i class="bi bi-backspace"></i> Borrar</button>
+        </div>
     </form>
-
 </body>
+
 @section Scripts {
     <script src="~/js/Empresa-1.0.js"></script>
     <script>
