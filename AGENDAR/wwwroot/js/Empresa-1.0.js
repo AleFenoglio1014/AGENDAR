@@ -39,17 +39,21 @@ function CompletarTablaEmpresas() {
 
 //Funcion Abrir Modal
 function AbrirModal() {
-    $("#titulo-Modal-Empresa").text("Registrar una Nueva Empresa");
+    $("#titulo-Modal-Empresa").text("REGISTRAR UNA NUEVA EMPRESA");
     $("#EmpresaID").val(0);
     $("#exampleModal").modal("show");
 }
+
+
+
 
  // Funcion para Buscar las Empresas
 
 function BuscarEmpresa(empresaID) {
     
-    $("#titulo-Modal-Empresa").text("Editar Empresa");
+    $("#titulo-Modal-Empresa").text("EDITAR EMPRESA");
     $("#EmpresaID").val(empresaID);
+
  
     $.ajax({
         type: "POST",
@@ -64,7 +68,6 @@ function BuscarEmpresa(empresaID) {
             $("#Cuit").val(empresa.cuit);
             $("#Direccion").val(empresa.direccion);
             
-    
             $("#exampleModal").modal("show");
         },
         error: function (data) {

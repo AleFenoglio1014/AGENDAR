@@ -27,7 +27,7 @@ function CompletarTablaTipoEmpresas() {
 //Funcion Abrir Modal
 
 function AbrirModal() {
-    $("#titulo-Modal-TipoEmpresa").text("Registrar Actividad de la Empresa");
+    $("#titulo-Modal-TipoEmpresa").text("REGISTRAR ACTIVIDAD DE LA EMPRESA");
     $("#ClasificacionEmpresaID").val(0);
     $("#exampleModal").modal("show");
 }
@@ -62,7 +62,7 @@ function GuardarTipoEmpresa() {
 // Funcion para Buscar las Actividades de la Empresa
 
 function BuscarTipoEmpresa(clasificacionEmpresaID) {
-    $("#titulo-Modal-TipoEmpresa").text("Editar Actividad de la Empresa");
+    $("#titulo-Modal-TipoEmpresa").text("EDITAR ACTIVIDAD DE LA EMPRESA");
     $("#ClasificacionEmpresaID").val(clasificacionEmpresaID);
     $.ajax({
         type: "POST",

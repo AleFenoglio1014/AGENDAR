@@ -1,6 +1,7 @@
 ﻿/*COLOR DE BODY*/
 Body {
-    background-color: #3e4c5e;
+    background-image: url('../lib/Imagenes/teletrabajo_home_office.jpg');
+    image-resolution: 300dpi;
 }
 .colorNav {
     background-color: #BFC9CA;
@@ -22,41 +23,7 @@ Body {
     padding-top:40px;
 }
 
-.container-login100 {
-    width: 100%;
-    min-height: 100vh;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    padding: 15px;
-    outline-style: solid;
-    background-size: cover;
-    position: relative;
-    z-index: 1;
-    /*background-color: darkcyan;
-    background-image: src();*/
-    background: darkcyan;
-    padding-bottom: 3px;
-    padding-top: 5px
-}
 
-    .container-login100::before {
-        content: "";
-        display: block;
-        position: absolute;
-        z-index: -1;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        background-color: brown;
-        outline: dotted
-    }
 
 .login_topimg {
     border-top-left-radius: 5px;
@@ -72,8 +39,8 @@ Body {
 }
 
     .login_topimg img {
-        width: 90%;
-        height: 25%;
+        width: 100%;
+        height: 100%;
     }
 
     .login_topimg .logo_wrap {
@@ -89,9 +56,14 @@ Body {
 #login .wrap-login100 {
     background-color: #fff;
     padding: 20px 45px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    width: 100%; 
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    width: 100%;
+    height: 100%;
+    margin-right: 3px;
+}
 }
 
 .login100-form {

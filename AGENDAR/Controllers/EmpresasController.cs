@@ -80,6 +80,11 @@ namespace AGENDAR.Controllers
         // GET: Empresas
         public IActionResult Index()
         {
+
+            return View();
+        }
+        public IActionResult Create()
+        {
             var localidades = _context.Localidad.Where(p => p.Eliminado == false).ToList();
             localidades.Add(new Localidad { LocalidadID = 0, Descripcion = "[SELECCIONE UNA LOCALIDAD]" });
             ViewBag.LocalidadID = new SelectList(localidades.OrderBy(p => p.Descripcion), "LocalidadID", "Descripcion");
@@ -87,17 +92,12 @@ namespace AGENDAR.Controllers
             var clasificacionempresas = _context.ClasificacionEmpresa.Where(p => p.Eliminado == false).ToList();
             clasificacionempresas.Add(new ClasificacionEmpresa { ClasificacionEmpresaID = 0, Descripcion = "[SELECCIONE TIPO DE EMPRESA]" });
             ViewBag.ClasificacionEmpresaID = new SelectList(clasificacionempresas.OrderBy(p => p.Descripcion), "ClasificacionEmpresaID", "Descripcion");
-
-
-          
-
-
             return View();
         }
 
 
         // Funcion para Completar la Tabla  de Empresas 
-      
+
         public JsonResult BuscarEmpresas()
         {
             var empresas = _context.Empresa.Include(r => r.Localidades).Include(p => p.ClasificacionEmpresas).ToList();
@@ -235,31 +235,31 @@ namespace AGENDAR.Controllers
         }
        
 
-        [AllowAnonymous]
-        public JsonResult BuscarUltimasEmpresas()
-        {
-            List<EmpresasMostrar> listadoUltimasEmpresa = new List<EmpresasMostrar>();
+        //[AllowAnonymous]
+        //public JsonResult BuscarUltimasEmpresas()
+        //{
+        //    List<EmpresasMostrar> listadoUltimasEmpresa = new List<EmpresasMostrar>();
 
-            var empresa = _context.Empresa.Include(r => r.Localidades).ToList();
+        //    var empresa = _context.Empresa.Include(r => r.Localidades).ToList();
 
-            foreach (var itemEmpresa in empresa)
-            {
+        //    foreach (var itemEmpresa in empresa)
+        //    {
 
-                var empresas = new EmpresasMostrar()
-                {
-                    EmpresaID = itemEmpresa.EmpresaID,
-                    RazonSocial = itemEmpresa.RazonSocial,
-                    LocalidadID = itemEmpresa.LocalidadID,
-                    LocalidadNombre = itemEmpresa.Localidades.Descripcion,
-                    ImagenEmpresaString = Convert.ToBase64String(itemEmpresa.ImagenEmpresa)
+        //        var empresas = new EmpresasMostrar()
+        //        {
+        //            EmpresaID = itemEmpresa.EmpresaID,
+        //            RazonSocial = itemEmpresa.RazonSocial,
+        //            LocalidadID = itemEmpresa.LocalidadID,
+        //            LocalidadNombre = itemEmpresa.Localidades.Descripcion,
+        //            ImagenEmpresaString = Convert.ToBase64String(itemEmpresa.ImagenEmpresa)
 
-                };
-                listadoUltimasEmpresa.Add(empresas);
-            }
-            JsonResult resultado = Json(listadoUltimasEmpresa);
+        //        };
+        //        listadoUltimasEmpresa.Add(empresas);
+        //    }
+        //    JsonResult resultado = Json(listadoUltimasEmpresa);
             
-            return resultado;
-        }
+        //    return resultado;
+        //}
         //Eliminar Empresa
 
         public JsonResult DesactivarEmpresa(int EmpresaID, int Elimina)

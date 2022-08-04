@@ -24,8 +24,9 @@ function BuscarUltimasEmpresas() {
             });
         },
         error: function (result) {
-            //alert("error success de carga de empresa principal.");
+            alert("error success de carga de empresa principal.");
         }
-    });
+    );
 }
-
+// Initiate the container with ID
+initDealCarrousel('va_container'); //carrousel ID

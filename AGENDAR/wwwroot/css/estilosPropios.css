@@ -6,14 +6,14 @@
 
 .colorNav {
     background: rgba(138,221,45,0);
-   
     transition: all 0.5s;
 }
 
 
 
 .header.sticked {
-    background: rgba(14, 29, 52, 0.9);
+    background: #677297;
+    transition: 0.8s;
 }
 
 
@@ -53,10 +53,10 @@
 }
 .img-presentacion {
     width: 90%;
-    margin-top: 110px;
+    margin-top: 10px;
 }
 .texto-presentacion {
-    font-weight: 700;
+    font-weight:300;
     text-transform: uppercase;
     color: #dee2e6;
 }
@@ -69,9 +69,10 @@
 .titulo {
     padding-top: 25px;
     text-align: center;
-    -webkit-text-stroke: 0.7px white;
-    font-family: 'Arial Rounded MT';
-    color: black;
+    /*-webkit-text-stroke: 0.7px white;*/
+    font-family: Candara;
+    font-weight:900;
+    color: #bab0b0;
 }
 .sumbrayado {
     display: flex;
@@ -79,7 +80,7 @@
     margin-top: 0rem;
     margin-bottom: 2rem;
     box-shadow: 5px 2px 5px 2px;
-    color: black;
+    color: white;
 }
 .tamañoEquipo {
     padding-bottom: 20px;
@@ -186,58 +187,152 @@
         color:mediumvioletred;
     }
 
-.box:hover h4,h6 {
-    color: black;
+.box:hover h4, h6 {
+   
+    text-transform: uppercase;
+    color: #dee2e6;
 }
 
 
-/*Empresas tarjetas*/
-.clientes {
-    padding-bottom: 20px;
-    padding-right: 200px;
-    padding-left: 200px;
-    padding-top: 100px;
+/*SECCIÓN EMPRESAS */
+
+/*TAMAÑO CONTEINER*/
+#va_container {
+    position: relative;
+    max-width: 1140px;
+    margin: auto;
 }
-.card {
-    max-width: 200px;
-    margin: 1.75rem auto;
-    border: black 2px solid !important;
-    width: 200px !important;
-    height: 200px !important;
+.va-carrousel-section {
+    font-family: "Roboto";
+    padding: 0px;
+    position: relative;
 }
-.card-alto {
-  
-    height: 150px;
+
+@media (min-width: 768px) {
+
+    .va-carrousel-section {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+/*TAMAÑO IMAGEN*/
+.va-thumbnail {
+    border-radius: 5px;
+    border: 0px;
+    height:120px;
+    width:120px;
+
 }
 
 
-.card-title {
-    color: black;
-    font-weight: bold;
-    font-size: 15px;
-    margin-bottom: 0rem !important;
-    text-align: center;
+/*CARROUSEL FORMA*/
+.va-carrousel-flexbox {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
 }
 
-.card-body {
-    padding: 2px !important;
-    font-size: 10px;
-    color: black;
-    background-color: #d8e2dc;
-    height: 20px;
-  
+    .va-carrousel-flexbox .va-card {
+        flex: 0 0 auto;
+        padding-left: 20px;
+    }
+
+        .va-carrousel-flexbox .va-card:last-child {
+            margin-right: 15px;
+        }
+
+            .va-carrousel-flexbox .va-card:last-child::after {
+                content: ' ';
+                display: inline-block;
+            }
+
+ /* OCULTAR BARRA INFERIOR*/
+.va-carrousel,
+.va-carrousel-flexbox {
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
 }
-.card-footer {
-    padding: 0px !important;
+
+    .va-carrousel::-webkit-scrollbar,
+    .va-carrousel-flexbox::-webkit-scrollbar {
+        display: none;
+    }
+
+/*  CLASES TITULO EMPRESA*/
+.va-carrousel-title {
+    display: inline-block;
+    color: white;
+    font-weight: 700;
+    padding-bottom: 8px;
+    margin-bottom: 18px;
 }
-.localidadTamaño {
-    margin-bottom: 0rem;
-    color: black;
+
+.va-title {
+    margin-top: 8px;
+    margin-left: 25px;
+    font-size: 11px;
+    max-height: 3em;
+    overflow: hidden;
+    color: white;
+    font-weight: 700;
+}
+
+@media (min-width: 768px) {
+    .va-title {
+        font-size: 13px;
+    }
+}
+
+/*CLASE FLECHAS*/
+.deals-paddle {
+    height: 38px;
+    width: 38px;
+    color: white;
+    background-color: #00000089;
+    border-radius: 50%;
+    margin:auto;
+    margin-top: 50px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+    .deals-paddle:focus {
+        outline: none;
+    }
+
+    .deals-paddle:active {
+        border-style: solid;
+        outline: none;
+        user-select: none;
+    }
+
+    .deals-paddle svg {
+        width: 10px;
+    }
+
+@media (min-width: 768px) {
+    .other-game-button {
+        width: 300px;
+    }
+}
+
+.deals-scroll-left {
+    top: 0;
+    left: -40px;
+    bottom: 0;
    
 }
-.empresaModals {
-    margin-right: 0px !important;
+
+.deals-scroll-right {
+    top: 0;
+    bottom: 0;
+    right: -40px;
 }
+
 
 
 /*CONTACTO*/
@@ -289,4 +384,17 @@
 
 .card-tamaño {
     height: 50px !important;
+}
+ /*CLASES MODAL PRIVADO */
+.modal-header {
+    background-color: #454d55;
+    color: white;
+}
+
+.close{
+    color:white !important;
+}
+
+.margen{
+    margin-bottom:0px !important;
 }
