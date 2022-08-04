@@ -8,8 +8,8 @@
 
 
 
-<table class="table table-bordered">
-    <thead class="table-dark">
+<table class="table table-bordered table-light">
+    <thead class="table-dark table-bordered">
         <tr>
             <th class="text-center" style="width:200px">
                 RazonSocial
@@ -39,75 +39,6 @@
     </tbody>
 </table>
 
-<!-- Modal -->
-<!--<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="titulo-Modal-Empresa"></h5>
-                <button type="button" class="close" data-dismiss="modal" onclick="VaciarFormulario()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            </div>-->
-
-            <!--Agregado de Formulario dentro del Modal-->
-            <!--<form id="frmFormulario" enctype="multipart/form-data">
-                <div class="modal-body">
-
-                    <input type="hidden" id="EmpresaID" name="EmpresaID" value="0" />
-                    <div class="form-group">
-                        <label for="recipient-name" class="control-label font-weight-bold">Razon Social</label>
-                        <input type="text" class="form-control" autocomplete="off" required name="razonSocial" id="RazonSocial">
-                    </div>-->
-                    <!--Lista de Localidades dentro del Dropdown de Empresa-->
-                    <!--<div class="row">
-                        <div class="form-group col-md-6">
-                            <label class="control-label font-weight-bold">Localidad</label>
-                            @Html.DropDownList("LocalidadID", null, htmlAttributes: new { @class = "form-control letrainput" })
-                        </div>
-
-                        <div class="form-group col-md-6">
-                            <label class="control-label font-weight-bold">Tipo de Empresa</label>
-                            @Html.DropDownList("ClasificacionEmpresaID", null, htmlAttributes: new { @class = "form-control letrainput" })
-                        </div>
-                    </div>
-                    <div class="row ">
-                        <div class="form-group col-md-6 margen ">
-                            <label for="recipient-name" class="control-label font-weight-bold">CUIT</label>
-                            <input type="number" class="form-control" autocomplete="off" required name="cuit" id="Cuit">
-                        </div>
-                        <div class="form-group col-md-6 margen">
-                            <label for="recipient-name" class="control-label font-weight-bold">Telefono</label>
-                            <input type="number" class="form-control" autocomplete="off" required name="telefono" id="Telefono">
-                            <p class="text-danger font-weight-bold" style="font-size:small" id="Error-CamposEmpresas"></p>
-                        </div>
-                    </div>
-                        <div class="form-group">
-                            <label for="recipient-name" class="control-label font-weight-bold">Dirreccion</label>
-                            <input type="text" class="form-control" autocomplete="off" required name="direccion" id="Direccion">
-                        </div>
-                    
-                       
-
-
-                        <div class="row">
-                            <div class="col-lg-9">
-
-
-                                <span class="btn btn-success btn-file">
-                                    <i class="bi bi-cloud-arrow-up-fill"></i> Subir Imagen <input type="file" autocomplete="off" required name="archivo" id="Archivo">
-                                </span>
-                            </div>
-
-                        </div>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" onclick="VaciarFormulario()" class="btn btn-outline-danger" data-dismiss="modal"><i class="bi bi-backspace"></i> Cerrar</button>
-                        <button type="button" onclick="GuardarEmpresa()" class="btn btn-outline-success"><i class="bi bi-folder-check"></i> Guardar</button>
-                    </div>
-</form>
-        </div>
-    </div>
-</div>-->
 
 @*//Funcion para Completar la Tabla de Empresas*@
 
