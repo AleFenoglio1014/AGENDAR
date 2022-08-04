@@ -28,10 +28,10 @@ namespace AGENDAR.Controllers
             _userManager = userManager;
         }
 
-        public EmpresasController(ApplicationDbContext context)
-        {
-            _context = context;
-        }
+        //public EmpresasController(ApplicationDbContext context)
+        //{
+        //    _context = context;
+        //}
 
 
         //Funcion para Guardar Usuario Completo
