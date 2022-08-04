@@ -20,36 +20,59 @@ namespace AGENDAR.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<IdentityUser> _userManager;
-     
 
 
-        //public EmpresasController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
-        //{
-        //    _context = context;
-        //    _userManager = userManager;
-        //}
+        public EmpresasController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
+        {
+            _context = context;
+            _userManager = userManager;
+        }
 
         public EmpresasController(ApplicationDbContext context)
         {
             _context = context;
         }
 
+
         //Funcion para Guardar Usuario Completo
-        public async Task<JsonResult> GuardarUsuarioCompleto()
+        public async Task<JsonResult> GuardarUsuarioCompleto(string Email, string Password)
         {
-            var email = "usuario@gmail.com";
-            var password = "123456";
+            //var email = "usuario@gmail.com";
+            //var password = "123456";
 
             //CREAR LA VARIABLE USUARIO CON TODOS LOS DATOS
-            var user = new IdentityUser
-            { UserName = email, Email = email };
+            var usuarioCrear = new IdentityUser
+            { 
+                UserName = Email,
+                Email = Email 
+            };
             //EJECUTAR EL METODO CREAR USUARIO PASANDO COMO PARAMETRO EL OBJETO CREADO ANTERIORMENTE Y LA CONTRASEÑA DE INGRESO
-            var result = await _userManager.CreateAsync(user, password);
+            var result = await _userManager.CreateAsync(usuarioCrear, Password);
 
             //BUSCAR POR MEDIO DE CORREO ELECTRONICO ESE USUARIO CREADO PARA BUSCAR EL ID
-            var usuario = _context.Users.Where(u => u.Email == email).SingleOrDefault();
+            var usuario = _context.Users.Where(u => u.Email == Email).SingleOrDefault();
 
-            //LUEGO EL CODIGO DE REGISTRAR EMPRESA O CLUB SEGUN CORRESPONDA SU SISTEMA
+            //BUSCAMOS EL ROL DE ADMINISTRADOR EMPRESA PARA ASIGNAR A ESE USUARIO
+            var rol = _context.Roles.Where(u => u.Name == "AdministradorEmpresa").SingleOrDefault();
+
+            if (usuario != null && rol != null)
+            {
+                //EJECUTAMOS EL METODO DE AGREGAR EL ROL PARA ESE USUARIO
+                await _userManager.AddToRoleAsync(usuario, rol.Id);
+
+
+                //LUEGO EL CODIGO DE REGISTRAR EMPRESA 
+
+                //var empresaadministrador = new EmpresaUsuario()
+                //{
+                //    UsuarioID = usuario.Id,
+                //    EmpresaID = Empresa
+                //};
+                //_context.Add(empresaadministrador);
+                //_context.SaveChanges();
+            }
+
+
 
             return Json(result.Succeeded);
         }
@@ -87,8 +110,6 @@ namespace AGENDAR.Controllers
             var empresas = _context.Empresa.Include(r => r.Localidades).Include(p => p.ClasificacionEmpresas).ToList();
 
            
-
-
             List<EmpresasMostrar> listadoEmpresas = new List<EmpresasMostrar>();
 
            
@@ -122,7 +143,7 @@ namespace AGENDAR.Controllers
 
         // Funcion Guardar y Editar las Empresa
 
-        public JsonResult GuardarEmpresa(int EmpresaID, string razonSocial, string cUIT, string direccion, Int64 telefono, int LocalidadID, int ClasificacionEmpresaID, IFormFile archivo)
+        public JsonResult GuardarEmpresa(int EmpresaID, string razonSocial, string cuit, string direccion, Int64 telefono, int LocalidadID, int ClasificacionEmpresaID, IFormFile archivo)
         {
             int resultado = 0;
             // Si es 0 es CORRECTO
@@ -163,7 +184,7 @@ namespace AGENDAR.Controllers
                         var empresaNueva = new Empresa
                         {
                             RazonSocial = razonSocial,
-                            CUIT = cUIT,
+                            CUIT = cuit,
                             Direccion = direccion,
                             Telefono = telefono,
                             LocalidadID = LocalidadID,
@@ -190,7 +211,7 @@ namespace AGENDAR.Controllers
                         var empresa = _context.Empresa.Single(m => m.EmpresaID == EmpresaID);
                         // Cambiamos la RazonSocial por la que ingreso el Usuario en la Vista
                         empresa.RazonSocial = razonSocial;
-                        empresa.CUIT = cUIT;
+                        empresa.CUIT = cuit;
                         empresa.Direccion = direccion;
                         empresa.Telefono = telefono;
                         empresa.LocalidadID = LocalidadID;
@@ -248,21 +269,27 @@ namespace AGENDAR.Controllers
         //}
         //Eliminar Empresa
 
-        public JsonResult EliminarEmpresa(int EmpresaID)
+        public JsonResult DesactivarEmpresa(int EmpresaID, int Elimina)
         {
             bool resultado = true;
 
             var empresa = _context.Empresa.Find(EmpresaID);
             if (empresa != null)
             {
-                _context.Empresa.Remove(empresa);
+                if (Elimina == 0)
+                {
+                    empresa.Eliminado = false;
+                }
+                else
+                {
+                    empresa.Eliminado = true;
+                }
+                //_context.Empresa.Remove(empresa);
                 _context.SaveChanges();
             }
 
             return Json(resultado);
         }
-        
-
 
         private bool EmpresaExists(int id)
         {

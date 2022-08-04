@@ -22,5 +22,11 @@ namespace AGENDAR.Data
         public DbSet<AGENDAR.Models.Horario> Horario { get; set; }
         public DbSet<AGENDAR.Models.EmpresaUsuario> EmpresasUsuarios { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelbuilder)
+        {
+            modelbuilder.Seed();
+            base.OnModelCreating(modelbuilder);
+        }
+
     }
 }
