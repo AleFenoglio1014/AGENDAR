@@ -4,14 +4,16 @@ using AGENDAR.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AGENDAR.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220712233845_CreadoDeRolesEnModelos")]
+    partial class CreadoDeRolesEnModelos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -237,29 +239,6 @@ namespace AGENDAR.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "eac71dfb-c6b9-4862-b5d3-d23489aa96bb",
-                            ConcurrencyStamp = "59b3752d-a84c-4ae1-999a-7a9f028ddfd0",
-                            Name = "SuperUsuario",
-                            NormalizedName = "SUPERUSUARIO"
-                        },
-                        new
-                        {
-                            Id = "f9768c9a-e0ef-4b57-aded-ca805023d0ee",
-                            ConcurrencyStamp = "9ddd8c88-1db6-4c07-a297-d366858a500b",
-                            Name = "AdministradorEmpresa",
-                            NormalizedName = "ADMINISTRADOREMPRESA"
-                        },
-                        new
-                        {
-                            Id = "a01a689a-b0d7-4616-837c-6b167ba77f6c",
-                            ConcurrencyStamp = "22862f61-6543-4df4-8b28-c13a669c61e9",
-                            Name = "Usuario",
-                            NormalizedName = "USUARIO"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -296,10 +275,6 @@ namespace AGENDAR.Migrations
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
@@ -353,8 +328,6 @@ namespace AGENDAR.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -418,13 +391,6 @@ namespace AGENDAR.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles");
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = "2fb278e4-ca78-46b4-a48c-13f670e0208b",
-                            RoleId = "eac71dfb-c6b9-4862-b5d3-d23489aa96bb"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -446,31 +412,6 @@ namespace AGENDAR.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("AGENDAR.Models.ApplicationUser", b =>
-                {
-                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
-
-                    b.HasDiscriminator().HasValue("ApplicationUser");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "2fb278e4-ca78-46b4-a48c-13f670e0208b",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "646cc6ee-dc9b-4e17-bce8-c6c19f6c6aa9",
-                            Email = "turnosagendar@gmail.com",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "TURNOSAGENDAR@GMAIL.COM",
-                            NormalizedUserName = "TURNOSAGENDAR@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAENGTdDibW6tqe1Z9gHKeocGRqV/t9nc9d05doH/e9iCOCc5yEZNnAwC0gxHgHrZS1w==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "d9bc35ca-b1bc-482d-a419-cf925a5ffefc",
-                            TwoFactorEnabled = false,
-                            UserName = "turnosagendar@gmail.com"
-                        });
                 });
 
             modelBuilder.Entity("AGENDAR.Models.Empresa", b =>

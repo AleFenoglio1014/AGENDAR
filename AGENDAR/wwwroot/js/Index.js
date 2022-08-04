@@ -24,7 +24,7 @@ function BuscarUltimasEmpresas() {
             });
         },
         error: function (result) {
-            alert("error success de carga de empresa principal.");
+            //alert("error success de carga de empresa principal.");
         }
     });
 }
