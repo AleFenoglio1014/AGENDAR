@@ -102,6 +102,12 @@ namespace AGENDAR.Controllers
             return View();
         }
 
+        public IActionResult EmpresaIndex()
+        {
+           
+            return View();
+
+        }
 
         // Funcion para Completar la Tabla  de Empresas 
 
