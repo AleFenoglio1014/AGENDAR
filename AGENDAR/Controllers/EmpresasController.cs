@@ -246,7 +246,7 @@ namespace AGENDAR.Controllers
 
             return Json(empresa);
         }
-       
+      
 
         //[AllowAnonymous]
         //public JsonResult BuscarUltimasEmpresas()
@@ -270,7 +270,7 @@ namespace AGENDAR.Controllers
         //        listadoUltimasEmpresa.Add(empresas);
         //    }
         //    JsonResult resultado = Json(listadoUltimasEmpresa);
-            
+
         //    return resultado;
         //}
         //Eliminar Empresa
@@ -284,11 +284,11 @@ namespace AGENDAR.Controllers
             {
                 if (Elimina == 0)
                 {
-                    empresa.Eliminado = false;
+                    empresa.Eliminado = true;
                 }
                 else
                 {
-                    empresa.Eliminado = true;
+                    empresa.Eliminado = false;
                 }
                 //_context.Empresa.Remove(empresa);
                 _context.SaveChanges();

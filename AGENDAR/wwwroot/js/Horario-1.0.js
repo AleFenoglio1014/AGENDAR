@@ -74,8 +74,8 @@ function BuscarHorario(horarioID) {
         url: '../../Horarios/BuscarHorario',
         data: { HorarioID: horarioID  },
         success: function (horario) {
-            $("#HoraInicio").val(horario.horaInicio);
-            $("#HoraFin").val(horario.horaFin.horaFinstring);
+            $("#HoraInicio").val(horario.horaInicioString);
+            $("#HoraFin").val(horario.horaFinString);
             $("#exampleModal").modal("show");
         },
         error: function (data) {
