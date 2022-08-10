@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace AGENDAR.Controllers
 {
 
-    [Authorize]
+    [Authorize(Roles = "SuperUsuario")]
     public class ClasificacionEmpresasController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -36,6 +36,7 @@ namespace AGENDAR.Controllers
         }
 
         // Funcion Guardar y Editar las Actividades de la Empresa 
+        [Authorize(Roles = "AdministradorEmpresa")]
         public JsonResult GuardarTipoEmpresa(int ClasificacionEmpresaID, string Descripcion)
         {
             int resultado = 0;

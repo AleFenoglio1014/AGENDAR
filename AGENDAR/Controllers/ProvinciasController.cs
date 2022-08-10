@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace AGENDAR.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "SuperUsuario")]
     public class ProvinciasController : Controller
     {
         private readonly ApplicationDbContext _context;

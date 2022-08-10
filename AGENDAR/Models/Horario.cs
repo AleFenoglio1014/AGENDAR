@@ -15,14 +15,14 @@ namespace AGENDAR.Models
         public int EmpresaID { get; set; }
         public DateTime HoraInicio { get; set; }
         public DateTime HoraFin { get; set; }
+
         [NotMapped]
-        public string HoraInicioString { get { return HoraInicio.ToString("HH:mm"); } }
+        public string HoraIniciostring { get { return HoraInicio.ToString("HH:mm"); } }
+
         [NotMapped]
-        public string HoraFinString { get { return HoraFin.ToString("HH:mm"); } }
+        public string HoraFinstring { get { return HoraFin.ToString("HH:mm"); } }
+
     }
-
-
-}
     public class HorarioMostrar
     {
         public int HorarioID { get; set; }
@@ -32,4 +32,4 @@ namespace AGENDAR.Models
         public string HoraFinstring { get; set; }
     }
 
-    
+} 

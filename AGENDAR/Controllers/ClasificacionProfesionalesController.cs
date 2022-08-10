@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace AGENDAR.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "SuperUsuario")]
 
     public class ClasificacionProfesionalesController : Controller
     {
@@ -36,6 +36,7 @@ namespace AGENDAR.Controllers
         }
 
         // Funcion Guardar y Editar las Actividades del profesional 
+        [Authorize(Roles = "AdministradorEmpresa")]
         public JsonResult GuardarTipoProfesional(int ClasificacionProfesionalID, string Descripcion)
         {
             int resultado = 0;

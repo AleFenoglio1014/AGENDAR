@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace AGENDAR.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "SuperUsuario")]
     public class ProfesionalesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -49,6 +49,7 @@ namespace AGENDAR.Controllers
         }
 
         // Funcion para Completar la Tabla  de Profesionales 
+
         public JsonResult BuscarProfesionales()
         {
             //PRIMERO BUSCAMOS EL USUARIO ACTUAL
@@ -83,7 +84,7 @@ namespace AGENDAR.Controllers
             return Json(listadoProfesional);
         }
         // Funcion Guardar y Editar los Porfesionales
-
+        [Authorize(Roles = "AdministradorEmpresa, SuperUsuario")]
         public JsonResult GuardarProfesional(int ProfesionalID, string Nombre, string Apellido,  int EmpresaID, int ClasificacionProfesionalID)
         {
             int resultado = 0;
