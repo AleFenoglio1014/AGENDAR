@@ -37,7 +37,7 @@
             <div class="form-group col-md-6 margen">
                 <label for="recipient-name" class="control-label font-weight-bold labelCrearEmpresa">Telefono</label>
                 <input type="number" class="form-control" autocomplete="off" required name="telefono" id="Telefono">
-                <p class="text-danger font-weight-bold" style="font-size:small" id="Error-CamposEmpresas"></p>
+
             </div>
         </div>
         <div class="form-group">
@@ -49,25 +49,33 @@
 
 
         <div class="row">
-            <div class="col-lg-9 espacioBotones">
+            <div class="col-lg-3 espacioBotones">
 
 
                 <span class="btn btn-secondary btn-file">
                     <i class="bi bi-cloud-arrow-up-fill"></i> Subir Imagen <input type="file" autocomplete="off" required name="archivo" id="Archivo">
                 </span>
+                <p class="text-danger font-weight-bold" style="font-size:small" id="Error-CamposEmpresas"></p>
             </div>
 
         </div>
         <div class="form-group">
-            <button type="button" onclick="GuardarEmpresa()" class="btn btn-success"><i class="bi bi-folder-check"></i> Guardar</button>
+            <button type="button"  id="EmpresaIndex" onclick="GuardarEmpresa()" class="btn btn-success"><i class="bi bi-folder-check"></i> Guardar</button>
             <button type="button" onclick="VaciarFormulario()" class="btn btn-danger" data-dismiss="modal"><i class="bi bi-backspace"></i> Borrar</button>
         </div>
+      
     </form>
+    
 </body>
 
 @section Scripts {
     <script src="~/js/Empresa-1.0.js"></script>
     <script>
         window.onload = CompletarTablaEmpresas();
+    </script>
+    <script type="text/javascript">
+        document.getElementById("EmpresaIndex").onclick = function () {
+            location.href = "";
+        };
     </script>
 }

@@ -103,6 +103,12 @@ namespace AGENDAR.Controllers
             return View();
         }
 
+        public IActionResult EmpresaIndex()
+        {
+           
+            return View();
+
+        }
 
         // Funcion para Completar la Tabla  de Empresas 
 
@@ -279,11 +285,11 @@ namespace AGENDAR.Controllers
             {
                 if (Elimina == 0)
                 {
-                    empresa.Eliminado = false;
+                    empresa.Eliminado = true;
                 }
                 else
                 {
-                    empresa.Eliminado = true;
+                    empresa.Eliminado = false;
                 }
                 //_context.Empresa.Remove(empresa);
                 _context.SaveChanges();
