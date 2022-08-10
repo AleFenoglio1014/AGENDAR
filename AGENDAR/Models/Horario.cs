@@ -15,7 +15,11 @@ namespace AGENDAR.Models
         public DateTime HoraInicio { get; set; }
         public DateTime HoraFin { get; set; }
         
+        [NotMapped]
+        public string HoraIniciostring { get { return HoraInicio.ToString("HH:mm"); } }
 
+        [NotMapped]
+        public string HoraFinstring { get { return HoraFin.ToString("HH:mm"); } }
 
     }
     public class HorarioMostrar

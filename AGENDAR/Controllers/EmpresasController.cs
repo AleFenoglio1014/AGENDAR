@@ -14,7 +14,7 @@ using System.IO;
 
 namespace AGENDAR.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "SuperUsuario")]
 
     public class EmpresasController : Controller
     {
@@ -33,7 +33,7 @@ namespace AGENDAR.Controllers
         //    _context = context;
         //}
 
-
+        //[Authorize(Roles = "SuperUsuario")]
         //Funcion para Guardar Usuario Completo
         public async Task<JsonResult> GuardarUsuarioCompleto(string Email, string Password)
         {
@@ -76,6 +76,7 @@ namespace AGENDAR.Controllers
 
             return Json(result.Succeeded);
         }
+
 
         // GET: Empresas
         public IActionResult Index()
@@ -142,7 +143,7 @@ namespace AGENDAR.Controllers
 
 
         // Funcion Guardar y Editar las Empresa
-
+        
         public JsonResult GuardarEmpresa(int EmpresaID, string razonSocial, string cuit, string direccion, Int64 telefono, int LocalidadID, int ClasificacionEmpresaID, IFormFile archivo)
         {
             int resultado = 0;
@@ -240,7 +241,7 @@ namespace AGENDAR.Controllers
 
             return Json(empresa);
         }
-       
+
 
         //[AllowAnonymous]
         //public JsonResult BuscarUltimasEmpresas()
@@ -264,11 +265,11 @@ namespace AGENDAR.Controllers
         //        listadoUltimasEmpresa.Add(empresas);
         //    }
         //    JsonResult resultado = Json(listadoUltimasEmpresa);
-            
+
         //    return resultado;
         //}
         //Eliminar Empresa
-
+        
         public JsonResult DesactivarEmpresa(int EmpresaID, int Elimina)
         {
             bool resultado = true;

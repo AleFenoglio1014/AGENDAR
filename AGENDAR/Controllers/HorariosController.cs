@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace AGENDAR.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "SuperUsuario")]
     public class HorariosController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -64,17 +64,20 @@ namespace AGENDAR.Controllers
 
             return Json(listadohorario);
         }
+
         // Funcion Guardar y Editar los Horarios
+        [Authorize(Roles = "AdministradorEmpresa")]
         public JsonResult GuardarHorario(int HorarioID, DateTime HoraInicio, DateTime HoraFin)
         {
+           
             int resultado = 0;
-            // Si es 0 es CORRECTO
-            // Si es 1 el Campo Descripcion esta VACIO
-            // Si es 2 el Registro YA EXISTE con la misma Descripcion
+            //// Si es 0 es CORRECTO
+            //// Si es 1 el Campo Descripcion esta VACIO
+            //// Si es 2 el Registro YA EXISTE con la misma Descripcion
 
             if (HorarioID == 0)
             {
-                // Antes de CREAR el registro debemos preguntar si existe una Horario igual
+                //    // Antes de CREAR el registro debemos preguntar si existe una Horario igual
                 if (_context.Horario.Any(e => e.HoraInicio == HoraInicio && e.HoraFin == HoraFin))
                 {
                     resultado = 2;
@@ -82,16 +85,29 @@ namespace AGENDAR.Controllers
                 else
                 {
                     // Aca va a ir el codigo para CREAR un Horario
-                    // Para eso creamos un objeto de tipo horarionuevo con los datos necesarios
-                    var horarionuevo = new Horario
-                    {
-                        HoraInicio = HoraInicio,
-                        HoraFin = HoraFin
-                    };
-                    _context.Add(horarionuevo);
-                    _context.SaveChanges();
-                }
 
+                    int minutosDiarios = 840; //Tiempo en Minutos de 14 Horas
+                    int minutosTurnos = 15; // Tiempo de Duración de los Turnos en Minutos
+
+                    int cantidadTurnos = minutosDiarios / minutosTurnos;
+
+                    DateTime fechaApertura = Convert.ToDateTime("01/07/2022");
+                    fechaApertura = fechaApertura.AddHours(7); // Horario de Apertura de la Empresa 7:00 a.m.
+                    //Creamos un foreach donde reccorremos la cantidad de turnos y le vamos sumando el tiempo de cada turno
+                    for (int i = 0; i < cantidadTurnos; i++)
+                    {
+                        // Para eso creamos un objeto de tipo nuevoHorario con los datos necesarios
+                        var nuevoHorario = new Horario
+                        {
+                            HoraInicio = fechaApertura,
+                            HoraFin = fechaApertura.AddMinutes(minutosTurnos)
+                        };
+                        _context.Add(nuevoHorario);
+                        _context.SaveChanges();
+
+                        fechaApertura = fechaApertura.AddMinutes(minutosTurnos);
+                    }
+                }
             }
             else
             {
@@ -110,11 +126,10 @@ namespace AGENDAR.Controllers
                     horario.HoraFin = HoraFin;
                     _context.SaveChanges();
                 }
-
-            }            
+            }
                 return Json(resultado);
-            
-        }
+            }
+                
 
         // Funcion para Buscar el horarip
         public JsonResult BuscarHorario(int HorarioID)
