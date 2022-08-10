@@ -32,17 +32,17 @@
         <div class="row ">
             <div class="form-group col-md-6 margen ">
                 <label for="recipient-name" class="control-label font-weight-bold labelCrearEmpresa">CUIT</label>
-                <input type="number" class="form-control" autocomplete="off" required name="cuit" id="Cuit">
+                <input type="number" class="form-control" autocomplete="off"   required name="cuit" id="Cuit">
             </div>
             <div class="form-group col-md-6 margen">
                 <label for="recipient-name" class="control-label font-weight-bold labelCrearEmpresa">Telefono</label>
-                <input type="number" class="form-control" autocomplete="off" required name="telefono" id="Telefono">
+                <input type="number" class="form-control" autocomplete="off"   required name="telefono" id="Telefono">
 
             </div>
         </div>
         <div class="form-group">
             <label for="recipient-name" class="control-label font-weight-bold labelCrearEmpresa">Dirreccion</label>
-            <input type="text" class="form-control" autocomplete="off" required name="direccion" id="Direccion">
+            <input type="text" class="form-control" autocomplete="off" required  name="direccion" id="Direccion">
         </div>
 
 
@@ -60,7 +60,7 @@
 
         </div>
         <div class="form-group">
-            <button type="button"  id="EmpresaIndex" onclick="GuardarEmpresa()" class="btn btn-success"><i class="bi bi-folder-check"></i> Guardar</button>
+            <button type="button"   onclick="GuardarEmpresa()" class="btn btn-success"><i class="bi bi-folder-check"></i> Guardar</button>
             <button type="button" onclick="VaciarFormulario()" class="btn btn-danger" data-dismiss="modal"><i class="bi bi-backspace"></i> Borrar</button>
         </div>
       
@@ -73,9 +73,5 @@
     <script>
         window.onload = CompletarTablaEmpresas();
     </script>
-    <script type="text/javascript">
-        document.getElementById("EmpresaIndex").onclick = function () {
-            location.href = "";
-        };
-    </script>
+    
 }
