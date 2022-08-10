@@ -179,6 +179,7 @@ function GuardarEmpresa() {
                 if (resultado == 0) {
                     $("#exampleModal").modal("hide");
                     CompletarTablaEmpresas();
+                    $("#EmpresaCrear").modal("show");
                 }
                 if (resultado == 2) {
                     $("#Error-RazonSocial").text("La Empresa ingresada Ya Existe. Ingrese una Nueva Empresa");
