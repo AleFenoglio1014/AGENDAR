@@ -85,3 +85,12 @@ function VaciarFormulario() {
     $("#TipoProfesionalNombre").val('');
     $("#Error-TipoProfesionalNombre").text("");
 }
+
+// Funcion para limitar los caracteres de los input
+var input = document.getElementById('TipoProfesionalNombre');
+input.addEventListener('input', function () {
+    if (this.value.length > 40)
+        swal("HA SUPERADO EL LIMITE DE CARACTERES PERMITIDO.");
+        this.value = this.value.slice(0, 40);
+
+})

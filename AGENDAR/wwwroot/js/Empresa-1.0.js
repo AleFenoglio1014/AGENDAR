@@ -187,7 +187,7 @@ function GuardarEmpresa() {
             },
             error: function (r) {
 
-                alert("Error del servidor");
+                swal("Error del servidor");
             }
         });
     }
@@ -199,22 +199,25 @@ function GuardarEmpresa() {
 var input = document.getElementById('RazonSocial');
 input.addEventListener('input', function () {
     if (this.value.length > 40)
-        this.value = this.value.slice(0, 40);
-   
+        swal("HA SUPERADO EL LIMITE DE CARACTERES PERMITIDO.");
+        this.value = this.value.slice(0, 40)
 })
 
 var input = document.getElementById('Telefono');
 input.addEventListener('input', function () {
     if (this.value.length > 15)
+        swal("HA SUPERADO EL LIMITE DE CARACTERES PERMITIDO.");
         this.value = this.value.slice(0, 15);
 })
 var input = document.getElementById('Cuit');
 input.addEventListener('input', function () {
     if (this.value.length > 11)
+        swal("HA SUPERADO EL LIMITE DE CARACTERES PERMITIDO.");
         this.value = this.value.slice(0, 11);
 })
 var input = document.getElementById('Direccion');
 input.addEventListener('input', function () {
     if (this.value.length > 30)
+        swal("HA SUPERADO EL LIMITE DE CARACTERES PERMITIDO.");
         this.value = this.value.slice(0, 30);
 })
