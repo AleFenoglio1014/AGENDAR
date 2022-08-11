@@ -32,4 +32,4 @@ namespace AGENDAR.Models
         public string HoraFinstring { get; set; }
     }
 
-} 
+}
