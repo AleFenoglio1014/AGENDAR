@@ -249,31 +249,7 @@ namespace AGENDAR.Controllers
         }
 
 
-        //[AllowAnonymous]
-        //public JsonResult BuscarUltimasEmpresas()
-        //{
-        //    List<EmpresasMostrar> listadoUltimasEmpresa = new List<EmpresasMostrar>();
-
-        //    var empresa = _context.Empresa.Include(r => r.Localidades).ToList();
-
-        //    foreach (var itemEmpresa in empresa)
-        //    {
-
-        //        var empresas = new EmpresasMostrar()
-        //        {
-        //            EmpresaID = itemEmpresa.EmpresaID,
-        //            RazonSocial = itemEmpresa.RazonSocial,
-        //            LocalidadID = itemEmpresa.LocalidadID,
-        //            LocalidadNombre = itemEmpresa.Localidades.Descripcion,
-        //            ImagenEmpresaString = Convert.ToBase64String(itemEmpresa.ImagenEmpresa)
-
-        //        };
-        //        listadoUltimasEmpresa.Add(empresas);
-        //    }
-        //    JsonResult resultado = Json(listadoUltimasEmpresa);
-
-        //    return resultado;
-        //}
+     
         //Eliminar Empresa
         
         public JsonResult DesactivarEmpresa(int EmpresaID, int Elimina)

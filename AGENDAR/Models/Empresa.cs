@@ -27,6 +27,7 @@ namespace AGENDAR.Models
         public virtual ClasificacionEmpresa ClasificacionEmpresas { get; set; }
 
         public virtual ICollection<Profesional> Profesionales { get; set; }
+        public virtual ICollection<Turno> Turnos { get; set; }
     }
 
     // Creamos un Nuevo OBJETO para MOSTRAR las Localidades y el tipo de empresa  en la tabla de Empresa

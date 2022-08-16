@@ -58,6 +58,7 @@ namespace AGENDAR.Controllers
                     HoraIniciostring = horario.HoraInicio.ToString("HH:mm"),
                     HoraFin = horario.HoraFin,
                     HoraFinstring = horario.HoraFin.ToString("HH:mm"),
+                    Eliminado = horario.Eliminado
                 };
                 listadohorario.Add(horarioMostrar);
             }
@@ -138,7 +139,26 @@ namespace AGENDAR.Controllers
 
             return Json(horario);
         }
+        public JsonResult DesactivarHorario(int HorarioID, int Elimina)
+        {
+            bool resultado = true;
 
+            var horario = _context.Horario.Find(HorarioID);
+            if (horario != null)
+            {
+                if (Elimina == 0)
+                {
+                    horario.Eliminado = false;
+                }
+                else
+                {
+                    horario.Eliminado = true;
+                }
+                _context.SaveChanges();
+            }
+
+            return Json(resultado);
+        }
         private bool HorarioExists(int id)
         {
             return _context.Horario.Any(e => e.HorarioID == id);

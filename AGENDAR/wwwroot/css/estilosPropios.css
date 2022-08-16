@@ -10,13 +10,15 @@
 }
 
 
-
+/*clase para que cambie de color el nav*/ 
 .header.sticked {
     background: #677297;
     transition: 0.8s;
 }
-
-
+.imagenSoliitarTurno {
+    image-resolution: 300dpi;
+    background-image: url('../lib/Imagenes/persona-y-computador-4.jpg');
+}
 /*BANNER*/
 .banner {
     position: relative;
