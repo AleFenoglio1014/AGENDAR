@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace AGENDAR.Controllers
 {
-    [Authorize(Roles = "SuperUsuario")]
+    [Authorize/*(Roles = "SuperUsuario")*/]
     public class LocalidadesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -76,7 +76,7 @@ namespace AGENDAR.Controllers
             return Json(listadoLocalidadesMostrar);
         }
         // Funcion Guardar y Editar las Localidades
-        [Authorize(Roles = "AdministradorEmpresa")]
+        [Authorize/*(Roles = "AdministradorEmpresa")*/]
         public JsonResult GuardarLocalidad(int LocalidadID, string Descripcion,string CodPostal, int ProvinciaID, string ProvinciaNombre)
         {
             int resultado = 0;
