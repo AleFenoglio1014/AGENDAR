@@ -178,6 +178,12 @@
         transition: bottom ease-in-out 0.4s;
     }
 
+/*.social a .bi bi-facebook :hover {
+    color: #3b5998;
+    background: #fff;
+    border-radius: 52px;
+}*/
+
 /*REDES SOCIALES FOOTER*/
     .redes-sociales i {
     padding: 20px;
