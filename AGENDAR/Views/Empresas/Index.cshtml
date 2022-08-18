@@ -3,14 +3,14 @@
 @{
     ViewData["Title"] = "Index";
 }
-<div id="empresasIndex">
+
 
     <h1>Empresas</h1>
 
 
 
     <table class="table table-bordered table-light ">
-        <thead class=" table-bordered ">
+        <thead class=" table-dark table-bordered ">
             <tr>
                 <th class="text-center" style="width:200px">
                     Razon Social
@@ -58,6 +58,7 @@
                         <div class="form-group">
                             <label for="recipient-name" class="control-label font-weight-bold">Razon Social</label>
                             <input type="text" class="form-control" autocomplete="off" required name="razonSocial" id="RazonSocial">
+                            <p class="text-danger font-weight-bold" style="font-size:small" id="Error-RazonSocial"></p>
                         </div>
                         <!--Lista de Localidades dentro del Dropdown de Empresa-->
                         <div class="row">
@@ -102,6 +103,7 @@
 
                         </div>
                         <p class="text-danger font-weight-bold" style="font-size:small" id="Error-CamposEmpresas"></p>
+                       
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -111,7 +113,7 @@
             </div>
         </div>
     </div>
-</div>
+
 
 @*//Funcion para Completar la Tabla de Empresas*@
 

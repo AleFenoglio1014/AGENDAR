@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace AGENDAR.Controllers
 {
-    [Authorize(Roles = "SuperUsuario")]
+    [Authorize(Roles = "SuperUsuario, AdministradorEmpresa")]
     public class HorariosController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -58,6 +58,7 @@ namespace AGENDAR.Controllers
                     HoraIniciostring = horario.HoraInicio.ToString("HH:mm"),
                     HoraFin = horario.HoraFin,
                     HoraFinstring = horario.HoraFin.ToString("HH:mm"),
+                    Eliminado = horario.Eliminado
                 };
                 listadohorario.Add(horarioMostrar);
             }
@@ -67,13 +68,28 @@ namespace AGENDAR.Controllers
 
         // Funcion Guardar y Editar los Horarios
         [Authorize(Roles = "AdministradorEmpresa")]
-        public JsonResult GuardarHorario(int HorarioID, DateTime HoraInicio, DateTime HoraFin)
+        public JsonResult GuardarHorario(int HorarioID, DateTime HoraInicio, DateTime HoraFin, int TiempoTurnos)
         {
-           
+
             int resultado = 0;
             //// Si es 0 es CORRECTO
             //// Si es 1 el Campo Descripcion esta VACIO
             //// Si es 2 el Registro YA EXISTE con la misma Descripcion
+
+            var tiempoValor = 15;
+            if (TiempoTurnos == 1)
+            {
+                tiempoValor = 30;
+            }
+            if (TiempoTurnos == 2)
+            {
+                tiempoValor = 45;
+            }
+            if (TiempoTurnos == 3)
+            {
+                tiempoValor = 60;
+            }
+           
 
             if (HorarioID == 0)
             {
@@ -86,13 +102,18 @@ namespace AGENDAR.Controllers
                 {
                     // Aca va a ir el codigo para CREAR un Horario
 
-                    int minutosDiarios = 840; //Tiempo en Minutos de 14 Horas
-                    int minutosTurnos = 15; // Tiempo de Duración de los Turnos en Minutos
+                    //CALCULAMOS LAS HORAS QUE TRABAJA LA EMPRESA
+                    int horasDeTrabajo = HoraFin.Hour - HoraInicio.Hour;
+                    //PASAMOS LAS HORAS QUE TRABAJA LA EMPRESA A MINUTOS
+                    int minutosDiarios = horasDeTrabajo * 60; 
 
-                    int cantidadTurnos = minutosDiarios / minutosTurnos;
+
+                    /*int minutosTurnos = TiempoTurnos;*/ // Tiempo de Duración de los Turnos en Minutos
+
+                    int cantidadTurnos = minutosDiarios / tiempoValor;
 
                     DateTime fechaApertura = Convert.ToDateTime("01/07/2022");
-                    fechaApertura = fechaApertura.AddHours(7); // Horario de Apertura de la Empresa 7:00 a.m.
+                    fechaApertura = fechaApertura.AddHours(HoraInicio.Hour); // Horario de Apertura de la Empresa 7:00 a.m.
                     //Creamos un foreach donde reccorremos la cantidad de turnos y le vamos sumando el tiempo de cada turno
                     for (int i = 0; i < cantidadTurnos; i++)
                     {
@@ -100,12 +121,12 @@ namespace AGENDAR.Controllers
                         var nuevoHorario = new Horario
                         {
                             HoraInicio = fechaApertura,
-                            HoraFin = fechaApertura.AddMinutes(minutosTurnos)
+                            HoraFin = fechaApertura.AddMinutes(TiempoTurnos)
                         };
                         _context.Add(nuevoHorario);
                         _context.SaveChanges();
 
-                        fechaApertura = fechaApertura.AddMinutes(minutosTurnos);
+                        fechaApertura = fechaApertura.AddMinutes(TiempoTurnos);
                     }
                 }
             }
@@ -138,7 +159,26 @@ namespace AGENDAR.Controllers
 
             return Json(horario);
         }
+        public JsonResult DesactivarHorario(int HorarioID, int Elimina)
+        {
+            bool resultado = true;
 
+            var horario = _context.Horario.Find(HorarioID);
+            if (horario != null)
+            {
+                if (Elimina == 0)
+                {
+                    horario.Eliminado = false;
+                }
+                else
+                {
+                    horario.Eliminado = true;
+                }
+                _context.SaveChanges();
+            }
+
+            return Json(resultado);
+        }
         private bool HorarioExists(int id)
         {
             return _context.Horario.Any(e => e.HorarioID == id);

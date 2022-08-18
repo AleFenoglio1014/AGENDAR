@@ -15,6 +15,7 @@ function CompletarTablaHorario() {
                 $("#tbody-horario").append('<tr class=' + claseEliminado + '>' +
                     '<td>' + horario.horaIniciostring + '</td>' +
                     '<td>' + horario.horaFinstring + '</td>' +
+                    '<td>' + tiempoMostrar + '</td>' +
                     '<td class="text-center">' +
                     botones +
                     '</td>' +
@@ -32,6 +33,7 @@ function AbrirModal() {
     $("#HorarioID").val(0);
     $("#HoraInicio").val('00:00');
     $("#HoraFin").val('00:00');
+    $("#TiempoTurnos").val('00:00');
     $("#exampleModal").modal("show");
 }
 // Funcion para Guardar el Horario
@@ -41,11 +43,12 @@ function GuardarHorario() {
     let horarioID = $('#HorarioID').val();
     let horaInicio = $('#HoraInicio').val().trim();
     let horaFin = $('#HoraFin').val().trim();
+    let tiempoTurnos = $('#tiempoDeTurnos').val();
     if (horaInicio != null && horaFin != null) {
         $.ajax({
             type: "POST",
             url: '../../Horarios/GuardarHorario',
-            data: { HorarioID: horarioID, HoraInicio: horaInicio, HoraFin: horaFin },
+            data: { HorarioID: horarioID, HoraInicio: horaInicio, HoraFin: horaFin, TiempoTurnos: tiempoTurnos },
             success: function (resultado) {
                 if (resultado == 0) {
                     $("#exampleModal").modal("hide");
@@ -76,6 +79,7 @@ function BuscarHorario(horarioID) {
         success: function (horario) {
             $("#HoraInicio").val(horario.horaInicioString);
             $("#HoraFin").val(horario.horaFinString);
+            $("#TiempoTurnos").val(horario.tiempoTurnos);
             $("#exampleModal").modal("show");
         },
         error: function (data) {
@@ -89,5 +93,28 @@ function VaciarFormulario() {
     $("#HorarioID").val(0);
     $("#HoraInicio").val('');
     $("#HoraFin").val('');
+    $("#TiempoTurnos").val('');
     $("#Error-Hora").text("");
+}
+
+function DesactivarHorario(horarioID, elimina) {
+
+    if (elimina == 1) {
+        var mensajeEliminar = "¿Esta seguro que quiere DESACTIVAR el Horario?"
+    } else {
+        var mensajeEliminar = "¿Esta seguro que quiere ACTIVAR el Horario?"
+    }
+
+    if (confirm(mensajeEliminar)) {
+        $.ajax({
+            type: "POST",
+            url: '../../Horarios/DesactivarHorario',
+            data: { HorarioID: horarioID, Elimina: elimina },
+            success: function (horario) {
+                CompletarTablaHorario();
+            },
+            error: function (data) {
+            }
+        });
+    }
 }

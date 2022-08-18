@@ -108,11 +108,13 @@ function VaciarFormulario() {
 //Funcion para Desactivar la Localidad
 
 function DesactivarLocalidad(localidadID, elimina) {
+
     if (elimina == 1) {
         var mensajeEliminar = "¿Esta seguro que quiere DESACTIVAR la Localidad?"
     } else {
         var mensajeEliminar = "¿Esta seguro que quiere ACTIVAR la Localidad?"
     }
+    
     if (confirm(mensajeEliminar)) {
         $.ajax({
             type: "POST",
@@ -126,3 +128,19 @@ function DesactivarLocalidad(localidadID, elimina) {
         });
     }
 }
+
+// Funcion para limitar los caracteres de los input
+var input = document.getElementById('LocalidadNombre');
+input.addEventListener('input', function () {
+    if (this.value.length > 30)
+        swal("HA SUPERADO EL LIMITE DE CARACTERES PERMITIDO.");
+        this.value = this.value.slice(0, 30);
+
+})
+var input = document.getElementById('CodPostal');
+input.addEventListener('input', function () {
+    if (this.value.length > 4)
+        swal("HA SUPERADO EL LIMITE DE CARACTERES PERMITIDO.");
+        this.value = this.value.slice(0, 4);
+
+})

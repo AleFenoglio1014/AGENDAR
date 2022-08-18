@@ -4,14 +4,16 @@ using AGENDAR.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AGENDAR.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220810172247_RolesAdministradorGmailPropios")]
+    partial class RolesAdministradorGmailPropios
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -132,9 +134,6 @@ namespace AGENDAR.Migrations
                     b.Property<DateTime>("HoraInicio")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("TiempoTurnos")
-                        .HasColumnType("int");
-
                     b.HasKey("HorarioID");
 
                     b.ToTable("Horario");
@@ -244,22 +243,22 @@ namespace AGENDAR.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "0f85fb0e-2506-4ebd-a55f-c514694fb554",
-                            ConcurrencyStamp = "c9b8f0a0-ff9c-4d1e-84f6-71ad1dd61920",
+                            Id = "dcb8501d-f0fa-4770-89bf-38282a8cedf7",
+                            ConcurrencyStamp = "ba4b43c6-fbd1-4c43-b638-e03856e1f234",
                             Name = "SuperUsuario",
                             NormalizedName = "SUPERUSUARIO"
                         },
                         new
                         {
-                            Id = "60f9aeb5-612f-4907-b96a-f9dd8ba4de5c",
-                            ConcurrencyStamp = "33b0c0ce-10d8-4399-b244-8d6ee8381784",
+                            Id = "a03459be-dcc8-4b9d-bc14-5d79546065fe",
+                            ConcurrencyStamp = "94fba6d4-98ff-472f-8734-2b5bb2288f69",
                             Name = "AdministradorEmpresa",
                             NormalizedName = "ADMINISTRADOREMPRESA"
                         },
                         new
                         {
-                            Id = "d3d7a1ca-912c-4254-b7f2-dad0dd56fda9",
-                            ConcurrencyStamp = "5a8ae533-b202-4f51-9331-2bb1f80bbebf",
+                            Id = "a3e369de-a130-4903-9846-53fa5c534e72",
+                            ConcurrencyStamp = "2b7cc990-d771-4a80-a2a5-f8cfda975603",
                             Name = "Usuario",
                             NormalizedName = "USUARIO"
                         });
@@ -425,8 +424,23 @@ namespace AGENDAR.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "a959c4ec-7dc2-4360-a949-b768669e58ff",
-                            RoleId = "0f85fb0e-2506-4ebd-a55f-c514694fb554"
+                            UserId = "2a7bade7-cebb-4162-a264-9c08b9237816",
+                            RoleId = "dcb8501d-f0fa-4770-89bf-38282a8cedf7"
+                        },
+                        new
+                        {
+                            UserId = "4f3059e0-b768-4be8-b0d0-98390f846674",
+                            RoleId = "a03459be-dcc8-4b9d-bc14-5d79546065fe"
+                        },
+                        new
+                        {
+                            UserId = "68d89b0c-28d3-4a5e-8470-e08ac4eed153",
+                            RoleId = "a03459be-dcc8-4b9d-bc14-5d79546065fe"
+                        },
+                        new
+                        {
+                            UserId = "38c44773-7cde-4db0-9bf5-568ceebdc20a",
+                            RoleId = "a03459be-dcc8-4b9d-bc14-5d79546065fe"
                         });
                 });
 
@@ -460,19 +474,64 @@ namespace AGENDAR.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "a959c4ec-7dc2-4360-a949-b768669e58ff",
+                            Id = "2a7bade7-cebb-4162-a264-9c08b9237816",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "74ec7768-8051-4700-b946-75c0101c2780",
+                            ConcurrencyStamp = "ce45b1a9-a3f3-408f-ad44-119808baa8bc",
                             Email = "turnosagendar@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "TURNOSAGENDAR@GMAIL.COM",
                             NormalizedUserName = "TURNOSAGENDAR@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEB37aeCv7nwR3bXwLMgLX8QjSjI1CjrmQwUihYxesBttDxzQ9hvhDuy2U3LknrggwQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEnkCZL3x59Kps1OT6GpBwmF1MUfw0AkcqaeEwcxBcz4EwAVrUBmtt/sV2Hsk2fFHA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ddbc28d2-ffd9-4c0a-8da0-0558116b27d5",
+                            SecurityStamp = "7ab50eef-7850-4298-b12e-4464d8eec4a0",
                             TwoFactorEnabled = false,
                             UserName = "turnosagendar@gmail.com"
+                        },
+                        new
+                        {
+                            Id = "4f3059e0-b768-4be8-b0d0-98390f846674",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "aabad448-f87d-482d-ad9a-ad9422197fa5",
+                            Email = "gonza.pagliano@gmail.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "GONZA.PAGLIANO@GMAIL.COM",
+                            NormalizedUserName = "GONZA.PAGLIANO@GMAIL.COM",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "2707b167-25ae-456c-bb9d-0dfff78ddfb4",
+                            TwoFactorEnabled = false,
+                            UserName = "gonza.pagliano@gmail.com"
+                        },
+                        new
+                        {
+                            Id = "68d89b0c-28d3-4a5e-8470-e08ac4eed153",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "a69882a8-3703-40cd-a60e-3bf3e49befce",
+                            Email = "valentinbeletti.29@gmail.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "VALENTINBELETTI.29@GMAIL.COM",
+                            NormalizedUserName = "VALENTINBELETTI.29@GMAIL.COM",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "e3041b24-30a4-4b60-bfdf-6778799b25f6",
+                            TwoFactorEnabled = false,
+                            UserName = "valentinbeletti.29@gmail.com"
+                        },
+                        new
+                        {
+                            Id = "38c44773-7cde-4db0-9bf5-568ceebdc20a",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "b5a4dcca-ea94-42b9-a4a8-946cbf309cfd",
+                            Email = "ale.1014f@gmail.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ALE.1014F@GMAIL.COM",
+                            NormalizedUserName = "ALE.1014F@GMAIL.COM",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "7e60c560-435c-4eca-ac3e-c1a228f2f83f",
+                            TwoFactorEnabled = false,
+                            UserName = "ale.1014f@gmail.com"
                         });
                 });
 

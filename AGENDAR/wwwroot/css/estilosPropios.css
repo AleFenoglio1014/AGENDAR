@@ -10,13 +10,15 @@
 }
 
 
-
+/*clase para que cambie de color el nav*/ 
 .header.sticked {
     background: #677297;
     transition: 0.8s;
 }
-
-
+.imagenSoliitarTurno {
+    image-resolution: 300dpi;
+    background-image: url('../lib/Imagenes/persona-y-computador-4.jpg');
+}
 /*BANNER*/
 .banner {
     position: relative;
@@ -185,6 +187,12 @@
         bottom: 0;
         transition: bottom ease-in-out 0.4s;
     }
+
+/*.social a .bi bi-facebook :hover {
+    color: #3b5998;
+    background: #fff;
+    border-radius: 52px;
+}*/
 
 /*REDES SOCIALES FOOTER*/
 .redes-sociales i {

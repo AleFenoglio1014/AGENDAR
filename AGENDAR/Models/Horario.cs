@@ -16,11 +16,15 @@ namespace AGENDAR.Models
         public DateTime HoraInicio { get; set; }
         public DateTime HoraFin { get; set; }
 
+        public int TiempoTurnos { get; set; }
+
         [NotMapped]
         public string HoraIniciostring { get { return HoraInicio.ToString("HH:mm"); } }
 
         [NotMapped]
         public string HoraFinstring { get { return HoraFin.ToString("HH:mm"); } }
+        public virtual ICollection<Turno> Turnos { get; set; }
+        public bool Eliminado { get; set; }
 
     }
     public class HorarioMostrar
@@ -29,7 +33,17 @@ namespace AGENDAR.Models
         public DateTime HoraInicio { get; set; }
         public string HoraIniciostring { get; set; }
         public DateTime HoraFin { get; set; }
+
+        public int TiempoTurnos { get; set; }
         public string HoraFinstring { get; set; }
+        public bool Eliminado { get; set; }
     }
 
-} 
+   //public enum TiempoTurnos
+   // {
+   //     MedioTurno,
+   //     Turno,
+   //     TurnoyMedio,
+   //     DosTurnos 
+   // }
+}
