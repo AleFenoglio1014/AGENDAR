@@ -11,7 +11,18 @@ function CompletarTablaHorario() {
 
                 let claseEliminado = '';
                 let botones = '<button type="button" onclick="BuscarHorario(' + horario.horarioID + ')" class="btn btn-outline-primary btn-sm" style="margin-right:5px"><i class="bi bi-pencil-square"></i> Editar</button>'
-               
+                let tiempoMostrar = "15 Minutos";
+
+                if(horario.tiempoTurnos == 1) {
+                    tiempoMostrar = "30 Minutos"
+                }
+                if (horario.tiempoTurnos == 2) {
+                    tiempoMostrar = "45 Minutos"
+                }
+                if (horario.tiempoTurnos == 3) {
+                    tiempoMostrar = "60 Minutos"
+                }
+
                 $("#tbody-horario").append('<tr class=' + claseEliminado + '>' +
                     '<td>' + horario.horaIniciostring + '</td>' +
                     '<td>' + horario.horaFinstring + '</td>' +
@@ -43,12 +54,13 @@ function GuardarHorario() {
     let horarioID = $('#HorarioID').val();
     let horaInicio = $('#HoraInicio').val().trim();
     let horaFin = $('#HoraFin').val().trim();
-    let tiempoTurnos = $('#tiempoDeTurnos').val();
+    let tiempoTurnos = $('#TiempoTurnos').val();
     if (horaInicio != null && horaFin != null) {
         $.ajax({
             type: "POST",
             url: '../../Horarios/GuardarHorario',
             data: { HorarioID: horarioID, HoraInicio: horaInicio, HoraFin: horaFin, TiempoTurnos: tiempoTurnos },
+            async: false,
             success: function (resultado) {
                 if (resultado == 0) {
                     $("#exampleModal").modal("hide");

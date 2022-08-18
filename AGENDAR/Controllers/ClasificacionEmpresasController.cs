@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using AGENDAR.Data;
 using AGENDAR.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+
 
 namespace AGENDAR.Controllers
 {
@@ -16,10 +18,16 @@ namespace AGENDAR.Controllers
     public class ClasificacionEmpresasController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<IdentityUser> _userManager;
+        //TRAEMOS EL METODO DESDE EL CONTROLADOR DE EMPRESAS PARA BUSCAR USUARIO Y EMPRESA ACTUAL.
+        //SI HAY QUE MODIFICAR ALGO, SOLO SE HACE EN EL CONTROLADOR DE EMPRESA
+        public EmpresasController EmpresasController;
 
-        public ClasificacionEmpresasController(ApplicationDbContext context)
+        public ClasificacionEmpresasController(ApplicationDbContext context, UserManager<IdentityUser> userManager, EmpresasController empresasController)
         {
             _context = context;
+            _userManager = userManager;
+            EmpresasController = empresasController;
         }
 
         public async Task<IActionResult> Index()
@@ -36,9 +44,15 @@ namespace AGENDAR.Controllers
         }
 
         // Funcion Guardar y Editar las Actividades de la Empresa 
-        [Authorize(Roles = "AdministradorEmpresa")]
+        [Authorize(Roles = "AdministradorEmpresa, SuperUsuario")]
         public JsonResult GuardarTipoEmpresa(int ClasificacionEmpresaID, string Descripcion)
         {
+            //PRIMERO BUSCAMOS EL USUARIO ACTUAL
+            var usuarioActual = _userManager.GetUserId(HttpContext.User);
+            //LUEGO EN BASE A ESE USUARIO BUSCAMOS LA EMPRESA CON LA QUE ESTA RELACIONADA
+            EmpresaUsuario empresaUsuarioActual = new EmpresaUsuario();
+            EmpresasController.BuscarEmpresaActual(usuarioActual, empresaUsuarioActual);
+
             int resultado = 0;
             // Si es 0 es CORRECTO
             // Si es 1 el Campo Descripcion esta VACIO

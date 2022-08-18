@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using AGENDAR.Data;
 using AGENDAR.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace AGENDAR.Controllers
 {
@@ -16,10 +17,17 @@ namespace AGENDAR.Controllers
     public class ClasificacionProfesionalesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<IdentityUser> _userManager;
+        //TRAEMOS EL METODO DESDE EL CONTROLADOR DE EMPRESAS PARA BUSCAR USUARIO Y EMPRESA ACTUAL.
+        //SI HAY QUE MODIFICAR ALGO, SOLO SE HACE EN EL CONTROLADOR DE EMPRESA
+        public EmpresasController EmpresasController;
 
-        public ClasificacionProfesionalesController(ApplicationDbContext context)
+
+        public ClasificacionProfesionalesController(ApplicationDbContext context, UserManager<IdentityUser> userManager, EmpresasController empresasController)
         {
             _context = context;
+            _userManager = userManager;
+            EmpresasController = empresasController;
         }
 
         public async Task<IActionResult> Index()
@@ -36,9 +44,15 @@ namespace AGENDAR.Controllers
         }
 
         // Funcion Guardar y Editar las Actividades del profesional 
-        [Authorize(Roles = "AdministradorEmpresa")]
+        [Authorize(Roles = "AdministradorEmpresa, SuperUsuario")]
         public JsonResult GuardarTipoProfesional(int ClasificacionProfesionalID, string Descripcion)
         {
+            //PRIMERO BUSCAMOS EL USUARIO ACTUAL
+            var usuarioActual = _userManager.GetUserId(HttpContext.User);
+            //LUEGO EN BASE A ESE USUARIO BUSCAMOS LA EMPRESA CON LA QUE ESTA RELACIONADA
+            EmpresaUsuario empresaUsuarioActual = new EmpresaUsuario();
+            EmpresasController.BuscarEmpresaActual(usuarioActual, empresaUsuarioActual);
+
             int resultado = 0;
             // Si es 0 es CORRECTO
             // Si es 1 el Campo Descripcion esta VACIO
@@ -90,9 +104,7 @@ namespace AGENDAR.Controllers
             {
                 resultado = 1;
             };
-
-
-            return Json(resultado);
+          return Json(resultado);
         }
 
         // Funcion para Buscar la Actividad
@@ -103,27 +115,6 @@ namespace AGENDAR.Controllers
             return Json(tipoProfesional);
         }
 
-        //// Funcion para Desactivar una Actividad
-        //public JsonResult DesactivarActividad(int ClasificacionProfesionalID, int Elimina)
-        //{
-        //    bool resultado = true;
-
-        //    var tipoProfesional = _context.ClasificacionProfesional.Find(ClasificacionProfesionalID);
-        //    if (tipoProfesional != null)
-        //    {
-        //        if (Elimina == 0)
-        //        {
-        //            tipoProfesional.Eliminado = false;
-        //        }
-        //        else
-        //        {
-        //            tipoProfesional.Eliminado = true;
-        //        }
-        //        _context.SaveChanges();
-        //    }
-
-        //    return Json(resultado);
-        //}
         private bool ClasificacionProfesionalExists(int id)
         {
             return _context.ClasificacionProfesional.Any(e => e.ClasificacionProfesionalID == id);

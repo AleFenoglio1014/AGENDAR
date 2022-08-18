@@ -12,15 +12,19 @@ using Microsoft.AspNetCore.Identity;
 
 namespace AGENDAR.Controllers
 {
-    [Authorize/*(Roles = "SuperUsuario")*/]
+    [Authorize(Roles = "AdministradorEmpresa, SuperUsuario")]
     public class LocalidadesController : Controller
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<IdentityUser> _userManager;
-        public LocalidadesController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
+        //TRAEMOS EL METODO DESDE EL CONTROLADOR DE EMPRESAS PARA BUSCAR USUARIO Y EMPRESA ACTUAL.
+        //SI HAY QUE MODIFICAR ALGO, SOLO SE HACE EN EL CONTROLADOR DE EMPRESA
+        public EmpresasController EmpresasController;
+        public LocalidadesController(ApplicationDbContext context, UserManager<IdentityUser> userManager, EmpresasController empresasController)
         {
             _context = context;
             _userManager = userManager;
+            EmpresasController = empresasController;
         }
 
         // GET: Localidades
@@ -40,21 +44,15 @@ namespace AGENDAR.Controllers
             return Json(new SelectList(localidades, "LocalidadID", "Descripcion"));
         }
 
-        //Funcion para Buscar Empresa y Usuario
-
-        public void BuscarEmpresaActual(string usuarioActual, EmpresaUsuario empresaUsuarioActual)
-        {
-           empresaUsuarioActual = _context.EmpresasUsuarios.Where(p => p.UsuarioID == usuarioActual).SingleOrDefault();
-        }
-
         // Funcion para Completar la Tabla  de Localidades 
+        [Authorize(Roles = "AdministradorEmpresa, SuperUsuario")]
         public JsonResult BuscarLocalidades()
         {
             //PRIMERO BUSCAMOS EL USUARIO ACTUAL
             var usuarioActual = _userManager.GetUserId(HttpContext.User);
             //LUEGO EN BASE A ESE USUARIO BUSCAMOS LA EMPRESA CON LA QUE ESTA RELACIONADA
             EmpresaUsuario empresaUsuarioActual = new EmpresaUsuario();
-            BuscarEmpresaActual(usuarioActual, empresaUsuarioActual);
+            EmpresasController.BuscarEmpresaActual(usuarioActual, empresaUsuarioActual);
 
             var localidades = _context.Localidad.Where(l=> l.EmpresaID == empresaUsuarioActual.EmpresaID).Include(r => r.Provincias).ToList();
             List<LocalidadMostrar> listadoLocalidadesMostrar = new List<LocalidadMostrar>();
@@ -76,7 +74,7 @@ namespace AGENDAR.Controllers
             return Json(listadoLocalidadesMostrar);
         }
         // Funcion Guardar y Editar las Localidades
-        [Authorize/*(Roles = "AdministradorEmpresa")*/]
+        [Authorize(Roles = "AdministradorEmpresa, SuperUsuario")]
         public JsonResult GuardarLocalidad(int LocalidadID, string Descripcion,string CodPostal, int ProvinciaID, string ProvinciaNombre)
         {
             int resultado = 0;
@@ -170,6 +168,7 @@ namespace AGENDAR.Controllers
         }
 
         // Funcion para Desactivar una Ciudad
+        [Authorize(Roles = "SuperUsuario")]
         public JsonResult DesactivarLocalidad(int LocalidadID, int Elimina)
         {
             bool resultado = true;

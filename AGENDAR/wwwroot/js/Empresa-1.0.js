@@ -44,9 +44,6 @@ function AbrirModal() {
     $("#exampleModal").modal("show");
 }
 
-
-
-
  // Funcion para Buscar las Empresas
 
 function BuscarEmpresa(empresaID) {
