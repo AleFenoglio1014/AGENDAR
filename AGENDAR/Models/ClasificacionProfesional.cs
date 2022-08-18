@@ -16,7 +16,8 @@ namespace AGENDAR.Models
       
 
         public virtual ICollection<Profesional> Profesionales { get; set; }
-    
+        public virtual ICollection<Turno> Turnos { get; set; }
+
     }
 
 }

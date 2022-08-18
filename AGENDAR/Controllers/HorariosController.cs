@@ -75,7 +75,7 @@ namespace AGENDAR.Controllers
             EmpresasController.BuscarEmpresaActual(usuarioActual, empresaUsuarioActual);
 
             int resultado = 0;
-            //// Si es 0 es CORRECTO
+            //// Si es 0 es CORRECTO 
             //// Si es 1 el Campo Descripcion esta VACIO
             //// Si es 2 el Registro YA EXISTE con la misma Descripcion
 
@@ -145,7 +145,26 @@ namespace AGENDAR.Controllers
 
             return Json(horario);
         }
+        public JsonResult DesactivarHorario(int HorarioID, int Elimina)
+        {
+            bool resultado = true;
 
+            var horario = _context.Horario.Find(HorarioID);
+            if (horario != null)
+            {
+                if (Elimina == 0)
+                {
+                    horario.Eliminado = false;
+                }
+                else
+                {
+                    horario.Eliminado = true;
+                }
+                _context.SaveChanges();
+            }
+
+            return Json(resultado);
+        }
         private bool HorarioExists(int id)
         {
             return _context.Horario.Any(e => e.HorarioID == id);

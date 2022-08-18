@@ -4,14 +4,16 @@ using AGENDAR.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AGENDAR.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220818005622_tablaturno")]
+    partial class tablaturno
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -252,22 +254,10 @@ namespace AGENDAR.Migrations
                     b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ProfesionalID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProvinciaID")
-                        .HasColumnType("int");
-
                     b.Property<long>("Telefono")
                         .HasColumnType("bigint");
 
                     b.HasKey("TurnoID");
-
-                    b.HasIndex("ClasificacionProfesionalID");
-
-                    b.HasIndex("HorarioID");
-
-                    b.HasIndex("LocalidadID");
 
                     b.ToTable("Turnos");
                 });
@@ -301,22 +291,22 @@ namespace AGENDAR.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "fad59572-9315-4956-bb39-870860d44757",
-                            ConcurrencyStamp = "7952096d-f7a5-4cdc-adbb-e2275d2f5ced",
+                            Id = "df120009-c0a7-4d87-a524-29eced1a2694",
+                            ConcurrencyStamp = "f5543d0b-755e-47a0-9a6e-99151a362c4f",
                             Name = "SuperUsuario",
                             NormalizedName = "SUPERUSUARIO"
                         },
                         new
                         {
-                            Id = "12a9cda5-7759-4731-88cf-f38eb764242d",
-                            ConcurrencyStamp = "106487b5-ac6b-4988-927c-24d9c139220b",
+                            Id = "19b6bdf0-b06b-41c3-9bff-173baea9cf93",
+                            ConcurrencyStamp = "fafde0d3-1561-4820-a288-f1a8f19b3003",
                             Name = "AdministradorEmpresa",
                             NormalizedName = "ADMINISTRADOREMPRESA"
                         },
                         new
                         {
-                            Id = "edefc78d-53d1-48e1-bc82-99904919fd6d",
-                            ConcurrencyStamp = "411e3ccb-1c9d-4ae5-bca3-14984200e78d",
+                            Id = "e9d9fdca-47ca-40e7-91a9-62ebf56b3d3a",
+                            ConcurrencyStamp = "ecc0cb10-63ca-4c62-b2db-a282e39af9ff",
                             Name = "Usuario",
                             NormalizedName = "USUARIO"
                         });
@@ -482,8 +472,8 @@ namespace AGENDAR.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "c7fbce74-63e2-4fdf-beda-c1e793cd270e",
-                            RoleId = "fad59572-9315-4956-bb39-870860d44757"
+                            UserId = "c688be32-1891-4aef-81c0-d34a44c46fc7",
+                            RoleId = "df120009-c0a7-4d87-a524-29eced1a2694"
                         });
                 });
 
@@ -517,17 +507,17 @@ namespace AGENDAR.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "c7fbce74-63e2-4fdf-beda-c1e793cd270e",
+                            Id = "c688be32-1891-4aef-81c0-d34a44c46fc7",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "90d06906-a781-43ba-8cb2-4d1d3f0e1b6d",
+                            ConcurrencyStamp = "7e911a5e-1d18-4813-a199-0b071f4793d2",
                             Email = "turnosagendar@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "TURNOSAGENDAR@GMAIL.COM",
                             NormalizedUserName = "TURNOSAGENDAR@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAENOqP8CKTGy4a3ZF/VjDpThGtjaxv9R5BeBnYwLq6DlvR5jl3iaNmisN54qkc3mt9w==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGLyoI9DT0ZI6Hb89WQyzY2Q6QN1HaYV05cgvIFdfCEGhZRENtjpVmTXtuLXb1TYXg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "95c15314-e3b4-4fe3-bdd6-8512476b1217",
+                            SecurityStamp = "24eed3c9-9e87-44a5-912f-ccb12fa3f5d5",
                             TwoFactorEnabled = false,
                             UserName = "turnosagendar@gmail.com"
                         });
@@ -568,27 +558,6 @@ namespace AGENDAR.Migrations
                     b.HasOne("AGENDAR.Models.Empresa", "Empresas")
                         .WithMany("Profesionales")
                         .HasForeignKey("EmpresaID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("AGENDAR.Models.Turno", b =>
-                {
-                    b.HasOne("AGENDAR.Models.ClasificacionProfesional", "GetClasificacionProfesionales")
-                        .WithMany("Turnos")
-                        .HasForeignKey("ClasificacionProfesionalID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("AGENDAR.Models.Horario", "Horarios")
-                        .WithMany("Turnos")
-                        .HasForeignKey("HorarioID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("AGENDAR.Models.Localidad", "Localidades")
-                        .WithMany("Turnos")
-                        .HasForeignKey("LocalidadID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

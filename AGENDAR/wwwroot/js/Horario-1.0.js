@@ -108,3 +108,25 @@ function VaciarFormulario() {
     $("#TiempoTurnos").val('');
     $("#Error-Hora").text("");
 }
+
+function DesactivarHorario(horarioID, elimina) {
+
+    if (elimina == 1) {
+        var mensajeEliminar = "¿Esta seguro que quiere DESACTIVAR el Horario?"
+    } else {
+        var mensajeEliminar = "¿Esta seguro que quiere ACTIVAR el Horario?"
+    }
+
+    if (confirm(mensajeEliminar)) {
+        $.ajax({
+            type: "POST",
+            url: '../../Horarios/DesactivarHorario',
+            data: { HorarioID: horarioID, Elimina: elimina },
+            success: function (horario) {
+                CompletarTablaHorario();
+            },
+            error: function (data) {
+            }
+        });
+    }
+}

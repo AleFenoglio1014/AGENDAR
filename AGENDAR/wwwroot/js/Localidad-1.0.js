@@ -114,7 +114,7 @@ function DesactivarLocalidad(localidadID, elimina) {
     } else {
         var mensajeEliminar = "¿Esta seguro que quiere ACTIVAR la Localidad?"
     }
-
+    
     if (confirm(mensajeEliminar)) {
         $.ajax({
             type: "POST",

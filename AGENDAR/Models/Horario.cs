@@ -23,9 +23,10 @@ namespace AGENDAR.Models
 
         [NotMapped]
         public string HoraFinstring { get { return HoraFin.ToString("HH:mm"); } }
+        public virtual ICollection<Turno> Turnos { get; set; }
+        public bool Eliminado { get; set; }
 
     }
-
     public class HorarioMostrar
     {
         public int HorarioID { get; set; }
@@ -35,6 +36,7 @@ namespace AGENDAR.Models
 
         public int TiempoTurnos { get; set; }
         public string HoraFinstring { get; set; }
+        public bool Eliminado { get; set; }
     }
 
    //public enum TiempoTurnos
