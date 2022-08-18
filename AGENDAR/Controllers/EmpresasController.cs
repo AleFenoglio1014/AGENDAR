@@ -40,6 +40,7 @@ namespace AGENDAR.Controllers
             return View();
            
         }
+        [Authorize(Roles = "AdministradorEmpresa, SuperUsuario")]
         public IActionResult Create()
         {
             var localidades = _context.Localidad.Where(p => p.Eliminado == false).ToList();
@@ -57,10 +58,22 @@ namespace AGENDAR.Controllers
           return View();
         }
 
+        //Funcion para Buscar Empresa y Usuario
+        public void BuscarEmpresaActual(string usuarioActual, EmpresaUsuario empresaUsuarioActual)
+        {
+            empresaUsuarioActual = _context.EmpresasUsuarios.Where(p => p.UsuarioID == usuarioActual).SingleOrDefault();
+        }
+
         // Funcion para Completar la Tabla  de Empresas 
 
         public JsonResult BuscarEmpresas()
         {
+            //PRIMERO BUSCAMOS EL USUARIO ACTUAL
+            var usuarioActual = _userManager.GetUserId(HttpContext.User);
+            //LUEGO EN BASE A ESE USUARIO BUSCAMOS LA EMPRESA CON LA QUE ESTA RELACIONADA
+            EmpresaUsuario empresaUsuarioActual = new EmpresaUsuario();
+            BuscarEmpresaActual(usuarioActual, empresaUsuarioActual);
+
             var empresas = _context.Empresa.Include(r => r.Localidades).Include(p => p.ClasificacionEmpresas).ToList();
 
             List<EmpresasMostrar> listadoEmpresas = new List<EmpresasMostrar>();
@@ -89,12 +102,13 @@ namespace AGENDAR.Controllers
         }
 
         // Funcion Guardar y Editar las Empresa
-
+        [Authorize(Roles = "AdministradorEmpresa, SuperUsuario")]
         public async Task<JsonResult> GuardarEmpresa(int EmpresaID, string razonSocial, string cuit, string direccion, Int64 telefono, int LocalidadID, int ClasificacionEmpresaID, IFormFile archivo)
         {
-            var usuarioId = _userManager.GetUserId(HttpContext.User);
+            //PRIMERO BUSCAMOS EL USUARIO ACTUAL
+            var usuarioActual = _userManager.GetUserId(HttpContext.User);
             //BUSCAR POR MEDIO DE CORREO ELECTRONICO ESE USUARIO CREADO PARA BUSCAR EL ID
-            var usuario = _context.Users.Where(u => u.Id == usuarioId).SingleOrDefault();
+            var usuario = _context.Users.Where(u => u.Id == usuarioActual).SingleOrDefault();
 
             int resultado = 0;
             // Si es 0 es CORRECTO
@@ -117,8 +131,6 @@ namespace AGENDAR.Controllers
                                 archivo.CopyTo(ms);
                                 img = ms.ToArray();
                                 tipoImg = archivo.ContentType;
-                                //string base64 = Convert.ToBase64String(img);
-                                // act on the Base64 data
                             }
                         }
                     }
@@ -152,7 +164,7 @@ namespace AGENDAR.Controllers
                             //CREAMOS UN OBJETO DONDE NOS RELACIONA EL USUARIO CON LA EMPRESA PARA TENER REGISTRO EN LA TABLA
                             var empresaUsuario = new EmpresaUsuario
                             {
-                                UsuarioID = usuarioId,
+                                UsuarioID = usuarioActual,
                                 EmpresaID = empresaNueva.EmpresaID
                             };
                             _context.Add(empresaUsuario);
@@ -207,34 +219,8 @@ namespace AGENDAR.Controllers
             return Json(empresa);
         }
 
-
-        //[AllowAnonymous]
-        //public JsonResult BuscarUltimasEmpresas()
-        //{
-        //    List<EmpresasMostrar> listadoUltimasEmpresa = new List<EmpresasMostrar>();
-
-        //    var empresa = _context.Empresa.Include(r => r.Localidades).ToList();
-
-        //    foreach (var itemEmpresa in empresa)
-        //    {
-
-        //        var empresas = new EmpresasMostrar()
-        //        {
-        //            EmpresaID = itemEmpresa.EmpresaID,
-        //            RazonSocial = itemEmpresa.RazonSocial,
-        //            LocalidadID = itemEmpresa.LocalidadID,
-        //            LocalidadNombre = itemEmpresa.Localidades.Descripcion,
-        //            ImagenEmpresaString = Convert.ToBase64String(itemEmpresa.ImagenEmpresa)
-
-        //        };
-        //        listadoUltimasEmpresa.Add(empresas);
-        //    }
-        //    JsonResult resultado = Json(listadoUltimasEmpresa);
-
-        //    return resultado;
-        //}
-        //Eliminar Empresa
-        
+        //Desactivar Empresa
+        [Authorize(Roles = "SuperUsuario")]
         public JsonResult DesactivarEmpresa(int EmpresaID, int Elimina)
         {
             bool resultado = true;

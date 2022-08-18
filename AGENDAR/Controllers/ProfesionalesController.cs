@@ -12,21 +12,20 @@ using Microsoft.AspNetCore.Identity;
 
 namespace AGENDAR.Controllers
 {
-    [Authorize(Roles = "SuperUsuario")]
+    [Authorize(Roles = "SuperUsuario, AdministradorEmpresa")]
     public class ProfesionalesController : Controller
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<IdentityUser> _userManager;
-        public ProfesionalesController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
+        //TRAEMOS EL METODO DESDE EL CONTROLADOR DE EMPRESAS PARA BUSCAR USUARIO Y EMPRESA ACTUAL.
+        //SI HAY QUE MODIFICAR ALGO, SOLO SE HACE EN EL CONTROLADOR DE EMPRESA
+        public EmpresasController EmpresasController;
+        public ProfesionalesController(ApplicationDbContext context, UserManager<IdentityUser> userManager, EmpresasController empresasController)
         {
             _context = context;
             _userManager = userManager;
+            EmpresasController = empresasController;
         }
-
-        //public ProfesionalesController(ApplicationDbContext context)
-        //{
-        //    _context = context;
-        //}
 
         // GET: Profesionales
         public IActionResult Index()
@@ -42,21 +41,15 @@ namespace AGENDAR.Controllers
             return View();
         }
 
-        //Funcion para Buscar Empresa y Usuario
-        public void BuscarEmpresaActual(string usuarioActual, EmpresaUsuario empresaUsuarioActual)
-        {
-            empresaUsuarioActual = _context.EmpresasUsuarios.Where(p => p.UsuarioID == usuarioActual).SingleOrDefault();
-        }
-
         // Funcion para Completar la Tabla  de Profesionales 
-
+        [Authorize(Roles = "AdministradorEmpresa, SuperUsuario")]
         public JsonResult BuscarProfesionales()
         {
             //PRIMERO BUSCAMOS EL USUARIO ACTUAL
             var usuarioActual = _userManager.GetUserId(HttpContext.User);
             //LUEGO EN BASE A ESE USUARIO BUSCAMOS LA EMPRESA CON LA QUE ESTA RELACIONADA
             EmpresaUsuario empresaUsuarioActual = new EmpresaUsuario();
-            BuscarEmpresaActual(usuarioActual, empresaUsuarioActual);
+            EmpresasController.BuscarEmpresaActual(usuarioActual, empresaUsuarioActual);
 
             var profesionales = _context.Profesional.Include(r => r.Empresas).Include(p => p.ClasificacionProfesionales).ToList();
 
@@ -87,6 +80,12 @@ namespace AGENDAR.Controllers
         [Authorize(Roles = "AdministradorEmpresa, SuperUsuario")]
         public JsonResult GuardarProfesional(int ProfesionalID, string Nombre, string Apellido,  int EmpresaID, int ClasificacionProfesionalID)
         {
+            //PRIMERO BUSCAMOS EL USUARIO ACTUAL
+            var usuarioActual = _userManager.GetUserId(HttpContext.User);
+            //LUEGO EN BASE A ESE USUARIO BUSCAMOS LA EMPRESA CON LA QUE ESTA RELACIONADA
+            EmpresaUsuario empresaUsuarioActual = new EmpresaUsuario();
+            EmpresasController.BuscarEmpresaActual(usuarioActual, empresaUsuarioActual);
+
             int resultado = 0;
             // Si es 0 es CORRECTO
             // Si es 1 el Campo Descripcion esta VACIO
@@ -171,10 +170,17 @@ namespace AGENDAR.Controllers
 
             return Json(profesional);
         }
-        //Eliminar Profesional
 
+        //Eliminar Profesional
+        [Authorize(Roles = "AdministradorEmpresa, SuperUsuario")]
         public JsonResult Eliminarprofesional(int ProfesionalID)
         {
+            //PRIMERO BUSCAMOS EL USUARIO ACTUAL
+            var usuarioActual = _userManager.GetUserId(HttpContext.User);
+            //LUEGO EN BASE A ESE USUARIO BUSCAMOS LA EMPRESA CON LA QUE ESTA RELACIONADA
+            EmpresaUsuario empresaUsuarioActual = new EmpresaUsuario();
+            EmpresasController.BuscarEmpresaActual(usuarioActual, empresaUsuarioActual);
+
             bool resultado = true;
 
             var profesional = _context.Profesional.Find(ProfesionalID);
