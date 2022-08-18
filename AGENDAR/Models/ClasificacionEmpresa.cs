@@ -16,7 +16,7 @@ namespace AGENDAR.Models
         public bool Eliminado { get; set; }
 
         public virtual ICollection<Empresa> Empresas { get; set; }
-        public virtual ICollection<Turno> Turnos { get; set; }
+        //public virtual ICollection<Turno> Turnos { get; set; }
 
 
     }

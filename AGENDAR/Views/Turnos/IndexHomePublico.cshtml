@@ -1,0 +1,96 @@
+﻿@model AGENDAR.Models.Turno
+
+@{
+    ViewData["Title"] = "IndexHomePublico";
+}
+
+@{
+    Layout = "~/Views/Shared/Layout-Login.cshtml";
+}
+<body class="imagenSoliitarTurno">
+
+    <form>
+        <input type="hidden" id="TurnoID" value="0" />
+        <h5>DATOS PERSONALES:</h5>
+        <div class="row">
+            <div class="form-group col-md-6 letrainput">
+                <label for="recipient-name" class="control-label font-weight-bold">Nombre</label>
+                <input type="text" class="form-control" autocomplete="off" required id="Nombre">
+            </div>
+            <div class="form-group col-md-6 letrainput">
+                <label for="recipient-name" class="control-label font-weight-bold">Apellido</label>
+                <input type="text" class="form-control" autocomplete="off" required id="Apellido">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6 letrainput">
+                <label for="recipient-name" class="control-label font-weight-bold">Email</label>
+                <input type="text" class="form-control" autocomplete="off" required id="Email">
+            </div>
+            <div class="form-group col-md-6 letrainput ">
+                <label for="recipient-name" class="control-label font-weight-bold labelCrearEmpresa">Telefono</label>
+                <input type="number" class="form-control" autocomplete="off" required name="telefono" id="Telefono">
+            </div>
+        </div>
+        <h5>SOLICITE SU TURNO:</h5>
+        <div class="row">
+            <div class="form-group col-md-4 letrainput">
+                <label class="control-label font-weight-bold">Provincia</label>
+                @*@Html.DropDownList("ProvinciaID", null, htmlAttributes: new { @class = "form-control" })*@
+
+            </div>
+            <div class="form-group col-md-4 letrainput">
+                <label class="control-label font-weight-bold labelCrearEmpresa">Localidad</label>
+                @*@Html.DropDownList("LocalidadID", null, htmlAttributes: new { @class = "form-control letrainput" })*@
+            </div>
+            <div class="form-group col-md-4 letrainput">
+                <label class="control-label font-weight-bold labelCrearEmpresa">Tipo de Empresa</label>
+                @*@Html.DropDownList("ClasificacionEmpresaID", null, htmlAttributes: new { @class = "form-control letrainput" })*@
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-4 letrainput">
+                <label class="control-label font-weight-bold">Empresa</label>
+                @*@Html.DropDownList("EmpresaID", null, htmlAttributes: new { @class = "form-control " })*@
+            </div>
+
+            <div class="form-group col-md-4 letrainput">
+                <label class="control-label font-weight-bold">Tipo de Profesional</label>
+                @*@Html.DropDownList("ClasificacionProfesionalID", null, htmlAttributes: new { @class = "form-control " })*@
+
+            </div>
+            <div class="form-group col-md-4 letrainput">
+                <label class="control-label font-weight-bold">Profesional</label>
+                @*@Html.DropDownList("ProfesionalID", null, htmlAttributes: new { @class = "form-control " })*@
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6 letrainput">
+                <label for="recipient-name" class="control-label font-weight-bold">Fecha</label>
+                <input type="date" name="Fecha" class="form-control " autocomplete="off" required id="Fecha">
+            </div>
+
+            <div class="form-group col-md-6 letrainput">
+                <label class="control-label font-weight-bold">Hora</label>
+                @*@Html.DropDownList("HorarioID", null, htmlAttributes: new { @class = "form-control " })*@
+
+            </div>
+
+        </div>
+    </form>
+
+    <div class="form-group">
+        <button type="button" onclick="GuardarTurno()" class="btn btn-outline-success"><i class="bi bi-folder-check"></i> Solicitar Turno</button>
+        <button type="button" onclick="VaciarFormulario()" class="btn btn-outline-danger" data-dismiss="modal"><i class="bi bi-backspace"></i> Borrar</button>
+    </div>
+
+</body>
+
+
+
+@section Scripts {
+
+    <script src="~/js/Turno.js"></script>
+
+}

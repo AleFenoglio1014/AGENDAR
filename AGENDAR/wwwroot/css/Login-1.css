@@ -64,7 +64,7 @@ Body {
     height: 100%;
     margin-right: 3px;
 }
-}
+
 
 .login100-form {
     width: 100%;
@@ -431,4 +431,17 @@ label {
 p {
     font-family: 'Times New Roman', Times, serif;
     font-size:15px;
+}
+
+
+/*CLASES PARA SOLICITAR EL TURNO*/
+
+.imagenSoliitarTurno {
+    image-resolution: 300dpi;
+    background-image: url('../lib/Imagenes/persona-y-computador-4.jpg');
+}
+
+.letrainput, h5 {
+    font-size: 11px !important;
+    color:white;
 }

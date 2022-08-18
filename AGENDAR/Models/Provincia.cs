@@ -16,7 +16,6 @@ namespace AGENDAR.Models
 
        
         public virtual ICollection<Localidad> Localidades { get; set; }
-        public virtual ICollection<Turno> Turnos { get; set; }
 
     }
 }

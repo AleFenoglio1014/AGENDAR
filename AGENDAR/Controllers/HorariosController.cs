@@ -72,7 +72,7 @@ namespace AGENDAR.Controllers
         {
 
             int resultado = 0;
-            //// Si es 0 es CORRECTO
+            //// Si es 0 es CORRECTO 
             //// Si es 1 el Campo Descripcion esta VACIO
             //// Si es 2 el Registro YA EXISTE con la misma Descripcion
 
