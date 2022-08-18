@@ -23,7 +23,7 @@ namespace AGENDAR.Models
 
         [NotMapped]
         public string HoraFinstring { get { return HoraFin.ToString("HH:mm"); } }
-        //public virtual ICollection<Turno> Turnos { get; set; }
+        public virtual ICollection<Turno> Turnos { get; set; }
         public bool Eliminado { get; set; }
 
     }

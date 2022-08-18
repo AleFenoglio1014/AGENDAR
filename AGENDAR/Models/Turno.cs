@@ -28,11 +28,11 @@ namespace AGENDAR.Models
         public int ProvinciaID { get; set; }
         public int HorarioID { get; set; }
         public DateTime FechaTurno { get; set; }
-        ////public virtual Localidad Localidades { get; set; }
-        
-        //public virtual ClasificacionProfesional GetClasificacionProfesionales { get; set; }
+        public virtual Localidad Localidades { get; set; }
 
-        //public virtual Horario Horarios { get; set; }
+        public virtual ClasificacionProfesional GetClasificacionProfesionales { get; set; }
+
+        public virtual Horario Horarios { get; set; }
 
     }
    

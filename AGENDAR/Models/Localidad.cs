@@ -23,7 +23,7 @@ namespace AGENDAR.Models
         public virtual Provincia Provincias { get; set; }
 
         public virtual ICollection<Empresa> Empresas { get; set; }
-        //public virtual ICollection<Turno> Turnos { get; set; }
+        public virtual ICollection<Turno> Turnos { get; set; }
 
     }
     // Creamos un Nuevo OBJETO para MOSTRAR las Provincias en la tabla de Localidades
