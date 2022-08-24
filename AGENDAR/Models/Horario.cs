@@ -26,6 +26,14 @@ namespace AGENDAR.Models
         public virtual ICollection<Turno> Turnos { get; set; }
         public bool Eliminado { get; set; }
 
+        public string HorarioCompleto
+        {
+            get
+            {
+                return string.Format("{0}, {1} ", HoraInicio, HoraFin);
+            }
+        }
+
     }
     public class HorarioMostrar
     {
@@ -33,7 +41,7 @@ namespace AGENDAR.Models
         public DateTime HoraInicio { get; set; }
         public string HoraIniciostring { get; set; }
         public DateTime HoraFin { get; set; }
-
+        public string HorarioCompleto { get; set; }
         public int TiempoTurnos { get; set; }
         public string HoraFinstring { get; set; }
         public bool Eliminado { get; set; }
