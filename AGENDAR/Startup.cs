@@ -1,3 +1,4 @@
+using AGENDAR.Controllers;
 using AGENDAR.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -36,6 +37,8 @@ namespace AGENDAR
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            services.AddScoped<EmpresasController>();
 
             services.Configure<IdentityOptions>(options =>
             {
