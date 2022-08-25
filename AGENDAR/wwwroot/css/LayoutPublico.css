@@ -429,10 +429,12 @@ textarea {
     text-decoration: none;
     width: 7em;
     z-index: 2;
+    text-decoration:none;
 }
 
     .bn31:hover {
         color: #fff;
+        text-decoration: none;
     }
 
     .bn31 .bn31span {
@@ -446,11 +448,14 @@ textarea {
         width: 100%;
         color: black;
         font-size: 18px;
+        text-decoration: none;
     }
 
     .bn31:hover .bn31span {
         background: transparent;
+        text-decoration: none;
     }
+
 /*//Boton solicitarTurno*/
 /*.bn31 {
     background-image: linear-gradient(to right, #468FAF 0%, #2C7DA0 100%);
@@ -525,3 +530,7 @@ body {
     .card img {
         width: 100%;
     }
+
+.btn .btn-link .bi-twitter :hover {
+    color: #1a0dab;
+}

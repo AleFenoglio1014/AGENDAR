@@ -106,40 +106,42 @@ body {
 
 .colortexto {
     color: #3a5a40;
+    border: none;
 }
 
 
 .bn31 {
     background-image: linear-gradient(to right, #d00000 0%, #e5383b 100%);
     border-radius: 10px;
-    box-sizing: border-box;
+    /* box-sizing: border-box;*/
     color: black;
     display: block;
     height: 40px;
     font-size: 1.2em;
-   
+    border: none;
     position: relative;
     text-decoration: none;
     width: 7em;
     height: 30px;
     z-index: 2;
- 
 }
 
     .bn31:hover {
-        color: #fff;
+        border-radius: 10px;
+        color: #F7FAF7;
+        text-decoration: none;
     }
 
     .bn31 .bn31span {
         align-items: center;
         background: #BFC9CA;
-        border-radius: 5px;
+        border-radius: 10px;
         display: flex;
         justify-content: center;
         height: 100%;
-        transition: background 0.5s ease;
+        /*transition: background 0.5s ease;*/
         width: 100%;
-        color: black;
+        /*color: black;*/
         font-size: 18px;
         font-weight: 500 !important;
     }

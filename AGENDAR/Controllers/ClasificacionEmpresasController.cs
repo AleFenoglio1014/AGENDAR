@@ -21,15 +21,20 @@ namespace AGENDAR.Controllers
         private readonly UserManager<IdentityUser> _userManager;
         //TRAEMOS EL METODO DESDE EL CONTROLADOR DE EMPRESAS PARA BUSCAR USUARIO Y EMPRESA ACTUAL.
         //SI HAY QUE MODIFICAR ALGO, SOLO SE HACE EN EL CONTROLADOR DE EMPRESA
-        public EmpresasController EmpresasController;
+        //public EmpresasController EmpresasController;
 
-        public ClasificacionEmpresasController(ApplicationDbContext context, UserManager<IdentityUser> userManager, EmpresasController empresasController)
+        public ClasificacionEmpresasController(ApplicationDbContext context, UserManager<IdentityUser> userManager/*, EmpresasController empresasController*/)
         {
             _context = context;
             _userManager = userManager;
-            EmpresasController = empresasController;
+            //EmpresasController = empresasController;
         }
 
+        //Funcion para Buscar Empresa y Usuario
+        public void BuscarEmpresaActual(string usuarioActual, EmpresaUsuario empresaUsuarioActual)
+        {
+            empresaUsuarioActual = _context.EmpresasUsuarios.Where(p => p.UsuarioID == usuarioActual).SingleOrDefault();
+        }
         public async Task<IActionResult> Index()
         {
             return View(await _context.ClasificacionEmpresa.ToListAsync());
@@ -51,7 +56,7 @@ namespace AGENDAR.Controllers
             var usuarioActual = _userManager.GetUserId(HttpContext.User);
             //LUEGO EN BASE A ESE USUARIO BUSCAMOS LA EMPRESA CON LA QUE ESTA RELACIONADA
             EmpresaUsuario empresaUsuarioActual = new EmpresaUsuario();
-            EmpresasController.BuscarEmpresaActual(usuarioActual, empresaUsuarioActual);
+            BuscarEmpresaActual(usuarioActual, empresaUsuarioActual);
 
             int resultado = 0;
             // Si es 0 es CORRECTO
