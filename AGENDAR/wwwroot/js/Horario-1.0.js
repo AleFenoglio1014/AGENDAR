@@ -10,7 +10,12 @@ function CompletarTablaHorario() {
             $.each(listadoHorario, function (index, horario) {
 
                 let claseEliminado = '';
-                let botones = '<button type="button" onclick="BuscarHorario(' + horario.horarioID + ')" class="btn btn-outline-primary btn-sm" style="margin-right:5px"><i class="bi bi-pencil-square"></i> Editar</button>'
+                let botones = '<button type="button" onclick="DesactivarHorario(' + horario.horarioID + ',1)" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash-fill"></i> Desactivar</button>';
+
+                if (horario.eliminado) {
+                    claseEliminado = 'table-danger';
+                    botones = '<button type="button" onclick="DesactivarHorario(' + horario.horarioID + ',0)" class="btn btn-outline-success btn-sm"><i class="bi bi-folder-symlink"></i> Activar</button>';
+                }
                 let tiempoMostrar = "15 Minutos";
                 
                 if(horario.tiempoTurnos == 30) {
@@ -77,26 +82,26 @@ function GuardarHorario() {
         $("#Error-Hora").text("Debe ingresar un Horario.");
     }
 }
-// Funcion para Buscar los Horarios
+//// Funcion para Buscar los Horarios
 
-function BuscarHorario(horarioID) {
-    VaciarFormulario();
-    $("#titulo-Modal-Horario").text("EDITAR HORARIO");
-    $("#HorarioID").val(horarioID);
-    $.ajax({
-        type: "POST",
-        url: '../../Horarios/BuscarHorario',
-        data: { HorarioID: horarioID  },
-        success: function (horario) {
-            $("#HoraInicio").val(horario.horaInicioString);
-            $("#HoraFin").val(horario.horaFinString);
-            $("#TiempoTurnos").val(horario.tiempoTurnos);
-            $("#exampleModal").modal("show");
-        },
-        error: function (data) {
-        }
-    });
-}
+//function BuscarHorario(horarioID) {
+//    VaciarFormulario();
+//    $("#titulo-Modal-Horario").text("EDITAR HORARIO");
+//    $("#HorarioID").val(horarioID);
+//    $.ajax({
+//        type: "POST",
+//        url: '../../Horarios/BuscarHorario',
+//        data: { HorarioID: horarioID  },
+//        success: function (horario) {
+//            $("#HoraInicio").val(horario.horaInicioString);
+//            $("#HoraFin").val(horario.horaFinString);
+//            $("#TiempoTurnos").val(horario.tiempoTurnos);
+//            $("#exampleModal").modal("show");
+//        },
+//        error: function (data) {
+//        }
+//    });
+//}
 
 //Funcion para Vaciar el Formulario
 

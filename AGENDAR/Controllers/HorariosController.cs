@@ -61,7 +61,8 @@ namespace AGENDAR.Controllers
                     HoraFin = horario.HoraFin,
                     HoraFinstring = horario.HoraFin.ToString("HH:mm"),
                     HorarioCompleto = horario.HorarioCompleto,
-                    TiempoTurnos = horario.TiempoTurnos
+                    TiempoTurnos = horario.TiempoTurnos,
+                    Eliminado = horario.Eliminado
                 };
                 listadohorario.Add(horarioMostrar);
             }
@@ -143,13 +144,14 @@ namespace AGENDAR.Controllers
             }
                 
 
-        // Funcion para Buscar el horarip
+        // Funcion para Buscar el horario
         public JsonResult BuscarHorario(int HorarioID)
         {
             var horario = _context.Horario.FirstOrDefault(m => m.HorarioID == HorarioID);
 
             return Json(horario);
         }
+        [Authorize(Roles = "AdministradorEmpresa")]
         public JsonResult DesactivarHorario(int HorarioID, int Elimina)
         {
             bool resultado = true;
