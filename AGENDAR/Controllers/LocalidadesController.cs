@@ -36,6 +36,7 @@ namespace AGENDAR.Controllers
             ViewBag.ProvinciaID = new SelectList(provincias.OrderBy(p => p.Descripcion), "ProvinciaID", "Descripcion");
             return View();
         }
+        
         public JsonResult ComboLocalidad(int id)//PROVINCIA ID
         {
             //BUSCAR LOCALIDADES

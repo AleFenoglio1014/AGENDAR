@@ -193,6 +193,13 @@ namespace AGENDAR.Controllers
             return Json(resultado);
         }
 
+        public JsonResult ComboProfesional(int id)//PROFESIONAL ID
+        {
+            //BUSCAR PROFESIONAL
+            var profesionales = (from o in _context.Profesional where o.ClasificacionProfesionalID == id && o.EmpresaID == id && o.Eliminado == false select o).ToList();
+
+            return Json(new SelectList(profesionales, "ProfesionalID", "ProfesionalNombreCompleto"));
+        }
 
 
 

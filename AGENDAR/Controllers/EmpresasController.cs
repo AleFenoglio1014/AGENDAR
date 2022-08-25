@@ -57,6 +57,13 @@ namespace AGENDAR.Controllers
         {
           return View();
         }
+        public JsonResult ComboEmpresa(int id)//EMPRESA ID
+        {
+            //BUSCAR EMPRESAS
+            var empresas = (from o in _context.Empresa where o.ClasificacionEmpresaID == id && o.LocalidadID == id && o.Eliminado == false select o).ToList();
+
+            return Json(new SelectList(empresas, "EmpresaID", "RazonSocial"));
+        }
 
         //Funcion para Buscar Empresa y Usuario
         public void BuscarEmpresaActual(string usuarioActual, EmpresaUsuario empresaUsuarioActual)

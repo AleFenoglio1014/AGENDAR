@@ -30,7 +30,7 @@ namespace AGENDAR.Models
         {
             get
             {
-                return string.Format("{0}, {1} ", HoraInicio, HoraFin);
+                return string.Format("{0} - {1} ", HoraIniciostring, HoraFinstring);
             }
         }
 

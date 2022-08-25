@@ -29,6 +29,7 @@ namespace AGENDAR.Controllers
             localidades.Add(new Localidad { LocalidadID = 0, Descripcion = "[SELECCIONE UNA LOCALIDAD]" });
             ViewBag.LocalidadID = new SelectList(localidades.OrderBy(p => p.Descripcion), "LocalidadID", "Descripcion");
 
+
             var clasificacionempresas = _context.ClasificacionEmpresa.Where(p => p.Eliminado == false).ToList();
             clasificacionempresas.Add(new ClasificacionEmpresa { ClasificacionEmpresaID = 0, Descripcion = "[SELECCIONE TIPO DE EMPRESA]" });
             ViewBag.ClasificacionEmpresaID = new SelectList(clasificacionempresas.OrderBy(p => p.Descripcion), "ClasificacionEmpresaID", "Descripcion");
@@ -36,6 +37,8 @@ namespace AGENDAR.Controllers
             List<Empresa> empresa = new List<Empresa>();
             empresa.Add(new Empresa { EmpresaID = 0, RazonSocial = "[SELECCIONE UNA EMPRESA]" });
             ViewBag.EmpresaID = new SelectList(empresa.OrderBy(p => p.RazonSocial), "EmpresaID", "RazonSocial");
+
+          
 
             var clasificacionprofesional = _context.ClasificacionProfesional.Where(p => p.Eliminado == false).ToList();
             clasificacionprofesional.Add(new ClasificacionProfesional { ClasificacionProfesionalID = 0, Descripcion = "[SELECCIONE TIPO DE PROFESIONAL]" });
