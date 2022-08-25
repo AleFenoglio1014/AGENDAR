@@ -12,14 +12,14 @@ function CompletarTablaHorario() {
                 let claseEliminado = '';
                 let botones = '<button type="button" onclick="BuscarHorario(' + horario.horarioID + ')" class="btn btn-outline-primary btn-sm" style="margin-right:5px"><i class="bi bi-pencil-square"></i> Editar</button>'
                 let tiempoMostrar = "15 Minutos";
-
-                if(horario.tiempoTurnos == 1) {
+                
+                if(horario.tiempoTurnos == 30) {
                     tiempoMostrar = "30 Minutos"
                 }
-                if (horario.tiempoTurnos == 2) {
+                if (horario.tiempoTurnos == 45) {
                     tiempoMostrar = "45 Minutos"
                 }
-                if (horario.tiempoTurnos == 3) {
+                if (horario.tiempoTurnos == 60) {
                     tiempoMostrar = "60 Minutos"
                 }
 
@@ -43,7 +43,7 @@ function AbrirModal() {
     $("#HorarioID").val(0);
     $("#HoraInicio").val('00:00');
     $("#HoraFin").val('00:00');
-    $("#TiempoTurnos").val('00:00');
+    $("#TiempoTurnos").val('');
     $("#exampleModal").modal("show");
 }
 // Funcion para Guardar el Horario

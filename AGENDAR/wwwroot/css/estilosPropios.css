@@ -10,7 +10,7 @@
 }
 
 
-/*clase para que cambie de color el nav*/ 
+/*clase para que cambie de color el nav */
 .header.sticked {
     background: #677297;
     transition: 0.8s;
@@ -122,7 +122,7 @@
     overflow: hidden;
     border-radius: 4px;
     width: 300px !important;
-    height: 190px !important;
+    height: 300px !important;
 }
 
     .team .member .member-info {
@@ -366,9 +366,9 @@
 
 
 /*CONTACTO*/
+
 .contacto {
     padding-bottom: 60px;
-   
 }
 .inputContacto {
     padding: 5px !important;
