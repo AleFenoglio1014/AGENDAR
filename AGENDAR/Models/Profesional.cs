@@ -27,8 +27,8 @@ namespace AGENDAR.Models
         
         public virtual Empresa Empresas { get; set; }
         public bool Eliminado { get; set; }
-        //public virtual ICollection<Turno> Turnos { get; set; }
-
+        public virtual ICollection<Turno> Turnos { get; set; }
+       
     }
     // Creamos un Nuevo OBJETO para MOSTRAR el tipo de profesional  en la tabla de Profesional
     public class ProfesionalesMostrar

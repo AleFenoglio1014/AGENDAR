@@ -60,6 +60,7 @@ namespace AGENDAR.Controllers
                     HoraIniciostring = horario.HoraInicio.ToString("HH:mm"),
                     HoraFin = horario.HoraFin,
                     HoraFinstring = horario.HoraFin.ToString("HH:mm"),
+                    HorarioCompleto = horario.HorarioCompleto,
                     TiempoTurnos = horario.TiempoTurnos
                 };
                 listadohorario.Add(horarioMostrar);

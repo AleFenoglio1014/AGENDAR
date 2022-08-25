@@ -68,10 +68,24 @@
     
     padding: 25px;
 }
-.card-img-top{
-    width:200px;
-    height:200px;
+.card {
+
+    position: absolute;
+    width: 70%;
+    height: 80%;
+    align-items: center;
+    justify-content: center;
+
 }
+.card-img-top {
+    font-size: 90px;
+    position: inherit;
+    width: 90%;
+    height: 90%;
+    align-items: center;
+    justify-content: center;
+}
+
 /*--------------------------------------------------------------
 # Equipo
 --------------------------------------------------------------*/
