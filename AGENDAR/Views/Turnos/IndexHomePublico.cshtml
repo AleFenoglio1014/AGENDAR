@@ -36,6 +36,7 @@
         <div class="row">
             <div class="form-group col-md-4 letrainput">
                 <label class="control-label font-weight-bold">Provincia</label>
+                
                 @Html.DropDownList("ProvinciaID", null, htmlAttributes: new { @class = "form-control" })
 
             </div>
@@ -81,8 +82,8 @@
     </form>
 
     <div class="form-group">
-        <button type="button" onclick="GuardarTurno()" class="btn btn-outline-success"><i class="bi bi-folder-check"></i> Solicitar Turno</button>
-        <button type="button" onclick="VaciarFormulario()" class="btn btn-outline-danger" data-dismiss="modal"><i class="bi bi-backspace"></i> Borrar</button>
+        <button type="button" onclick="GuardarTurno()" class="btn btn-success"><i class="bi bi-folder-check"></i> Solicitar Turno</button>
+        <button type="button" onclick="VaciarFormulario()" class="btn btn-danger" data-dismiss="modal"><i class="bi bi-backspace"></i> Borrar</button>
     </div>
 
 </body>

@@ -14,7 +14,7 @@ using System.IO;
 
 namespace AGENDAR.Controllers
 {
-    [Authorize(Roles = "SuperUsuario")]
+    [Authorize(Roles = "SuperUsuario, AdministradorEmpresa")]
 
     public class EmpresasController : Controller
     {
@@ -60,7 +60,7 @@ namespace AGENDAR.Controllers
         public JsonResult ComboEmpresa(int id)//EMPRESA ID
         {
             //BUSCAR EMPRESAS
-            var empresas = (from o in _context.Empresa where o.ClasificacionEmpresaID == id && o.LocalidadID == id && o.Eliminado == false select o).ToList();
+            var empresas = (from o in _context.Empresa where o.LocalidadID == id && o.Eliminado == true select o).ToList();
 
             return Json(new SelectList(empresas, "EmpresaID", "RazonSocial"));
         }

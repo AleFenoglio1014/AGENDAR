@@ -1,0 +1,19 @@
+﻿@model IEnumerable<AGENDAR.Models.Turno>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@{
+    Layout = "~/Views/Shared/_LayoutCrearTurnos.cshtml";
+}
+
+
+
+
+@section Scripts {
+
+    <script src="~/js/Turno.js"></script>
+    <script>
+        window.onload = Completarcalendario();
+    </script>
+}

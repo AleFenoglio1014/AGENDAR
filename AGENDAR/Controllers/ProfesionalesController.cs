@@ -33,7 +33,7 @@ namespace AGENDAR.Controllers
         // GET: Profesionales
         public IActionResult Index()
         {
-            var empresa = _context.Empresa.Where(p => p.Eliminado == false).ToList();
+            var empresa = _context.Empresa.Where(p => p.Eliminado == true).ToList();
             empresa.Add(new Empresa { EmpresaID = 0, RazonSocial = "[SELECCIONE UNA EMPRESA]" });
             ViewBag.EmpresaID = new SelectList(empresa.OrderBy(p => p.RazonSocial), "EmpresaID", "RazonSocial");
 
@@ -54,7 +54,7 @@ namespace AGENDAR.Controllers
             EmpresaUsuario empresaUsuarioActual = new EmpresaUsuario();
             BuscarEmpresaActual(usuarioActual, empresaUsuarioActual);
 
-            var profesionales = _context.Profesional.Include(r => r.Empresas).Include(p => p.ClasificacionProfesionales).ToList();
+            var profesionales = _context.Profesional.Include(r => r.Empresas).Include(p => p.ClasificacionProfesionales).Where(l => l.EmpresaID == empresaUsuarioActual.EmpresaID).ToList();
 
             List<ProfesionalesMostrar> listadoProfesional = new List<ProfesionalesMostrar>();
 
@@ -199,7 +199,7 @@ namespace AGENDAR.Controllers
         public JsonResult ComboProfesional(int id)//PROFESIONAL ID
         {
             //BUSCAR PROFESIONAL
-            var profesionales = (from o in _context.Profesional where o.ClasificacionProfesionalID == id && o.EmpresaID == id && o.Eliminado == false select o).ToList();
+            var profesionales = (from o in _context.Profesional where o.EmpresaID == id && o.Eliminado == true select o).ToList();
 
             return Json(new SelectList(profesionales, "ProfesionalID", "ProfesionalNombreCompleto"));
         }

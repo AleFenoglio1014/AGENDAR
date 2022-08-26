@@ -28,32 +28,40 @@ namespace AGENDAR.Controllers
             List<Localidad> localidades = new List<Localidad>();
             localidades.Add(new Localidad { LocalidadID = 0, Descripcion = "[SELECCIONE UNA LOCALIDAD]" });
             ViewBag.LocalidadID = new SelectList(localidades.OrderBy(p => p.Descripcion), "LocalidadID", "Descripcion");
+            
+           
+            List<Empresa> empresa = new List<Empresa>();
+            empresa.Add(new Empresa { EmpresaID = 0, RazonSocial = "[SELECCIONE UNA EMPRESA]" });
+            ViewBag.EmpresaID = new SelectList(empresa.OrderBy(p => p.RazonSocial), "EmpresaID", "RazonSocial");
+
+
+            List<Profesional> profesional = new List<Profesional>();
+            profesional.Add(new Profesional { ProfesionalID = 0, Nombre = "[SELECCIONE UN PROFESIONAL]" });
+            ViewBag.ProfesionalID = new SelectList(profesional.OrderBy(p => p.ProfesionalNombreCompleto), "ProfesionalID", "ProfesionalNombreCompleto");
 
 
             var clasificacionempresas = _context.ClasificacionEmpresa.Where(p => p.Eliminado == false).ToList();
             clasificacionempresas.Add(new ClasificacionEmpresa { ClasificacionEmpresaID = 0, Descripcion = "[SELECCIONE TIPO DE EMPRESA]" });
             ViewBag.ClasificacionEmpresaID = new SelectList(clasificacionempresas.OrderBy(p => p.Descripcion), "ClasificacionEmpresaID", "Descripcion");
 
-            List<Empresa> empresa = new List<Empresa>();
-            empresa.Add(new Empresa { EmpresaID = 0, RazonSocial = "[SELECCIONE UNA EMPRESA]" });
-            ViewBag.EmpresaID = new SelectList(empresa.OrderBy(p => p.RazonSocial), "EmpresaID", "RazonSocial");
-
-          
-
             var clasificacionprofesional = _context.ClasificacionProfesional.Where(p => p.Eliminado == false).ToList();
             clasificacionprofesional.Add(new ClasificacionProfesional { ClasificacionProfesionalID = 0, Descripcion = "[SELECCIONE TIPO DE PROFESIONAL]" });
             ViewBag.ClasificacionProfesionalID = new SelectList(clasificacionprofesional.OrderBy(p => p.Descripcion), "ClasificacionProfesionalID", "Descripcion");
 
-            List<Profesional> profesional = new List<Profesional>();
-            profesional.Add(new Profesional { ProfesionalID = 0, Nombre = "[SELECCIONE UN PROFESIONAL]" });
-            ViewBag.ProfesionalID = new SelectList(profesional.OrderBy(p => p.ProfesionalNombreCompleto), "ProfesionalID", "ProfesionalNombreCompleto");
+           
 
-            List<Horario> horario = new List<Horario>();
+            var horario = _context.Horario.Where(p => p.Eliminado == false).ToList();
+            //List<Horario> horario = new List<Horario>();
             //horario.Add(new Horario { HorarioID = 0, HoraInicio = "[SELECCIONE UN HORARIO]" });
             ViewBag.HorarioID = new SelectList(horario.OrderBy(p => p.HorarioCompleto), "HorarioID", "HorarioCompleto");
 
             return View();
             
+
+        }
+        public IActionResult Index()
+        {
+            return View();
 
         }
 
@@ -94,6 +102,42 @@ namespace AGENDAR.Controllers
 
             return Json(listadoTurnoMostrar);
         }
+
+        //CODIGO PARA GUARDAR EL TURNO
+        //public JsonResult GuardarTurnoa(int ProvinciaID, string Descripcion)
+        //{
+        //    int resultado = 0;
+        //    // Si es 0 es CORRECTO
+        //    // Si es 1 el Campo Descripcion esta VACIO
+        //    // Si es 2 el Registro YA EXISTE con la misma Descripcion
+
+        //    if (!string.IsNullOrEmpty(Descripcion))
+        //    {
+        //        Descripcion = Descripcion.ToUpper();
+        //        if (ProvinciaID == 0)
+        //        {
+        //            // Antes de CREAR el registro debemos preguntar si existe una Provincia con la misma Descripcion
+        //            if (_context.Provincia.Any(e => e.Descripcion == Descripcion))
+        //            {
+        //                resultado = 2;
+        //            }
+        //            else
+        //            {
+        //                // Aca va a ir el codigo para CREAR una Provincia
+        //                // Para eso creamos un objeto de tipo provinciaNueva con los datos necesarios
+        //                var provinciaNueva = new Provincia
+        //                {
+        //                    Descripcion = Descripcion
+        //                };
+        //                _context.Add(provinciaNueva);
+        //                _context.SaveChanges();
+        //            }
+
+        //        }
+
+        //    }
+        //    return Json(resultado);
+        //}
 
     }
 }

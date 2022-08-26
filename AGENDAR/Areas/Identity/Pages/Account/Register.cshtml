@@ -58,7 +58,7 @@
                             <div asp-validation-summary="All" class="text-danger"></div>
                             <div class="form-group">
                                 <label asp-for="Input.Email"></label>
-                                <input asp-for="Input.Email" class="form-control" placeholder="Introduce un correo electrónico." />
+                                <input asp-for="Input.Email" class="form-control" autocomplete="off" placeholder="Introduce un correo electrónico." />
                                 <span asp-validation-for="Input.Email" class="text-danger"></span>
                             </div>
                             <div class="form-group">
@@ -80,40 +80,6 @@
                             </div>
 
                     </form>
-
-
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title">Registrar Usuario</h5>
-                                    <button type="button" class="close" data-dismiss="modal" onclick="VaciarFormulario()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                </div>
-
-                                <!--Agregado de Formulario dentro del Modal-->
-                                <div class="modal-body">
-                                    <form>
-                                        <input type="hidden" id="UsuarioID" value="0" />
-                                        <div class="form-group">
-                                            <label for="recipient-name" class="control-label font-weight-bold">Nombre</label>
-                                            <input type="text" class="form-control" autocomplete="off" required id="UsuarioNombre">
-                                            <p class="text-danger font-weight-bold" style="font-size:small" id="Error-UsuarioNombre"></p>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="recipient-name" class="control-label font-weight-bold">Apellido</label>
-                                            <input type="text" class="form-control" autocomplete="off" required id="UsuarioApellido">
-                                            <p class="text-danger font-weight-bold" style="font-size:small" id="Error-UsuarioApellido"></p>
-                                        </div>
-                                        
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    
-                                    <button type="button" onclick="GuardarUsuario()" class="btn btn-outline-success"><i class="bi bi-folder-check"></i> Guardar </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
                 </div>
             </div>
