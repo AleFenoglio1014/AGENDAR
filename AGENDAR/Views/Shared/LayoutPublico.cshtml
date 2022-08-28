@@ -3,56 +3,401 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <title>@ViewData["Title"] - AGENDAR</title>
-    <link href="~/css/estilosPropios.css" rel="stylesheet" />
-    <link href="~/css/LayoutPublico.css" rel="stylesheet" />
+    @*<link href="~/css/estilosPropios.css" rel="stylesheet" />*@
+    @*Estan las clases del boton mi cuenta y logo agendar*@
+    @*<link href="~/css/LayoutPublico.css" rel="stylesheet" />*@
 
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-
+    <link rel="stylesheet" href="~/lib/bootstrap-3/bootstrap.min.css" />
+    <link href="~/css/font-awesome.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-
+    <link href="~/css/LayoutEstilos.css" rel="stylesheet" />
 </head>
 <body>
-    <header id="header" class="header  align-items-center fixed-top">
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light   box-shadow    colorNav">
-            <div class="container ">
-                <a  class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/lib/Imagenes/AGENDAR_LOGO_POSITIVO_02.png" class="img-fluid" width="120" alt="5px"></a>
-                <ul class="navbar-nav flex-grow-1 ">
-                    <li class="nav-item">
-                        <a class="nav-link font-weight-bold" href="#Nosotros">NOSOTROS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link font-weight-bold" href="#Equipo">EQUIPO</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link font-weight-bold" href="#Clientes">CLIENTES</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link font-weight-bold" href="#Contacto">CONTACTO</a>
-                    </li>
+    <!-- Header -->
+    <header id="home">
+        <!-- Background Image -->
+        <div class="bg-img" >
+            <div class="overlay"></div>
+        </div>
+        <!-- /Background Image -->
+        <!-- Nav -->
+        <nav id="nav" class="navbar nav-transparent">
+            <div class="container">
+
+                <div class="navbar-header">
+                    <!-- Logo -->
+                    <div class="navbar-brand">
+                        <a href="index.html">
+                            <img class="logo" src="img/logo.png" alt="logo">
+                            <img class="logo-alt" src="img/logo-alt.png" alt="logo">
+                        </a>
+                    </div>
+                    <!-- /Logo -->
+                    <!-- Collapse nav button -->
+                    <div class="nav-collapse">
+                        <span></span>
+                    </div>
+                    <!-- /Collapse nav button -->
+                </div>
+
+                <!--  Main navigation  -->
+                <ul class="main-nav nav navbar-nav navbar-right">
+
+                    <li><a href="#features">Nosotros</a></li>
+                    <li><a href="#service">Servicios</a></li>
+                    <li><a href="#team">Equipo</a></li>
+                    <li><a href="#pricing">Clientes</a></li>
+                    <li><a href="#contact">Contacto</a></li>
                 </ul>
-                <ul class="navbar-nav ">
-                    <li class="nav-item">
-                        <a class="bn31" style="margin-right:10px" asp-area="Identity" asp-page="/Account/Login"><span class="bn31span font-weight-bold"> Mi Cuenta </span></a>
-                    </li>
-                </ul>
+                <!-- /Main navigation -->
+
             </div>
         </nav>
+        <!-- /Nav -->
+        <!-- home wrapper -->
+        <div class="home-wrapper">
+            <div class="container">
+                <div class="row">
+
+                    <!-- home content -->
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="home-content">
+                            <h1 class="white-text">"CAMBIAMOS TU FORMA DE SOLICITAR UN TURNO".</h1>
+
+                            <button class="white-btn">Solicitar Turno</button>
+                            <button class="main-btn">Mi Cuenta</button>
+                        </div>
+                    </div>
+                    <!-- /home content -->
+
+                </div>
+            </div>
+        </div>
+        <!-- /home wrapper -->
+
     </header>
+    <!-- /Header -->
+    <!-- Why Choose Us -->
+    <div id="features" class="section md-padding bg-grey">
 
-    <div class="body-content ">
+        <!-- Container -->
+        <div class="container">
 
-        @RenderBody()
+            <div class="row">
+                <!-- Section header -->
+                <div class="section-header text-center">
+                    <h2 class="title">Nosotros</h2>
+                </div>
+                <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+                    <img src="" class="img-fluid" alt="">
+                </div>
+
+                <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
+
+                    <p class="fst-courier new">
+                        Somos un equipo multidisciplinario en diferentes áreas como <b><i>Desarrollo</i></b>, <b><i>Diseño</i></b> y
+                        <b><i>Soporte Técnico</i></b> en continua formación buscando nuevas tendencias, innovación y la mejor calidad
+                        en cada uno de nuestros productos y servicios.
+                    </p>
+                    <p class="fst-courier new">
+                        Con nuestro nuevo producto <b><i>AGENDAR</i></b> la rentabilidad de nuestros clientes y la atención a sus clientes
+                        perfeccionará. Trabajamos diariamente para optimizar los puntos de contacto de las empresas y profesionales
+                        con su comunidad incorporando <b><i>Tecnología</i></b>, <b><i>Diseño</i></b> y <b><i>Software</i></b>.
+                    </p>
+                    <p class="fst-courier new">
+                        No pierdas más clientes por no brinda una buena experiencia. Confía en una solución <b><i>Moderna</i></b> y <b><i>Escalable</i></b>.
+                    </p>
+                    <h3 class="fst-courier new text-center">
+                        <b>¡SÚMATE A LA TRANSFORMACIÓN DIGITAL!</b>
+                    </h3>
+                </div>
+            </div>
+
+        </div>
+        <!-- /Container -->
 
     </div>
-    <button id="top1" onclick="top1();" class="top" style="display: none;"><i class="bi bi-arrow-up"></i></button>
+    <!-- /Why Choose Us -->
+    <!-- Service -->
+    <div id="service" class="section md-padding">
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Container -->
+        <div class="container">
+
+            <!-- Row -->
+            <div class="row">
+
+                <!-- Section header -->
+                <div class="section-header text-center">
+                    <h2 class="title">Servicios</h2>
+                </div>
+                <!-- /Section header -->
+                <!-- service -->
+                <div class="col-md-4 col-sm-6">
+                    <div class="service">
+                        <i class="fa fa-hospital-o"></i>
+                        <h3>Hospitales y Clínicas</h3>
+                    </div>
+                </div>
+                <!-- /service -->
+                <!-- service -->
+                <div class="col-md-4 col-sm-6">
+                    <div class="service">
+                        <i class="fa fa-user-md"></i>
+                        <h3>Médicos</h3>
+                    </div>
+                </div>
+                <!-- /service -->
+                <!-- service -->
+                <div class="col-md-4 col-sm-6">
+                    <div class="service">
+                        <i class="fa fa-futbol-o"></i>
+                        <h3>Entretenimientos</h3>
+                    </div>
+                </div>
+                <!-- /service -->
+                <!-- service -->
+                <div class="col-md-4 col-sm-6">
+                    <div class="service">
+                        <i class="fa fa-scissors"></i>
+                        <h3>Peluquerías</h3>
+                    </div>
+                </div>
+                <!-- /service -->
+                <!-- service -->
+                <div class="col-md-4 col-sm-6">
+                    <div class="service">
+                        <i class="fa fa-university"></i>
+                        <h3>Bancos</h3>
+                    </div>
+                </div>
+                <!-- /service -->
+                <!-- service -->
+                <div class="col-md-4 col-sm-6">
+                    <div class="service">
+                        <i class="fa fa-bed"></i>
+                        <h3>Hoteles</h3>
+                    </div>
+                </div>
+                <!-- /service -->
+                <!-- service -->
+                <div class="col-md-4 col-sm-6">
+                    <div class="service">
+                        <i class="fa fa-cutlery"></i>
+                        <h3>Restaurantes</h3>
+                    </div>
+                </div>
+                <!-- /service -->
+                <!-- service -->
+                <div class="col-md-4 col-sm-6">
+                    <div class="service">
+                        <i class="fa fa-pencil-square-o"></i>
+                        <h3>Gestión de Trámites</h3>
+                    </div>
+                </div>
+                <!-- /service -->
+                <!-- service -->
+                <div class="col-md-4 col-sm-6">
+                    <div class="service">
+                        <i class="fa fa-car"></i>
+                        <h3>Servicios Automotores</h3>
+                    </div>
+                </div>
+                <!-- /service -->
+
+            </div>
+            <!-- /Row -->
+
+        </div>
+        <!-- /Container -->
+
+    </div>
+    <!-- /Service -->
+    <!-- Team -->
+    <div id="team" class="section md-padding">
+
+        <!-- Container -->
+        <div class="container">
+
+            <!-- Row -->
+            <div class="row">
+
+                <!-- Section header -->
+                <div class="section-header text-center">
+                    <h2 class="title">Nuestro Equipo</h2>
+                </div>
+                <!-- /Section header -->
+                <!-- team -->
+                <div class="col-sm-4">
+                    <div class="team">
+                        <div class="team-img">
+                            <img class="img-responsive" src="~/lib/Imagenes/GonzaCrack.jpg" alt="">
+                            <div class="overlay">
+                                <div class="team-social">
+                                    <a href="https://www.facebook.com/gonzi.pagliano" target="_blank"><i class="fa fa-facebook"></i></a>
+                                    <a href="https://www.instagram.com/gonzipagliano/" target="_blank"><i class="fa fa-instagram"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-content">
+                            <h3>Gonzalo Pagliano</h3>
+                            <span>Web Designer</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- /team -->
+                <!-- team -->
+                <div class="col-sm-4">
+                    <div class="team">
+                        <div class="team-img">
+                            <img class="img-responsive" src="~/lib/Imagenes/ale2.jpg" alt="">
+                            <div class="overlay">
+                                <div class="team-social">
+                                    <a href="https://www.facebook.com/ale10.fenoglio/" target="_blank"><i class="fa fa-facebook"></i></a>
+                                    <a href="https://www.instagram.com/fenoglioale/" target="_blank"><i class="fa fa-instagram"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-content">
+                            <h3>Alejandro Fenoglio</h3>
+                            <span>Web Designer</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- /team -->
+                <!-- team -->
+                <div class="col-sm-4">
+                    <div class="team">
+                        <div class="team-img">
+                            <img class="img-responsive" src="~/lib/Imagenes/Vale2.1.0.jpg" alt="">
+                            <div class="overlay">
+                                <div class="team-social">
+                                    <a href="https://www.facebook.com/beletti7" target="_blank"><i class="fa fa-facebook"></i></a>
+                                    <a href="https://www.instagram.com/vale_beletti7/" target="_blank"><i class="fa fa-instagram"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-content">
+                            <h3>Valentín Beletti</h3>
+                            <span>Web Designer</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- /team -->
+
+            </div>
+            <!-- /Row -->
+
+        </div>
+        <!-- /Container -->
+
+    </div>
+    <!-- /Team -->
+    <!-- Contact -->
+    <div id="contact" class="section md-padding">
+
+        <!-- Container -->
+        <div class="container">
+
+            <!-- Row -->
+            <div class="row">
+
+                <!-- Section-header -->
+                <div class="section-header text-center">
+                    <h2 class="title">Contáctenos</h2>
+                </div>
+                <!-- /Section-header -->
+                <!-- contact -->
+                <div class="col-sm-4">
+                    <div class="contact">
+                        <i class="fa fa-phone"></i>
+                        <h3>Teléfono</h3>
+                        <p><b>512-421-3940</b></p>
+                    </div>
+                </div>
+                <!-- /contact -->
+                <!-- contact -->
+                <div class="col-sm-4 hoverContact">
+                    <div class="contact">
+                        <i class="fa fa-envelope"></i>
+                        <h3>Email</h3>
+                        <p><b>turnosagendar@gmail.com</b></p>
+                    </div>
+                </div>
+                <!-- /contact -->
+                <!-- contact -->
+                <div class="col-sm-4">
+                    <div class="contact">
+                        <i class="fa fa-map-marker"></i>
+                        <h3>Dirección</h3>
+                        <p><b>25 de Mayo 205, Morteros <br>Córdoba</b></p>
+                    </div>
+                </div>
+                <!-- /contact -->
+            </div>
+            <!-- /Row -->
+        </div>
+        <!-- /Container -->
+
+    </div>
+    <!-- /Contact -->
+    <!-- Footer -->
+    <footer id="footer" class="sm-padding bg-dark">
+
+        <!-- Container -->
+        <div class="container">
+
+            <!-- Row -->
+            <div class="row">
+
+                <div class="col-md-12">
+
+                    <!-- footer logo -->
+                    <div class="footer-logo">
+                        <a href="index.html"><img src="img/logo-alt.png" alt="logo"></a>
+                    </div>
+                    <!-- /footer logo -->
+                    <!-- footer follow -->
+                    <ul class="footer-follow">
+                        <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li class="wpp"><a href="#"><i class="fa fa-whatsapp"></i></a></li>
+                        <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li class="instagram"><a href="#"><i class="fa fa-instagram"></i></a></li>
+                        <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                    </ul>
+                    <!-- /footer follow -->
+                    <!-- footer copyright -->
+                    <div class="footer-copyright" style="color:cornsilk">
+                        <p>Copyright © 2022. Todos los Derechos Reservados. Diseñado por AGENDAR.</p>
+                    </div>
+                    <!-- /footer copyright -->
+
+                </div>
+
+            </div>
+            <!-- /Row -->
+
+        </div>
+        <!-- /Container -->
+
+    </footer>
+    <!-- /Footer -->
+    <!-- Back to top -->
+    <div id="back-to-top"></div>
+    <!-- /Back to top -->
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap-3/bootstrap.min.js"></script>
     <script src="~/js/Sweetalert.js"></script>
-    <script src="~/js/backToTop.js.js"></script>
-    
+    <script src="~/js/LayoutEstilos.js"></script>
+    @*boton volver arriba viejo
+        <script src="~/js/backToTop.js.js"></script>*@
+
     @RenderSection("Scripts", required: false)
 </body>
 </html>
