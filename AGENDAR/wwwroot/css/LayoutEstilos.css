@@ -10,7 +10,7 @@ body {
     font-size: 16px;
     line-height: 1.6;
     overflow-x: hidden;
-    color: #36364F;
+    color: #000;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -664,6 +664,41 @@ header {
     opacity: 1;
 }
 
+/* Clients Section
+--------------------------------*/
+#clients {
+    padding: 60px 0;
+  }
+  
+  #clients img {
+    max-width: 100%;
+    opacity: 0.5;
+    transition: 0.3s;
+    padding: 15px 0;
+  }
+  
+  #clients img:hover {
+    opacity: 1;
+  }
+  
+  #clients .owl-nav, #clients .owl-dots {
+    margin-top: 5px;
+    text-align: center;
+  }
+  
+  #clients .owl-dot {
+    display: inline-block;
+    margin: 0 5px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #ddd;
+  }
+  
+  #clients .owl-dot.active {
+    background-color: #18d26e;
+  }
+
 /*------------------------------------*\
 	Contact
 \*------------------------------------*/
@@ -675,7 +710,7 @@ header {
 
     .contact i {
         font-size: 36px;
-        color: #111193;
+        color: #0A65C2;
         margin-bottom: 20px;
     }
 
@@ -714,9 +749,31 @@ header {
             line-height: 50px;
             text-align: center;
             border-radius: 3px;
-            background-color: #6195FF;
+            background-color: #C0C0C0;
+            color: #10161A;
+        }
+      /*HOVER REDES SOCIALES center FOOTER*/
+        .footer-follow li.facebook :hover {
+            background-color: #1877F2;
             color: #FFF;
         }
+        .footer-follow li.wpp :hover {
+            background-color: #29B145;
+            color: #FFF;
+        }
+        .footer-follow li.twitter :hover {
+            background: #66B2FF;
+            color: #FFF;
+        }
+        .footer-follow li.instagram :hover {
+            background: #EC0494;
+            color: #FFF;
+        }
+        .footer-follow li.linkedin :hover {
+            background: #0A65C2;
+            color: #FFF;
+        }
+
 
 .footer-copyright p {
     text-align: center;
