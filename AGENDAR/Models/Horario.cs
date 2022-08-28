@@ -13,6 +13,7 @@ namespace AGENDAR.Models
         public int HorarioID { get; set; }
 
         public int EmpresaID { get; set; }
+        public int ProfesionalID { get; set; }
         public DateTime HoraInicio { get; set; }
         public DateTime HoraFin { get; set; }
 
@@ -33,7 +34,7 @@ namespace AGENDAR.Models
                 return string.Format("{0} - {1} ", HoraIniciostring, HoraFinstring);
             }
         }
-
+       public virtual Profesional Profesionales { get; set; }
     }
     public class HorarioMostrar
     {

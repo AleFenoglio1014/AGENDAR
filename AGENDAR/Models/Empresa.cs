@@ -23,8 +23,7 @@ namespace AGENDAR.Models
         public string ImagenEmpresaString { get; set; }
         public int LocalidadID { get; set; }
         public virtual Localidad Localidades { get; set; }
-        public int ClasificacionEmpresaID { get; set; }
-        public virtual ClasificacionEmpresa ClasificacionEmpresas { get; set; }
+
 
         public virtual ICollection<Profesional> Profesionales { get; set; }
     }
@@ -42,8 +41,7 @@ namespace AGENDAR.Models
         public string LocalidadNombre { get; set; }
         public byte[] ImagenEmpresa { get; set; }
         public string ImagenEmpresaString { get; set; }
-        public int ClasificacionEmpresaID { get; set; }
-        public string TipoEmpresa { get; set; }
+   
         public bool Eliminado { get; set; }
 
     }

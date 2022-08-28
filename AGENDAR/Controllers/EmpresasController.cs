@@ -34,9 +34,7 @@ namespace AGENDAR.Controllers
             localidades.Add(new Localidad { LocalidadID = 0, Descripcion = "[SELECCIONE UNA LOCALIDAD]" });
             ViewBag.LocalidadID = new SelectList(localidades.OrderBy(p => p.Descripcion), "LocalidadID", "Descripcion");
 
-            var clasificacionempresas = _context.ClasificacionEmpresa.Where(p => p.Eliminado == false).ToList();
-            clasificacionempresas.Add(new ClasificacionEmpresa { ClasificacionEmpresaID = 0, Descripcion = "[SELECCIONE TIPO DE EMPRESA]" });
-            ViewBag.ClasificacionEmpresaID = new SelectList(clasificacionempresas.OrderBy(p => p.Descripcion), "ClasificacionEmpresaID", "Descripcion");
+           
             return View();
            
         }
@@ -47,9 +45,7 @@ namespace AGENDAR.Controllers
             localidades.Add(new Localidad { LocalidadID = 0, Descripcion = "[SELECCIONE UNA LOCALIDAD]" });
             ViewBag.LocalidadID = new SelectList(localidades.OrderBy(p => p.Descripcion), "LocalidadID", "Descripcion");
 
-            var clasificacionempresas = _context.ClasificacionEmpresa.Where(p => p.Eliminado == false).ToList();
-            clasificacionempresas.Add(new ClasificacionEmpresa { ClasificacionEmpresaID = 0, Descripcion = "[SELECCIONE TIPO DE EMPRESA]" });
-            ViewBag.ClasificacionEmpresaID = new SelectList(clasificacionempresas.OrderBy(p => p.Descripcion), "ClasificacionEmpresaID", "Descripcion");
+          
             return View();
         }
 
@@ -81,7 +77,7 @@ namespace AGENDAR.Controllers
             EmpresaUsuario empresaUsuarioActual = new EmpresaUsuario();
             BuscarEmpresaActual(usuarioActual, empresaUsuarioActual);
 
-            var empresas = _context.Empresa.Include(r => r.Localidades).Include(p => p.ClasificacionEmpresas).ToList();
+            var empresas = _context.Empresa.Include(r => r.Localidades).ToList();
 
             List<EmpresasMostrar> listadoEmpresas = new List<EmpresasMostrar>();
 
@@ -96,8 +92,6 @@ namespace AGENDAR.Controllers
                     Telefono = empresa.Telefono,
                     LocalidadID = empresa.LocalidadID,
                     LocalidadNombre = empresa.Localidades.Descripcion,
-                    ClasificacionEmpresaID = empresa.ClasificacionEmpresaID,
-                    TipoEmpresa = empresa.ClasificacionEmpresas.Descripcion,
                     ImagenEmpresa = empresa.ImagenEmpresa,
                     ImagenEmpresaString = Convert.ToBase64String(empresa.ImagenEmpresa),
                     Eliminado = empresa.Eliminado
@@ -110,7 +104,7 @@ namespace AGENDAR.Controllers
 
         // Funcion Guardar y Editar las Empresa
         [Authorize(Roles = "AdministradorEmpresa, SuperUsuario")]
-        public async Task<JsonResult> GuardarEmpresa(int EmpresaID, string razonSocial, string cuit, string direccion, Int64 telefono, int LocalidadID, int ClasificacionEmpresaID, IFormFile archivo)
+        public async Task<JsonResult> GuardarEmpresa(int EmpresaID, string razonSocial, string cuit, string direccion, Int64 telefono, int LocalidadID , IFormFile archivo)
         {
             //PRIMERO BUSCAMOS EL USUARIO ACTUAL
             var usuarioActual = _userManager.GetUserId(HttpContext.User);
@@ -161,7 +155,6 @@ namespace AGENDAR.Controllers
                                 Direccion = direccion,
                                 Telefono = telefono,
                                 LocalidadID = LocalidadID,
-                                ClasificacionEmpresaID = ClasificacionEmpresaID,
                                 ImagenEmpresaString = tipoImg,
                                 ImagenEmpresa = img
                             };
@@ -199,7 +192,6 @@ namespace AGENDAR.Controllers
                             empresa.Direccion = direccion;
                             empresa.Telefono = telefono;
                             empresa.LocalidadID = LocalidadID;
-                            empresa.ClasificacionEmpresaID = ClasificacionEmpresaID;
                             if (tipoImg != null)
                             {
                                 empresa.ImagenEmpresaString = tipoImg;

@@ -11,7 +11,6 @@ function CompletarTablaProfesionales() {
                 $("#tbody-profesional").append('<tr>' +
                     '<td>' + profesional.profesionalNombreCompleto + '</td>' +
                     '<td>' + profesional.empresaNombre + '</td>' +
-                    '<td>' + profesional.tipoProfesional + '</td>' +
                     '<td>' +  '<button type="button" onclick="BuscarProfesional(' + profesional.profesionalID + ',' + profesional.empresaID + ')" class="btn btn-outline-primary btn-sm" style="margin-right:5px"><i class="bi bi-pencil-square"></i> Editar</button>' +
                     '<button type="button" onclick="Eliminarprofesional(' + profesional.profesionalID + ',1)" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash-fill"></i> Eliminar</button>' + '</td>' +
 
@@ -36,7 +35,6 @@ function VaciarFormulario() {
     $("#Nombre").val('');
     $("#Apellido").val('');
     $("#EmpresaID").val(0);
-    $("#ClasificacionProfesionalID").val(0);
     $("#Error-Nombre").text("");
     $("#Error-CamposProfesional").text("");
 }
@@ -49,7 +47,6 @@ function GuardarProfesional() {
     let nombre = $('#Nombre').val().trim();
     let apellido = $('#Apellido').val().trim();
     let empresaID = $('#EmpresaID').val();
-    let clasificacionProfesionalID = $('#ClasificacionProfesionalID').val();
 
     let guardarProfesional = true;
 
@@ -58,10 +55,6 @@ function GuardarProfesional() {
         $("#Error-CamposProfesional").text("Los campos son OBLIGATORIOS.");
     }
     if (apellido == "" || apellido == null) {
-        guardarProfesional = false;
-        $("#Error-CamposProfesional").text("Los campos son OBLIGATORIOS.");
-    }
-    if (clasificacionProfesionalID == "" || clasificacionProfesionalID == null) {
         guardarProfesional = false;
         $("#Error-CamposProfesional").text("Los campos son OBLIGATORIOS.");
     }
@@ -74,7 +67,7 @@ function GuardarProfesional() {
         $.ajax({
             type: "POST",
             url: '../../Profesionales/GuardarProfesional',
-            data: { ProfesionalID: profesionalID, Nombre: nombre, Apellido: apellido, EmpresaID: empresaID, ClasificacionProfesionalID: clasificacionProfesionalID },
+            data: { ProfesionalID: profesionalID, Nombre: nombre, Apellido: apellido, EmpresaID: empresaID },
             success: function (resultado) {
                 if (resultado == 0) {
                     $("#exampleModal").modal("hide");
@@ -95,22 +88,20 @@ function GuardarProfesional() {
 
 // Funcion para Buscar el Profesional
 
-function BuscarProfesional(profesionalID, nombre, apellido, empresaID,clasificacionProfesionalID) {
+function BuscarProfesional(profesionalID, nombre, apellido, empresaID) {
     $("#titulo-Modal-Profesional").text("EDITAR PROFESIONAL");
     $("#ProfesionalID").val(profesionalID);
     $("#Nombre").val(nombre);
     $("#Apellido").val(apellido);
     $("#EmpresaID").val(empresaID);
-    $("#ClasificacionProfesionalID").val(clasificacionProfesionalID);
     $.ajax({
         type: "POST",
         url: '../../Profesionales/BuscarProfesional',
-        data: { ProfesionalID: profesionalID, Nombre: nombre, Apellido: apellido, EmpresaID: empresaID, ClasificacionProfesionalID: clasificacionProfesionalID },
+        data: { ProfesionalID: profesionalID, Nombre: nombre, Apellido: apellido, EmpresaID: empresaID },
         success: function (profesional) {
             $("#Nombre").val(profesional.nombre);
             $("#Apellido").val(profesional.apellido);
             $("#EmpresaID").val(profesional.empresaID);
-            $("#ClasificacionProfesionalID").val(profesional.clasificacionProfesionalID);
             $("#exampleModal").modal("show");
         },
         error: function (data) {
