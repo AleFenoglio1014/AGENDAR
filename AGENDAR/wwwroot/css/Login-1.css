@@ -425,8 +425,9 @@ label {
     font-family: 'Times New Roman', Times, serif;
 }
 
- h5 {
+h5 {
     font-family: 'Times New Roman', Times, serif;
+    color: white;
 }
 p {
     font-family: 'Times New Roman', Times, serif;
@@ -441,7 +442,30 @@ p {
     background-image: url('../lib/Imagenes/persona-y-computador-4.jpg');
 }
 
-.letrainput, h5 {
+.letrainput {
     font-size: 11px !important;
-    color:white;
+    color: white;
+    outline: auto !important;
+}
+
+.accordion{
+    padding-bottom:4px;
+}
+.card {
+    background-color: transparent !important;
+   
+}
+.card-header {
+    background-color: white !important;
+   
+}
+.botonDatos {
+    font-size: 17px !important;
+    font-family: 'Times New Roman', Times, serif;
+    outline: auto black !important;
+}
+.tituloinput {
+    font-size: 11px !important;
+    color: white;
+    
 }

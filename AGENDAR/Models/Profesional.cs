@@ -18,7 +18,7 @@ namespace AGENDAR.Models
         {
             get
             {
-                return string.Format("{0}, {1} ", Nombre, Apellido);
+                return string.Format("{0} {1} ", Nombre, Apellido);
             }
         }
 

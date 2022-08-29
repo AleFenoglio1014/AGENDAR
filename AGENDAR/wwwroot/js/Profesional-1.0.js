@@ -8,12 +8,16 @@ function CompletarTablaProfesionales() {
         success: function (listadoProfesionalesMostrar) {
             $("#tbody-profesional").empty();
             $.each(listadoProfesionalesMostrar, function (index, profesional) {
+
+                let botones = '<button type="button" onclick="BuscarProfesional(' + profesional.profesionalID + ')" class="btn btn-outline-primary btn-sm" style="margin-right:5px"><i class="bi bi-pencil-square"></i> Editar</button>' +
+                    '<button type="button" onclick="Eliminarprofesional(' + profesional.profesionalID + ')" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash-fill"></i> Eliminar</button>';
+
                 $("#tbody-profesional").append('<tr>' +
                     '<td>' + profesional.profesionalNombreCompleto + '</td>' +
                     '<td>' + profesional.empresaNombre + '</td>' +
-                    '<td>' +  '<button type="button" onclick="BuscarProfesional(' + profesional.profesionalID + ',' + profesional.empresaID + ')" class="btn btn-outline-primary btn-sm" style="margin-right:5px"><i class="bi bi-pencil-square"></i> Editar</button>' +
-                    '<button type="button" onclick="Eliminarprofesional(' + profesional.profesionalID + ',1)" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash-fill"></i> Eliminar</button>' + '</td>' +
-
+                    '<td class="text-center">' +
+                    botones +
+                    '</td>' +
                     '</tr>');
             });
         },

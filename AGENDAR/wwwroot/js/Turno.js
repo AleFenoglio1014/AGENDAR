@@ -176,3 +176,30 @@ function BuscarProfesionales() {
     return false;
 }
 
+// Funcion para limitar los caracteres de los input
+var input = document.getElementById('Nombre');
+input.addEventListener('input', function () {
+    if (this.value.length > 30)
+        swal("HA SUPERADO EL LIMITE DE CARACTERES PERMITIDO.");
+    this.value = this.value.slice(0, 30);
+
+})
+
+var input = document.getElementById('Apellido');
+input.addEventListener('input', function () {
+    if (this.value.length > 30)
+        swal("HA SUPERADO EL LIMITE DE CARACTERES PERMITIDO.");
+    this.value = this.value.slice(0, 30);
+})
+var input = document.getElementById('Email');
+input.addEventListener('input', function () {
+    if (this.value.length > 49)
+        swal("HA SUPERADO EL LIMITE DE CARACTERES PERMITIDO.");
+    this.value = this.value.slice(0, 49);
+})
+var input = document.getElementById('Telefono');
+input.addEventListener('input', function () {
+    if (this.value.length > 15)
+        swal("HA SUPERADO EL LIMITE DE CARACTERES PERMITIDO.");
+    this.value = this.value.slice(0, 15);
+})

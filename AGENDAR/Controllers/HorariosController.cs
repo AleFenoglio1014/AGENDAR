@@ -33,9 +33,13 @@ namespace AGENDAR.Controllers
             empresaUsuarioActual = _context.EmpresasUsuarios.Where(p => p.UsuarioID == usuarioActual).SingleOrDefault();
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _context.Horario.ToListAsync());
+            var profesional = _context.Profesional.Where(p => p.Eliminado == false).ToList();
+            profesional.Add(new Profesional { ProfesionalID = 0, Nombre = "SELECCIONE UN PROFESIONAL" });
+            ViewBag.ProfesionalID = new SelectList(profesional.OrderBy(p => p.ProfesionalNombreCompleto), "ProfesionalID", "ProfesionalNombreCompleto");
+          
+            return View();
         }
 
         // Funcion para Completar la Tabla de Horario
@@ -62,6 +66,8 @@ namespace AGENDAR.Controllers
                     HoraFinstring = horario.HoraFin.ToString("HH:mm"),
                     HorarioCompleto = horario.HorarioCompleto,
                     TiempoTurnos = horario.TiempoTurnos,
+                    ProfesionalID = horario.Profesionales.ProfesionalID,
+                    ProfesionalNombre = horario.Profesionales.ProfesionalNombreCompleto,
                     Eliminado = horario.Eliminado
                 };
                 listadohorario.Add(horarioMostrar);

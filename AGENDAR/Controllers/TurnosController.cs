@@ -75,7 +75,7 @@ namespace AGENDAR.Controllers
         //            Telefono = turno.Telefono,
         //            Email = turno.Email,
         //            ProfesionalID = turno.Profesionales.ProfesionalID,
-        //            ProfesionalNombre = turno.Profesionales.Nombre,
+        //            ProfesionalNombre = turno.Profesionales.ProfesionalNombreCompleto,
         //            EmpresaID = turno.Profesionales.Empresas.EmpresaID,
         //            EmpresaNombre = turno.Profesionales.Empresas.RazonSocial,
         //            LocalidadID = turno.Profesionales.Empresas.Localidades.LocalidadID,

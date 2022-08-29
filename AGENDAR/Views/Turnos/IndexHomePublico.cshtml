@@ -11,72 +11,91 @@
 
     <form>
         <input type="hidden" id="TurnoID" value="0" />
-        <h5>DATOS PERSONALES:</h5>
+
+        <h5>SOLICITE SU TURNO</h5>
         <div class="row">
-            <div class="form-group col-md-6 letrainput">
-                <label for="recipient-name" class="control-label font-weight-bold">Nombre</label>
-                <input type="text" class="form-control" autocomplete="off" required id="Nombre">
-            </div>
-            <div class="form-group col-md-6 letrainput">
-                <label for="recipient-name" class="control-label font-weight-bold">Apellido</label>
-                <input type="text" class="form-control" autocomplete="off" required id="Apellido">
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-md-6 letrainput">
-                <label for="recipient-name" class="control-label font-weight-bold">Email</label>
-                <input type="text" class="form-control" autocomplete="off" required id="Email">
-            </div>
-            <div class="form-group col-md-6 letrainput ">
-                <label for="recipient-name" class="control-label font-weight-bold labelCrearEmpresa">Telefono</label>
-                <input type="number" class="form-control" autocomplete="off" required name="telefono" id="Telefono">
-            </div>
-        </div>
-        <h5>SOLICITE SU TURNO:</h5>
-        <div class="row">
-            <div class="form-group col-md-4 letrainput">
-                <label class="control-label font-weight-bold">Provincia</label>
-                
-                @Html.DropDownList("ProvinciaID", null, htmlAttributes: new { @class = "form-control" })
+            <div class="form-group col-md-4 ">
+                <label class="control-label font-weight-bold tituloinput">Provincia:</label>
+
+                @Html.DropDownList("ProvinciaID", null, htmlAttributes: new { @class = "form-control letrainput" })
 
             </div>
-            <div class="form-group col-md-4 letrainput">
-                <label class="control-label font-weight-bold ">Localidad</label>
+            <div class="form-group col-md-4 ">
+                <label class="control-label font-weight-bold tituloinput ">Localidad:</label>
                 @Html.DropDownList("LocalidadID", null, htmlAttributes: new { @class = "form-control letrainput" })
             </div>
-            
-        </div>
-        <div class="row">
-            <div class="form-group col-md-4 letrainput">
-                <label class="control-label font-weight-bold">Empresa</label>
-                @Html.DropDownList("EmpresaID", null, htmlAttributes: new { @class = "form-control " })
-            </div>
-
-            
-            <div class="form-group col-md-4 letrainput">
-                <label class="control-label font-weight-bold">Profesional</label>
-                @Html.DropDownList("ProfesionalID", null, htmlAttributes: new { @class = "form-control " })
-
+            <div class="form-group col-md-4 ">
+                <label class="control-label font-weight-bold tituloinput">Empresa:</label>
+                @Html.DropDownList("EmpresaID", null, htmlAttributes: new { @class = "form-control letrainput" })
             </div>
         </div>
         <div class="row">
-            <div class="form-group col-md-6 letrainput">
-                <label for="recipient-name" class="control-label font-weight-bold">Fecha</label>
-                <input type="date" name="Fecha" class="form-control " autocomplete="off" required id="Fecha">
+           
+
+
+            <div class="form-group col-md-4 ">
+                <label class="control-label font-weight-bold tituloinput">Profesional:</label>
+                @Html.DropDownList("ProfesionalID", null, htmlAttributes: new { @class = "form-control letrainput " })
+
+            </div>
+       
+            <div class="form-group col-md-4 ">
+                <label for="recipient-name" class="control-label font-weight-bold tituloinput ">Fecha:</label>
+                <input type="date" name="Fecha" class="form-control letrainput " autocomplete="off" required id="Fecha">
             </div>
 
-            <div class="form-group col-md-6 letrainput">
-                <label class="control-label font-weight-bold">Hora</label>
-               @Html.DropDownList("HorarioID", null, htmlAttributes: new { @class = "form-control " })
+            <div class="form-group col-md-4 ">
+                <label class="control-label font-weight-bold tituloinput">Hora:</label>
+                @Html.DropDownList("HorarioID", null, htmlAttributes: new { @class = "form-control letrainput " })
 
             </div>
 
         </div>
+        <div class="accordion" id="accordionExample">
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h2 class=" text-left mb-0">
+                        <button class="btn text-left btn-link-red btn-block  botonDatos collapsed " type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            <i class="bi bi-caret-down-square-fill"></i>    DATOS PERSONALES: 
+                        </button>
+                    </h2>
+                </div>
+
+                <div id="collapseOne" class="collapse " aria-labelledby="headingOne" data-parent="#accordionExample">
+                   
+                    <div class="card-body ">
+                        <div class="row ">
+                            <div class="form-group col-md-5  ">
+                                <label for="recipient-name" class="control-label font-weight-bold tituloinput ">Nombre:</label>
+                                <input type="text" class="form-control" autocomplete="off" required id="Nombre">
+                            </div>
+                            <div class="form-group col-md-5 ">
+                                <label for="recipient-name" class="control-label font-weight-bold tituloinput ">Apellido:</label>
+                                <input type="text" class="form-control" autocomplete="off" required id="Apellido">
+                            </div>
+                        </div>
+
+                        <div class="row ">
+                            <div class="form-group col-md-5  ">
+                                <label for="recipient-name" class="control-label font-weight-bold tituloinput ">Email:</label>
+                                <input type="text" class="form-control" autocomplete="off" required id="Email">
+                            </div>
+                            <div class="form-group col-md-5  ">
+                                <label for="recipient-name" class="control-label font-weight-bold tituloinput ">Telefono:</label>
+                                <input type="number" class="form-control" autocomplete="off" required name="telefono" id="Telefono">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          
+        </div>
+       
     </form>
 
     <div class="form-group">
         <button type="button" onclick="GuardarTurno()" class="btn btn-success"><i class="bi bi-folder-check"></i> Solicitar Turno</button>
-        <button type="button" onclick="VaciarFormulario()" class="btn btn-danger" data-dismiss="modal"><i class="bi bi-backspace"></i> Borrar</button>
+        <button type="button" onclick="VaciarFormulario()" class="btn btn-danger" data-dismiss="modal"><i class="bi bi-backspace"></i> Borrar Todo</button>
     </div>
 
 </body>
