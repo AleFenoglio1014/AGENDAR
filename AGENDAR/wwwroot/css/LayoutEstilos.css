@@ -172,8 +172,8 @@ ul, ol {
     margin: 3px;
     border: 2px solid transparent;
     border-radius: 3px;
-    -webkit-transition: 0.2s opacity;
-    transition: 0.2s opacity;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
 }
 
 .main-btn {
@@ -207,9 +207,9 @@ ul, ol {
     color: #10161A !important;
 }
 
-    .main-btn:hover, .white-btn:hover, .outline-btn:hover {
+   /* .main-btn:hover, .white-btn:hover, .outline-btn:hover {
         opacity: 0.8;
-    }
+    }*/
 
 
 /*------------------------------------*\
@@ -273,18 +273,23 @@ ul, ol {
         left: 0;
         right: 0;
         padding: 0px 0px;
-        background-color: #FFF !important;
+        background-color: #EEE !important;
         border-bottom: 1px solid #EEE;
     }
 
     #nav.nav-transparent {
         background: transparent;
+        border-bottom: none;
     }
 
 
 /* -- default nav -- */
 
 @media only screen and (min-width: 768px) {
+    #nav.fixed-nav {
+        background-color: transparent !important;
+    }
+    
     .main-nav li {
         padding: 0px 15px;
     }
@@ -330,8 +335,12 @@ ul, ol {
         padding: 0px 0px;
     }
 
+        #nav.fixed-nav {
+            background-color: transparent !important;
+            border-bottom: none;
+        }
         #nav.nav-transparent {
-            background: #FFF;
+            background: transparent;
         }
 
     .main-nav {
@@ -498,11 +507,15 @@ header {
     color: #868F9B;
 }
 
+.imgNosotros {
+    width: 100%;
+    vertical-align: middle;
+}
 /*------------------------------------*\
 	Services
 \*------------------------------------*/
-
 .service {
+    cursor: pointer;
     position: relative;
     padding: 40px 20px 40px 70px;
     margin: 15px 0px;
@@ -566,6 +579,7 @@ header {
 \*------------------------------------*/
 
 .team {
+    cursor: pointer;
     position: relative;
     background-color: #F4F4F4;
     padding: 40px 20px;
@@ -666,6 +680,10 @@ header {
 
 /* Clients Section
 --------------------------------*/
+.seccionEmpresa {
+    background-color: darkgray;
+}
+
 #clients {
     padding: 60px 0;
   }
@@ -675,6 +693,7 @@ header {
     opacity: 0.5;
     transition: 0.3s;
     padding: 15px 0;
+    border: 4px solid;
   }
   
   #clients img:hover {
@@ -749,15 +768,32 @@ header {
             line-height: 50px;
             text-align: center;
             border-radius: 3px;
-            background-color: #C0C0C0;
+           /* background-color: #C0C0C0;*/
             color: #10161A;
         }
+.fa-facebook-f:before, .fa-facebook:before {
+    color: #FFF;
+}
+.fa-whatsapp-f:before, .fa-whatsapp:before {
+    color: #FFF;
+}
+.fa-twitter-f:before, .fa-twitter:before {
+    color: #FFF;
+}
+.fa-instagram-f:before, .fa-instagram:before {
+    color: #FFF;
+}
+.fa-linkedin-f:before, .fa-linkedin:before {
+    color: #FFF;
+}
+
+
       /*HOVER REDES SOCIALES center FOOTER*/
-        .footer-follow li.facebook :hover {
-            background-color: #1877F2;
-            color: #FFF;
-        }
-        .footer-follow li.wpp :hover {
+
+#footer .footer-follow a .fa-facebook :hover {
+    color: #1877F2;
+}
+      /*  .footer-follow li.wpp :hover {
             background-color: #29B145;
             color: #FFF;
         }
@@ -772,7 +808,7 @@ header {
         .footer-follow li.linkedin :hover {
             background: #0A65C2;
             color: #FFF;
-        }
+        }*/
 
 
 .footer-copyright p {
