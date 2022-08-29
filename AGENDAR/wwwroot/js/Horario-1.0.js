@@ -49,6 +49,7 @@ function AbrirModal() {
     $("#HoraInicio").val('00:00');
     $("#HoraFin").val('00:00');
     $("#TiempoTurnos").val('');
+    $("#ProfesionalID").val(0);
     $("#exampleModal").modal("show");
 }
 // Funcion para Guardar el Horario
@@ -59,11 +60,12 @@ function GuardarHorario() {
     let horaInicio = $('#HoraInicio').val().trim();
     let horaFin = $('#HoraFin').val().trim();
     let tiempoTurnos = $('#TiempoTurnos').val();
+    let profesionalID = $('#ProfesionalID').val();
     if (horaInicio != null && horaFin != null) {
         $.ajax({
             type: "POST",
             url: '../../Horarios/GuardarHorario',
-            data: { HorarioID: horarioID, HoraInicio: horaInicio, HoraFin: horaFin, TiempoTurnos: tiempoTurnos },
+            data: { HorarioID: horarioID, HoraInicio: horaInicio, HoraFin: horaFin, TiempoTurnos: tiempoTurnos, ProfesionalID: profesionalID },
             async: false,
             success: function (resultado) {
                 if (resultado == 0) {
@@ -82,26 +84,7 @@ function GuardarHorario() {
         $("#Error-Hora").text("Debe ingresar un Horario.");
     }
 }
-//// Funcion para Buscar los Horarios
 
-//function BuscarHorario(horarioID) {
-//    VaciarFormulario();
-//    $("#titulo-Modal-Horario").text("EDITAR HORARIO");
-//    $("#HorarioID").val(horarioID);
-//    $.ajax({
-//        type: "POST",
-//        url: '../../Horarios/BuscarHorario',
-//        data: { HorarioID: horarioID  },
-//        success: function (horario) {
-//            $("#HoraInicio").val(horario.horaInicioString);
-//            $("#HoraFin").val(horario.horaFinString);
-//            $("#TiempoTurnos").val(horario.tiempoTurnos);
-//            $("#exampleModal").modal("show");
-//        },
-//        error: function (data) {
-//        }
-//    });
-//}
 
 //Funcion para Vaciar el Formulario
 
@@ -110,6 +93,7 @@ function VaciarFormulario() {
     $("#HoraInicio").val('');
     $("#HoraFin").val('');
     $("#TiempoTurnos").val('');
+    $("#ProfesionalID").val(0);
     $("#Error-Hora").text("");
 }
 

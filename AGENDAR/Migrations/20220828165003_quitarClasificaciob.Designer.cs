@@ -4,14 +4,16 @@ using AGENDAR.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AGENDAR.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220828165003_quitarClasificaciob")]
+    partial class quitarClasificaciob
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -101,8 +103,6 @@ namespace AGENDAR.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("HorarioID");
-
-                    b.HasIndex("ProfesionalID");
 
                     b.ToTable("Horario");
                 });
@@ -218,6 +218,8 @@ namespace AGENDAR.Migrations
 
                     b.HasIndex("HorarioID");
 
+                    b.HasIndex("ProfesionalID");
+
                     b.ToTable("Turnos");
                 });
 
@@ -250,22 +252,22 @@ namespace AGENDAR.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "7300519a-2919-4e3d-a78f-492fee8e0178",
-                            ConcurrencyStamp = "ff465b77-9459-4667-a5ce-fc687c59279d",
+                            Id = "188c4ba6-4ea7-4c94-882c-08207e41f1e1",
+                            ConcurrencyStamp = "f231f596-f593-43cb-a93a-70d58423803e",
                             Name = "SuperUsuario",
                             NormalizedName = "SUPERUSUARIO"
                         },
                         new
                         {
-                            Id = "acc98425-3772-4620-abd9-12802ce4e8ed",
-                            ConcurrencyStamp = "aa1adcfe-362a-4bec-ad56-d4cfd73bb427",
+                            Id = "002650bc-f218-4403-bd8b-0361314a3e45",
+                            ConcurrencyStamp = "44ae2e77-985e-4965-a4e3-2bc79ef61f48",
                             Name = "AdministradorEmpresa",
                             NormalizedName = "ADMINISTRADOREMPRESA"
                         },
                         new
                         {
-                            Id = "cd8878e8-ef35-4a5f-bd52-1a4fb4d4b458",
-                            ConcurrencyStamp = "a51fa9f0-2dff-4917-b6d6-cb4d01680edc",
+                            Id = "aaa77bda-00c0-453f-914b-5682019686b6",
+                            ConcurrencyStamp = "91404927-95c4-43fa-9a9e-ea14a7916020",
                             Name = "Usuario",
                             NormalizedName = "USUARIO"
                         });
@@ -431,8 +433,8 @@ namespace AGENDAR.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "2890bc15-1888-4bc7-8e27-ab620ba25a48",
-                            RoleId = "7300519a-2919-4e3d-a78f-492fee8e0178"
+                            UserId = "24c7c964-b889-4e80-b5e3-119a4e069a7b",
+                            RoleId = "188c4ba6-4ea7-4c94-882c-08207e41f1e1"
                         });
                 });
 
@@ -466,17 +468,17 @@ namespace AGENDAR.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2890bc15-1888-4bc7-8e27-ab620ba25a48",
+                            Id = "24c7c964-b889-4e80-b5e3-119a4e069a7b",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b148baf1-632e-462a-9923-8118f23b5e26",
+                            ConcurrencyStamp = "ce03b590-90f2-4b1d-832c-6692248d0764",
                             Email = "turnosagendar@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "TURNOSAGENDAR@GMAIL.COM",
                             NormalizedUserName = "TURNOSAGENDAR@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAED+TEE1iWTIRZsEzsv4TjSEQuHUZeaxfS33rPaPtj18pPPDaVFDH+WfFBFfATxo8TA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAECZbNvCS+dh0qhsnDL60bJbCqxxdwRSYcvUnLgo7BUHGOQjPMNClLdsowjmlCwkYYg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "0c0f6533-4605-4af0-863c-07a81e872b60",
+                            SecurityStamp = "90f58ca9-be18-41e2-afb6-7c6ad5507434",
                             TwoFactorEnabled = false,
                             UserName = "turnosagendar@gmail.com"
                         });
@@ -487,15 +489,6 @@ namespace AGENDAR.Migrations
                     b.HasOne("AGENDAR.Models.Localidad", "Localidades")
                         .WithMany("Empresas")
                         .HasForeignKey("LocalidadID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("AGENDAR.Models.Horario", b =>
-                {
-                    b.HasOne("AGENDAR.Models.Profesional", "Profesionales")
-                        .WithMany("Horarios")
-                        .HasForeignKey("ProfesionalID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -523,6 +516,12 @@ namespace AGENDAR.Migrations
                     b.HasOne("AGENDAR.Models.Horario", "Horarios")
                         .WithMany("Turnos")
                         .HasForeignKey("HorarioID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AGENDAR.Models.Profesional", "Profesionales")
+                        .WithMany("Turnos")
+                        .HasForeignKey("ProfesionalID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

@@ -22,14 +22,13 @@ namespace AGENDAR.Models
         public int LocalidadID { get; set; }
         
         public int EmpresaID { get; set; }
-        public int ClasificacionProfesionalID { get; set; }
-        public int ClasificacionEmpresaID { get; set; }
+     
         public int ProfesionalID { get; set; }
         public int ProvinciaID { get; set; }
         public int HorarioID { get; set; }
         public DateTime FechaTurno { get; set; }
 
-        public virtual Profesional Profesionales { get; set; }
+        //public virtual Profesional Profesionales { get; set; }
 
         public virtual Horario Horarios { get; set; }
 
@@ -48,15 +47,12 @@ namespace AGENDAR.Models
         public string ProvinciaNombre { get; set; }
         public int LocalidadID { get; set; }
         public string LocalidadNombre { get; set; }
-        public int ClasificacionEmpresaID { get; set; }
-
-        public string ClasificacionEmpresaNombre { get; set; }
+      
         public int EmpresaID { get; set; }
         public string EmpresaNombre { get; set; }
         public int ProfesionalID { get; set; }
         public string ProfesionalNombre { get; set; }
-        public int ClasificacionProfesionalID { get; set; }
-        public string ClasificacionProfesionalNombre { get; set; }
+   
 
         public int HorarioID { get; set; }
         public string HorarioFecha { get; set; }

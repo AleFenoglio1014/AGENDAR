@@ -89,6 +89,10 @@ body {
     padding-left:160px;
 }
 
+.inputLetra {
+    font-size: 12px !important;
+}
+
 .tamañoLetra{
     font-size:2rem;
 }

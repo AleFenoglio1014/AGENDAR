@@ -1,5 +1,4 @@
 ﻿// Funcion para CompletarTablasProvincias
-
 function CompletarTablaProvincias() {
     VaciarFormulario();
     $.ajax({
@@ -10,10 +9,7 @@ function CompletarTablaProvincias() {
             $("#tbody-provincias").empty();
             $.each(listadoProvincias, function (index, provincia) {
 
- 
                 let botones = '<button type="button" onclick="BuscarProvincia(' + provincia.provinciaID + ')" class="btn btn-outline-primary btn-sm" style="margin-right:5px"><i class="bi bi-pencil-square"></i> Editar</button>';
-
-                
 
                 $("#tbody-provincias").append('<tr class=>' +
                     '<td>' + provincia.descripcion + '</td>' +

@@ -37,10 +37,7 @@ namespace AGENDAR.Controllers
             empresa.Add(new Empresa { EmpresaID = 0, RazonSocial = "[SELECCIONE UNA EMPRESA]" });
             ViewBag.EmpresaID = new SelectList(empresa.OrderBy(p => p.RazonSocial), "EmpresaID", "RazonSocial");
 
-            var clasificacionprofesional = _context.ClasificacionProfesional.Where(p => p.Eliminado == false).ToList();
-            clasificacionprofesional.Add(new ClasificacionProfesional { ClasificacionProfesionalID = 0, Descripcion = "[SELECCIONE TIPO DE PROFESIONAL]" });
-            ViewBag.ClasificacionProfesionalID = new SelectList(clasificacionprofesional.OrderBy(p => p.Descripcion), "ClasificacionProfesionalID", "Descripcion");
-
+          
             return View();
         }
 
@@ -54,7 +51,7 @@ namespace AGENDAR.Controllers
             EmpresaUsuario empresaUsuarioActual = new EmpresaUsuario();
             BuscarEmpresaActual(usuarioActual, empresaUsuarioActual);
 
-            var profesionales = _context.Profesional.Include(r => r.Empresas).Include(p => p.ClasificacionProfesionales).Where(l => l.EmpresaID == empresaUsuarioActual.EmpresaID).ToList();
+            var profesionales = _context.Profesional.Include(r => r.Empresas).Where(l => l.EmpresaID == empresaUsuarioActual.EmpresaID).ToList();
 
             List<ProfesionalesMostrar> listadoProfesional = new List<ProfesionalesMostrar>();
 
@@ -66,8 +63,6 @@ namespace AGENDAR.Controllers
                     Nombre = profesional.Nombre,
                     Apellido = profesional.Apellido,
                     ProfesionalNombreCompleto = profesional.ProfesionalNombreCompleto,
-                    ClasificacionProfesionalID = profesional.ClasificacionProfesionalID,
-                    TipoProfesional = profesional.ClasificacionProfesionales.Descripcion,
                     EmpresaID = profesional.EmpresaID,
                     EmpresaNombre = profesional.Empresas.RazonSocial,
                     Eliminado = profesional.Eliminado
@@ -81,7 +76,7 @@ namespace AGENDAR.Controllers
         }
         // Funcion Guardar y Editar los Porfesionales
         [Authorize(Roles = "AdministradorEmpresa, SuperUsuario")]
-        public JsonResult GuardarProfesional(int ProfesionalID, string Nombre, string Apellido,  int EmpresaID, int ClasificacionProfesionalID)
+        public JsonResult GuardarProfesional(int ProfesionalID, string Nombre, string Apellido,  int EmpresaID)
         {
             //PRIMERO BUSCAMOS EL USUARIO ACTUAL
             var usuarioActual = _userManager.GetUserId(HttpContext.User);
@@ -114,7 +109,6 @@ namespace AGENDAR.Controllers
                             Nombre = Nombre,
                             Apellido = Apellido,
                             EmpresaID = EmpresaID,
-                            ClasificacionProfesionalID = ClasificacionProfesionalID
 
                         };
                         _context.Add(profesionalNuevo);
@@ -137,7 +131,6 @@ namespace AGENDAR.Controllers
                         // Cambiamos el nombre por la que ingreso el Usuario en la Vista
                         profesional.Nombre = Nombre;
                         profesional.Apellido = Apellido;
-                        profesional.ClasificacionProfesionalID = ClasificacionProfesionalID;
                         profesional.EmpresaID = EmpresaID;
                         _context.SaveChanges();
                     }
@@ -156,7 +149,6 @@ namespace AGENDAR.Controllers
                     // Cambiamos el nombre por la que ingreso el Usuario en la Vista
                     profesional.Nombre = Nombre;
                     profesional.Apellido = Apellido;
-                    profesional.ClasificacionProfesionalID = ClasificacionProfesionalID;
                     profesional.EmpresaID = EmpresaID;
                     _context.SaveChanges();
                 }

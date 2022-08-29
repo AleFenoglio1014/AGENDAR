@@ -24,7 +24,6 @@ function CompletarTablaEmpresas() {
                     '<td class="text-center">' + empresa.direccion + '</td>' +
                     '<td class="text-center">' + empresa.telefono + '</td>' +
                     '<td class="text-center">' + empresa.localidadNombre + '</td>' +
-                    '<td class="text-center">' + empresa.tipoEmpresa + '</td>' +
                     '<td>' + "<img class=' card-tamaño' src='data:img/jpeg;base64," + empresa.imagenEmpresaString + "' />" + '</td >' +
                     '<td class="text-center">' +
                     botones +
@@ -60,7 +59,6 @@ function BuscarEmpresa(empresaID) {
             $("#EmpresaID").val(empresa.empresaID);
             $("#RazonSocial").val(empresa.razonSocial);
             $("#LocalidadID").val(empresa.localidadID);
-            $("#ClasificacionEmpresaID").val(empresa.clasificacionEmpresaID);
             $("#Telefono").val(empresa.telefono);
             $("#Cuit").val(empresa.cuit);
             $("#Direccion").val(empresa.direccion);
@@ -79,7 +77,6 @@ function BuscarEmpresa(empresaID) {
 function VaciarFormulario() {
     $("#EmpresaID").val(0);
     $("#RazonSocial").val('');
-    $("#ClasificacionEmpresaID").val(0);
     $("#LocalidadID").val(0);
     $("#Cuit").val('');
     $("#Direccion").val('');
@@ -127,7 +124,6 @@ function GuardarEmpresa() {
     let telefono = $('#Telefono').val();
     let razonSocial = $('#RazonSocial').val().trim();
     let localidadID = $('#LocalidadID').val();
-    let clasificacionEmpresaID = $('#ClasificacionEmpresaID').val();
     let archivo = $('#Archivo').val();
 
     let guardarEmpresa = true;
@@ -137,10 +133,6 @@ function GuardarEmpresa() {
         $("#Error-CamposEmpresas").text("Los campos son OBLIGATORIOS.");
     }
     if (localidadID == "" || localidadID == null) {
-        guardarEmpresa = false;
-        $("#Error-CamposEmpresas").text("Los campos son OBLIGATORIOS.");
-    }
-    if (clasificacionEmpresaID == "" || clasificacionEmpresaID == null) {
         guardarEmpresa = false;
         $("#Error-CamposEmpresas").text("Los campos son OBLIGATORIOS.");
     }

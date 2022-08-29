@@ -6,14 +6,54 @@
 @{
     Layout = "~/Views/Shared/_LayoutCrearTurnos.cshtml";
 }
+<script>
 
+    document.addEventListener('DOMContentLoaded', function () {
+        var calendarEl = document.getElementById('calendar');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,dayGridDay'
+            },
+            initialDate: '2020-09-12',
+            navLinks: true, // can click day/week names to navigate views
+            editable: true,
+            locale: 'es'
+            
+        });
+
+        calendar.render();
+    });
+
+</script>
+<style>
+
+  
+
+    #calendar {
+        max-width: 1100px;
+        max-height: 500px;
+        margin: 0 auto;
+    }
+</style>
+<body>
+
+    <div id='calendar'></div>
+
+</body>
 
 
 
 @section Scripts {
 
-    <script src="~/js/Turno.js"></script>
-    <script>
+    @*<script src="~/js/Turno.js"></script>*@
+    <script src="~/js/main.js"></script>
+    <script src="~/js/es.js"></script>
+    @*<script>
         window.onload = Completarcalendario();
-    </script>
+    </script>*@
 }
+
+<link href="~/css/main.css" rel="stylesheet" />
