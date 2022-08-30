@@ -2,13 +2,13 @@
 /*Body {
     background-image: url('../lib/Imagenes/teletrabajo_home_office.jpg');
     image-resolution: 300dpi;
-}
+}*/
 .colorNav {
     background-color: #BFC9CA;
 }
 
 
-@charset "utf-8";
+/*@charset "utf-8";
 
 * {
     margin: 0px;
@@ -437,7 +437,7 @@ p {
 
 /*CLASES PARA SOLICITAR EL TURNO*/
 
-/*.imagenSoliitarTurno {
+.imagenSoliitarTurno {
     image-resolution: 300dpi;
     background-image: url('../lib/Imagenes/persona-y-computador-4.jpg');
 }
@@ -468,4 +468,8 @@ p {
     font-size: 11px !important;
     color: white;
     
-}*/
+}
+h5 {
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
+}
