@@ -132,7 +132,7 @@ function GuardarEmpresa() {
         guardarEmpresa = false;
         $("#Error-CamposEmpresas").text("Los campos son OBLIGATORIOS.");
     }
-    if (localidadID == "" || localidadID == null) {
+    if (localidadID == 0) {
         guardarEmpresa = false;
         $("#Error-CamposEmpresas").text("Los campos son OBLIGATORIOS.");
     }

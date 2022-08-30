@@ -62,7 +62,7 @@ function GuardarProfesional() {
         guardarProfesional = false;
         $("#Error-CamposProfesional").text("Los campos son OBLIGATORIOS.");
     }
-    if (empresaID == "" || empresaID == null) {
+    if (empresaID == 0) {
         guardarProfesional = false;
         $("#Error-CamposProfesional").text("Los campos son OBLIGATORIOS.");
     }

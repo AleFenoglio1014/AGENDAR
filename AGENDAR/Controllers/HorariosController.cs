@@ -94,27 +94,28 @@ namespace AGENDAR.Controllers
 
             int resultado = 0;
             //// Si es 0 es CORRECTO 
-            //// Si es 1 el Campo Descripcion esta VACIO
+            //// Si es 1 el Campo  esta VACIO
             //// Si es 2 el Registro YA EXISTE con la misma Descripcion
+            if (HoraInicio != null && HoraFin != null )
+            {
+                int tiempoMostrar = 15;
+                //if (TiempoTurnos == 0)
+                //{
+                //    tiempoMostrar = 15;
+                //}
+                if (TiempoTurnos == 1)
+                {
+                    tiempoMostrar = 30;
+                }
+                if (TiempoTurnos == 2)
+                {
+                    tiempoMostrar = 45;
+                }
+                if (TiempoTurnos == 3)
+                {
+                    tiempoMostrar = 60;
+                }
 
-            int tiempoMostrar = 15;
-            //if (TiempoTurnos == 0)
-            //{
-            //    tiempoMostrar = 15;
-            //}
-            if (TiempoTurnos == 1)
-            {
-                tiempoMostrar = 30;
-            }
-            if (TiempoTurnos == 2)
-            {
-                tiempoMostrar = 45;
-            }
-            if (TiempoTurnos == 3)
-            {
-                tiempoMostrar = 60;
-            }
-          
                 //    // Antes de CREAR el registro debemos preguntar si existe una Horario igual
                 if (_context.Horario.Any(e => e.HoraInicio == HoraInicio && e.HoraFin == HoraFin && e.TiempoTurnos == TiempoTurnos && e.ProfesionalID == ProfesionalID))
                 {
@@ -125,9 +126,9 @@ namespace AGENDAR.Controllers
                     // Aca va a ir el codigo para CREAR un Horario
 
                     //CALCULAMOS LAS HORAS QUE TRABAJA LA EMPRESA
-                     int horasDeTrabajo = HoraFin.Hour - HoraInicio.Hour;
+                    int horasDeTrabajo = HoraFin.Hour - HoraInicio.Hour;
                     //PASAMOS LAS HORAS QUE TRABAJA LA EMPRESA A MINUTOS
-                    int minutosDiarios = horasDeTrabajo * 60; 
+                    int minutosDiarios = horasDeTrabajo * 60;
 
 
                     /*int minutosTurnos = TiempoTurnos;*/ // Tiempo de Duración de los Turnos en Minutos
@@ -154,7 +155,13 @@ namespace AGENDAR.Controllers
                         fechaApertura = fechaApertura.AddMinutes(tiempoMostrar);
                     }
                 }
-                return Json(resultado);
+            }
+            else
+            {
+
+                resultado = 1;
+            }
+            return Json(resultado);
             }
                 
 
