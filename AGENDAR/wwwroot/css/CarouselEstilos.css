@@ -92,8 +92,18 @@
         align-items: center;
         transform: translateX(-50%);
         bottom: 10px;
+        border: none;
+    }
+.botonNext {
+    background-color: darkgray;
+    border: none;
+}
+
+    .botonNext:hover {
+        color: #117A65;
     }
 
 .botonesCarousel {
+    font-size: 30px;
     padding-top: 20px;
 }

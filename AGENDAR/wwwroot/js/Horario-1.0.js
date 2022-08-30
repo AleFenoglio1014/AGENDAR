@@ -56,13 +56,31 @@ function AbrirModal() {
 // Funcion para Guardar el Horario
 
 function GuardarHorario() {
-    $("#Error-Hora").text("");
+    $("#Error-CamposHorario").text("");
     let horarioID = $('#HorarioID').val();
     let horaInicio = $('#HoraInicio').val().trim();
     let horaFin = $('#HoraFin').val().trim();
     let tiempoTurnos = $('#TiempoTurnos').val();
     let profesionalID = $('#ProfesionalID').val();
-    if (horaInicio != null && horaFin != null) {
+
+    let guardarHorario = true;
+    if (horaInicio == "" || horaInicio == null) {
+        guardarProfesional = false;
+        $("#Error-CamposHorario").text("Los campos son OBLIGATORIOS.");
+    }
+    if (horaFin == "" || horaFin == null) {
+        guardarProfesional = false;
+        $("#Error-CamposHorario").text("Los campos son OBLIGATORIOS.");
+    }
+    if (tiempoTurnos == "" || tiempoTurnos == null) {
+        guardarProfesional = false;
+        $("#Error-CamposHorario").text("Los campos son OBLIGATORIOS.");
+    }
+    if (profesionalID == "" || profesionalID == null) {
+        guardarProfesional = false;
+        $("#Error-CamposHorario").text("Los campos son OBLIGATORIOS.");
+    }
+    if (guardarHorario) {
         $.ajax({
             type: "POST",
             url: '../../Horarios/GuardarHorario',
@@ -82,7 +100,7 @@ function GuardarHorario() {
         });
     }
     else {
-        $("#Error-Hora").text("Debe ingresar un Horario.");
+        $("#Error-CamposHorario").text("Los campos son OBLIGATORIOS.");
     }
 }
 
@@ -96,6 +114,7 @@ function VaciarFormulario() {
     $("#TiempoTurnos").val('');
     $("#ProfesionalID").val(0);
     $("#Error-Hora").text("");
+    $("#Error-CamposHorario").text("");
 }
 
 function DesactivarHorario(horarioID, elimina) {

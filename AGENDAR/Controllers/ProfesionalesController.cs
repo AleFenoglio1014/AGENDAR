@@ -89,7 +89,7 @@ namespace AGENDAR.Controllers
             // Si es 1 el Campo Descripcion esta VACIO
             // Si es 2 el Registro YA EXISTE con la misma Descripcion
 
-            if (!string.IsNullOrEmpty(Nombre) && !string.IsNullOrEmpty(Apellido))
+            if (!string.IsNullOrEmpty(Nombre) && !string.IsNullOrEmpty(Apellido) && EmpresaID != 0)
             {
                 Nombre = Nombre.ToUpper();
                 Apellido = Apellido.ToUpper();
@@ -139,21 +139,10 @@ namespace AGENDAR.Controllers
             }
             else
             {
-                if (_context.Profesional.Any(e => e.Nombre == Nombre ))
-                {
-                    resultado = 1;
-                }
-                else
-                {
-                    var profesional = _context.Profesional.Single(m => m.ProfesionalID == ProfesionalID);
-                    // Cambiamos el nombre por la que ingreso el Usuario en la Vista
-                    profesional.Nombre = Nombre;
-                    profesional.Apellido = Apellido;
-                    profesional.EmpresaID = EmpresaID;
-                    _context.SaveChanges();
-                }
-            };
 
+                resultado = 1;
+            } 
+               
 
             return Json(resultado);
         }
