@@ -13,12 +13,13 @@
     <link href="~/css/font-awesome.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link href="~/css/LayoutEstilos.css" rel="stylesheet" />
+    <link href="~/css/CarouselEstilos.css" rel="stylesheet" />
 </head>
 <body>
     <!-- Header -->
     <header id="home">
         <!-- Background Image -->
-        <div class="bg-img" >
+        <div class="bg-img">
             <div class="overlay"></div>
         </div>
         <!-- /Background Image -->
@@ -46,9 +47,9 @@
                 <ul class="main-nav nav navbar-nav navbar-right">
 
                     <li><a href="#features">Nosotros</a></li>
-                    <li><a href="#service">Servicios</a></li>
+                    <li><a href="#service">Utilidades</a></li>
                     <li><a href="#team">Equipo</a></li>
-                    <li><a href="#pricing">Clientes</a></li>
+                    <li><a href="#empresas">Empresas</a></li>
                     <li><a href="#contact">Contacto</a></li>
                 </ul>
                 <!-- /Main navigation -->
@@ -91,7 +92,7 @@
                     <h2 class="title">Nosotros</h2>
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-                    <img src="" class="img-fluid" alt="">
+                    <img src="~/lib/Imagenes/IMAGENNOSOTROS.png" class="img-fluid imgNosotros" alt="">
                 </div>
 
                 <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
@@ -131,7 +132,7 @@
 
                 <!-- Section header -->
                 <div class="section-header text-center">
-                    <h2 class="title">Servicios</h2>
+                    <h2 class="title">Utilidades</h2>
                 </div>
                 <!-- /Section header -->
                 <!-- service -->
@@ -298,6 +299,88 @@
 
     </div>
     <!-- /Team -->
+    @*Carousel Empresas*@
+    <div id="empresas" class="section md-padding seccionEmpresa">
+        <!-- Container -->
+        <div class="container">
+
+            <!-- Section Titulo -->
+            <div class="section-header text-center">
+                <h2 class="title">Empresas que Confían</h2>
+            </div>
+            <!-- CAROUSEL -->
+            <div id="carousel">
+                <div class="hideLeft">
+                    <img src="~/lib/Imagenes/bancoGalicia.png">
+                </div>
+                <div class="prevLeftSecond">
+                    <img src="~/lib/Imagenes/bancoNacionArgentina.jpg">
+                </div>
+                <div class="hideRight">
+                    <img src="~/lib/Imagenes/macroBanco.jpg">
+                </div>
+                <div class="prev">
+                    <img src="~/lib/Imagenes/Afip.jpg">
+                </div>
+                <div class="selected">
+                    <img src="~/lib/Imagenes/anses.png">
+                </div>
+                <div class="next">
+                    <img src="~/lib/Imagenes/cavaliers.jpg">
+                </div>
+                <div class="nextRightSecond">
+                    <img src="~/lib/Imagenes/complejoSoliera.jpg">
+                </div>
+                <div class="hideRight">
+                    <img src="~/lib/Imagenes/hospitalAleman.jpg">
+                </div>
+                <div class="hideRight">
+                    <img src="~/lib/Imagenes/descarga (2).png">
+                </div>
+                <div class="hideRight">
+                    <img src="~/lib/Imagenes/hotelImago.png">
+                </div>
+                <div class="hideRight">
+                    <img src="~/lib/Imagenes/IberostarHotel.png">
+                </div>
+                <div class="hideRight">
+                    <img src="~/lib/Imagenes/laEscondidaResto.jpg">
+                </div>
+                <div class="hideRight">
+                    <img src="~/lib/Imagenes/peluqueriaCube.jpg">
+                </div>
+                <div class="hideRight">
+                    <img src="~/lib/Imagenes/peluqueriaUbee.jpg">
+                </div>
+                <div class="hideRight">
+                    <img src="~/lib/Imagenes/sanatorioGuemes.jpg">
+                </div>
+                <div class="hideRight">
+                    <img src="~/lib/Imagenes/sanatorioSanMartin.jpg">
+                </div>
+                <div class="hideRight">
+                    <img src="~/lib/Imagenes/restaurantesEliot.jpg">
+                </div>
+                <div class="hideRight">
+                    <img src="~/lib/Imagenes/laEscondidaResto.jpg">
+                </div>
+                <div class="hideRight">
+                    <img src="~/lib/Imagenes/restoLaPampa.png">
+                </div>
+                <div class="hideRight">
+                    <img src="~/lib/Imagenes/tallerServiciosMecanicos.png">
+                </div>
+
+            </div>
+
+            <!-- <div class="buttons text-center botonesCarousel">
+              <button id="prev">Prev</button>
+              <button id="next">Next</button>
+            </div> -->
+        </div>
+    </div>
+    </div>
+
     <!-- Contact -->
     <div id="contact" class="section md-padding">
 
@@ -395,6 +478,7 @@
     <script src="~/lib/bootstrap-3/bootstrap.min.js"></script>
     <script src="~/js/Sweetalert.js"></script>
     <script src="~/js/LayoutEstilos.js"></script>
+    <script src="~/js/CarouselFunciones.js"></script>
     @*boton volver arriba viejo
         <script src="~/js/backToTop.js.js"></script>*@
 
