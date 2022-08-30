@@ -182,8 +182,9 @@ body {
         display: block;
         
     }
-.espacioBotones{
-    padding-bottom:16px;
+.espacioBotones {
+    padding-bottom: 5px;
+    padding-top: 16px;
 }
 thead {
     background: #a5a5a5 !important;
