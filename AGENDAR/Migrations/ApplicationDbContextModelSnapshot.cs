@@ -100,6 +100,9 @@ namespace AGENDAR.Migrations
                     b.Property<int>("TiempoTurnos")
                         .HasColumnType("int");
 
+                    b.Property<string>("TurnoDias")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("HorarioID");
 
                     b.HasIndex("ProfesionalID");
@@ -250,22 +253,22 @@ namespace AGENDAR.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "7300519a-2919-4e3d-a78f-492fee8e0178",
-                            ConcurrencyStamp = "ff465b77-9459-4667-a5ce-fc687c59279d",
+                            Id = "e52dd17e-a17b-45f1-a593-f09c1a7d26e7",
+                            ConcurrencyStamp = "ef6698b0-73f8-4f00-8749-e36c94f79301",
                             Name = "SuperUsuario",
                             NormalizedName = "SUPERUSUARIO"
                         },
                         new
                         {
-                            Id = "acc98425-3772-4620-abd9-12802ce4e8ed",
-                            ConcurrencyStamp = "aa1adcfe-362a-4bec-ad56-d4cfd73bb427",
+                            Id = "06c92c6d-8f35-49b0-abbe-963d3d748907",
+                            ConcurrencyStamp = "dad68db0-eda1-4825-ba9d-b7ed543ff5b4",
                             Name = "AdministradorEmpresa",
                             NormalizedName = "ADMINISTRADOREMPRESA"
                         },
                         new
                         {
-                            Id = "cd8878e8-ef35-4a5f-bd52-1a4fb4d4b458",
-                            ConcurrencyStamp = "a51fa9f0-2dff-4917-b6d6-cb4d01680edc",
+                            Id = "8505fac2-e2e6-462d-ba65-a2a58684879b",
+                            ConcurrencyStamp = "2b766605-614d-400f-b727-50e770b3487d",
                             Name = "Usuario",
                             NormalizedName = "USUARIO"
                         });
@@ -431,8 +434,8 @@ namespace AGENDAR.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "2890bc15-1888-4bc7-8e27-ab620ba25a48",
-                            RoleId = "7300519a-2919-4e3d-a78f-492fee8e0178"
+                            UserId = "376a1bff-819d-428d-95f3-1e84d5c3e0ad",
+                            RoleId = "e52dd17e-a17b-45f1-a593-f09c1a7d26e7"
                         });
                 });
 
@@ -466,17 +469,17 @@ namespace AGENDAR.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2890bc15-1888-4bc7-8e27-ab620ba25a48",
+                            Id = "376a1bff-819d-428d-95f3-1e84d5c3e0ad",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b148baf1-632e-462a-9923-8118f23b5e26",
+                            ConcurrencyStamp = "12a3502c-95e7-42e5-b72f-89fe19cb9ff4",
                             Email = "turnosagendar@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "TURNOSAGENDAR@GMAIL.COM",
                             NormalizedUserName = "TURNOSAGENDAR@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAED+TEE1iWTIRZsEzsv4TjSEQuHUZeaxfS33rPaPtj18pPPDaVFDH+WfFBFfATxo8TA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEB8W8ZFHhMbVu0XGfUCY0VMmouCBPKAr2cfXmCpr8W0DMdVR2xK4JGiSz2kmHf3PCQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "0c0f6533-4605-4af0-863c-07a81e872b60",
+                            SecurityStamp = "547910ed-183a-423e-bc9e-cee5710df265",
                             TwoFactorEnabled = false,
                             UserName = "turnosagendar@gmail.com"
                         });

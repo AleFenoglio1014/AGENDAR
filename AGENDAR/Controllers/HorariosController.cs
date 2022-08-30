@@ -78,7 +78,7 @@ namespace AGENDAR.Controllers
 
         // Funcion Guardar y Editar los Horarios
         [Authorize(Roles = "AdministradorEmpresa, SuperUsuario")]
-        public JsonResult GuardarHorario(DateTime HoraInicio, DateTime HoraFin, int TiempoTurnos)
+        public JsonResult GuardarHorario(DateTime HoraInicio, DateTime HoraFin, int TiempoTurnos, int ProfesionalID)
         {
             //PRIMERO BUSCAMOS EL USUARIO ACTUAL
             var usuarioActual = _userManager.GetUserId(HttpContext.User);
@@ -110,7 +110,7 @@ namespace AGENDAR.Controllers
             }
           
                 //    // Antes de CREAR el registro debemos preguntar si existe una Horario igual
-                if (_context.Horario.Any(e => e.HoraInicio == HoraInicio && e.HoraFin == HoraFin && e.TiempoTurnos == TiempoTurnos))
+                if (_context.Horario.Any(e => e.HoraInicio == HoraInicio && e.HoraFin == HoraFin && e.TiempoTurnos == TiempoTurnos && e.ProfesionalID == ProfesionalID))
                 {
                     resultado = 2;
                 }
@@ -138,7 +138,9 @@ namespace AGENDAR.Controllers
                         {
                             HoraInicio = fechaApertura,
                             HoraFin = fechaApertura.AddMinutes(tiempoMostrar),
-                            TiempoTurnos = tiempoMostrar
+                            TiempoTurnos = tiempoMostrar,
+                            ProfesionalID = ProfesionalID,
+
                         };
                         _context.Add(nuevoHorario);
                         _context.SaveChanges();
