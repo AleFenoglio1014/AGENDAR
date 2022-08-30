@@ -79,7 +79,7 @@ namespace AGENDAR.Controllers
         }
         // Funcion Guardar y Editar las Localidades
         [Authorize(Roles = "AdministradorEmpresa, SuperUsuario")]
-        public JsonResult GuardarLocalidad(int LocalidadID, string Descripcion,string CodPostal, int ProvinciaID, string ProvinciaNombre)
+        public JsonResult GuardarLocalidad(int LocalidadID, string Descripcion,string CodPostal, int ProvinciaID)
         {
             int resultado = 0;
             // Si es 0 es CORRECTO

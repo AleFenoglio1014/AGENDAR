@@ -4,14 +4,14 @@
 ////    VaciarFormulario();
 ////    $.ajax({
 ////        type: "POST",
-////        url: '../../Provincias/BuscarProvincias',
+////        url: '../../Turnos/BuscarTurnos',
 ////        data: {},
-////        success: function (listadoProvincias) {
+////        success: function (addInfo) {
 ////            $("#tbody-provincias").empty();
 ////            $.each(listadoProvincias, function (index, provincia) {
 
  
-////                let botones = '<button type="button" onclick="BuscarProvincia(' + provincia.provinciaID + ')" class="btn btn-outline-primary btn-sm" style="margin-right:5px"><i class="bi bi-pencil-square"></i> Editar</button>';
+              
 
                 
 
@@ -30,32 +30,40 @@
 
 // FUNCION PARA GUARDAR EL TURNO
 
-//function GuardarProvincia() {
-//    $("#Error-ProvinciaNombre").text("");
-//    let provinciaID = $('#ProvinciaID').val();
-//    let guardarprovincia = $('#ProvinciaNombre').val().trim();
-//    if (guardarprovincia != "" && guardarprovincia != null) {
-//        $.ajax({
-//            type: "POST",
-//            url: '../../Provincias/GuardarProvincia',
-//            data: { ProvinciaID: provinciaID, Descripcion: guardarprovincia },
-//            success: function (resultado) {
-//                if (resultado == 0) {
-//                    $("#exampleModal").modal("hide");
-//                    CompletarTablaProvincias();
-//                }
-//                if (resultado == 2) {
-//                    $("#Error-ProvinciaNombre").text("La Provincia ingresada Ya Existe. Ingrese una Nueva Provincia");
-//                }
-//            },
-//            error: function (data) {
-//            }
-//        });
-//    }
-//    else {
-//        $("#Error-ProvinciaNombre").text("Debe ingresar un Nombre para la Provincia.");
-//    }
-//}
+function GuardarTurno() {
+    let turnoID = $('#TurnoID').val();
+    let localidadID = $('#LocalidadID').val();
+    let telefono = $('#Telefono').val();
+    let provinciaID = $('#ProvinciaID').val();
+    let nombre = $('#Nombre').val().trim();
+    let apellido = $('#Apellido').val().trim();
+    let email = $('#Email').val().trim();
+    let empresaID = $('#EmpresaID').val();
+    let horarioID = $('#HorarioID').val();
+    let fechaTurno = $('#FechaTurno').val().trim();
+    let profesionalID = $('#ProfesionalID').val();
+    if (nombre != "" && nombre != null) {
+        $.ajax({
+            type: "POST",
+            url: '../../Turnos/GuardarTurno',
+            data: { TurnoID: turnoID, Nombre: nombre, Apellido: apellido, Email: email, Telefono: telefono, FechaTurno: fechaTurno, ProvinciaID: provinciaID, LocalidadID: localidadID, EmpresaID: empresaID, ProfesionalID: profesionalID, HorarioID: horarioID },
+            success: function (resultado) {
+                if (resultado == 0) {
+                    $("#exampleModal").modal("hide");
+                    Completarcalendario();
+                }
+                //if (resultado == 2) {
+                //    $("#Error-ProvinciaNombre").text("La Provincia ingresada Ya Existe. Ingrese una Nueva Provincia");
+                //}
+            },
+            error: function (data) {
+            }
+        });
+    }
+    //else {
+    //    $("#Error-ProvinciaNombre").text("Debe ingresar un Nombre para la Provincia.");
+    //}
+}
 
 
 //FUNCION PARA BORRAR EL CREATE
@@ -65,7 +73,7 @@ function VaciarFormulario() {
     $("#Apellido").val('');
     $("#Email").val('');
     $("#Telefono").val('');
-    $("#Fecha").val('');
+    $("#FechaTurno").val('');
     $("#ProvinciaID").val(0);
     $("#LocalidadID").val(0);
     $("#EmpresaID").val(0);
@@ -175,6 +183,42 @@ function BuscarProfesionales() {
     });
     return false;
 }
+
+
+
+//FUNCION PARA TRAER LOS HORARIOS QUE PERTENECEN AL PROFESIONAL SELECCIONADO
+$("#ProfesionalID").change;(function () {
+    BuscarHorarios();
+});
+function BuscarHorarios() {
+    //Se limpia el contenido del dropdownlist
+    $("#HorarioID").empty();
+    $.ajax({
+        type: 'POST',
+        //Llamado al metodo en el controlador
+        url: "../../Horarios/ComboHorario",
+        dataType: 'json',
+        //Parametros que se envian al metodo del controlador
+        data: { id: $("#ProfesionalID").val() },
+        //En caso de resultado exitoso
+        success: function (horarios) {
+            if (horarios.length == 0) {
+                $("#HorarioID").append('<option value="' + "0" + '">' + "[NO EXISTEN HORARIOS]" + '</option>');
+            }
+            else {
+                $.each(horarios, function (i, horario) {
+                    $("#HorarioID").append('<option value="' + horario.value + '">' +
+                        horario.text + '</option>');
+                });
+            }
+        },
+        ////Mensaje de error en caso de fallo
+        error: function (ex) {
+        }
+    });
+    return false;
+}
+
 
 // Funcion para limitar los caracteres de los input
 var input = document.getElementById('Nombre');

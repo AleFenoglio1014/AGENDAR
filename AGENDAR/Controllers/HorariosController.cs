@@ -41,7 +41,13 @@ namespace AGENDAR.Controllers
           
             return View();
         }
+        public JsonResult ComboHorario(int id)//HORARIO ID
+        {
+            //BUSCAR HORARIO
+            var horarios = (from o in _context.Horario where o.ProfesionalID == id && o.Eliminado == false select o).ToList();
 
+            return Json(new SelectList(horarios, "HorarioID", "HorarioCompleto"));
+        }
         // Funcion para Completar la Tabla de Horario
         public JsonResult BuscarHorarios()
         {
@@ -51,7 +57,7 @@ namespace AGENDAR.Controllers
             EmpresaUsuario empresaUsuarioActual = new EmpresaUsuario();
             BuscarEmpresaActual(usuarioActual, empresaUsuarioActual);
 
-            var horarios = _context.Horario.ToList();
+            var horarios = _context.Horario.Include(r => r.Profesionales).ToList();
             List<HorarioMostrar> listadohorario = new List<HorarioMostrar>();
 
             foreach (var horario in horarios)
@@ -180,6 +186,9 @@ namespace AGENDAR.Controllers
 
             return Json(resultado);
         }
+
+
+
         private bool HorarioExists(int id)
         {
             return _context.Horario.Any(e => e.HorarioID == id);
