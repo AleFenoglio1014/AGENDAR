@@ -68,6 +68,7 @@ namespace AGENDAR.Controllers
                     TiempoTurnos = horario.TiempoTurnos,
                     ProfesionalID = horario.Profesionales.ProfesionalID,
                     ProfesionalNombre = horario.Profesionales.ProfesionalNombreCompleto,
+                    TurnoDias = horario.TurnoDias,
                     Eliminado = horario.Eliminado
                 };
                 listadohorario.Add(horarioMostrar);

@@ -26,7 +26,7 @@
             <th class="text-center" style="width:300px">
                 Profesional
             </th>
-            <th class="text-center" style="width:300px">Opciones</th>
+            <th class="text-center" style="width:300px">Cancelar Turno</th>
         </tr>
     </thead>
     <tbody id="tbody-horario">
@@ -73,6 +73,23 @@
                             @Html.DropDownList("ProfesionalID", null, htmlAttributes: new { @class = "form-control inputLetra " })
 
                         </div>
+                        <div class="form-group  text-center  col-md-6 ">
+                            <label for="recipient-name" class="control-label font-weight-bold">Dias de Trabajo</label>
+                            <select multiple id="TurnoDias" class="form-control inputDias " required>
+
+                                <option value="0">LUNES</option>
+                                <option value="1">MARTES</option>
+                                <option value="2">MIERCOLES</option>
+                                <option value="3">JUEVES</option>
+                                <option value="4">VIERNES</option>
+                                <option value="5">SABADO</option>
+                                <option value="6">DOMINGO</option>
+
+
+                            </select>
+                           
+                        </div>
+
                         <p class="text-danger font-weight-bold " style="font-size:small" id="Error-Hora"></p>
                     </div>
                 </form>
@@ -88,6 +105,7 @@
 
 @section Scripts {
     <script src="~/js/Horario-1.0.js"></script>
+   
     <script>
         window.onload = CompletarTablaHorario();
     </script>
