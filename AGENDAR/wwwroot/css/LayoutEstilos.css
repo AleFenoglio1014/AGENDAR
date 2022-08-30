@@ -110,7 +110,7 @@ ul, ol {
 }
 
 .bg-dark {
-    background-color: #1C1D21;
+    background-color: #515a5a;
 }
 
 
@@ -287,7 +287,7 @@ ul, ol {
 
 @media only screen and (min-width: 768px) {
     #nav.fixed-nav {
-        background-color: transparent !important;
+        background-color: #515a5a !important;
     }
     
     .main-nav li {
@@ -301,7 +301,7 @@ ul, ol {
         }
 
     .main-nav > li > a {
-        color: #10161A;
+        color: #fff;
         padding: 15px 0px;
     }
 
@@ -362,6 +362,7 @@ ul, ol {
     }
 
     #nav.open .main-nav {
+        background-color: #515a5a;
         -webkit-transform: translateX(0%);
         -ms-transform: translateX(0%);
         transform: translateX(0%);
@@ -394,6 +395,7 @@ ul, ol {
 /* -- nav btn collapse -- */
 
 .nav-collapse {
+    display: none;
     position: relative;
     float: right;
     width: 40px;
@@ -403,17 +405,29 @@ ul, ol {
     cursor: pointer;
     z-index: 99999;
 }
-
-    .nav-collapse span {
-        display: block;
-        -webkit-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 25px;
+@media only screen and (max-width: 521px){
+    .nav-collapse {
+    display: block;
     }
+    .navbar-brand {
+        padding: 10px;
+    }
+    .navbar-brand .logo, .navbar-brand .logo-alt {
+    max-height: 30px;
+    display: block;
+}
+    }
+
+.nav-collapse span {
+    display: block;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 25px;
+}
 
         .nav-collapse span:before, .nav-collapse span:after {
             content: "";
@@ -784,16 +798,7 @@ header {
     font-size: 30px;
 }
 .fa-instagram-f:before, .fa-instagram:before {
-    background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
-    background-color: rgba(0, 0, 0, 0);
-    background-position-x: 0%;
-    background-position-y: 0%;
-    background-repeat: repeat;
-    background-attachment: scroll;
-    background-image: -webkit-linear-gradient(45deg, rgb(240, 148, 51) 0%, rgb(230, 104, 60) 25%, rgb(220, 39, 67) 50%, rgb(204, 35, 102) 75%, rgb(188, 24, 136) 100%);
-    background-size: auto;
-    background-origin: padding-box;
-    background-clip: border-box;
+    color:deeppink;
     font-size: 30px;
 }
 .fa-linkedin-f:before, .fa-linkedin:before {
