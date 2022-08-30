@@ -1,5 +1,5 @@
 ﻿/*COLOR DE BODY*/
-Body {
+/*Body {
     background-image: url('../lib/Imagenes/teletrabajo_home_office.jpg');
     image-resolution: 300dpi;
 }
@@ -432,12 +432,12 @@ h5 {
 p {
     font-family: 'Times New Roman', Times, serif;
     font-size:15px;
-}
+}*/
 
 
 /*CLASES PARA SOLICITAR EL TURNO*/
 
-.imagenSoliitarTurno {
+/*.imagenSoliitarTurno {
     image-resolution: 300dpi;
     background-image: url('../lib/Imagenes/persona-y-computador-4.jpg');
 }
@@ -468,4 +468,4 @@ p {
     font-size: 11px !important;
     color: white;
     
-}
+}*/

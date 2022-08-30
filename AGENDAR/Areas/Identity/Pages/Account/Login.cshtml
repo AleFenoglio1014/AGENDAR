@@ -9,6 +9,81 @@
     Layout = "~/Views/Shared/Layout-Login.cshtml";
 }
 
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+@*<div class="row justify-content-center">
+    <div class="col-md-6 text-center mb-5">
+        <h2 class="heading-section">Login #04</h2>
+    </div>
+</div>*@
+<div class="row justify-content-center">
+    <div class="col-md-12 col-lg-10">
+        <div class="wrap d-md-flex">
+            <div class="img" style="background-image:src(/wwwroot/lib/Imagenes/Afip.jpg)">
+                
+            </div>
+            <div class="login-wrap p-4 p-md-5">
+                <div class="d-flex">
+                    <div class="w-100">
+                        <h3 class="mb-4 font-weight-bold">INICIAR SESION</h3>
+                    </div>
+                    <!-- <div class="w-100">
+                        <p class="social-media d-flex justify-content-end">
+                            <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a>
+                            <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a>
+                        </p>
+                    </div> -->
+                </div>
+                <form id="account" method="post" class="signin-form">
+                    <div class="form-group mb-3">
+                        <label class="label" for="name">Correo Electronico</label>
+                        <!-- <input type="text" class="form-control" placeholder="EMAIL" required> -->
+
+                        <input asp-for="Input.Email" class="form-control" autocomplete="off"
+                               placeholder="Introduce un correo electrónico." required>
+                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="label" for="password">contraseña</label>
+                        <!-- <input type="password" class="form-control" placeholder="CONTRASEÑA" required> -->
+
+                        <input asp-for="Input.Password" class="form-control"
+                               placeholder="Introduce tu contrasña." required>
+                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="form-control btn btn-primary rounded submit px-3">INGRESAR</button>
+                    </div>
+                    <div class="form-group d-md-flex">
+                        <div class="w-50 text-left">
+                            <label class="checkbox-wrap checkbox-primary mb-0">
+                                Recordarme
+                                <input type="checkbox" checked>
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <a class="w-50 text-md-right" asp-page="/Account/ForgotPassword">
+                            ¿Has olvidado tu contraseña?
+                        </a>
+
+                    </div>
+                </form>
+                <p class="text-center">
+                    No tienes cuenta? <a class="text-center" asp-page="/Account/Register">Registrarse</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 @*<div class="row">
         <div class="col-md-4">
             <section>
@@ -51,65 +126,70 @@
 
     </div>*@
 
-<div class="limiter" id="login">
+
+
+<!--<div class="limiter" id="login">
     <div>
 
 
 
         <div class="row">
             <div class="col-lg-6 formulario">
-                @*<div class="login_topimg">
+                <div class="login_topimg">
                     <img src="~/lib/Imagenes/TurnosWeb.png" />
-                </div>*@
+                </div>
             </div>
 
 
-            <div class="col-lg-6 col-md-offset-1 ">
+            <div class="col-lg-6 col-md-offset-1 ">-->
+@*<div class="wrap-login100">
+    <form id="account" method="post">
+        <h3>Iniciar Sesion</h3>
 
-                <div class="wrap-login100">
-                    <form id="account" method="post">
-                        <h3>Iniciar Sesion</h3>
 
-
-                        <div asp-validation-summary="All" class="text-danger"></div>
-                        <div class="form-group">
-                            <label asp-for="Input.Email"></label>
-                            <input asp-for="Input.Email" class="form-control" autocomplete="off" placeholder="Introduce tu correo electrónico." />
-                            <span asp-validation-for="Input.Email" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Input.Password"></label>
-                            <input asp-for="Input.Password" class="form-control" placeholder="Introduce tu contrasña." />
-                            <span asp-validation-for="Input.Password" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <div class="checkbox">
-                                <label asp-for="Input.RememberMe">
-                                    <input asp-for="Input.RememberMe" />
-                                    @Html.DisplayNameFor(m => m.Input.RememberMe)
-                                </label>
-                            </div>
-                            <button type="submit" class="btn btn-outline-primary">Iniciar sesión</button>
-                        </div>
-                        <div>
-                            <a class="txt1 " asp-page="/Account/ForgotPassword">
-                                ¿Has olvidado tu contraseña?
-                            </a>
-                            <a class="txt1 col-md-2" asp-page="/Account/Register">
-                                Registrarse
-                            </a>
-                        </div>
-                    </form>
-                </div>
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Input.Email"></label>
+            <input asp-for="Input.Email" class="form-control" autocomplete="off" placeholder="Introduce tu correo electrónico." />
+            <span asp-validation-for="Input.Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Input.Password"></label>
+            <input asp-for="Input.Password" class="form-control" placeholder="Introduce tu contrasña." />
+            <span asp-validation-for="Input.Password" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <div class="checkbox">
+                <label asp-for="Input.RememberMe">
+                    <input asp-for="Input.RememberMe" />
+                    @Html.DisplayNameFor(m => m.Input.RememberMe)
+                </label>
+            </div>
+            <button type="submit" class="btn btn-outline-primary">Iniciar sesión</button>
+        </div>
+        <div>
+            <a class="txt1 " asp-page="/Account/ForgotPassword">
+                ¿Has olvidado tu contraseña?
+            </a>
+            <a class="txt1 col-md-2" asp-page="/Account/Register">
+                Registrarse
+            </a>
+        </div>
+    </form>*@
+<!--</div>
             </div>
         </div>
     </div>
-</div>
-    
+</div>-->
+
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
-  
-}
 
-<link href="~/css/Login-1.css" rel="stylesheet" />
+}
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
+
+<link href="~/css/VistaLogin.css" rel="stylesheet" />
