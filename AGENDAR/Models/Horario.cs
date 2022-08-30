@@ -16,7 +16,7 @@ namespace AGENDAR.Models
         public int ProfesionalID { get; set; }
         public DateTime HoraInicio { get; set; }
         public DateTime HoraFin { get; set; }
-        public string TurnoDias { get; set; }
+        
 
         public int TiempoTurnos { get; set; }
 
@@ -44,7 +44,7 @@ namespace AGENDAR.Models
         public DateTime HoraInicio { get; set; }
         public string HoraIniciostring { get; set; }
         public DateTime HoraFin { get; set; }
-        public string TurnoDias { get; set; }
+     
         
         public string HorarioCompleto { get; set; }
         public int ProfesionalID { get; set; }
