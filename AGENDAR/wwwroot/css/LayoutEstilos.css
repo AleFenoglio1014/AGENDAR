@@ -110,7 +110,7 @@ ul, ol {
 }
 
 .bg-dark {
-    background-color: #1C1D21;
+    background-color: #515a5a;
 }
 
 
@@ -287,7 +287,7 @@ ul, ol {
 
 @media only screen and (min-width: 768px) {
     #nav.fixed-nav {
-        background-color: transparent !important;
+        background-color: #515a5a !important;
     }
     
     .main-nav li {
@@ -301,7 +301,7 @@ ul, ol {
         }
 
     .main-nav > li > a {
-        color: #10161A;
+        color: #fff;
         padding: 15px 0px;
     }
 
@@ -336,7 +336,7 @@ ul, ol {
     }
 
         #nav.fixed-nav {
-            background-color: transparent !important;
+            background-color: #FFF !important;
             border-bottom: none;
         }
         #nav.nav-transparent {
@@ -362,6 +362,7 @@ ul, ol {
     }
 
     #nav.open .main-nav {
+        background-color: #515a5a;
         -webkit-transform: translateX(0%);
         -ms-transform: translateX(0%);
         transform: translateX(0%);
@@ -394,6 +395,7 @@ ul, ol {
 /* -- nav btn collapse -- */
 
 .nav-collapse {
+    display: none;
     position: relative;
     float: right;
     width: 40px;
@@ -403,17 +405,29 @@ ul, ol {
     cursor: pointer;
     z-index: 99999;
 }
-
-    .nav-collapse span {
-        display: block;
-        -webkit-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 25px;
+@media only screen and (max-width: 521px){
+    .nav-collapse {
+    display: block;
     }
+    .navbar-brand {
+        padding: 10px;
+    }
+    .navbar-brand .logo, .navbar-brand .logo-alt {
+    max-height: 30px;
+    display: block;
+}
+    }
+
+.nav-collapse span {
+    display: block;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 25px;
+}
 
         .nav-collapse span:before, .nav-collapse span:after {
             content: "";
@@ -670,7 +684,7 @@ header {
         line-height: 50px;
         width: 50px;
         text-align: center;
-        background-color: #6195FF;
+        background-color: #10161A;
         color: #FFF;
     }
 
@@ -772,44 +786,25 @@ header {
             color: #10161A;
         }
 .fa-facebook-f:before, .fa-facebook:before {
-    color: #FFF;
+    color: #1877F2;
+    font-size: 30px;
 }
 .fa-whatsapp-f:before, .fa-whatsapp:before {
-    color: #FFF;
+    color: #29B145;
+    font-size: 30px;
 }
 .fa-twitter-f:before, .fa-twitter:before {
-    color: #FFF;
+    color: #66B2FF;
+    font-size: 30px;
 }
 .fa-instagram-f:before, .fa-instagram:before {
-    color: #FFF;
+    color:deeppink;
+    font-size: 30px;
 }
 .fa-linkedin-f:before, .fa-linkedin:before {
-    color: #FFF;
+    color: #0A65C2;
+    font-size: 30px;
 }
-
-
-      /*HOVER REDES SOCIALES center FOOTER*/
-
-#footer .footer-follow a .fa-facebook :hover {
-    color: #1877F2;
-}
-      /*  .footer-follow li.wpp :hover {
-            background-color: #29B145;
-            color: #FFF;
-        }
-        .footer-follow li.twitter :hover {
-            background: #66B2FF;
-            color: #FFF;
-        }
-        .footer-follow li.instagram :hover {
-            background: #EC0494;
-            color: #FFF;
-        }
-        .footer-follow li.linkedin :hover {
-            background: #0A65C2;
-            color: #FFF;
-        }*/
-
 
 .footer-copyright p {
     text-align: center;

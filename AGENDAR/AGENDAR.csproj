@@ -21,6 +21,7 @@
     <Content Remove="Views\Shared\VistaPublica.cshtml" />
     <Content Remove="wwwroot\css\owl.carousel.min.css" />
     <Content Remove="wwwroot\js\owl.carousel.min.js" />
+    <Content Remove="wwwroot\lib\Imagenes\AlejandroFenoglio.jpeg" />
     <Content Remove="wwwroot\lib\Imagenes\bancoCiudad.jpg" />
     <Content Remove="wwwroot\lib\Imagenes\bancoProvinciaCo.jpg" />
     <Content Remove="wwwroot\lib\Imagenes\bancoSantander.jpeg" />

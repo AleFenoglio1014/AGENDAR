@@ -88,6 +88,10 @@ body {
 .inputInicio{
     padding-left:160px;
 }
+.inputDias {
+    height: 166px !important;
+    overflow-y: hidden
+}
 
 .inputLetra {
     font-size: 12px !important;
@@ -178,8 +182,9 @@ body {
         display: block;
         
     }
-.espacioBotones{
-    padding-bottom:16px;
+.espacioBotones {
+    padding-bottom: 5px;
+    padding-top: 16px;
 }
 thead {
     background: #a5a5a5 !important;

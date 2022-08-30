@@ -41,7 +41,13 @@ namespace AGENDAR.Controllers
           
             return View();
         }
+        public JsonResult ComboHorario(int id)//HORARIO ID
+        {
+            //BUSCAR HORARIO
+            var horarios = (from o in _context.Horario where o.ProfesionalID == id && o.Eliminado == false select o).ToList();
 
+            return Json(new SelectList(horarios, "HorarioID", "HorarioCompleto"));
+        }
         // Funcion para Completar la Tabla de Horario
         public JsonResult BuscarHorarios()
         {
@@ -51,7 +57,7 @@ namespace AGENDAR.Controllers
             EmpresaUsuario empresaUsuarioActual = new EmpresaUsuario();
             BuscarEmpresaActual(usuarioActual, empresaUsuarioActual);
 
-            var horarios = _context.Horario.ToList();
+            var horarios = _context.Horario.Include(r => r.Profesionales).ToList();
             List<HorarioMostrar> listadohorario = new List<HorarioMostrar>();
 
             foreach (var horario in horarios)
@@ -78,7 +84,7 @@ namespace AGENDAR.Controllers
 
         // Funcion Guardar y Editar los Horarios
         [Authorize(Roles = "AdministradorEmpresa, SuperUsuario")]
-        public JsonResult GuardarHorario(DateTime HoraInicio, DateTime HoraFin, int TiempoTurnos)
+        public JsonResult GuardarHorario(DateTime HoraInicio, DateTime HoraFin, int TiempoTurnos, int ProfesionalID)
         {
             //PRIMERO BUSCAMOS EL USUARIO ACTUAL
             var usuarioActual = _userManager.GetUserId(HttpContext.User);
@@ -110,7 +116,7 @@ namespace AGENDAR.Controllers
             }
           
                 //    // Antes de CREAR el registro debemos preguntar si existe una Horario igual
-                if (_context.Horario.Any(e => e.HoraInicio == HoraInicio && e.HoraFin == HoraFin && e.TiempoTurnos == TiempoTurnos))
+                if (_context.Horario.Any(e => e.HoraInicio == HoraInicio && e.HoraFin == HoraFin && e.TiempoTurnos == TiempoTurnos && e.ProfesionalID == ProfesionalID))
                 {
                     resultado = 2;
                 }
@@ -138,7 +144,9 @@ namespace AGENDAR.Controllers
                         {
                             HoraInicio = fechaApertura,
                             HoraFin = fechaApertura.AddMinutes(tiempoMostrar),
-                            TiempoTurnos = tiempoMostrar
+                            TiempoTurnos = tiempoMostrar,
+                            ProfesionalID = ProfesionalID,
+
                         };
                         _context.Add(nuevoHorario);
                         _context.SaveChanges();
@@ -178,6 +186,9 @@ namespace AGENDAR.Controllers
 
             return Json(resultado);
         }
+
+
+
         private bool HorarioExists(int id)
         {
             return _context.Horario.Any(e => e.HorarioID == id);
