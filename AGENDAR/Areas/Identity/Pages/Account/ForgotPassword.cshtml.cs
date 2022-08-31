@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
+using System.Net.Mail;
 
 namespace AGENDAR.Areas.Identity.Pages.Account
 {
@@ -42,27 +43,76 @@ namespace AGENDAR.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/Account/Login");
             if (ModelState.IsValid)
             {
-                var user = await _userManager.FindByEmailAsync(Input.Email);
-                if (user == null || !(await _userManager.IsEmailConfirmedAsync(user)))
+                bool resultado = true;
+
+                //borramos contraseña vieja
+                var usuario = await _userManager.FindByEmailAsync(Input.Email);
+                if (usuario != null)
                 {
-                    // Don't reveal that the user does not exist or is not confirmed
-                    return RedirectToPage("./Login");
+                    usuario.PasswordHash = null;
+
+                    //armamos el objeto random
+                    Random obj = new Random();
+
+                    string posibles = "1234567890";
+
+                    int longitud = posibles.Length;
+
+                    char letra;
+
+                    int longitudnuevacadena = 6;
+
+                    string nuevacadena = "";
+
+                    for (int i = 0; i < longitudnuevacadena; i++)
+                    {
+                        letra = posibles[obj.Next(longitud)];
+                        nuevacadena += letra.ToString();
+                    }
+
+                    var result = await _userManager.AddPasswordAsync(usuario, nuevacadena);
+                    if (result.Succeeded)
+                    {
+                        try
+                        {
+                            string emailA = Input.Email;
+
+                            string emailDe = "agendar.turnos@hotmail.com";
+
+                            string emailCredencial = "agendar.turnos@hotmail.com";
+                            string contraseñaCredencial = "Agendar123";
+
+                            MailMessage msg = new MailMessage();
+                            msg.To.Add(new MailAddress(emailA));
+
+                            msg.From = new MailAddress(emailDe, "Recuperación de contraseña", System.Text.Encoding.UTF8);
+
+                            msg.Subject = "Mensaje de " + emailDe;
+                            msg.SubjectEncoding = System.Text.Encoding.UTF8;
+
+                            msg.Body = "<p>" + "Su nueva contraseña es: <b>" + nuevacadena + "</b> . </p>";
+
+                            msg.BodyEncoding = System.Text.Encoding.UTF8;
+                            msg.IsBodyHtml = true;
+
+                            SmtpClient clienteSmtp = new SmtpClient();
+                            clienteSmtp.Host = "smtp-mail.outlook.com";
+                            clienteSmtp.Port = 587;
+                            clienteSmtp.UseDefaultCredentials = false;
+                            clienteSmtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                            clienteSmtp.Credentials = new System.Net.NetworkCredential(emailCredencial, contraseñaCredencial);
+                            clienteSmtp.EnableSsl = true;
+                            clienteSmtp.Send(msg);
+
+                            return RedirectToAction("Index", "Home");
+                        }
+                        catch (Exception ex)
+                        {
+                            resultado = false;
+                        }
+                    }
+                    resultado = false;
                 }
-
-                // For more information on how to enable account confirmation and password reset please 
-                // visit https://go.microsoft.com/fwlink/?LinkID=532713
-                var code = await _userManager.GeneratePasswordResetTokenAsync(user);
-                code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-                var callbackUrl = Url.Page(
-                    "/Account/ResetPassword",
-                    pageHandler: null,
-                    values: new { area = "Identity", code },
-                    protocol: Request.Scheme);
-
-                await _emailSender.SendEmailAsync(
-                    Input.Email,
-                    "Reset Password",
-                    $"Please reset your password by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
                 return RedirectToPage("./Login");
             }
