@@ -65,24 +65,7 @@ namespace AGENDAR.Controllers
                     }
 
                 }
-                else
-                {
-                    // Antes de EDITAR el registro debemos preguntar si existe una Provincia con la misma Descripcion
-                    if (_context.Provincia.Any(e => e.Descripcion == Descripcion && e.ProvinciaID != ProvinciaID))
-                    {
-                        resultado = 2;
-                    }
-                    else
-                    {
-                        // Aca va a ir el codigo para EDITAR una Provincia
-                        // Buscamos el registro en la Base de Datos
-                        var provincia = _context.Provincia.Single(m => m.ProvinciaID == ProvinciaID);
-                        // Cambiamos la Descripcion por la que ingreso el Usuario en la Vista
-                        provincia.Descripcion = Descripcion;
-                        _context.SaveChanges();
-                    }
-
-                }
+               
             }
             else
             {
@@ -92,13 +75,8 @@ namespace AGENDAR.Controllers
 
             return Json(resultado);
         }
-        // Funcion para Buscar la Provincia
-        public JsonResult BuscarProvincia(int ProvinciaID)
-        {
-            var provincia = _context.Provincia.FirstOrDefault(m => m.ProvinciaID == ProvinciaID);
-
-            return Json(provincia);
-        }
+      
+       
         private bool ProvinciaExists(int id)
         {
             return _context.Provincia.Any(e => e.ProvinciaID == id);

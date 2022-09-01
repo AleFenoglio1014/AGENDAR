@@ -180,7 +180,7 @@ namespace AGENDAR.Controllers
         public JsonResult ComboProfesional(int id)//PROFESIONAL ID
         {
             //BUSCAR PROFESIONAL
-            var profesionales = (from o in _context.Profesional where o.EmpresaID == id && o.Eliminado == true select o).ToList();
+            var profesionales = (from o in _context.Profesional where o.EmpresaID == id && o.Eliminado == false select o).ToList();
 
             return Json(new SelectList(profesionales, "ProfesionalID", "ProfesionalNombreCompleto"));
         }

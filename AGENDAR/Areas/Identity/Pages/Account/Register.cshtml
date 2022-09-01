@@ -88,56 +88,57 @@
 </div>-->
 
 
-<div class="row justify-content-center">
-    <div class="col-md-12 col-lg-10">
-        <div class="wrap d-md-flex">
-            <div class="img" >
-                <img src="~/lib/Imagenes/logoLogin.jpg" width="100%" height="100%" alt="" />
-            </div>
-            <div class="login-wrap p-4 p-md-5">
-                <div class="d-flex">
-                    <div class="w-100">
-                        <h3 class="mb-4 font-weight-bold">INICIAR SESION</h3>
-                    </div>
-                    <!-- <div class="w-100">
-                        <p class="social-media d-flex justify-content-end">
-                            <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a>
-                            <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a>
-                        </p>
-                    </div> -->
+    <div class="row justify-content-center">
+        <div class="col-md-12 col-lg-10">
+            <div class="wrap d-md-flex">
+                <div class="img">
+                    <img src="~/lib/Imagenes/logoLogin.jpg" width="100%" height="100%" alt="" />
                 </div>
-                <form id="account" method="post" class="signin-form">
-                    <div class="form-group mb-3">
-                        <label class="label" for="name">Correo Electronico</label>
-                        <!-- <input type="text" class="form-control" placeholder="EMAIL" required> -->
+                <div class="login-wrap p-4 p-md-5">
+                    <div class="d-flex">
+                        <div class="w-100">
+                            <h3 class="mb-4 font-weight-bold">INICIAR SESION</h3>
+                        </div>
+                        <!-- <div class="w-100">
+                            <p class="social-media d-flex justify-content-end">
+                                <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a>
+                                <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a>
+                            </p>
+                        </div> -->
+                    </div>
+                    <form id="account" method="post" class="signin-form">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="form-group mb-3">
+                            <label class="label" for="name">Correo Electronico</label>
+                            <!-- <input type="text" class="form-control" placeholder="EMAIL" required> -->
 
-                        <input asp-for="Input.Email" class="form-control" autocomplete="off"
-                               placeholder="Introduce un correo electrónico." required>
-                        <span asp-validation-for="Input.Email" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label class="label" for="name">Contraseña</label>
-                        <input asp-for="Input.Password" class="form-control" placeholder="Introduce una contraseña." />
-                        <span asp-validation-for="Input.Password" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label class="label" for="name">Confirmar contraseña</label>
-                        <input asp-for="Input.ConfirmPassword" class="form-control" placeholder="Introduce una contraseña." />
-                        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="form-control btn btn-primary rounded submit px-3">REGISTRAR EMPRESA</button>
-                    </div>
-                    
-                </form>
-               
+                            <input asp-for="Input.Email" class="form-control" autocomplete="off"
+                                   placeholder="Introduce un correo electrónico." required>
+                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="label" for="name">Contraseña</label>
+                            <input asp-for="Input.Password" class="form-control" placeholder="Introduce una contraseña." />
+                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="label" for="name">Confirmar contraseña</label>
+                            <input asp-for="Input.ConfirmPassword" class="form-control" placeholder="Introduce una contraseña." />
+                            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="form-control btn btn-primary rounded submit px-3">REGISTRAR EMPRESA</button>
+                        </div>
+
+                    </form>
+
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}
-<link href="~/css/VistaLogin.css" rel="stylesheet" />
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+    }
+    <link href="~/css/VistaLogin.css" rel="stylesheet" />

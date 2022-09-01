@@ -9,13 +9,12 @@ function CompletarTablaProvincias() {
             $("#tbody-provincias").empty();
             $.each(listadoProvincias, function (index, provincia) {
 
-                let botones = '<button type="button" onclick="BuscarProvincia(' + provincia.provinciaID + ')" class="btn btn-outline-primary btn-sm" style="margin-right:5px"><i class="bi bi-pencil-square"></i> Editar</button>';
+               
 
                 $("#tbody-provincias").append('<tr class=>' +
                     '<td>' + provincia.descripcion + '</td>' +
-                    '<td class="text-center">' +
-                    botones +
-                    '</td>' +
+                    
+                    
                     '</tr>');
             });
         },
@@ -60,21 +59,7 @@ function GuardarProvincia() {
 }
 // Funcion para Buscar las Provincias
 
-function BuscarProvincia(provinciaID) {
-    $("#titulo-Modal-Provincias").text("EDITAR PROVINCIA");
-    $("#ProvinciaID").val(provinciaID);
-    $.ajax({
-        type: "POST",
-        url: '../../Provincias/BuscarProvincia',
-        data: { ProvinciaID: provinciaID },
-        success: function (provincia) {
-            $("#ProvinciaNombre").val(provincia.descripcion);
-            $("#exampleModal").modal("show");
-        },
-        error: function (data) {
-        }
-    });
-}
+
 //Funcion para Vaciar el Formulario
 
 function VaciarFormulario() {

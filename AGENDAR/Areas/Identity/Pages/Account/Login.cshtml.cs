@@ -35,6 +35,7 @@ namespace AGENDAR.Areas.Identity.Pages.Account
 
         public IList<AuthenticationScheme> ExternalLogins { get; set; }
 
+
         public string ReturnUrl { get; set; }
 
         [TempData]
@@ -62,6 +63,7 @@ namespace AGENDAR.Areas.Identity.Pages.Account
 
         public async Task OnGetAsync(string returnUrl = null)
         {
+
             if (!string.IsNullOrEmpty(ErrorMessage))
             {
                 ModelState.AddModelError(string.Empty, ErrorMessage);
@@ -103,7 +105,7 @@ namespace AGENDAR.Areas.Identity.Pages.Account
                 else
                 {
                      
-                    ModelState.AddModelError(string.Empty, "Intento de inicio de sesión no válido.");
+                    ModelState.AddModelError(string.Empty, "Email y/o contraseña incorrecta.");
                     return Page();
                 }
             }

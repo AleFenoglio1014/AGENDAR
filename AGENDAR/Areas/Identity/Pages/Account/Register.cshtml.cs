@@ -48,6 +48,7 @@ namespace AGENDAR.Areas.Identity.Pages.Account
             [Required(ErrorMessage = "El Correo Electrónico es obligatorio.")]
             [EmailAddress(ErrorMessage = " Correo Electrónico no  válido.")]
             [Display(Name = "Correo Electronico")]
+           
             public string Email { get; set; }
 
             [Required(ErrorMessage = "La Contraseña es obligatoria.")]

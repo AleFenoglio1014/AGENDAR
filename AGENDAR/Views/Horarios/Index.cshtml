@@ -16,17 +16,20 @@
 <table class="table table-bordered table-light">
     <thead class="table-dark table-bordered ">
         <tr>
-            <th class="text-center" style="width:300px">
-                Horario del Turno
+            <th class="text-center " style="width:300px">
+                Horario 
             </th>
 
-            <th class="text-center" style="width:300px">
-                Duración del Turno
+            <th class="text-center " style="width:300px">
+                Duración 
             </th>
-            <th class="text-center" style="width:300px">
+            <th class="text-center " style="width:300px">
                 Profesional
             </th>
-            <th class="text-center" style="width:300px">Cancelar Turno</th>
+            <th class="text-center " style="width:300px">
+                Dias 
+            </th>
+            <th class="text-center" style="width:300px">Opciones</th>
         </tr>
     </thead>
     <tbody id="tbody-horario">
@@ -59,7 +62,7 @@
                         </div>
 
                         <div class="text-center col-md-6 col-sm-6 col-xl-6">
-                            <label for="recipient-name" class="control-label font-weight-bold">Duración Turnos</label>
+                            <label for="recipient-name" class="control-label font-weight-bold">Duración </label>
                             <select id="TiempoTurnos" class="form-control" required>
                                 <option class="text-center" value="">ELIJA UNA OPCIÓN</option>
                                 <option value="0">15 Minutos</option>
@@ -70,8 +73,32 @@
                         </div>
                         <div class="form-group text-center inputInicio  col-md-6 col-sm-6 col-xl-6">
                             <label for="recipient-name" class="control-label font-weight-bold">Profesional</label>
-                            @Html.DropDownList("ProfesionalID", null, htmlAttributes: new { @class = "form-control inputLetra " })
+                            @Html.DropDownList("ProfesionalID", null, htmlAttributes: new { @class = "form-control inputProfesionales " })
 
+                        </div>
+
+                        <div class="text-center col-md-6 col-sm-6 col-xl-6">
+                            <label for="recipient-name" class="control-label font-weight-bold">  Dias de Trabajo</label>
+                            <div class="accordion" id="accordionExample">
+
+
+                                <div class="card tarjetaHorario">
+                                    <button class="btn btn-light  text-center collapsed botonDias" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        SELECCIONE LOS DIAS DE TRABAJO <i class="bi bi-caret-down"></i>
+                                    </button>
+                                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                        <div class="card-body horario">
+                                            <div><input type="checkbox" id="DiaTurno" value="0"> <label>Lunes</label></div>
+                                            <div><input type="checkbox" id="DiaTurno" value="1"> <label>Martes</label></div>
+                                            <div><input type="checkbox" id="DiaTurno" value="2"> <label>Miercoles</label></div>
+                                            <div><input type="checkbox" id="DiaTurno" value="3"> <label>Jueves</label></div>
+                                            <div><input type="checkbox" id="DiaTurno" value="4"> <label>Viernes</label></div>
+                                            <div><input type="checkbox" id="DiaTurno" value="5"> <label>Sabado</label></div>
+                                            <div><input type="checkbox" id="DiaTurno" value="6"> <label>Domingo</label></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <p class="text-danger font-weight-bold" style="font-size:small" id="Error-Hora"></p>
                         <p class="text-danger font-weight-bold" style="font-size:small" id="Error-CamposHorario"></p>

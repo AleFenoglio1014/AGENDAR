@@ -13,8 +13,8 @@ function CompletarTablaProfesionales() {
                     '<button type="button" onclick="Eliminarprofesional(' + profesional.profesionalID + ')" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash-fill"></i> Eliminar</button>';
 
                 $("#tbody-profesional").append('<tr>' +
-                    '<td>' + profesional.profesionalNombreCompleto + '</td>' +
-                    '<td>' + profesional.empresaNombre + '</td>' +
+                    '<td class="text-center ">' + profesional.profesionalNombreCompleto + '</td>' +
+                    '<td class="text-center ">' +  profesional.empresaNombre + '</td>' +
                     '<td class="text-center">' +
                     botones +
                     '</td>' +

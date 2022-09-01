@@ -34,9 +34,12 @@ namespace AGENDAR.Controllers
             empresa.Add(new Empresa { EmpresaID = 0, RazonSocial = "[SELECCIONE UNA EMPRESA]" });
             ViewBag.EmpresaID = new SelectList(empresa.OrderBy(p => p.RazonSocial), "EmpresaID", "RazonSocial");
 
-            List<Profesional> profesional = new List<Profesional>();
+
+            var profesional = _context.Profesional.ToList();
+            //List<Profesional> profesional = new List<Profesional>();
             profesional.Add(new Profesional { ProfesionalID = 0, Nombre = "[SELECCIONE UN PROFESIONAL]" });
             ViewBag.ProfesionalID = new SelectList(profesional.OrderBy(p => p.ProfesionalNombreCompleto), "ProfesionalID", "ProfesionalNombreCompleto");
+
 
             List<Horario> horario = new List<Horario>();
             //horario.Add(new Horario { HorarioID = 0, HoraInicio = "[SELECCIONE UN HORARIO]" });
@@ -97,7 +100,7 @@ namespace AGENDAR.Controllers
             // Si es 1 el Campo Descripcion esta VACIO
             // Si es 2 el Registro YA EXISTE con la misma Descripcion
 
-            if (!string.IsNullOrEmpty(Nombre))
+            if (!string.IsNullOrEmpty(Nombre) && !string.IsNullOrEmpty(Apellido) && EmpresaID != 0)
             {
                 Nombre = Nombre.ToUpper();
                 if (TurnoID == 0)

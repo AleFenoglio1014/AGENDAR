@@ -434,8 +434,18 @@
 .margen{
     margin-bottom:0px !important;
 }
+@media(max-width:767px){
+    .ocultar767{
+        display:none;
+    }
+}
 
 
+.bodyEmpresa {
+    background-color: #252422;
 
+}
 
-
+.dialogEmpresa {
+    background-color: white;
+}
