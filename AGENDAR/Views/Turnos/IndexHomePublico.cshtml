@@ -11,58 +11,71 @@
 
     <form>
         <input type="hidden" id="TurnoID" value="0" />
-
-        <h5>SOLICITE SU TURNO</h5>
-        <div class="row">
-            <div class="form-group col-md-4 ">
-                <label class="control-label font-weight-bold tituloinput">Provincia:</label>
-
-                @Html.DropDownList("ProvinciaID", null, htmlAttributes: new { @class = "form-control letrainput" })
-
-            </div>
-            <div class="form-group col-md-4 ">
-                <label class="control-label font-weight-bold tituloinput ">Localidad:</label>
-                @Html.DropDownList("LocalidadID", null, htmlAttributes: new { @class = "form-control letrainput" })
-            </div>
-            <div class="form-group col-md-4 ">
-                <label class="control-label font-weight-bold tituloinput">Empresa:</label>
-                @Html.DropDownList("EmpresaID", null, htmlAttributes: new { @class = "form-control letrainput" })
-            </div>
-        </div>
-        <div class="row">
-           
-
-
-            <div class="form-group col-md-4 ">
-                <label class="control-label font-weight-bold tituloinput">Profesional:</label>
-                @Html.DropDownList("ProfesionalID", null, htmlAttributes: new { @class = "form-control letrainput " })
-
-            </div>
-       
-            <div class="form-group col-md-4 ">
-                <label for="recipient-name" class="control-label font-weight-bold tituloinput ">Fecha:</label>
-                <input type="date" name="FechaTurno" class="form-control letrainput " autocomplete="off" required id="FechaTurno">
-            </div>
-
-            <div class="form-group col-md-4 ">
-                <label class="control-label font-weight-bold tituloinput">Hora:</label>
-                @Html.DropDownList("HorarioID", null, htmlAttributes: new { @class = "form-control letrainput " })
-
-            </div>
-
-        </div>
         <div class="accordion" id="accordionExample">
             <div class="card">
                 <div class="card-header" id="headingOne">
                     <h2 class=" text-left mb-0">
                         <button class="btn text-left btn-link-red btn-block  botonDatos collapsed " type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                            <i class="bi bi-caret-down-square-fill"></i>    DATOS PERSONALES: 
+                            <i class="bi bi-caret-down-square-fill"></i>    DATOS DE LA EMPRESA:
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseOne" class="collapse show " aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body ">
+                        <div class="row">
+                            <div class="form-group col-md-4 ">
+                                <label class="control-label font-weight-bold tituloinput">Provincia:</label>
+
+                                @Html.DropDownList("ProvinciaID", null, htmlAttributes: new { @class = "form-control letrainput" })
+
+                            </div>
+                            <div class="form-group col-md-4 ">
+                                <label class="control-label font-weight-bold tituloinput ">Localidad:</label>
+                                @Html.DropDownList("LocalidadID", null, htmlAttributes: new { @class = "form-control letrainput" })
+                            </div>
+                            <div class="form-group col-md-4 ">
+                                <label class="control-label font-weight-bold tituloinput">Empresa:</label>
+                                @Html.DropDownList("EmpresaID", null, htmlAttributes: new { @class = "form-control letrainput" })
+                            </div>
+                        </div>
+                        <div class="row">
+
+
+
+                            <div class="form-group col-md-4 ">
+                                <label class="control-label font-weight-bold tituloinput">Profesional:</label>
+                                @Html.DropDownList("ProfesionalID", null, htmlAttributes: new { @class = "form-control letrainput " })
+
+                            </div>
+
+                            <div class="form-group col-md-4 ">
+                                <label for="recipient-name" class="control-label font-weight-bold tituloinput ">Fecha:</label>
+                                <input type="date" name="FechaTurno" class="form-control letrainput " autocomplete="off" required id="FechaTurno">
+                            </div>
+
+                            <div class="form-group col-md-4 ">
+                                <label class="control-label font-weight-bold tituloinput">Hora:</label>
+                                @Html.DropDownList("HorarioID", null, htmlAttributes: new { @class = "form-control letrainput " })
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+       
+            <div class="card">
+                <div class="card-header" id="headingTwo">
+                    <h2 class=" text-left mb-0">
+                        <button class="btn text-left btn-link-red btn-block  botonDatos collapsed " type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <i class="bi bi-caret-down-square-fill"></i>    DATOS PERSONALES:
                         </button>
                     </h2>
                 </div>
 
-                <div id="collapseOne" class="collapse " aria-labelledby="headingOne" data-parent="#accordionExample">
-                   
+                <div id="collapseTwo" class="collapse  " aria-labelledby="headingTwo" data-parent="#accordionExample">
+
                     <div class="card-body ">
                         <div class="row ">
                             <div class="form-group col-md-5  ">
@@ -88,9 +101,9 @@
                     </div>
                 </div>
             </div>
-          
+
         </div>
-       
+        <p class="text-danger font-weight-bold" style="font-size:small" id="Error-CamposTurno"></p>
     </form>
 
     <div class="form-group">

@@ -96,12 +96,31 @@ body {
 .inputLetra {
     font-size: 12px !important;
 }
+.inputProfesionales{
+    font-size: 11px !important;
+}
 
 .tamañoLetra{
     font-size:2rem;
 }
-
-
+.horario {
+    text-align: left !important;
+    font-size: 10px;
+    padding: 0px !important;
+   
+}
+#DiaTurno {
+    height: 10px !important;
+}
+.botonDias {
+    width: 216px;
+    background-color: white !important;
+    font-size: 9px !important;
+}
+.tarjetaHorario {
+    width: 100% !important;
+    
+}
 .logo {
     padding-left: 5px;
 }

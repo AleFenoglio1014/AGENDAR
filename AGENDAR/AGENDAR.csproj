@@ -44,6 +44,8 @@
     <Content Remove="wwwroot\lib\Imagenes\og-logo.png" />
     <Content Remove="wwwroot\lib\Imagenes\peluqueriaLuba.jpg" />
     <Content Remove="wwwroot\lib\Imagenes\ServicioGestionTramites.png" />
+    <Content Remove="wwwroot\lib\Imagenes\turnosWebImagen1.jpg" />
+    <Content Remove="wwwroot\lib\Imagenes\turnosWebImagen2.jpg" />
     <Content Remove="wwwroot\lib\Imagenes\Vale.jpg" />
     <Content Remove="wwwroot\lib\owl.carousel.min.css" />
     <Content Remove="wwwroot\lib\owl.carousel.min.js" />

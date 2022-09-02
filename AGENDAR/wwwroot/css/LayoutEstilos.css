@@ -123,10 +123,11 @@ ul, ol {
     right: 0;
     bottom: 0;
     z-index: -1;
-    background-image: url(../lib/Imagenes/diseño_web.png);
+    background-image: url(../lib/Imagenes/turnosWebImagen3.jpg);
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
+    opacity: 0.7;
 }
 
     .bg-img .overlay {
@@ -221,7 +222,7 @@ ul, ol {
 }
 
     .navbar-brand .logo, .navbar-brand .logo-alt {
-        max-height: 50px;
+        max-height: 40px;
         display: block;
     }
 
