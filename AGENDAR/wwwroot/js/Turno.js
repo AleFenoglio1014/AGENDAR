@@ -1,32 +1,28 @@
-﻿////// FUNCION PARA COMPLETAR EL CALENDARIO DE TURNO
+﻿/*/* FUNCION PARA COMPLETAR EL CALENDARIO DE TURNO*/
 
-////function Completarcalendario() {
-////    VaciarFormulario();
-////    $.ajax({
-////        type: "POST",
-////        url: '../../Turnos/BuscarTurnos',
-////        data: {},
-////        success: function (addInfo) {
-////            $("#tbody-provincias").empty();
-////            $.each(listadoProvincias, function (index, provincia) {
+//function Completarcalendario() {
+//    VaciarFormulario();
+//    $.ajax({
+//        type: "POST",
+//        url: '../../Turnos/BuscarTurnos',
+//        data: {},
+//        success: function (turnos) {
+//            $("#events").empty();
+//            $.each(turnos, function (index, turno) {
 
- 
-              
+//                $("#events").append(
+//                    title + turno.nombre +
+//                    start + turno.fechaTurno
+//                    );
+                    
+//            });
+//        },
+//        error: function (data) {
+//        }
+//    });
+//}
 
-                
 
-////                $("#tbody-provincias").append('<tr class=>' +
-////                    '<td>' + provincia.descripcion + '</td>' +
-////                    '<td class="text-center">' +
-////                    botones +
-////                    '</td>' +
-////                    '</tr>');
-////            });
-////        },
-////        error: function (data) {
-////        }
-////    });
-////}
 
 // FUNCION PARA GUARDAR EL TURNO
 
@@ -233,38 +229,38 @@ function BuscarEmpresas() {
 
 
 
-//FUNCION PARA TRAER LOS HORARIOS QUE PERTENECEN AL PROFESIONAL SELECCIONADO
-$("#ProfesionalID").change;(function () {
-    BuscarHorarios();
-});
-function BuscarHorarios() {
-    //Se limpia el contenido del dropdownlist
-    $("#HorarioID").empty();
-    $.ajax({
-        type: 'POST',
-        //Llamado al metodo en el controlador
-        url: "../../Horarios/ComboHorario",
-        dataType: 'json',
-        //Parametros que se envian al metodo del controlador
-        data: { id: $("#ProfesionalID").val() },
-        //En caso de resultado exitoso
-        success: function (horarios) {
-            if (horarios.length == 0) {
-                $("#HorarioID").append('<option value="' + "0" + '">' + "[NO EXISTEN HORARIOS]" + '</option>');
-            }
-            else {
-                $.each(horarios, function (i, horario) {
-                    $("#HorarioID").append('<option value="' + horario.value + '">' +
-                        horario.text + '</option>');
-                });
-            }
-        },
-        ////Mensaje de error en caso de fallo
-        error: function (ex) {
-        }
-    });
-    return false;
-}
+////FUNCION PARA TRAER LOS HORARIOS QUE PERTENECEN AL PROFESIONAL SELECCIONADO
+//$("#ProfesionalID").change;(function () {
+//    BuscarHorarios();
+//});
+//function BuscarHorarios() {
+//    //Se limpia el contenido del dropdownlist
+//    $("#HorarioID").empty();
+//    $.ajax({
+//        type: 'POST',
+//        //Llamado al metodo en el controlador
+//        url: "../../Horarios/ComboHorario",
+//        dataType: 'json',
+//        //Parametros que se envian al metodo del controlador
+//        data: { id: $("#ProfesionalID").val() },
+//        //En caso de resultado exitoso
+//        success: function (horarios) {
+//            if (horarios.length == 0) {
+//                $("#HorarioID").append('<option value="' + "0" + '">' + "[NO EXISTEN HORARIOS]" + '</option>');
+//            }
+//            else {
+//                $.each(horarios, function (i, horario) {
+//                    $("#HorarioID").append('<option value="' + horario.value + '">' +
+//                        horario.text + '</option>');
+//                });
+//            }
+//        },
+//        ////Mensaje de error en caso de fallo
+//        error: function (ex) {
+//        }
+//    });
+//    return false;
+//}
 
 
 // Funcion para limitar los caracteres de los input

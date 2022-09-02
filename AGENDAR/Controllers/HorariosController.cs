@@ -57,7 +57,7 @@ namespace AGENDAR.Controllers
             EmpresaUsuario empresaUsuarioActual = new EmpresaUsuario();
             BuscarEmpresaActual(usuarioActual, empresaUsuarioActual);
 
-            var horarios = _context.Horario.Include(r => r.Profesionales).ToList();
+            var horarios = _context.Horario.Include(r => r.Profesionales).Where(l => l.EmpresaID == empresaUsuarioActual.EmpresaID).ToList();
             List<HorarioMostrar> listadohorario = new List<HorarioMostrar>();
 
             foreach (var horario in horarios)
