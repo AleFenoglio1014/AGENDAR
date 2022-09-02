@@ -14,7 +14,7 @@ using System.IO;
 
 namespace AGENDAR.Controllers
 {
-    [Authorize(Roles = "SuperUsuario, AdministradorEmpresa")]
+    [Authorize]
 
     public class EmpresasController : Controller
     {
@@ -38,7 +38,7 @@ namespace AGENDAR.Controllers
             return View();
            
         }
-        [Authorize(Roles = "AdministradorEmpresa, SuperUsuario")]
+        [Authorize]
         public IActionResult Create()
         {
             var localidades = _context.Localidad.Where(p => p.Eliminado == false).ToList();
@@ -103,7 +103,7 @@ namespace AGENDAR.Controllers
         }
 
         // Funcion Guardar y Editar las Empresa
-        [Authorize(Roles = "AdministradorEmpresa, SuperUsuario")]
+        [Authorize]
         public async Task<JsonResult> GuardarEmpresa(int EmpresaID, string razonSocial, string cuit, string direccion, Int64 telefono, int LocalidadID , IFormFile archivo)
         {
             //PRIMERO BUSCAMOS EL USUARIO ACTUAL
