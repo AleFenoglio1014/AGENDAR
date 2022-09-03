@@ -1,5 +1,7 @@
 ﻿using AGENDAR.Data;
 using AGENDAR.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -13,12 +15,19 @@ namespace AGENDAR.Controllers
     public class TurnosController : Controller
     {
         private ApplicationDbContext _context;
-
-        public TurnosController(ApplicationDbContext context)
+        private readonly UserManager<IdentityUser> _userManager;
+        public TurnosController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
+        //Funcion para Buscar Empresa y Usuario
+        public void BuscarEmpresaActual(string usuarioActual, EmpresaUsuario empresaUsuarioActual)
+        {
+            empresaUsuarioActual = _context.EmpresasUsuarios.Where(p => p.UsuarioID == usuarioActual).SingleOrDefault();
+        }
+      
         public IActionResult IndexHomePublico()
         {
             var provincias = _context.Provincia.ToList();
@@ -49,6 +58,7 @@ namespace AGENDAR.Controllers
             
 
         }
+        [Authorize]
         public IActionResult Index()
         {
             return View();

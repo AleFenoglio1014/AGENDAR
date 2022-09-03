@@ -1,12 +1,11 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 Body {
-    background-image: url('../lib/Imagenes/fondo3.png');
+    background-image: url('../lib/Imagenes/persona-y-computador-2.jpg');
     image-resolution: 300dpi;
-
 }
 .bodyCrearEmpresa, h1, labelCrearEmpresa {
-    color: white;
+   color:white;
 }
 a.navbar-brand {
   white-space: normal;

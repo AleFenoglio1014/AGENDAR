@@ -14,7 +14,7 @@ using System.IO;
 
 namespace AGENDAR.Controllers
 {
-    [Authorize]
+   
 
     public class EmpresasController : Controller
     {
@@ -28,6 +28,7 @@ namespace AGENDAR.Controllers
         }
 
         // GET: Empresas
+        [Authorize(Roles = "SuperUsuario")]
         public IActionResult Index()
         {
             var localidades = _context.Localidad.Where(p => p.Eliminado == false).ToList();
@@ -38,7 +39,7 @@ namespace AGENDAR.Controllers
             return View();
            
         }
-        [Authorize]
+      
         public IActionResult Create()
         {
             var localidades = _context.Localidad.Where(p => p.Eliminado == false).ToList();
@@ -68,7 +69,7 @@ namespace AGENDAR.Controllers
         }
 
         // Funcion para Completar la Tabla  de Empresas 
-
+        [Authorize]
         public JsonResult BuscarEmpresas()
         {
             //PRIMERO BUSCAMOS EL USUARIO ACTUAL
@@ -210,6 +211,7 @@ namespace AGENDAR.Controllers
             }
             return Json(resultado);
         }
+        [Authorize(Roles = "SuperUsuario")]
         // Funcion para Buscar la empresa
         public JsonResult BuscarEmpresa(int EmpresaID)
         {
