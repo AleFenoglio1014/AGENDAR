@@ -20,11 +20,11 @@ function CompletarTablaEmpresas() {
 
                 $("#tbody-empresa").append('<tr class=' + claseEliminado + '>' +
                     '<td class="text-center">' + empresa.razonSocial + '</td>' +
-                    '<td class="text-center">' + empresa.cuit + '</td>' +
-                    '<td class="text-center">' + empresa.direccion + '</td>' +
-                    '<td class="text-center">' + empresa.telefono + '</td>' +
                     '<td class="text-center">' + empresa.localidadNombre + '</td>' +
-                    '<td>' + "<img class=' card-tamaño' src='data:img/jpeg;base64," + empresa.imagenEmpresaString + "' />" + '</td >' +
+                    '<td class="text-center">' + empresa.direccion + '</td>' +
+                    '<td class="text-center ocultar767">' + empresa.telefono + '</td>' +
+                    '<td class="text-center ocultar767">' + empresa.cuit + '</td>' +
+                    '<td>' + "<img class=' card-tamaño ocultar767' src='data:img/jpeg;base64," + empresa.imagenEmpresaString + "' />" + '</td >' +
                     '<td class="text-center">' +
                     botones +
                     '</td>' +
@@ -38,8 +38,7 @@ function CompletarTablaEmpresas() {
 
 //Funcion Abrir Modal
 function AbrirModal() {
-    $("#titulo-Modal-Empresa").text("REGISTRAR UNA NUEVA EMPRESA");
-    $("#EmpresaID").val(0);
+  
     $("#exampleModal").modal("show");
 }
 
@@ -168,7 +167,8 @@ function GuardarEmpresa() {
                 if (resultado == 0) {
                     $("#exampleModal").modal("hide");
                     CompletarTablaEmpresas();
-                    location.href = "https://localhost:44330/Empresas/EmpresaIndex";
+                    AbrirModal()
+                  
                 }
                 if (resultado == 2) {
                     $("#Error-RazonSocial").text("La Empresa ingresada Ya Existe. Ingrese una Nueva Empresa");

@@ -6,7 +6,7 @@
 
 
 <body class="bodyCrearEmpresa">
-
+   
 
     <h1 class="text-center"><u> CREAR EMPRESA</u></h1>
 
@@ -18,6 +18,7 @@
         <div class="form-group">
             <label for="recipient-name" class="control-label font-weight-bold labelCrearEmpresa">Razon Social</label>
             <input type="text" class="form-control" autocomplete="off" required name="razonSocial" id="RazonSocial">
+            <p class="text-danger font-weight-bold" style="font-size:small" id="Error-RazonSocial"></p>
         </div>
         <!--Lista de Localidades dentro del Dropdown de Empresa-->
         <div class="row">
@@ -50,6 +51,7 @@
                 <span class="btn btn-secondary btn-file">
                     <i class="bi bi-cloud-arrow-up-fill"></i> Subir Imagen <input type="file" autocomplete="off" required name="archivo" id="Archivo">
                 </span>
+              
                 <p class="text-danger font-weight-bold" style="font-size:small" id="Error-CamposEmpresas"></p>
             </div>
 
@@ -60,7 +62,24 @@
         </div>
 
     </form>
+    <!-- Modal -->
+    <div class="modal fade  " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog dialogEmpresa " role="document">
+            <div class="modal-content ">
+                
 
+
+                <div class="modal-body bodyEmpresa" >
+                    <h3 class="text-center">ESPERE A QUE SU EMPRESA SEA ACTIVADA..</h3>
+                    <a class="btn btn-outline-success" href="~/Profesionales/Index">Crear Profesionales y Horarios <i class="bi bi-cloud-plus"></i>  </a>
+
+                </div>
+               
+                    
+                
+            </div>
+        </div>
+    </div>
 </body>
 
 @section Scripts {

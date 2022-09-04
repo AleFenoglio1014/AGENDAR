@@ -1,32 +1,28 @@
-﻿////// FUNCION PARA COMPLETAR EL CALENDARIO DE TURNO
+﻿/*/* FUNCION PARA COMPLETAR EL CALENDARIO DE TURNO*/
 
-////function Completarcalendario() {
-////    VaciarFormulario();
-////    $.ajax({
-////        type: "POST",
-////        url: '../../Turnos/BuscarTurnos',
-////        data: {},
-////        success: function (addInfo) {
-////            $("#tbody-provincias").empty();
-////            $.each(listadoProvincias, function (index, provincia) {
+//function Completarcalendario() {
+//    VaciarFormulario();
+//    $.ajax({
+//        type: "POST",
+//        url: '../../Turnos/BuscarTurnos',
+//        data: {},
+//        success: function (turnos) {
+//            $("#events").empty();
+//            $.each(turnos, function (index, turno) {
 
- 
-              
+//                $("#events").append(
+//                    title + turno.nombre +
+//                    start + turno.fechaTurno
+//                    );
+                    
+//            });
+//        },
+//        error: function (data) {
+//        }
+//    });
+//}
 
-                
 
-////                $("#tbody-provincias").append('<tr class=>' +
-////                    '<td>' + provincia.descripcion + '</td>' +
-////                    '<td class="text-center">' +
-////                    botones +
-////                    '</td>' +
-////                    '</tr>');
-////            });
-////        },
-////        error: function (data) {
-////        }
-////    });
-////}
 
 // FUNCION PARA GUARDAR EL TURNO
 
@@ -42,7 +38,52 @@ function GuardarTurno() {
     let horarioID = $('#HorarioID').val();
     let fechaTurno = $('#FechaTurno').val().trim();
     let profesionalID = $('#ProfesionalID').val();
-    if (nombre != "" && nombre != null) {
+
+    let guardarTurno = true;
+
+    if (nombre == "" || nombre == null) {
+        guardarTurno = false;
+        $("#Error-CamposTurno").text("Los campos son OBLIGATORIOS.");
+    }
+    if (apellido == "" || apellido == null) {
+        guardarTurno = false;
+        $("#Error-CamposTurno").text("Los campos son OBLIGATORIOS.");
+    }
+    if (email == "" || email == null) {
+        guardarTurno = false;
+        $("#Error-CamposTurno").text("Los campos son OBLIGATORIOS.");
+
+    }
+    if (empresaID == "" || empresaID == null) {
+        guardarTurno = false;
+        $("#Error-CamposTurno").text("Los campos son OBLIGATORIOS.");
+    }
+    if (horarioID == "" || horarioID == null) {
+        guardarTurno = false;
+        $("#Error-CamposTurno").text("Los campos son OBLIGATORIOS.");
+    }
+    if (fechaTurno == "" || fechaTurno == null) {
+        guardarTurno = false;
+        $("#Error-CamposTurno").text("Los campos son OBLIGATORIOS.");
+    }
+    if (profesionalID == "" || profesionalID == null) {
+        guardarTurno = false;
+        $("#Error-CamposTurno").text("Los campos son OBLIGATORIOS.");
+    }
+    if (localidadID == "" || localidadID == null) {
+        guardarTurno = false;
+        $("#Error-CamposTurno").text("Los campos son OBLIGATORIOS.");
+    }
+    if (telefono == "" || telefono == null) {
+        guardarTurno = false;
+        $("#Error-CamposTurno").text("Los campos son OBLIGATORIOS.");
+    }
+    if (provinciaID == "" || provinciaID == null) {
+        guardarTurno = false;
+        $("#Error-CamposTurno").text("Los campos son OBLIGATORIOS.");
+    }
+
+    if (guardarTurno) {
         $.ajax({
             type: "POST",
             url: '../../Turnos/GuardarTurno',
@@ -51,6 +92,7 @@ function GuardarTurno() {
                 if (resultado == 0) {
                     $("#exampleModal").modal("hide");
                     Completarcalendario();
+                    swal("SU TURNO AH SIDO SOLICITADO CON EXITO");
                 }
                 //if (resultado == 2) {
                 //    $("#Error-ProvinciaNombre").text("La Provincia ingresada Ya Existe. Ingrese una Nueva Provincia");
@@ -60,9 +102,9 @@ function GuardarTurno() {
             }
         });
     }
-    //else {
-    //    $("#Error-ProvinciaNombre").text("Debe ingresar un Nombre para la Provincia.");
-    //}
+    else {
+        $("#Error-CamposTurno").text("Los campos son OBLIGATORIOS.");
+    }
 }
 
 
@@ -79,6 +121,7 @@ function VaciarFormulario() {
     $("#EmpresaID").val(0);
     $("#HorariosID").val(0);
     $("#ProfesionalID").val(0);
+    $("#Error-CamposTurno").text("");
     
 }
 //FUNCION PARA TRAER LAS LOCALIDADES QUE PERTENECEN A LA PROVINCIA SELECCIONADA
@@ -151,73 +194,73 @@ function BuscarEmpresas() {
 }
 
 
-//FUNCION PARA TRAER LOS PROFESIONALES QUE PERTENECEN A LA EMPRESA SELECCIONADA
-$("#EmpresaID").change;(function () {
-    BuscarProfesionales();
-});
-function BuscarProfesionales() {
-    //Se limpia el contenido del dropdownlist
-    $("#ProfesionalID").empty();
-    $.ajax({
-        type: 'POST',
-        //Llamado al metodo en el controlador
-        url: "../../Profesionales/ComboProfesional",
-        dataType: 'json',
-        //Parametros que se envian al metodo del controlador
-        data: {  id: $("#EmpresaID").val() },
-        //En caso de resultado exitoso
-        success: function (profesionales) {
-            if (profesionales.length == 0) {
-                $("#ProfesionalID").append('<option value="' + "0" + '">' + "[NO EXISTEN PROFESIONALES]" + '</option>');
-            }
-            else {
-                $.each(profesionales, function (i, profesional) {
-                    $("#ProfesionalID").append('<option value="' + profesional.value + '">' +
-                        profesional.text + '</option>');
-                });
-            }
-        },
-        ////Mensaje de error en caso de fallo
-        error: function (ex) {
-        }
-    });
-    return false;
-}
+////FUNCION PARA TRAER LOS PROFESIONALES QUE PERTENECEN A LA EMPRESA SELECCIONADA
+//$("#EmpresaID").change;(function () {
+//    BuscarProfesionales();
+//});
+//function BuscarProfesionales() {
+//    //Se limpia el contenido del dropdownlist
+//    $("#ProfesionalID").empty();
+//    $.ajax({
+//        type: 'POST',
+//        //Llamado al metodo en el controlador
+//        url: "../../Profesionales/ComboProfesional",
+//        dataType: 'json',
+//        //Parametros que se envian al metodo del controlador
+//        data: {  id: $("#EmpresaID").val() },
+//        //En caso de resultado exitoso
+//        success: function (profesionales) {
+//            if (profesionales.length == 0) {
+//                $("#ProfesionalID").append('<option value="' + "0" + '">' + "[NO EXISTEN PROFESIONALES]" + '</option>');
+//            }
+//            else {
+//                $.each(profesionales, function (i, profesional) {
+//                    $("#ProfesionalID").append('<option value="' + profesional.value + '">' +
+//                        profesional.text + '</option>');
+//                });
+//            }
+//        },
+//        ////Mensaje de error en caso de fallo
+//        error: function (ex) {
+//        }
+//    });
+//    return false;
+//}
 
 
 
-//FUNCION PARA TRAER LOS HORARIOS QUE PERTENECEN AL PROFESIONAL SELECCIONADO
-$("#ProfesionalID").change;(function () {
-    BuscarHorarios();
-});
-function BuscarHorarios() {
-    //Se limpia el contenido del dropdownlist
-    $("#HorarioID").empty();
-    $.ajax({
-        type: 'POST',
-        //Llamado al metodo en el controlador
-        url: "../../Horarios/ComboHorario",
-        dataType: 'json',
-        //Parametros que se envian al metodo del controlador
-        data: { id: $("#ProfesionalID").val() },
-        //En caso de resultado exitoso
-        success: function (horarios) {
-            if (horarios.length == 0) {
-                $("#HorarioID").append('<option value="' + "0" + '">' + "[NO EXISTEN HORARIOS]" + '</option>');
-            }
-            else {
-                $.each(horarios, function (i, horario) {
-                    $("#HorarioID").append('<option value="' + horario.value + '">' +
-                        horario.text + '</option>');
-                });
-            }
-        },
-        ////Mensaje de error en caso de fallo
-        error: function (ex) {
-        }
-    });
-    return false;
-}
+////FUNCION PARA TRAER LOS HORARIOS QUE PERTENECEN AL PROFESIONAL SELECCIONADO
+//$("#ProfesionalID").change;(function () {
+//    BuscarHorarios();
+//});
+//function BuscarHorarios() {
+//    //Se limpia el contenido del dropdownlist
+//    $("#HorarioID").empty();
+//    $.ajax({
+//        type: 'POST',
+//        //Llamado al metodo en el controlador
+//        url: "../../Horarios/ComboHorario",
+//        dataType: 'json',
+//        //Parametros que se envian al metodo del controlador
+//        data: { id: $("#ProfesionalID").val() },
+//        //En caso de resultado exitoso
+//        success: function (horarios) {
+//            if (horarios.length == 0) {
+//                $("#HorarioID").append('<option value="' + "0" + '">' + "[NO EXISTEN HORARIOS]" + '</option>');
+//            }
+//            else {
+//                $.each(horarios, function (i, horario) {
+//                    $("#HorarioID").append('<option value="' + horario.value + '">' +
+//                        horario.text + '</option>');
+//                });
+//            }
+//        },
+//        ////Mensaje de error en caso de fallo
+//        error: function (ex) {
+//        }
+//    });
+//    return false;
+//}
 
 
 // Funcion para limitar los caracteres de los input

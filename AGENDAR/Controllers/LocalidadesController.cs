@@ -12,7 +12,8 @@ using Microsoft.AspNetCore.Identity;
 
 namespace AGENDAR.Controllers
 {
-    [Authorize(Roles = "AdministradorEmpresa, SuperUsuario")]
+  
+      
     public class LocalidadesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -29,7 +30,7 @@ namespace AGENDAR.Controllers
         {
             empresaUsuarioActual = _context.EmpresasUsuarios.Where(p => p.UsuarioID == usuarioActual).SingleOrDefault();
         }
-
+        [Authorize]
         // GET: Localidades
         public IActionResult Index()
         {
@@ -49,7 +50,7 @@ namespace AGENDAR.Controllers
         }
 
         // Funcion para Completar la Tabla  de Localidades 
-        [Authorize(Roles = "AdministradorEmpresa, SuperUsuario")]
+        [Authorize]
         public JsonResult BuscarLocalidades()
         {
             //PRIMERO BUSCAMOS EL USUARIO ACTUAL
@@ -78,7 +79,7 @@ namespace AGENDAR.Controllers
             return Json(listadoLocalidadesMostrar);
         }
         // Funcion Guardar y Editar las Localidades
-        [Authorize(Roles = "AdministradorEmpresa, SuperUsuario")]
+        [Authorize]
         public JsonResult GuardarLocalidad(int LocalidadID, string Descripcion,string CodPostal, int ProvinciaID)
         {
             int resultado = 0;
@@ -86,21 +87,18 @@ namespace AGENDAR.Controllers
             // Si es 1 el Campo Descripcion esta VACIO
             // Si es 2 el Registro YA EXISTE con la misma Descripcion
 
-            if (!string.IsNullOrEmpty(Descripcion ) && ProvinciaID != 0 && CodPostal != "")
+            if (!string.IsNullOrEmpty(Descripcion) && ProvinciaID != 0 && CodPostal != "")
             {
                 Descripcion = Descripcion.ToUpper();
                 if (LocalidadID == 0)
                 {
                     // Antes de CREAR el registro debemos preguntar si existe una Localidad con la misma Descripcion
-                    if (_context.Localidad.Any(e => e.Descripcion == Descripcion && e.ProvinciaID == ProvinciaID ||  e.CodPostal == CodPostal))
+                    if (_context.Localidad.Any(e => e.Descripcion == Descripcion && e.ProvinciaID == ProvinciaID ))
                     {
                         resultado = 2;
                     }
-                    if (_context.Localidad.Any(e => e.CodPostal == CodPostal))
-                    {
-                        resultado = 3;
-                    }
-                    
+                  
+
                     else
                     {
                         // Aca va a ir el codigo para CREAR una Localidad
@@ -119,14 +117,11 @@ namespace AGENDAR.Controllers
                 else
                 {
                     // Antes de EDITAR el registro debemos preguntar si existe una Localidad con la misma Descripcion
-                    if (_context.Localidad.Any(e => e.Descripcion == Descripcion && e.LocalidadID != LocalidadID))
+                    if (_context.Localidad.Any(e => e.Descripcion == Descripcion && e.LocalidadID != LocalidadID ))
                     {
                         resultado = 2;
                     }
-                    if (_context.Localidad.Any(e => e.CodPostal == CodPostal))
-                    {
-                        resultado = 3;
-                    }
+                   
 
                     else
                     {
@@ -144,25 +139,14 @@ namespace AGENDAR.Controllers
             }
             else
             {
-                if (_context.Localidad.Any(e => e.Descripcion == Descripcion && e.LocalidadID != LocalidadID))
-                {
-                    resultado = 1;
-                }
-                else
-                {
-                    var localidad = _context.Localidad.Single(m => m.LocalidadID == LocalidadID);
-                    // Cambiamos la Descripcion por la que ingreso el Usuario en la Vista
-                    localidad.Descripcion = Descripcion;
-                    localidad.CodPostal = CodPostal;
-                    localidad.ProvinciaID = ProvinciaID;
-                    _context.SaveChanges();
-                }
-            };
+
+                resultado = 1;
+            }
 
 
             return Json(resultado);
         }
-
+        [Authorize]
         // Funcion para Buscar la Localidad
         public JsonResult BuscarLocalidad(int LocalidadID)
         {

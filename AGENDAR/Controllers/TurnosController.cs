@@ -1,5 +1,7 @@
 ﻿using AGENDAR.Data;
 using AGENDAR.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -13,12 +15,19 @@ namespace AGENDAR.Controllers
     public class TurnosController : Controller
     {
         private ApplicationDbContext _context;
-
-        public TurnosController(ApplicationDbContext context)
+        private readonly UserManager<IdentityUser> _userManager;
+        public TurnosController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
+        //Funcion para Buscar Empresa y Usuario
+        public void BuscarEmpresaActual(string usuarioActual, EmpresaUsuario empresaUsuarioActual)
+        {
+            empresaUsuarioActual = _context.EmpresasUsuarios.Where(p => p.UsuarioID == usuarioActual).SingleOrDefault();
+        }
+      
         public IActionResult IndexHomePublico()
         {
             var provincias = _context.Provincia.ToList();
@@ -34,11 +43,14 @@ namespace AGENDAR.Controllers
             empresa.Add(new Empresa { EmpresaID = 0, RazonSocial = "[SELECCIONE UNA EMPRESA]" });
             ViewBag.EmpresaID = new SelectList(empresa.OrderBy(p => p.RazonSocial), "EmpresaID", "RazonSocial");
 
-            List<Profesional> profesional = new List<Profesional>();
+
+            var profesional = _context.Profesional.ToList();
+            //List<Profesional> profesional = new List<Profesional>();
             profesional.Add(new Profesional { ProfesionalID = 0, Nombre = "[SELECCIONE UN PROFESIONAL]" });
             ViewBag.ProfesionalID = new SelectList(profesional.OrderBy(p => p.ProfesionalNombreCompleto), "ProfesionalID", "ProfesionalNombreCompleto");
 
-            List<Horario> horario = new List<Horario>();
+            var horario = _context.Horario.ToList();
+            //List<Horario> horario = new List<Horario>();
             //horario.Add(new Horario { HorarioID = 0, HoraInicio = "[SELECCIONE UN HORARIO]" });
             ViewBag.HorarioID = new SelectList(horario.OrderBy(p => p.HorarioCompleto), "HorarioID", "HorarioCompleto");
 
@@ -46,6 +58,7 @@ namespace AGENDAR.Controllers
             
 
         }
+        [Authorize]
         public IActionResult Index()
         {
             return View();
@@ -97,7 +110,7 @@ namespace AGENDAR.Controllers
             // Si es 1 el Campo Descripcion esta VACIO
             // Si es 2 el Registro YA EXISTE con la misma Descripcion
 
-            if (!string.IsNullOrEmpty(Nombre))
+            if (!string.IsNullOrEmpty(Nombre) && !string.IsNullOrEmpty(Apellido) && EmpresaID != 0)
             {
                 Nombre = Nombre.ToUpper();
                 if (TurnoID == 0)

@@ -1,12 +1,11 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 Body {
-    background-image: url('../lib/Imagenes/persona-y-computador-4.jpg');
+    background-image: url('../lib/Imagenes/persona-y-computador-2.jpg');
     image-resolution: 300dpi;
-
 }
 .bodyCrearEmpresa, h1, labelCrearEmpresa {
-    color: white;
+   color:white;
 }
 a.navbar-brand {
   white-space: normal;
@@ -96,12 +95,31 @@ body {
 .inputLetra {
     font-size: 12px !important;
 }
+.inputProfesionales{
+    font-size: 11px !important;
+}
 
 .tamañoLetra{
     font-size:2rem;
 }
-
-
+.horario {
+    text-align: left !important;
+    font-size: 10px;
+    padding: 0px !important;
+   
+}
+#DiaTurno {
+    height: 10px !important;
+}
+.botonDias {
+    width: 216px;
+    background-color: white !important;
+    font-size: 9px !important;
+}
+.tarjetaHorario {
+    width: 100% !important;
+    
+}
 .logo {
     padding-left: 5px;
 }

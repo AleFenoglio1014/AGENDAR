@@ -29,10 +29,10 @@ function CompletarTablaHorario() {
                 }
 
                 $("#tbody-horario").append('<tr class=' + claseEliminado + '>' +
-                    '<td>' + horario.horarioCompleto + '</td>' +
-                    '<td>' + tiempoMostrar + '</td>' +
-                    '<td>' + horario.profesionalNombre + '</td>' +
-                    '<td class="text-center">' +
+                    '<td class="text-center ">' + horario.horarioCompleto + '</td>' +
+                    '<td class="text-center ">' + tiempoMostrar + '</td>' +
+                    '<td class="text-center ">' +horario.profesionalNombre + '</td>' +
+                    '<td class="text-center ">' +
                     botones +
                     '</td>' +
                     '</tr>');
@@ -112,6 +112,7 @@ function VaciarFormulario() {
     $("#HoraInicio").val('');
     $("#HoraFin").val('');
     $("#TiempoTurnos").val('');
+    $("#DiaTurno").val('');
     $("#ProfesionalID").val(0);
     $("#Error-Hora").text("");
     $("#Error-CamposHorario").text("");

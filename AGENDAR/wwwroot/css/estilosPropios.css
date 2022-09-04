@@ -423,6 +423,11 @@ ul, ol {
 #nav.open .nav-collapse span {
     background: transparent;
 }
+@media(max-width:767px){
+    .ocultar767{
+        display:none;
+    }
+}
 
     #nav.open .nav-collapse span:before {
         -webkit-transform: translateY(0px) rotate(-135deg);
@@ -462,6 +467,11 @@ ul, ol {
         color: #FFF;
     }
 
+.bodyEmpresa {
+    background-color: #252422;
 
+}
 
-
+.dialogEmpresa {
+    background-color: white;
+}

@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace AGENDAR.Controllers
 {
-    [Authorize(Roles = "SuperUsuario, AdministradorEmpresa")]
+    
     public class ProfesionalesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -29,7 +29,7 @@ namespace AGENDAR.Controllers
         {
             empresaUsuarioActual = _context.EmpresasUsuarios.Where(p => p.UsuarioID == usuarioActual).SingleOrDefault();
         }
-
+        [Authorize]
         // GET: Profesionales
         public IActionResult Index()
         {
@@ -42,16 +42,16 @@ namespace AGENDAR.Controllers
         }
 
         // Funcion para Completar la Tabla  de Profesionales 
-        [Authorize(Roles = "AdministradorEmpresa, SuperUsuario")]
+        [Authorize]
         public JsonResult BuscarProfesionales()
         {
             //PRIMERO BUSCAMOS EL USUARIO ACTUAL
-            var usuarioActual = _userManager.GetUserId(HttpContext.User);
-            //LUEGO EN BASE A ESE USUARIO BUSCAMOS LA EMPRESA CON LA QUE ESTA RELACIONADA
-            EmpresaUsuario empresaUsuarioActual = new EmpresaUsuario();
-            BuscarEmpresaActual(usuarioActual, empresaUsuarioActual);
+            //var usuarioActual = _userManager.GetUserId(HttpContext.User);
+            ////LUEGO EN BASE A ESE USUARIO BUSCAMOS LA EMPRESA CON LA QUE ESTA RELACIONADA
+            //EmpresaUsuario empresaUsuarioActual = new EmpresaUsuario();
+            //BuscarEmpresaActual(usuarioActual, empresaUsuarioActual);
 
-            var profesionales = _context.Profesional.Include(r => r.Empresas).Where(l => l.EmpresaID == empresaUsuarioActual.EmpresaID).ToList();
+            var profesionales = _context.Profesional.Include(r => r.Empresas)/*.Where(l => l.EmpresaID == empresaUsuarioActual.EmpresaID)*/.ToList();
 
             List<ProfesionalesMostrar> listadoProfesional = new List<ProfesionalesMostrar>();
 
@@ -75,7 +75,7 @@ namespace AGENDAR.Controllers
             return Json(listadoProfesional);
         }
         // Funcion Guardar y Editar los Porfesionales
-        [Authorize(Roles = "AdministradorEmpresa, SuperUsuario")]
+        [Authorize]
         public JsonResult GuardarProfesional(int ProfesionalID, string Nombre, string Apellido,  int EmpresaID)
         {
             //PRIMERO BUSCAMOS EL USUARIO ACTUAL
@@ -146,7 +146,7 @@ namespace AGENDAR.Controllers
 
             return Json(resultado);
         }
-
+        [Authorize]
         // Funcion para Buscar el Profesional
         public JsonResult BuscarProfesional(int ProfesionalID)
         {
@@ -156,7 +156,7 @@ namespace AGENDAR.Controllers
         }
 
         //Eliminar Profesional
-        [Authorize(Roles = "AdministradorEmpresa, SuperUsuario")]
+        [Authorize]
         public JsonResult Eliminarprofesional(int ProfesionalID)
         {
             //PRIMERO BUSCAMOS EL USUARIO ACTUAL
@@ -180,7 +180,7 @@ namespace AGENDAR.Controllers
         public JsonResult ComboProfesional(int id)//PROFESIONAL ID
         {
             //BUSCAR PROFESIONAL
-            var profesionales = (from o in _context.Profesional where o.EmpresaID == id && o.Eliminado == true select o).ToList();
+            var profesionales = (from o in _context.Profesional where o.EmpresaID == id && o.Eliminado == false select o).ToList();
 
             return Json(new SelectList(profesionales, "ProfesionalID", "ProfesionalNombreCompleto"));
         }

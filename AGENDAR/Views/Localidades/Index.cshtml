@@ -46,19 +46,21 @@
                     <div class="form-group">
                         <label for="recipient-name" class="control-label font-weight-bold">Localidad</label>
                         <input type="text" class="form-control" autocomplete="off" required id="LocalidadNombre">
-                        <p class="text-danger font-weight-bold" style="font-size:small" id="Error-LocalidadNombre"></p>
+
                     </div>
                     <div class="form-group">
                         <label for="recipient-name" class="control-label font-weight-bold">Codigo Postal</label>
                         <input type="number" class="form-control" autocomplete="off" required id="CodPostal">
-                        <p class="text-danger font-weight-bold" style="font-size:small" id="Error-CodPostal"></p>
+
                     </div>
                     <!--Lista de Provincias dentro del Dropdown de Localidades-->
                     <div class="form-group">
                         <label class="control-label font-weight-bold">Provincia</label>
                         @Html.DropDownList("ProvinciaID", null, htmlAttributes: new { @class = "form-control" })
                         <p class="text-danger font-weight-bold" style="font-size:small" id="Error-ProvinciaNombre"></p>
+                        <p class="text-danger font-weight-bold" style="font-size:small" id="Error-LocalidadNombre"></p>
                     </div>
+                    
                 </form>
             </div>
             <div class="modal-footer">

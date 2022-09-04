@@ -59,9 +59,7 @@ function GuardarLocalidad() {
                 if (resultado == 2) {
                     $("#Error-LocalidadNombre").text("La Localidad ingresada Ya Existe. Ingrese una Nueva Localidad");
                 }
-                if (resultado == 3) {
-                    $("#Error-CodPostal").text("EL Codigo postal ingresado Ya Existe. Ingrese uno nuevo");
-                }
+              
             },
             error: function (data) {
             }

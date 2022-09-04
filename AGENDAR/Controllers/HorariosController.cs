@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace AGENDAR.Controllers
 {
-    [Authorize(Roles = "SuperUsuario, AdministradorEmpresa")]
+   
     public class HorariosController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -32,11 +32,11 @@ namespace AGENDAR.Controllers
         {
             empresaUsuarioActual = _context.EmpresasUsuarios.Where(p => p.UsuarioID == usuarioActual).SingleOrDefault();
         }
-
+        [Authorize]
         public IActionResult Index()
         {
             var profesional = _context.Profesional.Where(p => p.Eliminado == false).ToList();
-            profesional.Add(new Profesional { ProfesionalID = 0, Nombre = "SELECCIONE UN PROFESIONAL" });
+            profesional.Add(new Profesional { ProfesionalID = 0, Nombre = "[SELECCIONE UN PROFESIONAL]" });
             ViewBag.ProfesionalID = new SelectList(profesional.OrderBy(p => p.ProfesionalNombreCompleto), "ProfesionalID", "ProfesionalNombreCompleto");
           
             return View();
@@ -49,6 +49,7 @@ namespace AGENDAR.Controllers
             return Json(new SelectList(horarios, "HorarioID", "HorarioCompleto"));
         }
         // Funcion para Completar la Tabla de Horario
+        [Authorize]
         public JsonResult BuscarHorarios()
         {
             //PRIMERO BUSCAMOS EL USUARIO ACTUAL
@@ -57,7 +58,7 @@ namespace AGENDAR.Controllers
             EmpresaUsuario empresaUsuarioActual = new EmpresaUsuario();
             BuscarEmpresaActual(usuarioActual, empresaUsuarioActual);
 
-            var horarios = _context.Horario.Include(r => r.Profesionales).ToList();
+            var horarios = _context.Horario.Include(r => r.Profesionales).Where(l => l.EmpresaID == empresaUsuarioActual.EmpresaID).ToList();
             List<HorarioMostrar> listadohorario = new List<HorarioMostrar>();
 
             foreach (var horario in horarios)
@@ -83,7 +84,7 @@ namespace AGENDAR.Controllers
         }
 
         // Funcion Guardar y Editar los Horarios
-        [Authorize(Roles = "AdministradorEmpresa, SuperUsuario")]
+        [Authorize]
         public JsonResult GuardarHorario(DateTime HoraInicio, DateTime HoraFin, int TiempoTurnos, int ProfesionalID)
         {
             //PRIMERO BUSCAMOS EL USUARIO ACTUAL
@@ -117,7 +118,7 @@ namespace AGENDAR.Controllers
                 }
 
                 //    // Antes de CREAR el registro debemos preguntar si existe una Horario igual
-                if (_context.Horario.Any(e => e.HoraInicio == HoraInicio && e.HoraFin == HoraFin && e.TiempoTurnos == TiempoTurnos && e.ProfesionalID == ProfesionalID))
+                if (_context.Horario.Any(e => e.HoraInicio == HoraInicio && e.HoraFin == HoraFin  && e.ProfesionalID == ProfesionalID))
                 {
                     resultado = 2;
                 }
@@ -163,7 +164,7 @@ namespace AGENDAR.Controllers
             }
             return Json(resultado);
             }
-                
+        [Authorize]
 
         // Funcion para Buscar el horario
         public JsonResult BuscarHorario(int HorarioID)
@@ -172,7 +173,7 @@ namespace AGENDAR.Controllers
 
             return Json(horario);
         }
-        [Authorize(Roles = "AdministradorEmpresa")]
+        [Authorize]
         public JsonResult DesactivarHorario(int HorarioID, int Elimina)
         {
             bool resultado = true;
