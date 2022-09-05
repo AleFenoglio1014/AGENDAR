@@ -475,11 +475,49 @@ ul, ol {
 .dialogEmpresa {
     background-color: white;
 }
-.card-tamaño{
-    height:70px;
-    width:70px;
+
+/*Clases input Internos*/
+.letrainput {
+    font-size: 11px !important;
 }
-.espacioBotones {
-    padding-bottom: 5px;
-    padding-top: 16px;
+
+.inputInicio {
+    padding-left: 160px;
+}
+
+.inputDias {
+    height: 166px !important;
+    overflow-y: hidden
+}
+
+.inputLetra {
+    font-size: 12px !important;
+}
+
+.inputProfesionales {
+    font-size: 11px !important;
+}
+
+.tamañoLetra {
+    font-size: 2rem;
+}
+
+.horario {
+    text-align: left !important;
+    font-size: 10px;
+    padding: 0px !important;
+}
+
+#DiaTurno {
+    height: 10px !important;
+}
+
+.botonDias {
+    width: 216px;
+    background-color: white !important;
+    font-size: 9px !important;
+}
+
+.tarjetaHorario {
+    width: 100% !important;
 }
