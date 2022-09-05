@@ -75,7 +75,14 @@ namespace AGENDAR.Controllers
                     TiempoTurnos = horario.TiempoTurnos,
                     ProfesionalID = horario.Profesionales.ProfesionalID,
                     ProfesionalNombre = horario.Profesionales.ProfesionalNombreCompleto,
-                    Eliminado = horario.Eliminado
+                    Eliminado = horario.Eliminado,
+                    Lunes = horario.Lunes,
+                    Martes = horario.Martes,
+                    Miercoles = horario.Miercoles,
+                    Jueves = horario.Jueves,
+                    Viernes = horario.Viernes,
+                    Sabado = horario.Sabado,
+                    Domingo = horario.Domingo,
                 };
                 listadohorario.Add(horarioMostrar);
             }

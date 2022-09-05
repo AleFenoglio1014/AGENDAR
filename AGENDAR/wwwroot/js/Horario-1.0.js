@@ -31,7 +31,9 @@ function CompletarTablaHorario() {
                 $("#tbody-horario").append('<tr class=' + claseEliminado + '>' +
                     '<td class="text-center ">' + horario.horarioCompleto + '</td>' +
                     '<td class="text-center ">' + tiempoMostrar + '</td>' +
-                    '<td class="text-center ">' +horario.profesionalNombre + '</td>' +
+                    '<td class="text-center ">' + horario.profesionalNombre + '</td>' +
+                    '<td class="text-center ">' + horario.lunes + ", " + horario.martes + ", " + horario.miercoles + ", " + horario.jueves + ", "
+                    + horario.viernes + ", " + horario.sabado + ", "+  horario.domingo  + '</td>' +
                     '<td class="text-center ">' +
                     botones +
                     '</td>' +
