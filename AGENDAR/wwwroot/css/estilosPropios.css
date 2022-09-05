@@ -475,3 +475,11 @@ ul, ol {
 .dialogEmpresa {
     background-color: white;
 }
+.card-tamaño{
+    height:70px;
+    width:70px;
+}
+.espacioBotones {
+    padding-bottom: 5px;
+    padding-top: 16px;
+}
