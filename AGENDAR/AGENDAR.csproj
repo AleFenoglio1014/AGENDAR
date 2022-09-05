@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="Views\Empresas\EmpresaIndex.cshtml" />
     <Content Remove="Views\Shared\VistaPublica.cshtml" />
     <Content Remove="wwwroot\css\owl.carousel.min.css" />
     <Content Remove="wwwroot\js\owl.carousel.min.js" />

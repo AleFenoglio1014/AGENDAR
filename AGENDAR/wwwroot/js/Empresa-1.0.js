@@ -24,7 +24,7 @@ function CompletarTablaEmpresas() {
                     '<td class="text-center">' + empresa.direccion + '</td>' +
                     '<td class="text-center ocultar767">' + empresa.telefono + '</td>' +
                     '<td class="text-center ocultar767">' + empresa.cuit + '</td>' +
-                    '<td>' + "<img class=' card-tamaño ocultar767' src='data:img/jpeg;base64," + empresa.imagenEmpresaString + "' />" + '</td >' +
+                    '<td class="text-center ocultar767">' + "<img class=' card-tamaño ' src='data:img/jpeg;base64," + empresa.imagenEmpresaString + "' />" + '</td >' +
                     '<td class="text-center">' +
                     botones +
                     '</td>' +
