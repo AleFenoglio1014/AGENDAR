@@ -4,41 +4,49 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - AGENDAR</title>
-    <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="~/css/estilosPropios.css" />
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    @*<link rel="stylesheet" href="~/css/site.css" />*@
+    <link rel="stylesheet" href="~/lib/bootstrap-3/bootstrap.min.css" />
+    <link href="~/css/font-awesome.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-
+    <link href="~/css/estilosPropios.css" rel="stylesheet"/>
 </head>
 <body>
     <header>
-
+        <div class="bg-img">
+            <div class="overlay"></div>
+        </div>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm  colorNav box-shadow mb-3 ">
             <div class="container">
-                <a class="navbar-brand" ><img src="~/lib/Imagenes/AgendArLogo.jpg" class="img-fluid" width="120" alt="5px"></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                <div class="navbar-header">
+                    <!-- Logo -->
+                    <div class="navbar-brand">
+                        <a @*asp-area="" asp-controller="Home" asp-action="Index"*@>
+                            <img class="logo" src="~/lib/Imagenes/AgendArLogo.jpg" alt="logo">
+                        </a>
+                    </div>
+                    <!-- /Logo -->
+                    <!-- Collapse nav button -->
+                    <div class="nav-collapse">
+                        <span></span>
+                    </div>
+                    <!-- /Collapse nav button -->
+                </div>
 
                 <partial name="_LoginPartial" />
-                <ul class=" navbar-nav flex-grow-1 " style="margin-right:60px">
+                <ul class="main-nav nav navbar-nav navbar-right">
 
-                    <li class="nav-item ">
-                        <a type="button" class=" btn  btn-link-red  " asp-area="" asp-controller="Provincias" asp-action="Index">Provincias</a>
-                    </li>
-                    <li class="nav-item">
-                        <a type="button" class="btn  btn-link-red    " asp-area="" asp-controller="Localidades" asp-action="Index">Localidades</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a type="button" class="btn  btn-link-red     " asp-area="" asp-controller="Empresas" asp-action="Create">Empresas</a>
-                    </li>
+                    <li><a asp-area="" asp-controller="Provincias" asp-action="Index">Provincias</a></li>
+                    <li><a asp-area="" asp-controller="Localidades" asp-action="Index">Localidades</a></li>
+                    <li><a asp-area="" asp-controller="Empresas" asp-action="Create">Empresas</a></li>
                 </ul>
+                @*<div class="nav-item">
 
+                    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                        <button class="main-btn">Cerrar Sesión</button>
+                    </form>
+
+                </div>*@
             </div>
-
-
         </nav>
     </header>
 
@@ -50,8 +58,9 @@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    @*<script src="~/js/site.js" asp-append-version="true"></script>*@
     <script src="~/js/Sweetalert.js" asp-append-version="true"></script>
+    <script src="~/js/LayoutEstilos.js"></script>
 
     @RenderSection("Scripts", required: false)
 </body>
