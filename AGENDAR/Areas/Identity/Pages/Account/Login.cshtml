@@ -33,14 +33,9 @@
                         <div class="w-100">
 
                             <div asp-validation-summary="All" class="text-danger"></div>
-                            <h3 class="mb-4 font-weight-bold">INICIAR SESION</h3>
+                            <h3 class="text-md-center font-weight-bold">INICIAR SESION</h3>
                         </div>
-                        <!-- <div class="w-100">
-                            <p class="social-media d-flex justify-content-end">
-                                <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a>
-                                <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a>
-                            </p>
-                        </div> -->
+                        
                     </div>
                     <form id="account" method="post" class="signin-form">
                         <div class="form-group mb-3">
@@ -63,22 +58,14 @@
                         <div class="form-group">
                             <button type="submit" class="form-control btn btn-primary rounded submit px-3">INGRESAR</button>
                         </div>
-                        <div class="form-group d-md-flex">
-                            <div class="w-50 text-left">
-                                <label class="checkbox-wrap checkbox-primary mb-0">
-                                    Recordarme
-                                    <input type="checkbox" checked>
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
+                        <div class="form-group text-center">                           
                             <a class="w-50 text-md-right" asp-page="/Account/ForgotPassword">
                                 ¿Has olvidado tu contraseña?
                             </a>
-
                         </div>
                     </form>
-                    <p class="text-center">
-                        No tienes cuenta? <a class="text-center" asp-page="/Account/Register">Registrarse</a>
+                    <p class=" text-center">
+                        ¿No tienes cuenta? <a class="form-group text-center" asp-page="/Account/Register">Registrarse</a>
                     </p>
                 </div>
             </div>
