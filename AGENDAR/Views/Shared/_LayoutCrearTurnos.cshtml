@@ -32,12 +32,6 @@
                     <!-- /Collapse nav button -->
                 </div>
 
-                @*<a class="navbar-brand"><img src="~/lib/Imagenes/AgendArLogo.jpg" class="img-fluid" width="120" alt="5px"></a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>*@
-
                 <partial name="_LoginPartial" />
 
                 <ul class="main-nav nav navbar-nav navbar-right">
@@ -47,22 +41,6 @@
                     <li><a asp-area="" asp-controller="Horarios" asp-action="Index">Horarios</a></li>
                     <li><a asp-area="" asp-controller="Turnos" asp-action="Index">Turnos</a></li>
                 </ul>
-
-                @*<ul class=" navbar-nav flex-grow-1 " style="margin-right:60px">
-                        <li class="nav-item">
-                            <a type="button" class="btn  btn-link-red" asp-area="" asp-controller="Empresas" asp-action="Index">Empresas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a type="button" class="btn btn-link-red" asp-area="" asp-controller="Profesionales" asp-action="Index">Profesionales</a>
-                        </li>
-                        <li class="nav-item">
-                            <a type="button" class="btn btn-link-red" asp-area="" asp-controller="Horarios" asp-action="Index">Horarios</a>
-                        </li>
-                        <li class="nav-item">
-                            <a type="button" class="btn btn-link-red" asp-area="" asp-controller="Turnos" asp-action="Index">Turno</a>
-                        </li>
-
-                    </ul>*@
                 <div class="nav-item">
 
                     <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
