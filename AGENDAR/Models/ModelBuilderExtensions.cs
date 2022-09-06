@@ -28,7 +28,7 @@ namespace AGENDAR.Models
             modelBuilder.Entity<ApplicationUser>().HasData(users);
 
             var passwordHasher = new PasswordHasher<ApplicationUser>();
-            users[0].PasswordHash = passwordHasher.HashPassword(users[0], "123456");
+            users[0].PasswordHash = passwordHasher.HashPassword(users[0], "agenDar.22");
             
             List<IdentityUserRole<string>> userRoles = new List<IdentityUserRole<string>>();
             userRoles.Add(new IdentityUserRole<string>
