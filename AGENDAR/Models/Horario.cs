@@ -28,13 +28,13 @@ namespace AGENDAR.Models
        
         public virtual ICollection<Turno> Turnos { get; set; }
         public bool Eliminado { get; set; }
-        //public bool Lunes { get; set; }
-        //public bool Martes { get; set; }
-        //public bool Miercoles { get; set; }
-        //public bool Jueves { get; set; }
-        //public bool Viernes { get; set; }
-        //public bool Sabado { get; set; }
-        //public bool Domingo { get; set; }
+        public bool Lunes { get; set; }
+        public bool Martes { get; set; }
+        public bool Miercoles { get; set; }
+        public bool Jueves { get; set; }
+        public bool Viernes { get; set; }
+        public bool Sabado { get; set; }
+        public bool Domingo { get; set; }
 
         public string HorarioCompleto
         {
@@ -57,13 +57,13 @@ namespace AGENDAR.Models
         public int TiempoTurnos { get; set; }
         public string HoraFinstring { get; set; }
         public bool Eliminado { get; set; }
-        //public bool Lunes { get; set; }
-        //public bool Martes { get; set; }
-        //public bool Miercoles { get; set; }
-        //public bool Jueves { get; set; }
-        //public bool Viernes { get; set; }
-        //public bool Sabado { get; set; }
-        //public bool Domingo { get; set; }
+        public bool Lunes { get; set; }
+        public bool Martes { get; set; }
+        public bool Miercoles { get; set; }
+        public bool Jueves { get; set; }
+        public bool Viernes { get; set; }
+        public bool Sabado { get; set; }
+        public bool Domingo { get; set; }
     }
 
   
