@@ -19,7 +19,7 @@ function CompletarTablaLocalidades() {
 
                 $("#tbody-localidades").append('<tr class=' + claseEliminado + '>' +
                     '<td>' + localidad.descripcion + '</td>' +
-                    '<td>' + localidad.codPostal + '</td>' +
+                    '<td class="ocultar767">' + localidad.codPostal + '</td>' +
                     '<td>' + localidad.provinciaNombre + '</td>' +
                     '<td class="text-center">' +
                     botones +

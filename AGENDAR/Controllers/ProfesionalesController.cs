@@ -27,7 +27,8 @@ namespace AGENDAR.Controllers
         //Funcion para Buscar Empresa y Usuario
         public void BuscarEmpresaActual(string usuarioActual, EmpresaUsuario empresaUsuarioActual)
         {
-            empresaUsuarioActual = _context.EmpresasUsuarios.Where(p => p.UsuarioID == usuarioActual).SingleOrDefault();
+            var empresalogueada = _context.EmpresasUsuarios.Where(p => p.UsuarioID == usuarioActual).SingleOrDefault();
+            empresaUsuarioActual.EmpresaID = empresalogueada.EmpresaID;
         }
         [Authorize]
         // GET: Profesionales
@@ -42,16 +43,16 @@ namespace AGENDAR.Controllers
         }
 
         // Funcion para Completar la Tabla  de Profesionales 
-        [Authorize]
+       
         public JsonResult BuscarProfesionales()
         {
             //PRIMERO BUSCAMOS EL USUARIO ACTUAL
-            //var usuarioActual = _userManager.GetUserId(HttpContext.User);
+            var usuarioActual = _userManager.GetUserId(HttpContext.User);
             ////LUEGO EN BASE A ESE USUARIO BUSCAMOS LA EMPRESA CON LA QUE ESTA RELACIONADA
-            //EmpresaUsuario empresaUsuarioActual = new EmpresaUsuario();
-            //BuscarEmpresaActual(usuarioActual, empresaUsuarioActual);
+            EmpresaUsuario empresaUsuarioActual = new EmpresaUsuario();
+            BuscarEmpresaActual(usuarioActual, empresaUsuarioActual);
 
-            var profesionales = _context.Profesional.Include(r => r.Empresas)/*.Where(l => l.EmpresaID == empresaUsuarioActual.EmpresaID)*/.ToList();
+            var profesionales = _context.Profesional.Include(r => r.Empresas).Where(l => l.EmpresaID == empresaUsuarioActual.EmpresaID).ToList();
 
             List<ProfesionalesMostrar> listadoProfesional = new List<ProfesionalesMostrar>();
 
@@ -75,7 +76,7 @@ namespace AGENDAR.Controllers
             return Json(listadoProfesional);
         }
         // Funcion Guardar y Editar los Porfesionales
-        [Authorize]
+    
         public JsonResult GuardarProfesional(int ProfesionalID, string Nombre, string Apellido,  int EmpresaID)
         {
             //PRIMERO BUSCAMOS EL USUARIO ACTUAL
@@ -146,7 +147,7 @@ namespace AGENDAR.Controllers
 
             return Json(resultado);
         }
-        [Authorize]
+        
         // Funcion para Buscar el Profesional
         public JsonResult BuscarProfesional(int ProfesionalID)
         {
@@ -156,7 +157,7 @@ namespace AGENDAR.Controllers
         }
 
         //Eliminar Profesional
-        [Authorize]
+     
         public JsonResult Eliminarprofesional(int ProfesionalID)
         {
             //PRIMERO BUSCAMOS EL USUARIO ACTUAL
