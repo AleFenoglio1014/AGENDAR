@@ -5,14 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - AGENDAR</title>
     @*<link rel="stylesheet" href="~/css/site.css" />*@
-    <link rel="stylesheet" href="~/lib/bootstrap-3/bootstrap.min.css" />
-    <link href="~/css/font-awesome.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <link href="~/css/estilosPropios.css" rel="stylesheet"/>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" /> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/css/estilosPropios.css" rel="stylesheet" />
 </head>
 <body>
     <header>
-        <div class="bg-img">
+        <div class="bg-img" style="height:700px">
             <div class="overlay"></div>
         </div>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm  colorNav box-shadow mb-3 ">
@@ -21,7 +20,7 @@
                     <!-- Logo -->
                     <div class="navbar-brand">
                         <a @*asp-area="" asp-controller="Home" asp-action="Index"*@>
-                            <img class="logo" src="~/lib/Imagenes/AgendArLogo.jpg" alt="logo">
+                            <img class="logo" style="padding-top:8px" src="~/lib/Imagenes/AgendArLogo.jpg" alt="logo">
                         </a>
                     </div>
                     <!-- /Logo -->

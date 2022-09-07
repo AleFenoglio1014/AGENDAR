@@ -426,11 +426,6 @@ ul, ol {
 #nav.open .nav-collapse span {
     background: transparent;
 }
-@media(max-width:767px){
-    .ocultar767{
-        display:none;
-    }
-}
 
     #nav.open .nav-collapse span:before {
         -webkit-transform: translateY(0px) rotate(-135deg);
@@ -444,143 +439,152 @@ ul, ol {
         transform: translateY(-4px) rotate(135deg);
     }
 
-/* -- Botón Cerrar Sesión -- */
-.main-btn, .outline-btn {
-    display: inline-block;
-    padding: 10px 35px;
-    margin: 3px;
-    border: 2px solid transparent;
-    border-radius: 53px;
-    -webkit-transition: 0.2s;
-    transition: 0.2s;
-}
 
-.main-btn {
-    border-block-color: inherit;
-    padding: 8px;
-    background: border-box;
-    color: #DF1B0B;
-    font-size: 18px;
-    font-weight: bold;
-    font-family: 'system-ui';
+@media(max-width:767px) {
+    .ocultar767 {
+        display: none;
+    }
 }
-
-    .main-btn:hover {
-        background: #DF1B0B;
-        color: #FFF;
+    /* -- Botón Cerrar Sesión -- */
+    .main-btn, .outline-btn {
+        display: inline-block;
+        padding: 10px 35px;
+        margin: 3px;
+        border: 2px solid transparent;
+        border-radius: 53px;
+        -webkit-transition: 0.2s;
+        transition: 0.2s;
     }
 
-.bodyEmpresa {
-    background-color: #252422;
+    .main-btn {
+        border-block-color: inherit;
+        padding: 8px;
+        background: border-box;
+        color: #DF1B0B;
+        font-size: 18px;
+        font-weight: bold;
+        font-family: 'system-ui';
+    }
 
-}
+        .main-btn:hover {
+            background: #DF1B0B;
+            color: #FFF;
+        }
 
-.dialogEmpresa {
-    background-color: white;
-}
+    .bodyEmpresa {
+        background-color: #252422;
+    }
 
-/*Clases input Internos*/
-.tituloHorario{
-    text-align: center;
-}
+    .dialogEmpresa {
+        background-color: white;
+    }
 
-.letrainput {
-    font-size: 11px !important;
-}
+    /*Clases input Internos*/
+    .tituloHorario {
+        text-align: center;
+    }
 
-.inputInicio {
-    padding-left: 20px;
-}
+    .letrainput {
+        font-size: 11px !important;
+    }
 
-.inputDias {
-    height: 166px !important;
-    overflow-y: hidden
-}
+    .inputInicio {
+        padding-left: 20px;
+    }
 
-.inputLetra {
-    font-size: 12px !important;
-}
+    .inputDias {
+        height: 166px !important;
+        overflow-y: hidden
+    }
 
-.inputProfesionales {
-    font-size: 11px !important;
-}
+    .inputLetra {
+        font-size: 12px !important;
+    }
 
-.tamañoLetra {
-    font-size: 2rem;
-}
+    .inputProfesionales {
+        font-size: 11px !important;
+    }
 
-.horario {
-    text-align: left !important;
-    font-size: 10px !important;
-    padding: 0px !important;
-}
-label {
-    font-size: 13px;
-    display: inline-block;
-    margin-bottom: .5rem;
-}
+    .tamañoLetra {
+        font-size: 2rem;
+    }
 
-#DiaTurno {
-    height: 9px !important;
-}
+    .horario {
+        text-align: left !important;
+        font-size: 10px !important;
+        padding: 0px !important;
+    }
 
-.botonDias {
-    width: 216px;
-    background-color: white !important;
-    font-size: 11px !important;
-}
+    label {
+        font-size: 13px;
+        display: inline-block;
+        margin-bottom: .5rem;
+    }
 
-.tarjetaHorario {
-    width: 100% !important;
-}
+    #DiaTurno {
+        height: 9px !important;
+    }
 
-/*Imagen Tablas Emplresas Interna*/
-.card-tamaño{
-    height: 70px;
-    width: 70px;
-}
-.espacioBotones{
-    padding-bottom: 5px;
-    padding-top: 16px;
-}
+    .botonDias {
+        width: 216px;
+        background-color: white !important;
+        font-size: 11px !important;
+    }
 
-/*/Boton subir archivo/*/
-.btn-file {
-    position: relative;
-    overflow: hidden;
-    width: 200px;
-}
+    .tarjetaHorario {
+        width: 100% !important;
+    }
 
-.btn-file input[type=file] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    min-width: 100%;
-    min-height: 100%;
-    font-size: 100px;
-    text-align: right;
-    /*filter: alpha(opacity=0);*/
-    opacity: 0;
-    outline: none;
-    background: white;
-    cursor: inherit;
-    display: block;
-}
+    /*Imagen Tablas Emplresas Interna*/
+    .card-tamaño {
+        height: 70px;
+        width: 70px;
+    }
 
-table, th, td {
-    border: 1px solid black !important;
-}
+    .espacioBotones {
+        padding-bottom: 5px;
+        padding-top: 16px;
+    }
 
-thead {
-    background: #a5a5a5 !important;
-}
-.table {
-    color: #000; 
-}
-.table-dark {
-    color: #000 !important; 
-}
+    /*/Boton subir archivo/*/
+    .btn-file {
+        position: relative;
+        overflow: hidden;
+        width: 200px;
+    }
 
-.labelCrearEmpresa{
-    font-size: 20px;
-}
+        .btn-file input[type=file] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            min-width: 100%;
+            min-height: 100%;
+            font-size: 100px;
+            text-align: right;
+            /*filter: alpha(opacity=0);*/
+            opacity: 0;
+            outline: none;
+            background: white;
+            cursor: inherit;
+            display: block;
+        }
+
+    table, th, td {
+        border: 1px solid black !important;
+    }
+
+    thead {
+        background: #a5a5a5 !important;
+    }
+
+    .table {
+        color: #000;
+    }
+
+    .table-dark {
+        color: #000 !important;
+    }
+
+    .labelCrearEmpresa {
+        font-size: 20px;
+    }
