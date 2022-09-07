@@ -76,13 +76,13 @@ namespace AGENDAR.Controllers
                     ProfesionalID = horario.Profesionales.ProfesionalID,
                     ProfesionalNombre = horario.Profesionales.ProfesionalNombreCompleto,
                     Eliminado = horario.Eliminado,
-                    Lunes = horario.Lunes,
-                    Martes = horario.Martes,
-                    Miercoles = horario.Miercoles,
-                    Jueves = horario.Jueves,
-                    Viernes = horario.Viernes,
-                    Sabado = horario.Sabado,
-                    Domingo = horario.Domingo,
+                    //Lunes = horario.Lunes,
+                    //Martes = horario.Martes,
+                    //Miercoles = horario.Miercoles,
+                    //Jueves = horario.Jueves,
+                    //Viernes = horario.Viernes,
+                    //Sabado = horario.Sabado,
+                    //Domingo = horario.Domingo,
                 };
                 listadohorario.Add(horarioMostrar);
             }

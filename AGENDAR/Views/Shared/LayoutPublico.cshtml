@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>@ViewData["Title"] - AGENDAR</title>
-    @*<link href="~/css/estilosPropios.css" rel="stylesheet" />*@
-    @*Estan las clases del boton mi cuenta y logo agendar*@
-    @*<link href="~/css/LayoutPublico.css" rel="stylesheet" />*@
+    
 
     <link rel="stylesheet" href="~/lib/bootstrap-3/bootstrap.min.css" />
     <link href="~/css/font-awesome.min.css" rel="stylesheet" />
@@ -30,7 +28,7 @@
                 <div class="navbar-header">
                     <!-- Logo -->
                     <div class="navbar-brand">
-                        <a @*asp-area="" asp-controller="Home" asp-action="Index"*@>
+                        <a>
                             <img class="logo" src="~/lib/Imagenes/AgendArLogo.jpg" alt="logo">
                             <img class="logo-alt" src="~/lib/Imagenes/AgendArLogo.jpg" alt="logo">
                         </a>
@@ -46,11 +44,11 @@
                 <!--  Main navigation  -->
                 <ul class="main-nav nav navbar-nav navbar-right">
 
-                    <li><a href="#features">Nosotros</a></li>
-                    <li><a href="#service">Utilidades</a></li>
-                    <li><a href="#team">Equipo</a></li>
-                    <li><a href="#empresas">Empresas</a></li>
-                    <li><a href="#contact">Contacto</a></li>
+                    <li><a href="#features" style="font-weight:bold">NOSOTROS</a></li>
+                    <li><a href="#service" style="font-weight:bold">UTILIDADES</a></li>
+                    <li><a href="#team" style="font-weight:bold">EQUIPO</a></li>
+                    <li><a href="#empresas" style="font-weight:bold">EMPRESAS</a></li>
+                    <li><a href="#contact" style="font-weight:bold">CONTACTO</a></li>
                 </ul>
                 <!-- /Main navigation -->
 
@@ -89,7 +87,7 @@
             <div class="row">
                 <!-- Section header -->
                 <div class="section-header text-center">
-                    <h2 class="title">Nosotros</h2>
+                    <h2 class="title">NOSOTROS</h2>
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
                     <img src="~/lib/Imagenes/IMAGENNOSOTROS.png" class="img-fluid imgNosotros" alt="">
@@ -132,7 +130,7 @@
 
                 <!-- Section header -->
                 <div class="section-header text-center">
-                    <h2 class="title">Utilidades</h2>
+                    <h2 class="title">FUNCIONAMIENTO & SERVICIOS</h2>
                 </div>
                 <!-- /Section header -->
                 <!-- service -->
@@ -216,6 +214,21 @@
 
     </div>
     <!-- /Service -->
+    <!-- Caracteristicas -->
+    <div id="caracteristicas" class="section md-padding">
+        <!-- Section header -->
+        <div class="section-header text-center">
+            <h2 class="title">CARACTERISTICAS</h2>
+        </div>
+        <!-- /Section header -->
+
+        <div>
+            <img src="~/lib/Imagenes/imagenpubli3.png" width="100%" height="120%" alt="" />
+        </div>
+
+
+    </div>
+    <!-- /Caracteristicas -->
     <!-- Team -->
     <div id="team" class="section md-padding">
 
@@ -227,7 +240,7 @@
 
                 <!-- Section header -->
                 <div class="section-header text-center">
-                    <h2 class="title">Nuestro Equipo</h2>
+                    <h2 class="title">EQUIPO</h2>
                 </div>
                 <!-- /Section header -->
                 <!-- team -->
@@ -306,7 +319,7 @@
 
             <!-- Section Titulo -->
             <div class="section-header text-center">
-                <h2 class="title">Empresas que Confían</h2>
+                <h2 class="title">EMPRESAS QUE CONFIAN</h2>
             </div>
             <!-- CAROUSEL -->
             <div id="carousel">
@@ -374,12 +387,12 @@
             </div>
 
             <div class="buttons text-center botonesCarousel">
-          <button class="botonNext" id="prev"><i class="bi bi-caret-left-square-fill"></i></button>
-          <button class="botonNext" id="next"><i class="bi bi-caret-right-square-fill"></i></button>
-        </div>
+                <button class="botonNext" id="prev"><i class="bi bi-caret-left-square-fill"></i></button>
+                <button class="botonNext" id="next"><i class="bi bi-caret-right-square-fill"></i></button>
+            </div>
         </div>
     </div>
-    
+
 
     <!-- Contact -->
     <div id="contact" class="section md-padding">
@@ -392,7 +405,7 @@
 
                 <!-- Section-header -->
                 <div class="section-header text-center">
-                    <h2 class="title">Contáctenos</h2>
+                    <h2 class="title">CONTÁCTENOS</h2>
                 </div>
                 <!-- /Section-header -->
                 <!-- contact -->
@@ -479,8 +492,7 @@
     <script src="~/js/Sweetalert.js"></script>
     <script src="~/js/LayoutEstilos.js"></script>
     <script src="~/js/CarouselFunciones.js"></script>
-    @*boton volver arriba viejo
-        <script src="~/js/backToTop.js.js"></script>*@
+    
 
     @RenderSection("Scripts", required: false)
 </body>

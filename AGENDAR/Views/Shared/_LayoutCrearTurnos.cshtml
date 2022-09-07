@@ -6,7 +6,6 @@
     <title>@ViewData["Title"] - AGENDAR</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    @*<link rel="stylesheet" href="~/css/site.css" />*@
     <link rel="stylesheet" href="~/css/estilosPropios.css" />
 
 </head>
@@ -20,7 +19,7 @@
                 <div class="navbar-header">
                     <!-- Logo -->
                     <div class="navbar-brand">
-                        <a @*asp-area="" asp-controller="Home" asp-action="Index"*@>
+                        <a>
                             <img class="logo" src="~/lib/Imagenes/AgendArLogo.jpg" alt="logo">
                         </a>
                     </div>
@@ -32,37 +31,15 @@
                     <!-- /Collapse nav button -->
                 </div>
 
-                @*<a class="navbar-brand"><img src="~/lib/Imagenes/AgendArLogo.jpg" class="img-fluid" width="120" alt="5px"></a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>*@
-
                 <partial name="_LoginPartial" />
 
                 <ul class="main-nav nav navbar-nav navbar-right">
 
-                    <li><a asp-area="" asp-controller="Empresas" asp-action="Index">Empresas</a></li>
-                    <li><a asp-area="" asp-controller="Profesionales" asp-action="Index">Profesionales</a></li>
-                    <li><a asp-area="" asp-controller="Horarios" asp-action="Index">Horarios</a></li>
-                    <li><a asp-area="" asp-controller="Turnos" asp-action="Index">Turnos</a></li>
+                    <li><a asp-area="" asp-controller="Empresas" asp-action="Index">EMPRESAS</a></li>
+                    <li><a asp-area="" asp-controller="Profesionales" asp-action="Index">PROFESIONALES</a></li>
+                    <li><a asp-area="" asp-controller="Horarios" asp-action="Index">HORARIOS</a></li>
+                    <li><a asp-area="" asp-controller="Turnos" asp-action="Index">TURNOS</a></li>
                 </ul>
-
-                @*<ul class=" navbar-nav flex-grow-1 " style="margin-right:60px">
-                        <li class="nav-item">
-                            <a type="button" class="btn  btn-link-red" asp-area="" asp-controller="Empresas" asp-action="Index">Empresas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a type="button" class="btn btn-link-red" asp-area="" asp-controller="Profesionales" asp-action="Index">Profesionales</a>
-                        </li>
-                        <li class="nav-item">
-                            <a type="button" class="btn btn-link-red" asp-area="" asp-controller="Horarios" asp-action="Index">Horarios</a>
-                        </li>
-                        <li class="nav-item">
-                            <a type="button" class="btn btn-link-red" asp-area="" asp-controller="Turnos" asp-action="Index">Turno</a>
-                        </li>
-
-                    </ul>*@
                 <div class="nav-item">
 
                     <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
@@ -85,7 +62,6 @@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    @*<script src="~/js/site.js" asp-append-version="true"></script>*@
     <script src="~/js/Sweetalert.js" asp-append-version="true"></script>
     <script src="~/js/LayoutEstilos.js"></script>
 
