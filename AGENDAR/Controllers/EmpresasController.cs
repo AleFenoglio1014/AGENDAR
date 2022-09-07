@@ -39,7 +39,7 @@ namespace AGENDAR.Controllers
             return View();
            
         }
-      
+        [Authorize]
         public IActionResult Create()
         {
             var localidades = _context.Localidad.Where(p => p.Eliminado == false).ToList();
@@ -50,10 +50,7 @@ namespace AGENDAR.Controllers
             return View();
         }
 
-        public IActionResult EmpresaIndex()
-        {
-          return View();
-        }
+        
         public JsonResult ComboEmpresa(int id)//EMPRESA ID
         {
             //BUSCAR EMPRESAS
@@ -69,7 +66,7 @@ namespace AGENDAR.Controllers
         }
 
         // Funcion para Completar la Tabla  de Empresas 
-        [Authorize]
+        
         public JsonResult BuscarEmpresas()
         {
             //PRIMERO BUSCAMOS EL USUARIO ACTUAL
@@ -104,7 +101,7 @@ namespace AGENDAR.Controllers
         }
 
         // Funcion Guardar y Editar las Empresa
-        [Authorize]
+      
         public async Task<JsonResult> GuardarEmpresa(int EmpresaID, string razonSocial, string cuit, string direccion, Int64 telefono, int LocalidadID , IFormFile archivo)
         {
             //PRIMERO BUSCAMOS EL USUARIO ACTUAL
@@ -211,7 +208,7 @@ namespace AGENDAR.Controllers
             }
             return Json(resultado);
         }
-        [Authorize(Roles = "SuperUsuario")]
+        
         // Funcion para Buscar la empresa
         public JsonResult BuscarEmpresa(int EmpresaID)
         {
@@ -221,7 +218,7 @@ namespace AGENDAR.Controllers
         }
 
         //Desactivar Empresa
-        [Authorize(Roles = "SuperUsuario")]
+       
         public JsonResult DesactivarEmpresa(int EmpresaID, int Elimina)
         {
             bool resultado = true;

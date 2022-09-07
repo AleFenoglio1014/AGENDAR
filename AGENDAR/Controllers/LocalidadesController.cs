@@ -12,8 +12,8 @@ using Microsoft.AspNetCore.Identity;
 
 namespace AGENDAR.Controllers
 {
-  
-      
+
+   
     public class LocalidadesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -30,7 +30,7 @@ namespace AGENDAR.Controllers
         {
             empresaUsuarioActual = _context.EmpresasUsuarios.Where(p => p.UsuarioID == usuarioActual).SingleOrDefault();
         }
-        [Authorize]
+        [Authorize(Roles = "SuperUsuario")]
         // GET: Localidades
         public IActionResult Index()
         {
@@ -50,7 +50,7 @@ namespace AGENDAR.Controllers
         }
 
         // Funcion para Completar la Tabla  de Localidades 
-        [Authorize]
+       
         public JsonResult BuscarLocalidades()
         {
             //PRIMERO BUSCAMOS EL USUARIO ACTUAL
@@ -79,7 +79,7 @@ namespace AGENDAR.Controllers
             return Json(listadoLocalidadesMostrar);
         }
         // Funcion Guardar y Editar las Localidades
-        [Authorize]
+    
         public JsonResult GuardarLocalidad(int LocalidadID, string Descripcion,string CodPostal, int ProvinciaID)
         {
             int resultado = 0;
@@ -146,7 +146,7 @@ namespace AGENDAR.Controllers
 
             return Json(resultado);
         }
-        [Authorize]
+        
         // Funcion para Buscar la Localidad
         public JsonResult BuscarLocalidad(int LocalidadID)
         {
@@ -156,7 +156,7 @@ namespace AGENDAR.Controllers
         }
 
         // Funcion para Desactivar una Ciudad
-        [Authorize(Roles = "SuperUsuario")]
+     
         public JsonResult DesactivarLocalidad(int LocalidadID, int Elimina)
         {
             bool resultado = true;
