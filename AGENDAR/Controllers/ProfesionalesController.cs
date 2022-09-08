@@ -34,9 +34,9 @@ namespace AGENDAR.Controllers
         // GET: Profesionales
         public IActionResult Index()
         {
-            var empresa = _context.Empresa.Where(p => p.Eliminado == true).ToList();
-            empresa.Add(new Empresa { EmpresaID = 0, RazonSocial = "[SELECCIONE UNA EMPRESA]" });
-            ViewBag.EmpresaID = new SelectList(empresa.OrderBy(p => p.RazonSocial), "EmpresaID", "RazonSocial");
+            //var empresa = _context.Empresa.Where(p => p.Eliminado == true).ToList();
+            //empresa.Add(new Empresa { EmpresaID = 0, RazonSocial = "[SELECCIONE UNA EMPRESA]" });
+            //ViewBag.EmpresaID = new SelectList(empresa.OrderBy(p => p.RazonSocial), "EmpresaID", "RazonSocial");
 
           
             return View();
@@ -84,7 +84,7 @@ namespace AGENDAR.Controllers
             //LUEGO EN BASE A ESE USUARIO BUSCAMOS LA EMPRESA CON LA QUE ESTA RELACIONADA
             EmpresaUsuario empresaUsuarioActual = new EmpresaUsuario();
             BuscarEmpresaActual(usuarioActual, empresaUsuarioActual);
-
+           
             int resultado = 0;
             // Si es 0 es CORRECTO
             // Si es 1 el Campo Descripcion esta VACIO
@@ -109,7 +109,7 @@ namespace AGENDAR.Controllers
                         {
                             Nombre = Nombre,
                             Apellido = Apellido,
-                            EmpresaID = EmpresaID,
+                            EmpresaID =EmpresaID
 
                         };
                         _context.Add(profesionalNuevo);

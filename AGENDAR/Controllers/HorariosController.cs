@@ -30,7 +30,8 @@ namespace AGENDAR.Controllers
         //Funcion para Buscar Empresa y Usuario
         public void BuscarEmpresaActual(string usuarioActual, EmpresaUsuario empresaUsuarioActual)
         {
-            empresaUsuarioActual = _context.EmpresasUsuarios.Where(p => p.UsuarioID == usuarioActual).SingleOrDefault();
+            var empresalogueada = _context.EmpresasUsuarios.Where(p => p.UsuarioID == usuarioActual).SingleOrDefault();
+            empresaUsuarioActual.EmpresaID = empresalogueada.EmpresaID;
         }
         [Authorize]
         public IActionResult Index()
