@@ -14,7 +14,7 @@ function CompletarTablaProfesionales() {
 
                 $("#tbody-profesional").append('<tr>' +
                     '<td class="text-center ">' + profesional.profesionalNombreCompleto + '</td>' +
-                    '<td class="text-center ">' +  profesional.empresaNombre + '</td>' +
+                    
                     '<td class="text-center">' +
                     botones +
                     '</td>' +
@@ -62,16 +62,13 @@ function GuardarProfesional() {
         guardarProfesional = false;
         $("#Error-CamposProfesional").text("Los campos son OBLIGATORIOS.");
     }
-    if (empresaID == 0) {
-        guardarProfesional = false;
-        $("#Error-CamposProfesional").text("Los campos son OBLIGATORIOS.");
-    }
+    
    
     if (guardarProfesional) {
         $.ajax({
             type: "POST",
             url: '../../Profesionales/GuardarProfesional',
-            data: { ProfesionalID: profesionalID, Nombre: nombre, Apellido: apellido, EmpresaID: empresaID },
+            data: { ProfesionalID: profesionalID, Nombre: nombre, Apellido: apellido, },
             success: function (resultado) {
                 if (resultado == 0) {
                     $("#exampleModal").modal("hide");
@@ -97,15 +94,15 @@ function BuscarProfesional(profesionalID, nombre, apellido, empresaID) {
     $("#ProfesionalID").val(profesionalID);
     $("#Nombre").val(nombre);
     $("#Apellido").val(apellido);
-    $("#EmpresaID").val(empresaID);
+
     $.ajax({
         type: "POST",
         url: '../../Profesionales/BuscarProfesional',
-        data: { ProfesionalID: profesionalID, Nombre: nombre, Apellido: apellido, EmpresaID: empresaID },
+        data: { ProfesionalID: profesionalID, Nombre: nombre, Apellido: apellido },
         success: function (profesional) {
             $("#Nombre").val(profesional.nombre);
             $("#Apellido").val(profesional.apellido);
-            $("#EmpresaID").val(profesional.empresaID);
+           
             $("#exampleModal").modal("show");
         },
         error: function (data) {

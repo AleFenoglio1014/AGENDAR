@@ -34,11 +34,7 @@ namespace AGENDAR.Controllers
         // GET: Profesionales
         public IActionResult Index()
         {
-            //var empresa = _context.Empresa.Where(p => p.Eliminado == true).ToList();
-            //empresa.Add(new Empresa { EmpresaID = 0, RazonSocial = "[SELECCIONE UNA EMPRESA]" });
-            //ViewBag.EmpresaID = new SelectList(empresa.OrderBy(p => p.RazonSocial), "EmpresaID", "RazonSocial");
-
-          
+   
             return View();
         }
 
@@ -77,7 +73,7 @@ namespace AGENDAR.Controllers
         }
         // Funcion Guardar y Editar los Porfesionales
     
-        public JsonResult GuardarProfesional(int ProfesionalID, string Nombre, string Apellido,  int EmpresaID)
+        public JsonResult GuardarProfesional(int ProfesionalID, string Nombre, string Apellido)
         {
             //PRIMERO BUSCAMOS EL USUARIO ACTUAL
             var usuarioActual = _userManager.GetUserId(HttpContext.User);
@@ -90,14 +86,14 @@ namespace AGENDAR.Controllers
             // Si es 1 el Campo Descripcion esta VACIO
             // Si es 2 el Registro YA EXISTE con la misma Descripcion
 
-            if (!string.IsNullOrEmpty(Nombre) && !string.IsNullOrEmpty(Apellido) && EmpresaID != 0)
+            if (!string.IsNullOrEmpty(Nombre) && !string.IsNullOrEmpty(Apellido) )
             {
                 Nombre = Nombre.ToUpper();
                 Apellido = Apellido.ToUpper();
                 if (ProfesionalID == 0)
                 {
                     // Antes de CREAR el registro debemos preguntar si existe un Profesional con el mismo nombre y apellido
-                    if (_context.Profesional.Any(e => e.Nombre == Nombre && e.Apellido == Apellido && e.EmpresaID == EmpresaID))
+                    if (_context.Profesional.Any(e => e.Nombre == Nombre && e.Apellido == Apellido && e.EmpresaID == empresaUsuarioActual.EmpresaID))
                     {
                         resultado = 2;
                     }
@@ -109,7 +105,7 @@ namespace AGENDAR.Controllers
                         {
                             Nombre = Nombre,
                             Apellido = Apellido,
-                            EmpresaID =EmpresaID
+                            EmpresaID = empresaUsuarioActual.EmpresaID
 
                         };
                         _context.Add(profesionalNuevo);
@@ -120,7 +116,7 @@ namespace AGENDAR.Controllers
                 else
                 {
                     // Antes de EDITAR el registro debemos preguntar si existe un Profesional con el mismo nombre y apellido
-                    if (_context.Profesional.Any(e => e.Nombre == Nombre && e.Apellido == Apellido && e.EmpresaID == EmpresaID && e.ProfesionalID != ProfesionalID))
+                    if (_context.Profesional.Any(e => e.Nombre == Nombre && e.Apellido == Apellido && e.EmpresaID == empresaUsuarioActual.EmpresaID && e.ProfesionalID != ProfesionalID))
                     {
                         resultado = 2;
                     }
@@ -132,7 +128,7 @@ namespace AGENDAR.Controllers
                         // Cambiamos el nombre por la que ingreso el Usuario en la Vista
                         profesional.Nombre = Nombre;
                         profesional.Apellido = Apellido;
-                        profesional.EmpresaID = EmpresaID;
+                      
                         _context.SaveChanges();
                     }
 
