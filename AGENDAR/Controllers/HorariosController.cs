@@ -17,14 +17,11 @@ namespace AGENDAR.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<IdentityUser> _userManager;
-        //TRAEMOS EL METODO DESDE EL CONTROLADOR DE EMPRESAS PARA BUSCAR USUARIO Y EMPRESA ACTUAL.
-        //SI HAY QUE MODIFICAR ALGO, SOLO SE HACE EN EL CONTROLADOR DE EMPRESA
-        //public EmpresasController EmpresasController;
+        
         public HorariosController(ApplicationDbContext context, UserManager<IdentityUser> userManager/*, *//*EmpresasController empresasController*/)
         {
             _context = context;
             _userManager = userManager;
-            //EmpresasController = empresasController;
         }
 
         //Funcion para Buscar Empresa y Usuario
@@ -36,6 +33,12 @@ namespace AGENDAR.Controllers
         [Authorize]
         public IActionResult Index()
         {
+            //PRIMERO BUSCAMOS EL USUARIO ACTUAL
+            var usuarioActual = _userManager.GetUserId(HttpContext.User);
+            //LUEGO EN BASE A ESE USUARIO BUSCAMOS LA EMPRESA CON LA QUE ESTA RELACIONADA
+            EmpresaUsuario empresaUsuarioActual = new EmpresaUsuario();
+            BuscarEmpresaActual(usuarioActual, empresaUsuarioActual);
+
             var profesional = _context.Profesional.Where(p => p.Eliminado == false).ToList();
             profesional.Add(new Profesional { ProfesionalID = 0, Nombre = "[SELECCIONE UN PROFESIONAL]" });
             ViewBag.ProfesionalID = new SelectList(profesional.OrderBy(p => p.ProfesionalNombreCompleto), "ProfesionalID", "ProfesionalNombreCompleto");
@@ -93,7 +96,7 @@ namespace AGENDAR.Controllers
 
         // Funcion Guardar y Editar los Horarios
      
-        public JsonResult GuardarHorario(DateTime HoraInicio, DateTime HoraFin, int TiempoTurnos, int ProfesionalID, int lunes, int martes, int Miercoles, int Jueves, int Viernes, int Sabado, int Domingo)
+        public JsonResult GuardarHorario(DateTime HoraInicio, DateTime HoraFin, int TiempoTurnos, int ProfesionalID/*, int lunes, int martes, int Miercoles, int Jueves, int Viernes, int Sabado, int Domingo*/)
         {
             //PRIMERO BUSCAMOS EL USUARIO ACTUAL
             var usuarioActual = _userManager.GetUserId(HttpContext.User);
@@ -219,6 +222,7 @@ namespace AGENDAR.Controllers
                             HoraFin = fechaApertura.AddMinutes(tiempoMostrar),
                             TiempoTurnos = tiempoMostrar,
                             ProfesionalID = ProfesionalID,
+                            EmpresaID = empresaUsuarioActual.EmpresaID
                             //Lunes = Lunes.,
 
                         };
