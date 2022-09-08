@@ -15,7 +15,7 @@ function CompletarTablaEmpresas() {
                     '<button type="button" onclick="DesactivarEmpresa(' + empresa.empresaID + ',0)" class="btn btn-outline-success btn-sm"><i class="bi bi-check-circle"></i></button>';
                 if (empresa.eliminado) {
                     claseEliminado = '';
-                    botones = '<button type="button" onclick="DesactivarEmpresa(' + empresa.empresaID + ',1)" class="btn btn-outline-danger btn-sm"> <i class="bi bi-trash-fill"></i> </button>';
+                    botones = '<button type="button" onclick="DesactivarEmpresa(' + empresa.empresaID + ',1)" class="btn btn-outline-danger btn-sm"> <i class="bi bi-x-lg"></i> </button>';
                 }
 
                 $("#tbody-empresa").append('<tr class=' + claseEliminado + '>' +

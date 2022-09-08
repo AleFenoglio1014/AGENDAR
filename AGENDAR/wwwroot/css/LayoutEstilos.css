@@ -224,6 +224,7 @@ ul, ol {
     .navbar-brand .logo, .navbar-brand .logo-alt {
         max-height: 40px;
         display: block;
+        margin-top: 5px;
     }
 
 #nav:not(.nav-transparent):not(.fixed-nav) .navbar-brand .logo-alt {
@@ -342,7 +343,7 @@ ul, ol {
     }
 
         #nav.fixed-nav {
-            background-color: #FFF !important;
+            background-color: #515a5a !important;
             border-bottom: none;
         }
         #nav.nav-transparent {
