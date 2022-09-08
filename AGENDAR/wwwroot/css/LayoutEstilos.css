@@ -222,7 +222,7 @@ ul, ol {
 }
 
     .navbar-brand .logo, .navbar-brand .logo-alt {
-        max-height: 40px;
+        max-height: 50px;
         display: block;
         margin-top: 5px;
     }
