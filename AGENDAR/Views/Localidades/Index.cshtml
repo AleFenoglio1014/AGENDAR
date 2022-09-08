@@ -3,6 +3,9 @@
 @{
     ViewData["Title"] = "Index";
 }
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
 
 <h2>Localidades</h2>
@@ -25,7 +28,7 @@
                 Provincia
             </th>
             <th class="text-center" style="width:150px">
-               Opciones
+                Opciones
             </th>
         </tr>
     </thead>
@@ -62,7 +65,7 @@
                         <p class="text-danger font-weight-bold" style="font-size:small" id="Error-ProvinciaNombre"></p>
                         <p class="text-danger font-weight-bold" style="font-size:small" id="Error-LocalidadNombre"></p>
                     </div>
-                    
+
                 </form>
             </div>
             <div class="modal-footer">
