@@ -7,6 +7,7 @@
 @*<link rel="stylesheet" href="~/css/site.css" />*@
 @*<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />*@
 <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://fontawesome.com/icons"/>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
 <link href="~/css/estilosPropios.css" rel="stylesheet" />
 </head>
@@ -27,10 +28,10 @@
                 @if (User.IsInRole("SuperUsuario"))
                 {
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Provincias" asp-action="Index">PROVINCIAS</a>
+                        <a class="nav-link ocultar767 ocultar820" asp-area="" asp-controller="Provincias" asp-action="Index">PROVINCIAS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Localidades" asp-action="Index">LOCALIDADES</a>
+                        <a class="nav-link ocultar767 ocultar820" asp-area="" asp-controller="Localidades" asp-action="Index">LOCALIDADES</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" asp-area="" asp-controller="Empresas" asp-action="Index">EMPRESAS</a>
@@ -41,10 +42,10 @@
                 @if (User.IsInRole("AdministradorEmpresa"))
                 {
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Empresas" asp-action="Create">EMPRESAS</a>
+                        <a class="nav-link ocultar767" asp-area="" asp-controller="Empresas" asp-action="Create">EMPRESA</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="Profesionales" asp-action="Index">PROFESIONALES</a>
+                        <a class="nav-link ocultar820" asp-controller="Profesionales" asp-action="Index">PROFESIONALES</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" asp-area="" asp-controller="Horarios" asp-action="Index">HORARIOS</a>
@@ -53,7 +54,7 @@
                         <a class="nav-link" asp-area="" asp-controller="Turnos" asp-action="Index">TURNOS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">Cerrar</a>
+                        <a class="nav-link" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })"><i class="bi bi-x-circle-fill cerrarSesion"></i></a>
                     </li>
                 }
             </ul>

@@ -7,9 +7,13 @@
 
   <ItemGroup>
     <Compile Remove="Views\DisponibilidadHorarias\**" />
+    <Compile Remove="wwwroot\lib\fontawesome-free-5.15.4-web\**" />
     <Content Remove="Views\DisponibilidadHorarias\**" />
+    <Content Remove="wwwroot\lib\fontawesome-free-5.15.4-web\**" />
     <EmbeddedResource Remove="Views\DisponibilidadHorarias\**" />
+    <EmbeddedResource Remove="wwwroot\lib\fontawesome-free-5.15.4-web\**" />
     <None Remove="Views\DisponibilidadHorarias\**" />
+    <None Remove="wwwroot\lib\fontawesome-free-5.15.4-web\**" />
   </ItemGroup>
 
   <ItemGroup>
