@@ -305,6 +305,9 @@ li a:hover {
         outline: none;
         border-color: rgba(255, 255, 255, 0);
     }
+    .cerrarSesion {
+        width: 110px;
+    }
 
     ul, li {
         padding: 0;
@@ -313,6 +316,10 @@ li a:hover {
 
     .navbar-nav {
         padding-bottom: 40px;
+    }
+
+    .navbar-dark .navbar-toggler-icon .colorMenuHamb {
+        color: #000;
     }
 }
 
@@ -331,15 +338,19 @@ li a:hover {
 }
     /* -- Botón Cerrar Sesión -- */
 .cerrarSesion {
+    width:90px;
     color: red;
     font-family: unset;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 500;
-    background-color: transparent
+    background-color: #fff;
+    border: solid 1px;
+    border-radius: 20px;
 }
 
     .cerrarSesion:hover {
-        color: red;
+        color: #fff;
+        background-color: red;
     }
 
     .bodyEmpresa {
