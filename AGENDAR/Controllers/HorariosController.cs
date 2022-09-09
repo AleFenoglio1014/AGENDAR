@@ -39,10 +39,10 @@ namespace AGENDAR.Controllers
             EmpresaUsuario empresaUsuarioActual = new EmpresaUsuario();
             BuscarEmpresaActual(usuarioActual, empresaUsuarioActual);
 
-            var profesional = _context.Profesional.Where(p => p.Eliminado == false).ToList();
+            var profesional = _context.Profesional.Where(p => p.Eliminado == false && p.EmpresaID == empresaUsuarioActual.EmpresaID).ToList();
             profesional.Add(new Profesional { ProfesionalID = 0, Nombre = "[SELECCIONE UN PROFESIONAL]" });
             ViewBag.ProfesionalID = new SelectList(profesional.OrderBy(p => p.ProfesionalNombreCompleto), "ProfesionalID", "ProfesionalNombreCompleto");
-          
+
             return View();
         }
         public JsonResult ComboHorario(int id)//HORARIO ID
@@ -80,13 +80,13 @@ namespace AGENDAR.Controllers
                     ProfesionalID = horario.Profesionales.ProfesionalID,
                     ProfesionalNombre = horario.Profesionales.ProfesionalNombreCompleto,
                     Eliminado = horario.Eliminado,
-                    //Lunes = horario.Lunes,
-                    //Martes = horario.Martes,
-                    //Miercoles = horario.Miercoles,
-                    //Jueves = horario.Jueves,
-                    //Viernes = horario.Viernes,
-                    //Sabado = horario.Sabado,
-                    //Domingo = horario.Domingo,
+                    Lunes = horario.Lunes,
+                    Martes = horario.Martes,
+                    Miercoles = horario.Miercoles,
+                    Jueves = horario.Jueves,
+                    Viernes = horario.Viernes,
+                    Sabado = horario.Sabado,
+                    Domingo = horario.Domingo,
                 };
                 listadohorario.Add(horarioMostrar);
             }
@@ -96,7 +96,7 @@ namespace AGENDAR.Controllers
 
         // Funcion Guardar y Editar los Horarios
      
-        public JsonResult GuardarHorario(DateTime HoraInicio, DateTime HoraFin, int TiempoTurnos, int ProfesionalID/*, int lunes, int martes, int Miercoles, int Jueves, int Viernes, int Sabado, int Domingo*/)
+        public JsonResult GuardarHorario(DateTime HoraInicio, DateTime HoraFin, int TiempoTurnos, int ProfesionalID, bool Lunes, bool Martes, bool Miercoles, bool Jueves, bool Viernes, bool Sabado, bool Domingo)
         {
             //PRIMERO BUSCAMOS EL USUARIO ACTUAL
             var usuarioActual = _userManager.GetUserId(HttpContext.User);
@@ -131,64 +131,7 @@ namespace AGENDAR.Controllers
                 }
                
                
-                //if (lunes == 0)
-                //{
-                //    Lunes = false;
-                //}
-                //else
-                //{
-                //    Lunes = true;
-                //}
-                //if (Martes == 0)
-                //{
-                //    horario.Martes = false;
-                //}
-                //else
-                //{
-                //    horario.Martes = true;
-                //}
-                //if (Miercoles == 0)
-                //{
-                //    horario.Miercoles = false;
-                //}
-                //else
-                //{
-                //    horario.Miercoles = true;
-                //}
-                //if (Jueves == 0)
-                //{
-                //    horario.Jueves = false;
-                //}
-                //else
-                //{
-                //    horario.Jueves = true;
-                //}
-                //if (Viernes == 0)
-                //{
-                //    horario.Viernes = false;
-                //}
-                //else
-                //{
-                //    horario.Viernes = true;
-                //}
-                //if (Sabado == 0)
-                //{
-                //    horario.Sabado = false;
-                //}
-                //else
-                //{
-                //    horario.Sabado = true;
-
-                //}
-                //if (Domingo == 0)
-                //{
-                //    horario.Domingo = false;
-                //}
-                //else
-                //{
-                //    horario.Domingo = true;
-
-                //}
+               
 
                 //    // Antes de CREAR el registro debemos preguntar si existe una Horario igual
                 if (_context.Horario.Any(e => e.HoraInicio == HoraInicio && e.HoraFin == HoraFin  && e.ProfesionalID == ProfesionalID))
@@ -222,8 +165,15 @@ namespace AGENDAR.Controllers
                             HoraFin = fechaApertura.AddMinutes(tiempoMostrar),
                             TiempoTurnos = tiempoMostrar,
                             ProfesionalID = ProfesionalID,
-                            EmpresaID = empresaUsuarioActual.EmpresaID
-                            //Lunes = Lunes.,
+                            EmpresaID = empresaUsuarioActual.EmpresaID,
+                            Lunes = Lunes,
+                            Martes = Martes,
+                            Miercoles = Miercoles,
+                            Jueves = Jueves,
+                            Viernes = Viernes,
+                            Sabado = Sabado,
+                            Domingo = Domingo
+
 
                         };
                         _context.Add(nuevoHorario);
