@@ -64,6 +64,13 @@ function GuardarHorario() {
     let horaFin = $('#HoraFin').val().trim();
     let tiempoTurnos = $('#TiempoTurnos').val();
     let profesionalID = $('#ProfesionalID').val();
+    let lunes = $('#Lunes').val().trim();
+    let martes = $('#Martes').val().trim();
+    let miercoles = $('#Miercoles').val().trim();
+    let jueves = $('#Jueves').val().trim();
+    let viernes = $('#Viernes').val().trim();
+    let sabado = $('#Sabado').val().trim();
+    let domingo = $('#Domingo').val().trim();
 
     let guardarHorario = true;
     if (horaInicio == "" || horaInicio == null) {
@@ -86,8 +93,7 @@ function GuardarHorario() {
         $.ajax({
             type: "POST",
             url: '../../Horarios/GuardarHorario',
-            data: { HorarioID: horarioID, HoraInicio: horaInicio, HoraFin: horaFin, TiempoTurnos: tiempoTurnos, ProfesionalID: profesionalID /*Lunes: lunes, Martes: martes, Miercoles: miercoles, Jueves: jueves, Viernes: viernes, Sabado: sabado, Domingo: domingo*/ },
-            async: false,
+            data: { HorarioID: horarioID, HoraInicio: horaInicio, HoraFin: horaFin, TiempoTurnos: tiempoTurnos, ProfesionalID: profesionalID, Lunes: lunes, Martes: martes, Miercoles: miercoles, Jueves: jueves, Viernes: viernes, Sabado: sabado, Domingo: domingo },
             success: function (resultado) {
                 if (resultado == 0) {
                     $("#exampleModal").modal("hide");
