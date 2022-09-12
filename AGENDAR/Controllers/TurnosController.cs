@@ -27,7 +27,7 @@ namespace AGENDAR.Controllers
         {
             empresaUsuarioActual = _context.EmpresasUsuarios.Where(p => p.UsuarioID == usuarioActual).SingleOrDefault();
         }
-      
+
         public IActionResult IndexHomePublico()
         {
             var provincias = _context.Provincia.ToList();
@@ -44,18 +44,18 @@ namespace AGENDAR.Controllers
             ViewBag.EmpresaID = new SelectList(empresa.OrderBy(p => p.RazonSocial), "EmpresaID", "RazonSocial");
 
 
-            var profesional = _context.Profesional.ToList();
-            //List<Profesional> profesional = new List<Profesional>();
+            //var profesional = _context.Profesional.ToList();
+            List<Profesional> profesional = new List<Profesional>();
             profesional.Add(new Profesional { ProfesionalID = 0, Nombre = "[SELECCIONE UN PROFESIONAL]" });
             ViewBag.ProfesionalID = new SelectList(profesional.OrderBy(p => p.ProfesionalNombreCompleto), "ProfesionalID", "ProfesionalNombreCompleto");
 
-            var horario = _context.Horario.ToList();
-            //List<Horario> horario = new List<Horario>();
+            //var horario = _context.Horario.ToList();
+            List<Horario> horario = new List<Horario>();
             //horario.Add(new Horario { HorarioID = 0, HoraInicio = "[SELECCIONE UN HORARIO]" });
             ViewBag.HorarioID = new SelectList(horario.OrderBy(p => p.HorarioCompleto), "HorarioID", "HorarioCompleto");
 
             return View();
-            
+
 
         }
         [Authorize]

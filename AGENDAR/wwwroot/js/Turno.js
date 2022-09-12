@@ -195,73 +195,74 @@ function BuscarEmpresas() {
 
 
 ////FUNCION PARA TRAER LOS PROFESIONALES QUE PERTENECEN A LA EMPRESA SELECCIONADA
-//$("#EmpresaID").change;(function () {
-//    BuscarProfesionales();
-//});
-//function BuscarProfesionales() {
-//    //Se limpia el contenido del dropdownlist
-//    $("#ProfesionalID").empty();
-//    $.ajax({
-//        type: 'POST',
-//        //Llamado al metodo en el controlador
-//        url: "../../Profesionales/ComboProfesional",
-//        dataType: 'json',
-//        //Parametros que se envian al metodo del controlador
-//        data: {  id: $("#EmpresaID").val() },
-//        //En caso de resultado exitoso
-//        success: function (profesionales) {
-//            if (profesionales.length == 0) {
-//                $("#ProfesionalID").append('<option value="' + "0" + '">' + "[NO EXISTEN PROFESIONALES]" + '</option>');
-//            }
-//            else {
-//                $.each(profesionales, function (i, profesional) {
-//                    $("#ProfesionalID").append('<option value="' + profesional.value + '">' +
-//                        profesional.text + '</option>');
-//                });
-//            }
-//        },
-//        ////Mensaje de error en caso de fallo
-//        error: function (ex) {
-//        }
-//    });
-//    return false;
-//}
+$("#EmpresaID").change(function () {
+    BuscarProfesionales();
+});
+
+function BuscarProfesionales() {
+    //Se limpia el contenido del dropdownlist
+    $("#ProfesionalID").empty();
+    $.ajax({
+        type: 'POST',
+        //Llamado al metodo en el controlador
+        url: "../../Profesionales/ComboProfesional",
+        dataType: 'json',
+        //Parametros que se envian al metodo del controlador
+        data: { id: $("#EmpresaID").val() },
+        //En caso de resultado exitoso
+        success: function (profesionales) {
+            if (profesionales.length == 0) {
+                $("#ProfesionalID").append('<option value="' + "0" + '">' + "[NO EXISTEN LOCALIDADES]" + '</option>');
+            }
+            else {
+                $.each(profesionales, function (i, profesional) {
+                    $("#ProfesionalID").append('<option value="' + profesional.value + '">' +
+                        profesional.text + '</option>');
+                });
+            }
+        },
+        ////Mensaje de error en caso de fallo
+        error: function (ex) {
+        }
+    });
+    return false;
+}
 
 
 
-////FUNCION PARA TRAER LOS HORARIOS QUE PERTENECEN AL PROFESIONAL SELECCIONADO
-//$("#ProfesionalID").change;(function () {
-//    BuscarHorarios();
-//});
-//function BuscarHorarios() {
-//    //Se limpia el contenido del dropdownlist
-//    $("#HorarioID").empty();
-//    $.ajax({
-//        type: 'POST',
-//        //Llamado al metodo en el controlador
-//        url: "../../Horarios/ComboHorario",
-//        dataType: 'json',
-//        //Parametros que se envian al metodo del controlador
-//        data: { id: $("#ProfesionalID").val() },
-//        //En caso de resultado exitoso
-//        success: function (horarios) {
-//            if (horarios.length == 0) {
-//                $("#HorarioID").append('<option value="' + "0" + '">' + "[NO EXISTEN HORARIOS]" + '</option>');
-//            }
-//            else {
-//                $.each(horarios, function (i, horario) {
-//                    $("#HorarioID").append('<option value="' + horario.value + '">' +
-//                        horario.text + '</option>');
-//                });
-//            }
-//        },
-//        ////Mensaje de error en caso de fallo
-//        error: function (ex) {
-//        }
-//    });
-//    return false;
-//}
+//FUNCION PARA TRAER LOS HORARIOS QUE PERTENECEN AL PROFESIONAL SELECCIONADO
+$("#ProfesionalID").change(function () {
+    BuscarHorarios();
+});
 
+function BuscarHorarios() {
+    //Se limpia el contenido del dropdownlist
+    $("#HorarioID").empty();
+    $.ajax({
+        type: 'POST',
+        //Llamado al metodo en el controlador
+        url: "../../Horarios/ComboHorario",
+        dataType: 'json',
+        //Parametros que se envian al metodo del controlador
+        data: { id: $("#ProfesionalID").val() },
+        //En caso de resultado exitoso
+        success: function (horarios) {
+            if (horarios.length == 0) {
+                $("#HorarioID").append('<option value="' + "0" + '">' + "[NO EXISTEN HORARIOS]" + '</option>');
+            }
+            else {
+                $.each(horarios, function (i, horario) {
+                    $("#HorarioID").append('<option value="' + horario.value + '">' +
+                        horario.text + '</option>');
+                });
+            }
+        },
+        ////Mensaje de error en caso de fallo
+        error: function (ex) {
+        }
+    });
+    return false;
+}
 
 // Funcion para limitar los caracteres de los input
 var input = document.getElementById('Nombre');
