@@ -222,9 +222,9 @@ ul, ol {
 }
 
     .navbar-brand .logo, .navbar-brand .logo-alt {
-        max-height: 50px;
+        max-height: 52px;
         display: block;
-        margin-top: 5px;
+        padding: 5px;
     }
 
 #nav:not(.nav-transparent):not(.fixed-nav) .navbar-brand .logo-alt {
@@ -246,6 +246,8 @@ ul, ol {
 
     #nav.nav-transparent .navbar-brand .logo {
         display: block !important;
+        max-height: 40px;
+        padding: 3px 3px 10px 0px;
     }
 }
 
