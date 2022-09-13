@@ -138,6 +138,10 @@ namespace AGENDAR.Controllers
                 {
                     resultado = 2;
                 }
+                if (HoraInicio > HoraFin)
+                {
+                    resultado = 3;
+                }
                 else
                 {
 
@@ -145,6 +149,10 @@ namespace AGENDAR.Controllers
 
                     //CALCULAMOS LAS HORAS QUE TRABAJA LA EMPRESA
                     int horasDeTrabajo = HoraFin.Hour - HoraInicio.Hour;
+                    if (horasDeTrabajo <= 1)
+                    {
+                        resultado = 4;
+                    }
                     //PASAMOS LAS HORAS QUE TRABAJA LA EMPRESA A MINUTOS
                     int minutosDiarios = horasDeTrabajo * 60;
 

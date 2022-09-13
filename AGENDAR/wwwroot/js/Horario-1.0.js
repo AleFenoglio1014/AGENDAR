@@ -101,6 +101,12 @@ function GuardarHorario() {
                 if (resultado == 2) {
                     $("#Error-Hora").text("El horario ingresado Ya Existe. Ingrese un Nuevo horario");
                 }
+                else if (resultado == 3) {
+                    $("#Error-HoraMayor").text("La Hora de Inicio debe ser Menor a la Hora de Fin ");
+                }
+                else if (resultado == 4) {
+                    $("#Error-HoraMenor").text("La diferencia entre la Hora Inicio y Hora Fin debe ser MIN de una hora");
+                }
             },
             error: function (data) {
             }
@@ -123,6 +129,8 @@ function VaciarFormulario() {
     $("#ProfesionalID").val(0);
     $("#Error-Hora").text("");
     $("#Error-CamposHorario").text("");
+    $("#Error-HoraMayor").text("");
+    $("#Error-HoraMenor").text("");
 }
 
 function DesactivarHorario(horarioID, elimina) {
@@ -148,3 +156,91 @@ function DesactivarHorario(horarioID, elimina) {
 }
 
 
+//FUNCION PARA GUARDAR COMO TRUE SI SELECCIONA EL CASILLERO Y FALSE SI NO SELECCIONA EL CASILLERO
+$('#checkbox-value').text($('#Lunes').val());
+
+$("#Lunes").on('change', function () {
+    if ($(this).is(':checked')) {
+        $(this).attr('value', 'true');
+    } else {
+        $(this).attr('value', 'false');
+    }
+
+    $('#checkbox-value').text($('#Lunes').val());
+});
+
+
+
+
+$('#checkbox-value').text($('#Martes').val());
+
+$("#Martes").on('change', function () {
+    if ($(this).is(':checked')) {
+        $(this).attr('value', 'true');
+    } else {
+        $(this).attr('value', 'false');
+    }
+
+    $('#checkbox-value').text($('#Martes').val());
+});
+
+$('#checkbox-value').text($('#Miercoles').val());
+
+$("#Miercoles").on('change', function () {
+    if ($(this).is(':checked')) {
+        $(this).attr('value', 'true');
+    } else {
+        $(this).attr('value', 'false');
+    }
+
+    $('#checkbox-value').text($('#Miercoles').val());
+});
+
+$('#checkbox-value').text($('#Jueves').val());
+
+$("#Jueves").on('change', function () {
+    if ($(this).is(':checked')) {
+        $(this).attr('value', 'true');
+    } else {
+        $(this).attr('value', 'false');
+    }
+
+    $('#checkbox-value').text($('#Jueves').val());
+});
+
+$('#checkbox-value').text($('#Viernes').val());
+
+$("#Viernes").on('change', function () {
+    if ($(this).is(':checked')) {
+        $(this).attr('value', 'true');
+    } else {
+        $(this).attr('value', 'false');
+    }
+
+    $('#checkbox-value').text($('#Viernes').val());
+});
+
+$('#checkbox-value').text($('#Sabado').val());
+
+$("#Sabado").on('change', function () {
+    if ($(this).is(':checked')) {
+        $(this).attr('value', 'true');
+    } else {
+        $(this).attr('value', 'false');
+    }
+
+    $('#checkbox-value').text($('#Sabado').val());
+});
+
+
+$('#checkbox-value').text($('#Domingo').val());
+
+$("#Domingo").on('change', function () {
+    if ($(this).is(':checked')) {
+        $(this).attr('value', 'true');
+    } else {
+        $(this).attr('value', 'false');
+    }
+
+    $('#checkbox-value').text($('#Domingo').val());
+});

@@ -58,6 +58,8 @@
                             <label for="recipient-name" class="control-label font-weight-bold">Hora Fin</label>
                             <input type="time" name="hora" class="form-control tamañoLetra" autocomplete="off" required id="HoraFin">
                         </div>
+                        <p class="text-danger font-weight-bold" style="font-size:small" id="Error-HoraMenor"></p>
+                        <p class="text-danger font-weight-bold" style="font-size:small" id="Error-HoraMayor"></p>
 
                         <div class="text-center col-md-6 col-sm-6 col-xl-6">
                             <label for="recipient-name" class="control-label font-weight-bold">Duración </label>
@@ -86,18 +88,19 @@
                                     </button>
                                     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
                                         <div class="card-body horario">
-                                            <div><input type="checkbox"  id="Lunes"> <label>Lunes</label></div>
-                                            <div><input type="checkbox"  id="Martes" > <label>Martes</label></div>
-                                            <div><input type="checkbox"  id="Miercoles"> <label>Miercoles</label></div>
-                                            <div><input type="checkbox"   id="Jueves" > <label>Jueves</label></div>
-                                            <div><input type="checkbox"  id="Viernes"> <label>Viernes</label></div>
-                                            <div><input type="checkbox"   id="Sabado"> <label>Sabado</label></div>
-                                            <div><input type="checkbox"  id="Domingo" > <label>Domingo</label></div>
+                                            <div><input type="checkbox" value="false" id="Lunes"> <label>Lunes</label></div>
+                                            <div><input type="checkbox" value="false" id="Martes"> <label>Martes</label></div>
+                                            <div><input type="checkbox" value="false" id="Miercoles"> <label>Miercoles</label></div>
+                                            <div><input type="checkbox" value="false" id="Jueves"> <label>Jueves</label></div>
+                                            <div><input type="checkbox" value="false" id="Viernes"> <label>Viernes</label></div>
+                                            <div><input type="checkbox" value="false" id="Sabado"> <label>Sabado</label></div>
+                                            <div><input type="checkbox" value="false" id="Domingo"> <label>Domingo</label></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                         <p class="text-danger font-weight-bold" style="font-size:small" id="Error-Hora"></p>
                         <p class="text-danger font-weight-bold" style="font-size:small" id="Error-CamposHorario"></p>
                     </div>
