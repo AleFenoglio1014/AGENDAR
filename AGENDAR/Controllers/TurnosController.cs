@@ -112,11 +112,11 @@ namespace AGENDAR.Controllers
 
             if (!string.IsNullOrEmpty(Nombre) && !string.IsNullOrEmpty(Apellido) && EmpresaID != 0)
             {
-                Nombre = Nombre.ToUpper();
+                
                 if (TurnoID == 0)
                 {
                     // Antes de CREAR el registro debemos preguntar si existe una TURNO existente
-                    if (_context.Turnos.Any(e => e.Nombre == Nombre))
+                    if (_context.Turnos.Any(e => e.ProfesionalID == ProfesionalID && e.HorarioID == HorarioID && e.FechaTurno == FechaTurno ))
                     {
                         resultado = 2;
                     }
