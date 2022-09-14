@@ -50,7 +50,7 @@ namespace AGENDAR.Controllers
             return View();
         }
 
-        
+
         public JsonResult ComboEmpresa(int id)//EMPRESA ID
         {
             //BUSCAR EMPRESAS
@@ -153,7 +153,7 @@ namespace AGENDAR.Controllers
                                 Direccion = direccion,
                                 Telefono = telefono,
                                 LocalidadID = LocalidadID,
-                                Eliminado = false,
+                                Eliminado = true,
                                 ImagenEmpresaString = tipoImg,
                                 ImagenEmpresa = img
                             };
@@ -218,7 +218,9 @@ namespace AGENDAR.Controllers
         }
 
         //Desactivar Empresa
-       
+
+        //Desactivar Empresa
+
         public JsonResult DesactivarEmpresa(int EmpresaID, int Elimina)
         {
             bool resultado = true;
@@ -228,11 +230,11 @@ namespace AGENDAR.Controllers
             {
                 if (Elimina == 0)
                 {
-                    empresa.Eliminado = true;
+                    empresa.Eliminado = false;
                 }
                 else
                 {
-                    empresa.Eliminado = false;
+                    empresa.Eliminado = true;
                 }
                 //_context.Empresa.Remove(empresa);
                 _context.SaveChanges();

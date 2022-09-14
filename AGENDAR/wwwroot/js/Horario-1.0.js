@@ -127,6 +127,13 @@ function VaciarFormulario() {
     $("#TiempoTurnos").val('');
     $("#DiaTurno").val('');
     $("#ProfesionalID").val(0);
+    $("#Lunes").val(false);
+    $("#Martes").val(false);
+    $("#Miercoles").val(false);
+    $("#Jueves").val(false);
+    $("#Viernes").val(false);
+    $("#Sabado").val(false);
+    $("#Domingo").val(false);
     $("#Error-Hora").text("");
     $("#Error-CamposHorario").text("");
     $("#Error-HoraMayor").text("");

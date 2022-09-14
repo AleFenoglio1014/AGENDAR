@@ -84,22 +84,7 @@ function GuardarTurno() {
 }
 
 
-//FUNCION PARA BORRAR EL CREATE
-function VaciarFormulario() {
-    $("#TurnoID").val(0);
-    $("#Nombre").val('');
-    $("#Apellido").val('');
-    $("#Email").val('');
-    $("#Telefono").val('');
-    $("#FechaTurno").val('');
-    $("#ProvinciaID").val(0);
-    $("#LocalidadID").val(0);
-    $("#EmpresaID").val(0);
-    $("#HorariosID").val(0);
-    $("#ProfesionalID").val(0);
-    $("#Error-CamposTurno").text("");
-    
-}
+
 //FUNCION PARA TRAER LAS LOCALIDADES QUE PERTENECEN A LA PROVINCIA SELECCIONADA
 $("#ProvinciaID").change(function () {
     BuscarLocalidades();
@@ -267,3 +252,16 @@ input.addEventListener('input', function () {
         swal("HA SUPERADO EL LIMITE DE CARACTERES PERMITIDO.");
     this.value = this.value.slice(0, 15);
 })
+
+//FUNCION PARA QUE EN EL CALENDARIO MUESTRE LA FECHA ACTUAL
+window.onload = function () {
+    var fecha = new Date(); //Fecha actual
+    var mes = fecha.getMonth() + 1; //obteniendo mes
+    var dia = fecha.getDate(); //obteniendo dia
+    var ano = fecha.getFullYear(); //obteniendo año
+    if (dia < 10)
+        dia = '0' + dia; //agrega cero si el menor de 10
+    if (mes < 10)
+        mes = '0' + mes //agrega cero si el menor de 10
+    document.getElementById('FechaTurno').value = ano + "-" + mes + "-" + dia;
+}

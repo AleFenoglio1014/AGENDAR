@@ -9,14 +9,15 @@ function CompletarTablaEmpresas() {
             $("#tbody-empresa").empty();
             $.each(listadoEmpresasMostrar, function (index, empresa) {
 
-                let claseEliminado = 'table-danger';
-              
-                let botones = '<button type="button" onclick="BuscarEmpresa(' + empresa.empresaID + ')" class="btn btn-outline-primary btn-sm" style="margin-right:5px"><i class="bi bi-pencil-square"></i></button>' +
-                    '<button type="button" onclick="DesactivarEmpresa(' + empresa.empresaID + ',0)" class="btn btn-outline-success btn-sm"><i class="bi bi-check-circle"></i></button>';
+                let claseEliminado = '';
+
+                let botones = '<button type="button" onclick="DesactivarEmpresa(' + empresa.empresaID + ',1)" class="btn btn-outline-danger btn-sm"> <i class="bi bi-x-lg"></i> </button>';
+
 
                 if (empresa.eliminado) {
-                    claseEliminado = '';
-                    botones = '<button type="button" onclick="DesactivarEmpresa(' + empresa.empresaID + ',1)" class="btn btn-outline-danger btn-sm"> <i class="bi bi-x-lg"></i> </button>';
+                    claseEliminado = 'table-danger';
+                    botones = '<button type="button" onclick="BuscarEmpresa(' + empresa.empresaID + ')" class="btn btn-outline-primary btn-sm" style="margin-right:5px"><i class="bi bi-pencil-square"></i></button>' +
+                        '<button type="button" onclick="DesactivarEmpresa(' + empresa.empresaID + ',0)" class="btn btn-outline-success btn-sm"><i class="bi bi-check-circle"></i></button>';
 
                 }
 
@@ -36,12 +37,6 @@ function CompletarTablaEmpresas() {
         error: function (data) {
         }
     });
-}
-
-//Funcion Abrir Modal
-function AbrirModal() {
-  
-    $("#exampleModal").modal("show");
 }
 
  // Funcion para Buscar las Empresas
@@ -94,7 +89,7 @@ function DesactivarEmpresa(empresaID, elimina) {
         var mensajeEliminar = "¿Esta seguro que quiere DESACTIVAR la Empresa?"
     } else {
         var mensajeEliminar = "¿Esta seguro que quiere ACTIVAR la Empresa?"
-     
+
     }
     if (confirm(mensajeEliminar)) {
         $.ajax({

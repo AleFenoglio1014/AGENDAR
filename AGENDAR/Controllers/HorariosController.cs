@@ -44,7 +44,7 @@ namespace AGENDAR.Controllers
             var rolUsuario = _context.UserRoles.Where(u => u.UserId == usuarioActual).FirstOrDefault();
             //EN BASE A ESA VARIABLE RECURRIMOS AL ID DEL ROL PARA BUSCAR EN LA TABLA ROL, EL NOMBRE
             var rolNombre = _context.Roles.Where(u => u.Id == rolUsuario.RoleId).Select(r => r.Name).FirstOrDefault();
-            if (rolNombre == "Empresa")
+            if (rolNombre == "SuperUsuario")
             {
 
                 var empresaUsuario = (from e in _context.EmpresasUsuarios where e.UsuarioID == usuarioActual select e).Count();
