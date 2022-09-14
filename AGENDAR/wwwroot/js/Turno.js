@@ -149,7 +149,7 @@ function BuscarLocalidades() {
                     $("#LocalidadID").append('<option value="' + localidad.value + '">' +
                         localidad.text + '</option>');
                 });
-            }
+            } BuscarEmpresas()
         },
         ////Mensaje de error en caso de fallo
         error: function (ex) {
@@ -184,7 +184,7 @@ function BuscarEmpresas() {
                     $("#EmpresaID").append('<option value="' + empresa.value + '">' +
                         empresa.text + '</option>');
                 });
-            }
+            } BuscarProfesionales()
         },
         ////Mensaje de error en caso de fallo
         error: function (ex) {
@@ -212,14 +212,14 @@ function BuscarProfesionales() {
         //En caso de resultado exitoso
         success: function (profesionales) {
             if (profesionales.length == 0) {
-                $("#ProfesionalID").append('<option value="' + "0" + '">' + "[NO EXISTEN LOCALIDADES]" + '</option>');
+                $("#ProfesionalID").append('<option value="' + "0" + '">' + "[NO EXISTEN PROFESIONAL]" + '</option>');
             }
             else {
                 $.each(profesionales, function (i, profesional) {
                     $("#ProfesionalID").append('<option value="' + profesional.value + '">' +
                         profesional.text + '</option>');
                 });
-            }
+            } BuscarHorarios()
         },
         ////Mensaje de error en caso de fallo
         error: function (ex) {

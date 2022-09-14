@@ -54,7 +54,7 @@ namespace AGENDAR.Controllers
         public JsonResult ComboEmpresa(int id)//EMPRESA ID
         {
             //BUSCAR EMPRESAS
-            var empresas = (from o in _context.Empresa where o.LocalidadID == id && o.Eliminado == true select o).ToList();
+            var empresas = (from o in _context.Empresa where o.LocalidadID == id && o.Eliminado == false select o).ToList();
 
             return Json(new SelectList(empresas, "EmpresaID", "RazonSocial"));
         }
@@ -153,6 +153,7 @@ namespace AGENDAR.Controllers
                                 Direccion = direccion,
                                 Telefono = telefono,
                                 LocalidadID = LocalidadID,
+                                Eliminado = false,
                                 ImagenEmpresaString = tipoImg,
                                 ImagenEmpresa = img
                             };
