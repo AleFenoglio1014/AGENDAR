@@ -79,6 +79,8 @@ namespace AGENDAR.Areas.Identity.Pages.Account
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
+                    //ASIGNAMOS AL USUARIO QUE CREA LA EMPRESA EL ROL DE ADMINISTRADOREMPRESA
+                    await _userManager.AddToRoleAsync(user, "AdministradorEmpresa");
                     _logger.LogInformation("User created a new account with password.");
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -99,7 +101,10 @@ namespace AGENDAR.Areas.Identity.Pages.Account
                     else
                     {
                         await _signInManager.SignInAsync(user, isPersistent: false);
+                      
                         return LocalRedirect(returnUrl);
+
+                      
                     }
                 }
                 foreach (var error in result.Errors)

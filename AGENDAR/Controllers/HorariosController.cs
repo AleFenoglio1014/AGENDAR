@@ -30,6 +30,9 @@ namespace AGENDAR.Controllers
             var empresalogueada = _context.EmpresasUsuarios.Where(p => p.UsuarioID == usuarioActual).SingleOrDefault();
             empresaUsuarioActual.EmpresaID = empresalogueada.EmpresaID;
         }
+
+
+
         [Authorize]
         public IActionResult Index()
         {

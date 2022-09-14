@@ -168,8 +168,7 @@ namespace AGENDAR.Controllers
                             _context.Add(empresaUsuario);
                             _context.SaveChanges();
 
-                            //ASIGNAMOS AL USUARIO QUE CREA LA EMPRESA EL ROL DE ADMINISTRADOREMPRESA
-                            await _userManager.AddToRoleAsync(usuario, "AdministradorEmpresa");
+                          
                         }
                     }
                     else
