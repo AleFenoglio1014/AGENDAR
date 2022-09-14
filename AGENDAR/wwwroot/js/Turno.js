@@ -1,32 +1,9 @@
-﻿/*/* FUNCION PARA COMPLETAR EL CALENDARIO DE TURNO*/
-
-//function Completarcalendario() {
-//    VaciarFormulario();
-//    $.ajax({
-//        type: "POST",
-//        url: '../../Turnos/BuscarTurnos',
-//        data: {},
-//        success: function (turnos) {
-//            $("#events").empty();
-//            $.each(turnos, function (index, turno) {
-
-//                $("#events").append(
-//                    title + turno.nombre +
-//                    start + turno.fechaTurno
-//                    );
-                    
-//            });
-//        },
-//        error: function (data) {
-//        }
-//    });
-//}
-
-
+﻿
 
 // FUNCION PARA GUARDAR EL TURNO
 
 function GuardarTurno() {
+    VaciarFormulario();
     let turnoID = $('#TurnoID').val();
     let localidadID = $('#LocalidadID').val();
     let telefono = $('#Telefono').val();
@@ -91,8 +68,7 @@ function GuardarTurno() {
             success: function (resultado) {
                 if (resultado == 0) {
                     $("#exampleModal").modal("hide");
-                    Completarcalendario();
-                    swal("SU TURNO AH SIDO SOLICITADO CON EXITO");
+                    swal("SU TURNO AH SIDO SOLICITADO CON EXITO, ESPERE QUE EL PROFESIONAL LO ACEPTE");
                 }
                 //if (resultado == 2) {
                 //    $("#Error-ProvinciaNombre").text("La Provincia ingresada Ya Existe. Ingrese una Nueva Provincia");
@@ -149,7 +125,7 @@ function BuscarLocalidades() {
                     $("#LocalidadID").append('<option value="' + localidad.value + '">' +
                         localidad.text + '</option>');
                 });
-            }
+            } BuscarEmpresas()
         },
         ////Mensaje de error en caso de fallo
         error: function (ex) {
@@ -184,7 +160,7 @@ function BuscarEmpresas() {
                     $("#EmpresaID").append('<option value="' + empresa.value + '">' +
                         empresa.text + '</option>');
                 });
-            }
+            } BuscarProfesionales()
         },
         ////Mensaje de error en caso de fallo
         error: function (ex) {
@@ -212,14 +188,14 @@ function BuscarProfesionales() {
         //En caso de resultado exitoso
         success: function (profesionales) {
             if (profesionales.length == 0) {
-                $("#ProfesionalID").append('<option value="' + "0" + '">' + "[NO EXISTEN LOCALIDADES]" + '</option>');
+                $("#ProfesionalID").append('<option value="' + "0" + '">' + "[NO EXISTEN PROFESIONAL]" + '</option>');
             }
             else {
                 $.each(profesionales, function (i, profesional) {
                     $("#ProfesionalID").append('<option value="' + profesional.value + '">' +
                         profesional.text + '</option>');
                 });
-            }
+            } BuscarHorarios()
         },
         ////Mensaje de error en caso de fallo
         error: function (ex) {
