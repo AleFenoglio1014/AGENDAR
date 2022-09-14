@@ -140,9 +140,9 @@ namespace AGENDAR.Controllers
                         };
                         _context.Add(turnoNuevo);
                         _context.SaveChanges();
-                        Horario horario = _context.Horario.Find(turnoNuevo.HorarioID);
-                        horario.Eliminado = true;
-                        _context.SaveChanges();
+                        //Horario horario = _context.Horario.Find(turnoNuevo.HorarioID);
+                        //horario.Eliminado = true;
+                        //_context.SaveChanges();
 
                     }
 
