@@ -1,32 +1,9 @@
-﻿/*/* FUNCION PARA COMPLETAR EL CALENDARIO DE TURNO*/
-
-//function Completarcalendario() {
-//    VaciarFormulario();
-//    $.ajax({
-//        type: "POST",
-//        url: '../../Turnos/BuscarTurnos',
-//        data: {},
-//        success: function (turnos) {
-//            $("#events").empty();
-//            $.each(turnos, function (index, turno) {
-
-//                $("#events").append(
-//                    title + turno.nombre +
-//                    start + turno.fechaTurno
-//                    );
-                    
-//            });
-//        },
-//        error: function (data) {
-//        }
-//    });
-//}
-
-
+﻿
 
 // FUNCION PARA GUARDAR EL TURNO
 
 function GuardarTurno() {
+    VaciarFormulario();
     let turnoID = $('#TurnoID').val();
     let localidadID = $('#LocalidadID').val();
     let telefono = $('#Telefono').val();
@@ -91,8 +68,7 @@ function GuardarTurno() {
             success: function (resultado) {
                 if (resultado == 0) {
                     $("#exampleModal").modal("hide");
-                    Completarcalendario();
-                    swal("SU TURNO AH SIDO SOLICITADO CON EXITO");
+                    swal("SU TURNO AH SIDO SOLICITADO CON EXITO, ESPERE QUE EL PROFESIONAL LO ACEPTE");
                 }
                 //if (resultado == 2) {
                 //    $("#Error-ProvinciaNombre").text("La Provincia ingresada Ya Existe. Ingrese una Nueva Provincia");
