@@ -205,7 +205,7 @@ function BuscarHorarios() {
         url: "../../Horarios/ComboHorario",
         dataType: 'json',
         //Parametros que se envian al metodo del controlador
-        data: { id: $("#ProfesionalID").val() },
+        data: { id: $("#ProfesionalID").val(), fecha: $("#FechaTurno").val() },
         //En caso de resultado exitoso
         success: function (horarios) {
             if (horarios.length == 0) {
@@ -264,4 +264,5 @@ window.onload = function () {
     if (mes < 10)
         mes = '0' + mes //agrega cero si el menor de 10
     document.getElementById('FechaTurno').value = ano + "-" + mes + "-" + dia;
+    $("#HorarioID").append('<option value="' + "0" + '">' + "[SELECCIONE UN HORARIO]" + '</option>');
 }

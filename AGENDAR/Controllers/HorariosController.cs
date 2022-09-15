@@ -9,6 +9,8 @@ using AGENDAR.Data;
 using AGENDAR.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using System.Threading;
+using System.Globalization;
 
 namespace AGENDAR.Controllers
 {
@@ -65,12 +67,68 @@ namespace AGENDAR.Controllers
 
             return View();
         }
-        public JsonResult ComboHorario(int id)//HORARIO ID
+        public JsonResult ComboHorario(int id, string fecha)//HORARIO ID
         {
-            //BUSCAR HORARIO
-            var horarios = (from o in _context.Horario where o.ProfesionalID == id && o.Eliminado == false select o).ToList();
+            //CAMBIAMOS A CULTURA ARGENTINA LA FECHA
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("es-Ar");
 
-            return Json(new SelectList(horarios, "HorarioID", "HorarioCompleto"));
+            var fechaTurno = Convert.ToDateTime(fecha);
+            var nombreDia = fechaTurno.Day;
+            string numeroDia = Convert.ToString((int)nombreDia);
+
+            //BUSCAR HORARIOS DE ACUERDO AL NUMEROS DEL DIA SELECCIONADO
+            var horarios = (from o in _context.Horario where o.ProfesionalID == id && o.Eliminado == false select o).ToList();
+            if (numeroDia == "0")
+            {
+                //Domingo
+                horarios = (from o in horarios where o.Domingo == true select o).ToList();
+            }
+            if (numeroDia == "1")
+            {
+                //Lunes
+                horarios = (from o in horarios where o.Lunes == true select o).ToList();
+            }
+            if (numeroDia == "2")
+            {
+                //Martes
+                horarios = (from o in horarios where o.Martes == true select o).ToList();
+            }
+            if (numeroDia == "3")
+            {
+                //Miércoles
+                horarios = (from o in horarios where o.Miercoles == true select o).ToList();
+            }
+            if (numeroDia == "4")
+            {
+                //Jueves
+                horarios = (from o in horarios where o.Jueves == true select o).ToList();
+            }
+            if (numeroDia == "5")
+            {
+                //Viernes
+                horarios = (from o in horarios where o.Viernes == true select o).ToList();
+            }
+            if (numeroDia == "6")
+            {
+                //Sábado
+                horarios = (from o in horarios where o.Sabado == true select o).ToList();
+            }
+
+            List<Horario> horarioMostrar = new List<Horario>();
+            // RECORREMOS TODOS LOS TURNOS DE ESE DIA
+            foreach( var horario in horarios)
+            {    // POR CADA HORARIO VAMOS A BUSCAR EN LA TABLA TURNO LO SIGUIENTE
+                //SI EXISTE ALGUN TURNO AL MISMO DIA Y AL MISMO HORARIO ID
+                var existeTurno = (from o in _context.Turnos where o.FechaTurno == fechaTurno && o.HorarioID == horario.HorarioID select o).Count();
+            if(existeTurno == 0)
+                {
+                    horarioMostrar.Add(horario);
+                }
+            }
+
+           
+
+            return Json(new SelectList(horarioMostrar, "HorarioID", "HorarioCompleto"));
         }
         // Funcion para Completar la Tabla de Horario
     

@@ -28,11 +28,47 @@ function CompletarTablaHorario() {
                     tiempoMostrar = "60 Minutos"
                 }
 
+                let letraDomingo = '<spam class="text-success font-weight-bold">D</spam>';
+                if (!horario.domingo) {
+                    letraDomingo = '<spam class="text-danger font-weight-bold">D</spam>'
+                }
+                let letraLunes = '<spam class="text-success font-weight-bold">L</spam>';
+                if (!horario.lunes) {
+                    letraLunes = '<spam class="text-danger font-weight-bold">L</spam>'
+                }
+                let letraMartes = '<spam class="text-success font-weight-bold">M</spam>';
+                if (!horario.martes) {
+                    letraMartes = '<spam class="text-danger font-weight-bold">M</spam>'
+                }
+                let letraMiercoles = '<spam class="text-success font-weight-bold">M</spam>';
+                if (!horario.miercoles) {
+                    letraMiercoles = '<spam class="text-danger font-weight-bold">M</spam>'
+                }
+                let letraJueves = '<spam class="text-success font-weight-bold">J</spam>';
+                if (!horario.jueves) {
+                    letraJueves = '<spam class="text-danger font-weight-bold">J</spam>'
+                }
+                let letraViernes = '<spam class="text-success font-weight-bold">V</spam>';
+                if (!horario.viernes) {
+                    letraViernes = '<spam class="text-danger font-weight-bold">V</spam>'
+                }
+                let letraSabado = '<spam class="text-success font-weight-bold">S</spam>';
+                if (!horario.sabado) {
+                    letraSabado = '<spam class="text-danger font-weight-bold">S</spam>'
+                }
+
                 $("#tbody-horario").append('<tr class=' + claseEliminado + '>' +
                     '<td class="text-center ">' + horario.horarioCompleto + '</td>' +
                     '<td class="text-center ">' + tiempoMostrar + '</td>' +
                     '<td class="text-center ">' + horario.profesionalNombre + '</td>' +
-                   
+                    '<td class="text-center "> D L M M J V S' + letraDomingo + 'D</td > ' +
+                    '<td class="text-center "> D L M M J V S' + letraLunes + 'L</td > ' +
+                    '<td class="text-center "> D L M M J V S' + letraMartes + 'M</td > ' +
+                    '<td class="text-center "> D L M M J V S' + letraMiercoles + 'M</td > ' +
+                    '<td class="text-center "> D L M M J V S' + letraJueves + 'J</td > ' +
+                    '<td class="text-center "> D L M M J V S' + letraViernes + 'V</td > ' +
+                    '<td class="text-center "> D L M M J V S' + letraSabado + 'S</td > ' +
+
                     '<td class="text-center ">' +
                     botones +
                     '</td>' +
