@@ -29,7 +29,7 @@ namespace AGENDAR.Models
         public DateTime FechaTurno { get; set; }
 
       
-        public int Elimindado { get; set; }
+        public int Eliminado { get; set; }
         public virtual Horario Horarios { get; set; }
 
     }
