@@ -3,7 +3,6 @@
 // FUNCION PARA GUARDAR EL TURNO
 
 function GuardarTurno() {
-    VaciarFormulario();
     let turnoID = $('#TurnoID').val();
     let localidadID = $('#LocalidadID').val();
     let telefono = $('#Telefono').val();
@@ -195,6 +194,9 @@ function BuscarProfesionales() {
 $("#ProfesionalID").change(function () {
     BuscarHorarios();
 });
+$("#FechaTurno").change(function () {
+    BuscarHorarios();
+});
 
 function BuscarHorarios() {
     //Se limpia el contenido del dropdownlist
@@ -205,7 +207,7 @@ function BuscarHorarios() {
         url: "../../Horarios/ComboHorario",
         dataType: 'json',
         //Parametros que se envian al metodo del controlador
-        data: { id: $("#ProfesionalID").val() },
+        data: { id: $("#ProfesionalID").val(), fecha: $("#FechaTurno").val() },
         //En caso de resultado exitoso
         success: function (horarios) {
             if (horarios.length == 0) {
@@ -253,7 +255,7 @@ input.addEventListener('input', function () {
     this.value = this.value.slice(0, 15);
 })
 
-//FUNCION PARA QUE EN EL CALENDARIO MUESTRE LA FECHA ACTUAL
+//FUNCION PARA QUE EN EL CALENDARIO MUESTRE LA FECHA ACTUAL Y BLOQUEE LOS DIAS ANTERIORES
 window.onload = function () {
     var fecha = new Date(); //Fecha actual
     var mes = fecha.getMonth() + 1; //obteniendo mes
@@ -264,4 +266,7 @@ window.onload = function () {
     if (mes < 10)
         mes = '0' + mes //agrega cero si el menor de 10
     document.getElementById('FechaTurno').value = ano + "-" + mes + "-" + dia;
+    var fecha_minimo = ano + '-' + mes + '-' + dia;// Nueva variable 
+    document.getElementById("FechaTurno").setAttribute('min', fecha_minimo); FechaTurno.min = new Date().toISOString().split("T")[0];
+    $("#HorarioID").append('<option value="' + "0" + '">' + "[SELECCIONE UN HORARIO]" + '</option>');
 }
