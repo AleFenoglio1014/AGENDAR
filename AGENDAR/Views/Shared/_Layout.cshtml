@@ -12,11 +12,13 @@
 </head>
 <body>
     <header>
-        <div class="bg-img" style="height:937px">
+        <div class="bg-img">
             <div class="overlay"></div>
         </div>
 
-        <nav class="navbar  navbar-expand-md navbar-dark ownbg">
+        @*<nav class="navbar  navbar-expand-md navbar-dark ownbg">*@
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light colorNav  box-shadow mb-3  ">
+
             <div class="container">
                 <a class="navbar-brand text-black pl-5" href="#"><img src="~/lib/Imagenes/AgendArLogo.jpg"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -24,7 +26,7 @@
                 </button>
                 <partial name="_LoginPartial" />
                 <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ml-auto" style="color:black">
                         @if (User.IsInRole("SuperUsuario"))
                         {
                             <li class="nav-item">

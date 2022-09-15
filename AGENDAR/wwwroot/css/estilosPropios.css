@@ -1,5 +1,9 @@
 ﻿
 
+.colorNav {
+    background-color: #838383;
+}
+
  /*CLASES MODAL PRIVADO */
 .modal-header {
     text-align: center;
@@ -136,6 +140,7 @@ ul, ol {
 
 .bg-img {
     width: 120%;
+    min-height:100%;
     position: absolute;
     left: 0;
     top: 0;
