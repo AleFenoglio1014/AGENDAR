@@ -61,14 +61,7 @@ function CompletarTablaHorario() {
                     '<td class="text-center ">' + horario.horarioCompleto + '</td>' +
                     '<td class="text-center ">' + tiempoMostrar + '</td>' +
                     '<td class="text-center ">' + horario.profesionalNombre + '</td>' +
-                    '<td class="text-center "> D L M M J V S' + letraDomingo + 'D</td > ' +
-                    '<td class="text-center "> D L M M J V S' + letraLunes + 'L</td > ' +
-                    '<td class="text-center "> D L M M J V S' + letraMartes + 'M</td > ' +
-                    '<td class="text-center "> D L M M J V S' + letraMiercoles + 'M</td > ' +
-                    '<td class="text-center "> D L M M J V S' + letraJueves + 'J</td > ' +
-                    '<td class="text-center "> D L M M J V S' + letraViernes + 'V</td > ' +
-                    '<td class="text-center "> D L M M J V S' + letraSabado + 'S</td > ' +
-
+                    '<td class="text-center ">' + letraDomingo + letraLunes + letraMartes + letraMiercoles + letraJueves + letraViernes + letraSabado + '</td>' +
                     '<td class="text-center ">' +
                     botones +
                     '</td>' +

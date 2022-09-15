@@ -73,7 +73,7 @@ namespace AGENDAR.Controllers
             Thread.CurrentThread.CurrentCulture = new CultureInfo("es-Ar");
 
             var fechaTurno = Convert.ToDateTime(fecha);
-            var nombreDia = fechaTurno.Day;
+            var nombreDia = fechaTurno.DayOfWeek;
             string numeroDia = Convert.ToString((int)nombreDia);
 
             //BUSCAR HORARIOS DE ACUERDO AL NUMEROS DEL DIA SELECCIONADO
@@ -227,7 +227,7 @@ namespace AGENDAR.Controllers
 
                     //CALCULAMOS LAS HORAS QUE TRABAJA LA EMPRESA
                     int horasDeTrabajo = HoraFin.Hour - HoraInicio.Hour;
-                    if (horasDeTrabajo <= 1)
+                    if (horasDeTrabajo < 1)
                     {
                         resultado = 4;
                     }
