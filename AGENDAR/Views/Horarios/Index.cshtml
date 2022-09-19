@@ -13,29 +13,32 @@
     <!-- Boton Modal -->
     <button class="btn btn-success" onclick="AbrirModal()"><i class="bi bi-folder-plus"></i> Agregar Horario</button>
 </p>
-<table class="table table-bordered table-light">
-    <thead class="table-dark table-bordered ">
-        <tr>
-            <th class="text-center ">
-                Horario
-            </th>
+<div style="height:390px; overflow: auto">
+    <table class="table table-bordered table-light">
+        <thead class="table-dark table-bordered ">
+            <tr>
+                <th class="text-center ">
+                    Horario
+                </th>
 
-            <th class="text-center ">
-                Duración
-            </th>
-            <th class="text-center ">
-                Profesional
-            </th>
-            <th class="text-center ">
-               Días
-            </th>
+                <th class="text-center ">
+                    Duración
+                </th>
+                <th class="text-center ">
+                    Profesional
+                </th>
+                <th class="text-center ">
+                    Días
+                </th>
 
-            <th class="text-center">Opciones</th>
-        </tr>
-    </thead>
-    <tbody id="tbody-horario">
-    </tbody>
-</table>
+                <th class="text-center">Opciones</th>
+            </tr>
+        </thead>
+        <tbody id="tbody-horario">
+        </tbody>
+    </table>
+
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
