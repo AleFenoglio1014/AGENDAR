@@ -105,7 +105,10 @@ function DesactivarEmpresa(empresaID, elimina) {
         });
     }
 }
-
+function AbrirModal() {
+   
+    $("#exampleModal").modal("show");
+}
 // FUncion para Guardar las Empresas
 
 function GuardarEmpresa() {
@@ -165,7 +168,7 @@ function GuardarEmpresa() {
                 if (resultado == 0) {
                     $("#exampleModal").modal("hide");
                     CompletarTablaEmpresas();
-                    AbrirModal()
+                    AbrirModal();
                   
                 }
                 if (resultado == 2) {
