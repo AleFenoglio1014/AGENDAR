@@ -65,9 +65,13 @@ namespace AGENDAR.Controllers
             profesional.Add(new Profesional { ProfesionalID = 0, Nombre = "[SELECCIONE UN PROFESIONAL]" });
             ViewBag.ProfesionalID = new SelectList(profesional.OrderBy(p => p.ProfesionalNombreCompleto), "ProfesionalID", "ProfesionalNombreCompleto");
 
+            //var profesionalFiltro = _context.Profesional.Where(p => p.Eliminado == false && p.EmpresaID == empresaUsuarioActual.EmpresaID).ToList();
+            //profesionalFiltro.Add(new Profesional { ProfesionalID = 0, Nombre = "[SELECCIONE UN PROFESIONAL]" });
+            //ViewBag.ProfesionalIDFiltro = new SelectList(profesionalFiltro.OrderBy(p => p.ProfesionalNombreCompleto), "ProfesionalID", "ProfesionalNombreCompleto");
+
             return View();
         }
-        public JsonResult ComboHorario(int id, string fecha)//HORARIO ID
+        public JsonResult ComboHorario(int id, string fecha, int profesionalFiltro)//HORARIO ID
         {
             //CAMBIAMOS A CULTURA ARGENTINA LA FECHA
             Thread.CurrentThread.CurrentCulture = new CultureInfo("es-Ar");
@@ -126,12 +130,30 @@ namespace AGENDAR.Controllers
                 }
             }
 
-           
+            var profesional = (from o in _context.Horario where o.ProfesionalID == profesionalFiltro && o.Eliminado == false select o).ToList();
+
+            if (profesionalFiltro > 0)
+            {
+                profesional = (from o in profesional where o.ProfesionalID == profesionalFiltro && o.Eliminado == false select o).ToList();
+            }
 
             return Json(new SelectList(horarioMostrar, "HorarioID", "HorarioCompleto"));
         }
+        //public JsonResult ComboHorarioProfesional (int profesionalFiltro)//HORARIO ID
+        //{
+            
+
+        //    var profesional = (from o in _context.Horario where o.ProfesionalID == profesionalFiltro && o.Eliminado == false select o).ToList();
+
+        //    if (profesionalFiltro > 0)
+        //    {
+        //        profesional = (from o in profesional where o.ProfesionalID == profesionalFiltro && o.Eliminado == false select o).ToList();
+        //    }
+
+        //    return Json(new SelectList(profesional, "HorarioID", "HorarioCompleto"));
+        //}
         // Funcion para Completar la Tabla de Horario
-    
+
         public JsonResult BuscarHorarios()
         {
             //PRIMERO BUSCAMOS EL USUARIO ACTUAL

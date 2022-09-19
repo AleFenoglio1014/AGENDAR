@@ -280,3 +280,34 @@ $("#Domingo").on('change', function () {
 
     $('#checkbox-value').text($('#Domingo').val());
 });
+
+////FUNCION PARA FILTAR LOS PROFESIONALES POR HORARIO
+
+//$("#ProfesionalID").change(function () {
+//    BuscarHorarios();
+//});
+//function BuscarHorarios() {
+//    //Se limpia el contenido del dropdownlist
+//    $("#HorarioID").empty();
+//    $.ajax({
+//        type: 'POST',
+//        //Llamado al metodo en el controlador
+//        url: "../../Horarios/ComboHorarioProfesional",
+//        dataType: 'json',
+//        //Parametros que se envian al metodo del controlador
+//        data: { id: $("#ProfesionalIDFiltro").val() },
+//        //En caso de resultado exitoso
+//        success: function (profesionalFiltro) {
+            
+//            $.each(profesionalFiltro, function (i, horario) {
+//                    $("#HorarioID").append('<option value="' + horario.value + '">' +
+//                        horario.text + '</option>');
+//                });
+//            CompletarTablaHorario()
+//        },
+//        ////Mensaje de error en caso de fallo
+//        error: function (ex) {
+//        }
+//    });
+//    return false;
+//}
