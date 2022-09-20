@@ -1,11 +1,11 @@
 ﻿// Funcion para Completar la Tabla de Horario
 function CompletarTablaHorario( ) {
     VaciarFormulario();
-   /* let profesionalIDFiltro = $('#ProfesionalIDFiltro').val().trim();*/
+    let profesionalIDFiltro = $('#ProfesionalIDFiltro').val().trim();
     $.ajax({
         type: "POST",
         url: '../../Horarios/BuscarHorarios',
-        data: { /*ProfesionalID: profesionalIDFiltro*/ },
+        data: { ProfesionalID: profesionalIDFiltro },
         success: function (listadoHorario) {
             $("#tbody-horario").empty();
             $.each(listadoHorario, function (index, horario) {
@@ -157,13 +157,6 @@ function VaciarFormulario() {
     $("#TiempoTurnos").val('');
     $("#DiaTurno").val('');
     $("#ProfesionalID").val(0);
-    $("#Lunes").val(false);
-    $("#Martes").val(false);
-    $("#Miercoles").val(false);
-    $("#Jueves").val(false);
-    $("#Viernes").val(false);
-    $("#Sabado").val(false);
-    $("#Domingo").val(false);
     $("#Error-Hora").text("");
     $("#Error-CamposHorario").text("");
     $("#Error-HoraMayor").text("");
@@ -282,33 +275,33 @@ $("#Domingo").on('change', function () {
     $('#checkbox-value').text($('#Domingo').val());
 });
 
-////FUNCION PARA FILTAR LOS PROFESIONALES POR HORARIO
+//FUNCION PARA FILTAR LOS PROFESIONALES POR HORARIO
 
-//$("#ProfesionalIDFiltro").change(function () {
-//    BuscarHorarios();
-//});
-//function BuscarHorarios() {
-//    //Se limpia el contenido del dropdownlist
-//    $("#HorarioID").empty();
-//    $.ajax({
-//        type: 'POST',
-//        //Llamado al metodo en el controlador
-//        url: "../../Horarios/ComboHorarioProfesional",
-//        dataType: 'json',
-//        //Parametros que se envian al metodo del controlador
-//        data: { profesionalIDFiltro: $("#ProfesionalIDFiltro").val() },
-//        //En caso de resultado exitoso
-//        success: function (profesionalFiltro) {
+$("#ProfesionalIDFiltro").change(function () {
+    BuscarHorarios();
+});
+function BuscarHorarios() {
+    //Se limpia el contenido del dropdownlist
+    $("#HorarioID").empty();
+    $.ajax({
+        type: 'POST',
+        //Llamado al metodo en el controlador
+        url: "../../Horarios/ComboHorarioProfesional",
+        dataType: 'json',
+        //Parametros que se envian al metodo del controlador
+        data: { profesionalIDFiltro: $("#ProfesionalIDFiltro").val() },
+        //En caso de resultado exitoso
+        success: function (profesionalFiltro) {
             
-//            $.each(profesionalFiltro, function (i, profesional) {
-//                $("#HorarioID").append('<option value="' + profesional.value + '">' +
-//                    profesional.text + '</option>');
-//                });
-//            CompletarTablaHorario()
-//        },
-//        ////Mensaje de error en caso de fallo
-//        error: function (ex) {
-//        }
-//    });
-//    return false;
-//}
+            $.each(profesionalFiltro, function (i, profesional) {
+                $("#HorarioID").append('<option value="' + profesional.value + '">' +
+                    profesional.text + '</option>');
+                });
+            CompletarTablaHorario()
+        },
+        ////Mensaje de error en caso de fallo
+        error: function (ex) {
+        }
+    });
+    return false;
+}
