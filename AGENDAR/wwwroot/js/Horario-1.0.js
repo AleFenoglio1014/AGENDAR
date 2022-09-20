@@ -1,10 +1,11 @@
 ﻿// Funcion para Completar la Tabla de Horario
-function CompletarTablaHorario() {
+function CompletarTablaHorario( ) {
     VaciarFormulario();
+   /* let profesionalIDFiltro = $('#ProfesionalIDFiltro').val().trim();*/
     $.ajax({
         type: "POST",
         url: '../../Horarios/BuscarHorarios',
-        data: {},
+        data: { /*ProfesionalID: profesionalIDFiltro*/ },
         success: function (listadoHorario) {
             $("#tbody-horario").empty();
             $.each(listadoHorario, function (index, horario) {
@@ -283,7 +284,7 @@ $("#Domingo").on('change', function () {
 
 ////FUNCION PARA FILTAR LOS PROFESIONALES POR HORARIO
 
-//$("#ProfesionalID").change(function () {
+//$("#ProfesionalIDFiltro").change(function () {
 //    BuscarHorarios();
 //});
 //function BuscarHorarios() {
@@ -295,13 +296,13 @@ $("#Domingo").on('change', function () {
 //        url: "../../Horarios/ComboHorarioProfesional",
 //        dataType: 'json',
 //        //Parametros que se envian al metodo del controlador
-//        data: { id: $("#ProfesionalIDFiltro").val() },
+//        data: { profesionalIDFiltro: $("#ProfesionalIDFiltro").val() },
 //        //En caso de resultado exitoso
 //        success: function (profesionalFiltro) {
             
-//            $.each(profesionalFiltro, function (i, horario) {
-//                    $("#HorarioID").append('<option value="' + horario.value + '">' +
-//                        horario.text + '</option>');
+//            $.each(profesionalFiltro, function (i, profesional) {
+//                $("#HorarioID").append('<option value="' + profesional.value + '">' +
+//                    profesional.text + '</option>');
 //                });
 //            CompletarTablaHorario()
 //        },

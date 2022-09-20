@@ -71,7 +71,7 @@ namespace AGENDAR.Controllers
 
             return View();
         }
-        public JsonResult ComboHorario(int id, string fecha, int profesionalFiltro)//HORARIO ID
+        public JsonResult ComboHorario(int id, string fecha)//HORARIO ID
         {
             //CAMBIAMOS A CULTURA ARGENTINA LA FECHA
             Thread.CurrentThread.CurrentCulture = new CultureInfo("es-Ar");
@@ -130,25 +130,18 @@ namespace AGENDAR.Controllers
                 }
             }
 
-            var profesional = (from o in _context.Horario where o.ProfesionalID == profesionalFiltro && o.Eliminado == false select o).ToList();
-
-            if (profesionalFiltro > 0)
-            {
-                profesional = (from o in profesional where o.ProfesionalID == profesionalFiltro && o.Eliminado == false select o).ToList();
-            }
+          
 
             return Json(new SelectList(horarioMostrar, "HorarioID", "HorarioCompleto"));
         }
-        //public JsonResult ComboHorarioProfesional (int profesionalFiltro)//HORARIO ID
+        //public JsonResult ComboHorarioProfesional( int profesionalIDFiltro)//HORARIO ID
         //{
-            
 
-        //    var profesional = (from o in _context.Horario where o.ProfesionalID == profesionalFiltro && o.Eliminado == false select o).ToList();
-
-        //    if (profesionalFiltro > 0)
+        //    if (profesionalIDFiltro > 0)
         //    {
-        //        profesional = (from o in profesional where o.ProfesionalID == profesionalFiltro && o.Eliminado == false select o).ToList();
+        //        var profesional = (from o in _context.Horario where o.ProfesionalID == profesionalIDFiltro && o.Eliminado == false select o).ToList();
         //    }
+            
 
         //    return Json(new SelectList(profesional, "HorarioID", "HorarioCompleto"));
         //}
