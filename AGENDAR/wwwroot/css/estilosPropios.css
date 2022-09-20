@@ -345,12 +345,12 @@ li a:hover {
 }
     /* -- Botón Cerrar Sesión -- */
 .cerrarSesion {
-    width:90px;
-    color: red;
+    width: 90px;
+    color: black;
     font-family: unset;
     font-size: 18px;
     font-weight: 500;
-    background-color: #fff;
+    background-color: #838383;
     border: solid 1px;
     border-radius: 20px;
 }
