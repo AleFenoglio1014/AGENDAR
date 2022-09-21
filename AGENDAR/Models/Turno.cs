@@ -56,5 +56,7 @@ namespace AGENDAR.Models
         public int Elimindado { get; set; }
         public int HorarioID { get; set; }
         public string HorarioFecha { get; set; }
+
+     
     }
 }
