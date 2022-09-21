@@ -14,19 +14,21 @@
     <button class="btn btn-success" onclick="AbrirModal()"><i class="bi bi-folder-plus"></i> Agregar Provincia</button>
 </p>
 
-<table class="table table-bordered table-light">
-    <thead class="table-dark table-bordered ">
-        <tr>
-            <th>
-                Descripción
-            </th>
 
-        </tr>
-    </thead>
-    <tbody id="tbody-provincias">
-    </tbody>
-</table>
+<div style="height:390px; overflow: auto">
+    <table class="table table-bordered table-light" >
+        <thead class="table-dark table-bordered ">
+            <tr>
+                <th>
+                    Descripción
+                </th>
 
+            </tr>
+        </thead>
+        <tbody id="tbody-provincias">
+        </tbody>
+    </table>
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
