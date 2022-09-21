@@ -92,6 +92,7 @@ namespace AGENDAR.Controllers
                     LocalidadNombre = turno.Horarios.Profesionales.Empresas.Localidades.Descripcion,
                     ProvinciaID = turno.Horarios.Profesionales.Empresas.Localidades.Provincias.ProvinciaID,
                     ProvinciaNombre = turno.Horarios.Profesionales.Empresas.Localidades.Provincias.Descripcion,
+                    Elimindado = turno.Eliminado
                     
 
                 };
@@ -137,13 +138,12 @@ namespace AGENDAR.Controllers
                             EmpresaID = EmpresaID,
                             ProfesionalID = ProfesionalID,
                             HorarioID = HorarioID,
+                            Eliminado = 1,
 
                         };
                         _context.Add(turnoNuevo);
                         _context.SaveChanges();
-                        //Horario horario = _context.Horario.Find(turnoNuevo.HorarioID);
-                        //horario.Eliminado = true;
-                        //_context.SaveChanges();
+                        
 
                     }
 
@@ -152,6 +152,8 @@ namespace AGENDAR.Controllers
             }
             return Json(resultado);
         }
+        //Cancelar y Aceptar Turno
+       
         private object Include(Func<object, object> p)
         {
             throw new NotImplementedException();

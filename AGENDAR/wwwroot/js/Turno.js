@@ -3,6 +3,7 @@
 // FUNCION PARA GUARDAR EL TURNO
 
 function GuardarTurno() {
+   
     let turnoID = $('#TurnoID').val();
     let localidadID = $('#LocalidadID').val();
     let telefono = $('#Telefono').val();
@@ -67,7 +68,8 @@ function GuardarTurno() {
             success: function (resultado) {
                 if (resultado == 0) {
                     $("#exampleModal").modal("hide");
-                    swal("SU TURNO AH SIDO SOLICITADO CON EXITO, ESPERE QUE EL PROFESIONAL LO ACEPTE");
+                    VaciarFormulario()
+                    swal(' "Su turno se registró con éxito, espere que sea aceptado por el profesional" ');
                 }
                 //if (resultado == 2) {
                 //    $("#Error-ProvinciaNombre").text("La Provincia ingresada Ya Existe. Ingrese una Nueva Provincia");
@@ -269,4 +271,17 @@ window.onload = function () {
     var fecha_minimo = ano + '-' + mes + '-' + dia;// Nueva variable 
     document.getElementById("FechaTurno").setAttribute('min', fecha_minimo); FechaTurno.min = new Date().toISOString().split("T")[0];
     $("#HorarioID").append('<option value="' + "0" + '">' + "[SELECCIONE UN HORARIO]" + '</option>');
+}
+
+function VaciarFormulario() {
+    $("#ProvinciaID").val(0);
+    $("#LocalidadID").val(0);
+    $("#EmpresaID").val(0);
+    $("#HorarioID").val(0);
+    $("#ProfesionalID").val(0);
+    $("#Nombre").val('');
+    $("#Apellido").val('');
+    $("#Email").val('');
+    $("#Telefono").val('');
+    $("#Error-CamposTurno").text("");
 }

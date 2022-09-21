@@ -64,10 +64,11 @@ namespace AGENDAR.Controllers
             var profesional = _context.Profesional.Where(p => p.Eliminado == false && p.EmpresaID == empresaUsuarioActual.EmpresaID).ToList();
             profesional.Add(new Profesional { ProfesionalID = 0, Nombre = "[SELECCIONE UN PROFESIONAL]" });
             ViewBag.ProfesionalID = new SelectList(profesional.OrderBy(p => p.ProfesionalNombreCompleto), "ProfesionalID", "ProfesionalNombreCompleto");
+            ViewBag.ProfesionalIDFiltro = new SelectList(profesional.OrderBy(p => p.ProfesionalNombreCompleto), "ProfesionalID", "ProfesionalNombreCompleto");
 
-            var profesionalFiltro = _context.Profesional.Where(p => p.Eliminado == false && p.EmpresaID == empresaUsuarioActual.EmpresaID).ToList();
-            profesionalFiltro.Add(new Profesional { ProfesionalID = 0, Nombre = "[SELECCIONE UN PROFESIONAL]" });
-            ViewBag.ProfesionalIDFiltro = new SelectList(profesionalFiltro.OrderBy(p => p.ProfesionalNombreCompleto), "ProfesionalID", "ProfesionalNombreCompleto");
+            //var profesionalFiltro = _context.Profesional.Where(p => p.Eliminado == false && p.EmpresaID == empresaUsuarioActual.EmpresaID).ToList();
+            //profesionalFiltro.Add(new Profesional { ProfesionalID = 0, Nombre = "[SELECCIONE UN PROFESIONAL]" });
+            //ViewBag.ProfesionalIDFiltro = new SelectList(profesionalFiltro.OrderBy(p => p.ProfesionalNombreCompleto), "ProfesionalID", "ProfesionalNombreCompleto");
 
             return View();
         }
@@ -134,23 +135,23 @@ namespace AGENDAR.Controllers
 
             return Json(new SelectList(horarioMostrar, "HorarioID", "HorarioCompleto"));
         }
-        public JsonResult ComboHorarioProfesional(int profesionalIDFiltro)//HORARIO ID
-        {
+        //public JsonResult ComboHorarioProfesional(int profesionalIDFiltro)//HORARIO ID
+        //{
 
             
-            var horarios = (from o in _context.Horario where o.ProfesionalID == profesionalIDFiltro && o.Eliminado == false select o).ToList();
-            if (profesionalIDFiltro > 0)
-            {
+        //    var horarios = (from o in _context.Horario where o.ProfesionalID == profesionalIDFiltro && o.Eliminado == false select o).ToList();
+        //    if (profesionalIDFiltro > 0)
+        //    {
 
-                horarios = (from o in horarios where o.ProfesionalID == profesionalIDFiltro && o.Eliminado == false select o).ToList();
-            }
+        //        horarios = (from o in horarios where o.ProfesionalID == profesionalIDFiltro && o.Eliminado == false select o).ToList();
+        //    }
 
 
-            return Json(new SelectList(horarios, "HorarioID", "HorarioCompleto"));
-        }
+        //    return Json(new SelectList(horarios, "HorarioID", "HorarioCompleto"));
+        //}
         // Funcion para Completar la Tabla de Horario
 
-        public JsonResult BuscarHorarios()
+        public JsonResult BuscarHorarios(int profesionalIDFiltro)
         {
             //PRIMERO BUSCAMOS EL USUARIO ACTUAL
             var usuarioActual = _userManager.GetUserId(HttpContext.User);
@@ -159,8 +160,16 @@ namespace AGENDAR.Controllers
             BuscarEmpresaActual(usuarioActual, empresaUsuarioActual);
 
             var horarios = _context.Horario.Include(r => r.Profesionales).Where(l => l.EmpresaID == empresaUsuarioActual.EmpresaID).ToList();
+          
+            
             List<HorarioMostrar> listadohorario = new List<HorarioMostrar>();
 
+            var horariosFiltro = (from o in _context.Horario where o.ProfesionalID == profesionalIDFiltro && o.Eliminado == false select o).ToList();
+            if (profesionalIDFiltro > 0)
+            {
+
+                horariosFiltro = (from o in horariosFiltro where o.ProfesionalID == profesionalIDFiltro && o.Eliminado == false select o).ToList();
+            }
             foreach (var horario in horarios)
 
             {
