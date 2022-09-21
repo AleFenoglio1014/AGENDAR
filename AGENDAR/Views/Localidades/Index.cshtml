@@ -15,26 +15,29 @@
     <button class="btn btn-success" onclick="AbrirModal()"><i class="bi bi-folder-plus"></i> Agregar Localidad</button>
 </p>
 
-<table class="table table-bordered table-light">
-    <thead class="table-dark table-bordered ">
-        <tr>
-            <th class="text-center" style="width:150px">
-                Localidad
-            </th>
-            <th class="text-center ocultar767" style="width:150px">
-                Codigo Postal
-            </th>
-            <th class="text-center" style="width:150px">
-                Provincia
-            </th>
-            <th class="text-center" style="width:150px">
-                Opciones
-            </th>
-        </tr>
-    </thead>
-    <tbody id="tbody-localidades">
-    </tbody>
-</table>
+<div style="height:390px; overflow: auto">
+    <table class="table table-bordered table-light" >
+        <thead class="table-dark table-bordered ">
+            <tr>
+                <th class="text-center" style="width:150px">
+                    Localidad
+                </th>
+                <th class="text-center ocultar767" style="width:150px">
+                    Codigo Postal
+                </th>
+                <th class="text-center" style="width:150px">
+                    Provincia
+                </th>
+                <th class="text-center" style="width:150px">
+                    Opciones
+                </th>
+            </tr>
+        </thead>
+        <tbody id="tbody-localidades">
+        </tbody>
+    </table>
+</div>
+
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
     <div class="modal-dialog" role="document">
