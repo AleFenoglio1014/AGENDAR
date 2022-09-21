@@ -239,7 +239,7 @@ ul, ol {
     display: none;
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 991px) {
     #nav.nav-transparent .navbar-brand .logo-alt {
         display: none !important;
     }
@@ -294,7 +294,7 @@ ul, ol {
 
 /* -- default nav -- */
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 991px) {
     #nav.fixed-nav {
         background-color: #515a5a !important;
     }
@@ -339,7 +339,7 @@ ul, ol {
 }
 /* -- mobile nav -- */
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 991px) {
     #nav {
         padding: 0px 0px;
     }
@@ -414,7 +414,7 @@ ul, ol {
     cursor: pointer;
     z-index: 99999;
 }
-@media only screen and (max-width: 767px){
+@media only screen and (max-width: 991px){
     .nav-collapse {
     display: block;
     }
@@ -831,7 +831,7 @@ header {
 @media only screen and (max-width: 991px) {
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 991px) {
     .section-header h2.title {
         font-size: 31.5px;
     }
