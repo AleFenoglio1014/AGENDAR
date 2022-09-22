@@ -166,16 +166,14 @@ namespace AGENDAR.Controllers
             List<TurnoMostrar> listadoTurnosCalendario = new List<TurnoMostrar>();
             foreach(var turno in turnosCalendario)
             {
-                DateTime dt = Turno.FechaTurno;
-                var s = string.Format("{0:s}", dt);
-                var usuarioTurno =;
+                DateTime fechaTurno = turno.FechaTurno;
+                var fechaTurnoString = string.Format("{0:s}", fechaTurno);             
 
                 var turnoMostrarCalendario = new TurnoMostrar()
                 {
                     TurnoID = turno.TurnoID,
-                    HorarioID = turno.HorarioID,
-                    HorarioFecha = s,
-                    ProfesionalID = turno.Horarios.Profesionales.ProfesionalID,
+                    HorarioFecha = fechaTurnoString,
+                    Nombre = turno.Nombre,
                 };
                 listadoTurnosCalendario.Add(turnoMostrarCalendario);
             }
