@@ -83,7 +83,7 @@ function CalendarioTorneo() {
                 center: 'title',
                 right: 'dayGridMonth,dayGridDay'
             },
-            initialDate: '2022-09-21',
+            initialDate: DateTime.Now,
             navLinks: true, // can click day/week names to navigate views
             editable: true,
             locale: 'es',

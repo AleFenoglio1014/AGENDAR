@@ -105,7 +105,7 @@ namespace AGENDAR.Controllers
 
 
         //CODIGO PARA GUARDAR EL TURNO
-        public JsonResult GuardarTurno(int TurnoID, string Nombre, string Apellido, string Email, Int64 Telefono,DateTime FechaTurno, int LocalidadID, int EmpresaID, int ProfesionalID, int ProvinciaID, int HorarioID)
+        public JsonResult GuardarTurno(int TurnoID, string Nombre, string Apellido, string Email, Int64 Telefono,DateTime FechaTurno, int LocalidadID, int EmpresaID, int ProfesionalID, int ProvinciaID, int HorarioID/*, string HorarioFecha*/)
         {
             int resultado = 0;
             // Si es 0 es CORRECTO
@@ -138,6 +138,7 @@ namespace AGENDAR.Controllers
                             EmpresaID = EmpresaID,
                             ProfesionalID = ProfesionalID,
                             HorarioID = HorarioID,
+                            //HorarioCompleto = HorarioFecha,
                             Eliminado = 1,
 
                         };
@@ -173,7 +174,7 @@ namespace AGENDAR.Controllers
                 {
                     TurnoID = turno.TurnoID,
                     HorarioFecha = fechaTurnoString,
-                    Nombre = turno.Nombre,
+                    Nombre = turno.UsuarioNombreCompleto,
                 };
                 listadoTurnosCalendario.Add(turnoMostrarCalendario);
             }

@@ -14,6 +14,13 @@ namespace AGENDAR.Models
         public string Nombre { get; set; }
         public string Apellido { get; set; }
 
+        public string UsuarioNombreCompleto
+        {
+            get
+            {
+                return string.Format("{0} {1} ", Nombre, Apellido);
+            }
+        }
         public string Email { get; set; }
 
         public Int64 Telefono { get; set; }
@@ -41,6 +48,8 @@ namespace AGENDAR.Models
 
         public string Nombre { get; set; }
         public string Apellido { get; set; }
+
+        public string UsuarioNombreCompleto { get; set; }
         public string Email { get; set; }
         public Int64 Telefono { get; set; }
         public int ProvinciaID { get; set; }
