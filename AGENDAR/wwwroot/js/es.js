@@ -44,3 +44,11 @@ FullCalendar.globalLocales.push(function () {
   return es;
 
 }());
+
+//Función para mostrar los turnos en el Calendario del Profesional
+function MostrarTurnosInterno() {
+    let arrayTurnos = [];
+    $.each(listadoTurnos, function (index, turno) {
+        arrayTurnos.push({ title: turno.paciente, start: turno.fecha });
+    });
+}

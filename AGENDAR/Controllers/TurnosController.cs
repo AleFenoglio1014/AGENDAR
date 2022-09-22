@@ -158,5 +158,28 @@ namespace AGENDAR.Controllers
         {
             throw new NotImplementedException();
         }
+
+        //Función para para mostrar los turnos en el Calendario del Profesional
+        public JsonResult MostrarTurnosInterno()
+        {
+            var turnosCalendario = _context.Turnos.Include(r => r.Horarios).Include(r => r.Horarios.Profesionales).Include(r => r.Horarios.Profesionales.Empresas).Include(r => r.Horarios.Profesionales.Empresas.Localidades).Include(r => r.Horarios.Profesionales.Empresas.Localidades.Provincias).ToList();
+            List<TurnoMostrar> listadoTurnosCalendario = new List<TurnoMostrar>();
+            foreach(var turno in turnosCalendario)
+            {
+                DateTime dt = Turno.FechaTurno;
+                var s = string.Format("{0:s}", dt);
+                var usuarioTurno =;
+
+                var turnoMostrarCalendario = new TurnoMostrar()
+                {
+                    TurnoID = turno.TurnoID,
+                    HorarioID = turno.HorarioID,
+                    HorarioFecha = s,
+                    ProfesionalID = turno.Horarios.Profesionales.ProfesionalID,
+                };
+                listadoTurnosCalendario.Add(turnoMostrarCalendario);
+            }
+            return Json(listadoTurnosCalendario);
+        }
     }
 }
