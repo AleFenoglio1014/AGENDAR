@@ -98,8 +98,12 @@ namespace AGENDAR.Controllers
                     }
                     else
                     {
-                        // Aca va a ir el codigo para CREAR un turno
-                        // Para eso creamos un objeto de tipo turnoNuevo con los datos necesarios
+                        //Horario horaInicio = new Horario();
+
+                        //var horaTurno = _context.Turnos.Include(r => r.Horarios).Where(e => e.Horarios.HoraInicio == horaInicio.HoraInicio).ToList();
+                        //List<Turno> listaTurnos = new List<Turno>();
+
+                        
                         var turnoNuevo = new Turno
                         {
                             Nombre = Nombre,
@@ -111,15 +115,15 @@ namespace AGENDAR.Controllers
                             LocalidadID = LocalidadID,
                             EmpresaID = EmpresaID,
                             ProfesionalID = ProfesionalID,
-                            HorarioID = HorarioID,
+                            //HorarioAtencion = horaTurno,
                             Eliminado = 1,
 
                         };
                         _context.Add(turnoNuevo);
                         _context.SaveChanges();
-                        
 
-                    }
+                        }
+                    
 
                 }
 
