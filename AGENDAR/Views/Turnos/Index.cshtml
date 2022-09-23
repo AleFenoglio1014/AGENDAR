@@ -28,11 +28,18 @@
         margin: 0 auto;
         
     }
+    .inputTurno{
+        padding-left:0px;
+    }
 </style>
 <body>
 
+    <div class="form-group text-center inputTurno  col-md-4 col-sm-4 col-xl-4">
+        @Html.DropDownList("ProfesionalIDFiltro", null, htmlAttributes: new { @class = "form-control inputProfesionales " })
+    </div>
+
     <div id='calendar'></div>
-    
+
 </body>
 
 @section Scripts {

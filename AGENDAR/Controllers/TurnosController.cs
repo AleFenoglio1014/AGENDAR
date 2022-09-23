@@ -46,7 +46,7 @@ namespace AGENDAR.Controllers
             ViewBag.EmpresaID = new SelectList(empresa.OrderBy(p => p.RazonSocial), "EmpresaID", "RazonSocial");
 
 
-            //var profesional = _context.Profesional.ToList();
+           
             List<Profesional> profesional = new List<Profesional>();
             profesional.Add(new Profesional { ProfesionalID = 0, Nombre = "[SELECCIONE UN PROFESIONAL]" });
             ViewBag.ProfesionalID = new SelectList(profesional.OrderBy(p => p.ProfesionalNombreCompleto), "ProfesionalID", "ProfesionalNombreCompleto");
@@ -64,12 +64,22 @@ namespace AGENDAR.Controllers
         [Authorize]
         public IActionResult Index()
         {
+            //PRIMERO BUSCAMOS EL USUARIO ACTUAL
+            var usuarioActual = _userManager.GetUserId(HttpContext.User);
+            //LUEGO EN BASE A ESE USUARIO BUSCAMOS LA EMPRESA CON LA QUE ESTA RELACIONADA
+            EmpresaUsuario empresaUsuarioActual = new EmpresaUsuario();
+            BuscarEmpresaActual(usuarioActual, empresaUsuarioActual);
+
+            var profesionalFiltro = _context.Profesional.Where(p => p.Eliminado == false && p.EmpresaID == empresaUsuarioActual.EmpresaID).ToList();
+            profesionalFiltro.Add(new Profesional { ProfesionalID = 0, Nombre = "[SELECCIONE UN PROFESIONAL]" });
+            ViewBag.ProfesionalIDFiltro = new SelectList(profesionalFiltro.OrderBy(p => p.ProfesionalNombreCompleto), "ProfesionalID", "ProfesionalNombreCompleto");
+
             return View();
 
         }
 
         //CODIGO PARA GUARDAR EL TURNO
-        public JsonResult GuardarTurno(int TurnoID, string Nombre, string Apellido, string Email, Int64 Telefono,DateTime FechaTurno, int LocalidadID, int EmpresaID, int ProfesionalID, int ProvinciaID, int HorarioID/*, string HorarioFecha*/)
+        public JsonResult GuardarTurno(int TurnoID, string Nombre, string Apellido, string Email, Int64 Telefono,DateTime FechaTurno, int LocalidadID, int EmpresaID, int ProfesionalID, int ProvinciaID, int HorarioID)
         {
             int resultado = 0;
             // Si es 0 es CORRECTO
@@ -102,7 +112,6 @@ namespace AGENDAR.Controllers
                             EmpresaID = EmpresaID,
                             ProfesionalID = ProfesionalID,
                             HorarioID = HorarioID,
-                            //HorarioCompleto = HorarioFecha,
                             Eliminado = 1,
 
                         };
