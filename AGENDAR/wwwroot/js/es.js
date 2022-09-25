@@ -101,3 +101,34 @@ function CalendarioTorneo() {
         calendar.render();
     });
 }
+
+//FUNCION PARA FILTAR LOS PROFESIONALES 
+
+$("#ProfesionalIDFiltro").change(function () {
+    MostrarTurnosInterno();
+});
+function MostrarTurnosInterno() {
+    //Se limpia el contenido del dropdownlist
+    $("#TurnoID").empty();
+    $.ajax({
+        type: 'POST',
+        //Llamado al metodo en el controlador
+        url: "../../Turnos/MostrarTurnosInterno",
+        dataType: 'json',
+        //Parametros que se envian al metodo del controlador
+        data: { profesionalIDFiltro: $("#ProfesionalIDFiltro").val() },
+        //En caso de resultado exitoso
+        success: function (turnoFiltro) {
+
+            $.each(turnoFiltro, function (i, profesional) {
+                $("#TurnoID").append('<option value="' + profesional.value + '">' +
+                    profesional.text + '</option>');
+            });
+            CargaElementos()
+        },
+        ////Mensaje de error en caso de fallo
+        error: function (ex) {
+        }
+    });
+    return false;
+}

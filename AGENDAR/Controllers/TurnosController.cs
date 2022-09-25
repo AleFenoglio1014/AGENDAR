@@ -138,13 +138,19 @@ namespace AGENDAR.Controllers
         }
 
         //Función para para mostrar los turnos en el Calendario del Profesional
-        public JsonResult MostrarTurnosInterno()
+        public JsonResult MostrarTurnosInterno(int profesionalIDFiltro)
         {
             var usuarioActual = _userManager.GetUserId(HttpContext.User);
             //LUEGO EN BASE A ESE USUARIO BUSCAMOS LA EMPRESA CON LA QUE ESTA RELACIONADA
             EmpresaUsuario empresaUsuarioActual = new EmpresaUsuario();
             BuscarEmpresaActual(usuarioActual, empresaUsuarioActual);
-            var turnosCalendario = _context.Turnos.Include(r => r.Horarios).Where(l => l.EmpresaID == empresaUsuarioActual.EmpresaID).ToList();
+            var turnosCalendario = _context.Turnos.Include(r => r.Horarios).Include(r => r.Horarios.Profesionales).Where(l => l.EmpresaID == empresaUsuarioActual.EmpresaID).ToList();
+
+            if (profesionalIDFiltro > 0)
+            {
+
+                turnosCalendario = (from o in turnosCalendario where o.ProfesionalID == profesionalIDFiltro select o).ToList();
+            }
             List<TurnoMostrar> listadoTurnosCalendario = new List<TurnoMostrar>();
             foreach(var turno in turnosCalendario)
             {
