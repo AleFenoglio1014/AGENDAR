@@ -98,24 +98,23 @@ namespace AGENDAR.Controllers
                     }
                     else
                     {
-                        //Horario horaInicio = new Horario();
+                        //List<Horario> horarioTurno = new List<Horario>();
 
-                        //var horaTurno = _context.Turnos.Include(r => r.Horarios).Where(e => e.Horarios.HoraInicio == horaInicio.HoraInicio).ToList();
-                        //List<Turno> listaTurnos = new List<Turno>();
+                        //ViewBag.HorarioID = new SelectList(horarioTurno.OrderBy(p => p.HorarioCompleto), "HorarioID", "HorarioCompleto");
 
-                        
+
                         var turnoNuevo = new Turno
                         {
                             Nombre = Nombre,
                             Apellido = Apellido,
                             Email = Email,
                             Telefono = Telefono,
-                            FechaTurno = FechaTurno,
+                            //HorarioFecha = horarioTurno,
                             ProvinciaID = ProvinciaID,
                             LocalidadID = LocalidadID,
                             EmpresaID = EmpresaID,
                             ProfesionalID = ProfesionalID,
-                            //HorarioAtencion = horaTurno,
+                            //HorarioFecha = Turno.horarioTurno,
                             Eliminado = 1,
 
                         };
