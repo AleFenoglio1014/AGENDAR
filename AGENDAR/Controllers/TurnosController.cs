@@ -98,27 +98,31 @@ namespace AGENDAR.Controllers
                     }
                     else
                     {
-                        //List<Horario> horarioTurno = new List<Horario>();
-
-                        //ViewBag.HorarioID = new SelectList(horarioTurno.OrderBy(p => p.HorarioCompleto), "HorarioID", "HorarioCompleto");
-
-
+                        //var horarioTurno = _context.Turnos.Include(r => r.Horarios).Include(r => r.Horarios.Turnos).Where(l => l.HorarioID == FechaTurno.Hour).ToList();
+                        //List<Turno> listadoTurnos = new List<Turno>();
+                        //foreach (var turno in horarioTurno)
+                        //{
                         var turnoNuevo = new Turno
                         {
                             Nombre = Nombre,
                             Apellido = Apellido,
                             Email = Email,
                             Telefono = Telefono,
-                            //HorarioFecha = horarioTurno,
+                            HorarioID = HorarioID,
+                            //FechaTurno = horarioTurno,
                             ProvinciaID = ProvinciaID,
-                            LocalidadID = LocalidadID,
-                            EmpresaID = EmpresaID,
-                            ProfesionalID = ProfesionalID,
-                            Eliminado = 1,
+                                LocalidadID = LocalidadID,
+                                EmpresaID = EmpresaID,
+                                ProfesionalID = ProfesionalID,
+                                Eliminado = 1,
 
-                        };
-                        _context.Add(turnoNuevo);
-                        _context.SaveChanges();
+                            };
+                            //listadoTurnos.Add(turnoNuevo);
+                            _context.Add(turnoNuevo);
+                            _context.SaveChanges();
+                        //}
+
+                        
 
                         }
                     

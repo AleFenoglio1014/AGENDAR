@@ -29,12 +29,12 @@
 \*------------------------------------*/
 /* -- typography -- */
 body {
-    background-image: src(../lib/Imagenes/turnosWebImagen3.jpg);
     font-family: 'system-ui';
     font-size: 16px;
     line-height: 1.6;
     overflow-x: hidden;
     color: #000;
+    background-repeat: no-repeat;
 }
 
 
@@ -141,6 +141,7 @@ ul, ol {
 /* --  background image section  -- */
 
 .bg-img {
+    height: 110vh;
     width: 120%;
     min-height:100%;
     position: absolute;
