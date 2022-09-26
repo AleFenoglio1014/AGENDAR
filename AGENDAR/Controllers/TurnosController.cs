@@ -114,7 +114,6 @@ namespace AGENDAR.Controllers
                             LocalidadID = LocalidadID,
                             EmpresaID = EmpresaID,
                             ProfesionalID = ProfesionalID,
-                            //HorarioFecha = Turno.horarioTurno,
                             Eliminado = 1,
 
                         };
