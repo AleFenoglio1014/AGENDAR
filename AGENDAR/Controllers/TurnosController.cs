@@ -111,12 +111,12 @@ namespace AGENDAR.Controllers
                             HorarioID = HorarioID,
                             //FechaTurno = horarioTurno,
                             ProvinciaID = ProvinciaID,
-                                LocalidadID = LocalidadID,
-                                EmpresaID = EmpresaID,
-                                ProfesionalID = ProfesionalID,
-                                Eliminado = 1,
+                            LocalidadID = LocalidadID,
+                            EmpresaID = EmpresaID,
+                            ProfesionalID = ProfesionalID,
+                            Eliminado = 1,
 
-                            };
+                        };
                             //listadoTurnos.Add(turnoNuevo);
                             _context.Add(turnoNuevo);
                             _context.SaveChanges();
