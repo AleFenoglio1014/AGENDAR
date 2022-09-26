@@ -22,7 +22,7 @@
 
 .linksModelos {
     color: black !important;
-    padding-left: 100px;
+    /*padding-left: 100px;*/
 }
 /*------------------------------------*\
 	General
@@ -232,12 +232,14 @@ li a:hover {
     padding: 5px 5px 5px 5px;
 }
 
+
 .navbar-dark .navbar-nav .nav-link {
     color: black;
     font-family: unset;
     font-size: 16px;
     font-weight: 500;
 }
+
 
 li a:hover {
     color: black;
