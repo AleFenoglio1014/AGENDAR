@@ -144,16 +144,13 @@ namespace AGENDAR.Controllers
             BuscarEmpresaActual(usuarioActual, empresaUsuarioActual);
 
             var horarios = _context.Horario.Include(r => r.Profesionales).Where(l => l.EmpresaID == empresaUsuarioActual.EmpresaID).ToList();
-          
-            
-            List<HorarioMostrar> listadohorario = new List<HorarioMostrar>();
 
-            var horariosFiltro = (from o in _context.Horario where o.ProfesionalID == profesionalIDFiltro && o.Eliminado == false select o).ToList();
             if (profesionalIDFiltro > 0)
             {
 
-                horariosFiltro = (from o in horariosFiltro where o.ProfesionalID == profesionalIDFiltro && o.Eliminado == false select o).ToList();
+                horarios = (from o in horarios where o.ProfesionalID == profesionalIDFiltro && o.Eliminado == false select o).ToList();
             }
+            List<HorarioMostrar> listadohorario = new List<HorarioMostrar>();
             foreach (var horario in horarios)
 
             {

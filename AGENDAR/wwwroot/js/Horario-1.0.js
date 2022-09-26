@@ -6,9 +6,9 @@ function CompletarTablaHorario( ) {
         type: "POST",
         url: '../../Horarios/BuscarHorarios',
         data: { ProfesionalID: profesionalIDFiltro },
-        success: function (horariosFiltro) {
+        success: function (listadohorario) {
             $("#tbody-horario").empty();
-            $.each(horariosFiltro, function (index, horario) {
+            $.each(listadohorario, function (index, horario) {
 
                 let claseEliminado = '';
                 let botones = '<button type="button" onclick="DesactivarHorario(' + horario.horarioID + ',1)" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash-fill"></i> Desactivar</button>';
@@ -291,9 +291,9 @@ function BuscarHorarios() {
         //Parametros que se envian al metodo del controlador
         data: { profesionalIDFiltro: $("#ProfesionalIDFiltro").val() },
         //En caso de resultado exitoso
-        success: function (horariosFiltro) {
+        success: function (horarios) {
             
-            $.each(horariosFiltro, function (i, profesional) {
+            $.each(horarios, function (i, profesional) {
                 $("#HorarioID").append('<option value="' + profesional.value + '">' +
                     profesional.text + '</option>');
                 });
