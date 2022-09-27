@@ -93,7 +93,7 @@ namespace AGENDAR.Controllers
                 if (LocalidadID == 0)
                 {
                     // Antes de CREAR el registro debemos preguntar si existe una Localidad con la misma Descripcion
-                    if (_context.Localidad.Any(e => e.Descripcion == Descripcion && e.ProvinciaID == ProvinciaID ))
+                    if (_context.Localidad.Any(e => e.Descripcion == Descripcion && e.ProvinciaID == ProvinciaID && e.CodPostal == CodPostal))
                     {
                         resultado = 2;
                     }
@@ -117,7 +117,7 @@ namespace AGENDAR.Controllers
                 else
                 {
                     // Antes de EDITAR el registro debemos preguntar si existe una Localidad con la misma Descripcion
-                    if (_context.Localidad.Any(e => e.Descripcion == Descripcion && e.LocalidadID != LocalidadID ))
+                    if (_context.Localidad.Any(e => e.Descripcion == Descripcion && e.LocalidadID == LocalidadID && e.CodPostal == CodPostal))
                     {
                         resultado = 2;
                     }
