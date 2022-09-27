@@ -1,11 +1,11 @@
 ﻿// Funcion para Completar la Tabla de Horario
-function CompletarTablaHorario( ) {
+function CompletarTablaHorario() {
     VaciarFormulario();
-    let profesionalIDFiltro = $('#ProfesionalIDFiltro').val().trim();
+    let profesionalIDFiltro = $("#ProfesionalIDFiltro").val();
     $.ajax({
         type: "POST",
         url: '../../Horarios/BuscarHorarios',
-        data: { ProfesionalID: profesionalIDFiltro },
+        data: { profesionalIDFiltro: profesionalIDFiltro },
         success: function (listadohorario) {
             $("#tbody-horario").empty();
             $.each(listadohorario, function (index, horario) {
@@ -18,8 +18,8 @@ function CompletarTablaHorario( ) {
                     botones = '<button type="button" onclick="DesactivarHorario(' + horario.horarioID + ',0)" class="btn btn-outline-success btn-sm"><i class="bi bi-folder-symlink"></i> Activar</button>';
                 }
                 let tiempoMostrar = "15 Minutos";
-                
-                if(horario.tiempoTurnos == 30) {
+
+                if (horario.tiempoTurnos == 30) {
                     tiempoMostrar = "30 Minutos"
                 }
                 if (horario.tiempoTurnos == 45) {
@@ -278,7 +278,7 @@ $("#Domingo").on('change', function () {
 //FUNCION PARA FILTAR LOS PROFESIONALES POR HORARIO
 
 $("#ProfesionalIDFiltro").change(function () {
-    BuscarHorarios();
+    CompletarTablaHorario();
 });
 function BuscarHorarios() {
     //Se limpia el contenido del dropdownlist
@@ -292,11 +292,11 @@ function BuscarHorarios() {
         data: { profesionalIDFiltro: $("#ProfesionalIDFiltro").val() },
         //En caso de resultado exitoso
         success: function (horarios) {
-            
+
             $.each(horarios, function (i, profesional) {
                 $("#HorarioID").append('<option value="' + profesional.value + '">' +
                     profesional.text + '</option>');
-                });
+            });
             CompletarTablaHorario()
         },
         ////Mensaje de error en caso de fallo

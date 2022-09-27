@@ -394,7 +394,8 @@ li a:hover {
     }
 
     .inputProfesionales {
-        font-size: 11px !important;
+        font-size: 9px !important;
+        width:170px;
     }
 
     .tamañoLetra {
@@ -461,4 +462,7 @@ li a:hover {
     }
 .alertaEmpresa {
     color: white;
+}
+.accordion {
+    padding-bottom: 5px;
 }

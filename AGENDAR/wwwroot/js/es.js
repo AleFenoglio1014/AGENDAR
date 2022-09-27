@@ -78,6 +78,7 @@ function CalendarioTorneo() {
         var calendarEl = document.getElementById('calendar');
 
         var calendar = new FullCalendar.Calendar(calendarEl, {
+            dayMaxEvents: true,
             headerToolbar: {
                 left: 'prev,next today',
                 center: 'title',
@@ -85,7 +86,7 @@ function CalendarioTorneo() {
             },
             initialDate: new Date(),
             navLinks: true, // can click day/week names to navigate views
-            editable: true,
+           
             locale: 'es',
             events: arrayTurnos,
             //events: [
