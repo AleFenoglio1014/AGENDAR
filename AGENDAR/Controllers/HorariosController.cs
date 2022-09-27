@@ -132,7 +132,7 @@ namespace AGENDAR.Controllers
 
             return Json(new SelectList(horarioMostrar, "HorarioID", "HorarioCompleto"));
         }
-       
+
         // Funcion para Completar la Tabla de Horario
 
         public JsonResult BuscarHorarios(int profesionalIDFiltro)
@@ -148,7 +148,7 @@ namespace AGENDAR.Controllers
             if (profesionalIDFiltro > 0)
             {
 
-                horarios = (from o in horarios where o.ProfesionalID == profesionalIDFiltro && o.Eliminado == false select o).ToList();
+                horarios = (from o in horarios where o.ProfesionalID == profesionalIDFiltro  select o).ToList();
             }
             List<HorarioMostrar> listadohorario = new List<HorarioMostrar>();
             foreach (var horario in horarios)
@@ -179,9 +179,8 @@ namespace AGENDAR.Controllers
 
             return Json(listadohorario);
         }
-
         // Funcion Guardar y Editar los Horarios
-     
+
         public JsonResult GuardarHorario(DateTime HoraInicio, DateTime HoraFin, int TiempoTurnos, int ProfesionalID, bool Lunes, bool Martes, bool Miercoles, bool Jueves, bool Viernes, bool Sabado, bool Domingo)
         {
             //PRIMERO BUSCAMOS EL USUARIO ACTUAL
