@@ -90,17 +90,11 @@ function CalendarioTorneo() {
            
             locale: 'es',
             events: arrayTurnos,
-            //axisFormat: 'H:mm',
-            //timeFormat: {
-            //    agenda: 'H:mm{ - H:mm}'
-            //}
-            //events: [
-            //    {
-            //        title: 'Lunch',
-            //        start: '2022-09-12T12:00:00'
-            //    },
-
-            //]
+            eventTimeFormat: {
+                hour: '2-digit',
+                minute: '2-digit',
+            },
+           
 
         });
 
