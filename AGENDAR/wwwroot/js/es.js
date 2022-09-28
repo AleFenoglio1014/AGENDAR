@@ -60,8 +60,8 @@ function CargaElementos() {
 
             $.each(listadoTurnos, function (index, turno) {
                 arrayTurnos.push({ title: turno.nombre, start: turno.horarioFecha });
+              /*  AbrirModal()*/
             });
-
             CalendarioTorneo();
         },
         error: function (data) {
@@ -89,6 +89,7 @@ function CalendarioTorneo() {
            
             locale: 'es',
             events: arrayTurnos,
+            
             //events: [
             //    {
             //        title: 'Lunch',
@@ -132,4 +133,9 @@ function MostrarTurnosInterno() {
         }
     });
     return false;
+}
+
+function AbrirModal() {
+
+    $("#exampleModal").modal("show");
 }

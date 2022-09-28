@@ -115,7 +115,7 @@ namespace AGENDAR.Controllers
                             LocalidadID = LocalidadID,
                             EmpresaID = EmpresaID,
                             ProfesionalID = ProfesionalID,
-                            Eliminado = 1,
+                            Estado = 1,
 
                         };
                             //listadoTurnos.Add(turnoNuevo);

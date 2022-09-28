@@ -43,6 +43,10 @@
     .fc .fc-daygrid-more-link {
         color: black !important;
     }
+    .aceptarBoton {
+        padding-left: 140px;
+    }
+    
 </style>
 <body>
 
@@ -51,7 +55,27 @@
     </div>
 
     <div id='calendar'></div>
+    <!-- Modal -->
+    <div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content ">
+                <!--Agregado de Formulario dentro del Modal-->
+                <div class="modal-body">
+                    <form>
+                        <input type="hidden" id="TurnoID" value="0" />
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
+                        <div class="form-group aceptarBoton">
+
+                            <button type="button" onclick="AceptarTurno()" class="btn btn-outline-success "> Aceptar </button>
+                            <button type="button" onclick="CancelarTurno()" class="btn btn-outline-danger"> Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+    </div>
 </body>
 
 @section Scripts {
@@ -65,94 +89,7 @@
 
     window.onload = CargaElementos();
 
-    //let arrayTurnos = [];
-
-
-    //function CargaElementos() {
-
-    //    //$.ajax({
-    //    //    type: "GET",
-    //    //    url: '../../Turnos/MostrarTurnosInterno',
-    //    //    data: {},
-    //    //    async: false,
-    //    //    success: function (listadoTurnos) {
-
-    //    //        //$.each(listadoTurnos, function (index, turno) {
-    //    //        //    arrayTurnos.push({ title: turno.nombre, start: turno.horarioFecha });
-    //    //        //});
-
-    //    //        CalendarioTorneo();
-    //    //    },
-    //    //    error: function (data) {
-    //    //        alert("Error al cargar los torneos.");
-    //    //    }
-    //    //});
-    //    CalendarioTorneo();
-    //}
-
-
-    //function CalendarioTorneo() {
-
-    //    document.addEventListener('DOMContentLoaded', function () {
-    //        var calendarEl = document.getElementById('calendar');
-
-    //        var calendar = new FullCalendar.Calendar(calendarEl, {
-    //            headerToolbar: {
-    //                left: 'prev,next today',
-    //                center: 'title',
-    //                right: 'dayGridMonth,dayGridDay'
-    //            },
-    //            initialDate: '2020-09-12',
-    //            navLinks: true, // can click day/week names to navigate views
-    //            editable: true,
-    //            locale: 'es',
-    //            events: arrayTurnos,
-    //            //events: [
-    //            //    {
-    //            //        title: 'Lunch',
-    //            //        start: '2020-09-12T12:00:00'
-    //            //    },
-
-    //            //    {
-    //            //        title: 'Meeting',
-    //            //        start: '2020-09-12T14:30:00'
-    //            //    },
-    //            //    {
-    //            //        title: 'Meeting',
-    //            //        start: '2020-09-12T14:30:00'
-    //            //    },
-    //            //    {
-    //            //        title: 'Meeting',
-    //            //        start: '2020-09-12T14:30:00'
-    //            //    },
-    //            //    {
-    //            //        title: 'Meeting',
-    //            //        start: '2020-09-12T14:30:00'
-    //            //    },
-    //            //    {
-    //            //        title: 'Meeting',
-    //            //        start: '2020-09-12T14:30:00'
-
-    //            //    },
-    //            //    {
-    //            //        title: 'Meeting',
-    //            //        start: '2020-09-12T14:30:00'
-    //            //    },
-    //            //    {
-    //            //        title: 'Meeting',
-    //            //        start: '2020-09-12T14:30:00'
-    //            //    },
-    //            //    {
-    //            //        title: 'Meeting',
-    //            //        start: '2020-09-12T14:30:00'
-    //            //    },
-    //            //]
-
-    //        });
-
-    //        calendar.render();
-    //    });
-    //}
+   
 
 
 </script>
