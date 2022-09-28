@@ -99,9 +99,9 @@ namespace AGENDAR.Controllers
                     else
                     {
                         var horarioTurno = _context.Horario.Where(l => l.HorarioID == HorarioID).Select(h => h.HoraInicio).FirstOrDefault();
-
-                        //DateTime fechaTurno = horarioTurno;
-                        //var fechaTurnoString = string.Format("{0:s}", fechaTurno);
+                        FechaTurno = FechaTurno.AddHours(horarioTurno.Hour);
+                        FechaTurno = FechaTurno.AddMinutes(horarioTurno.Minute);
+                        
 
                         var turnoNuevo = new Turno
                         {
@@ -110,7 +110,7 @@ namespace AGENDAR.Controllers
                             Email = Email,
                             Telefono = Telefono,
                             HorarioID = HorarioID,
-                            FechaTurno = horarioTurno,
+                            FechaTurno = FechaTurno,
                             ProvinciaID = ProvinciaID,
                             LocalidadID = LocalidadID,
                             EmpresaID = EmpresaID,
@@ -118,7 +118,7 @@ namespace AGENDAR.Controllers
                             Eliminado = 1,
 
                         };
-                            //listadoTurnos.Add(turnoNuevo);
+                            
                             _context.Add(turnoNuevo);
                             _context.SaveChanges();
                         //}

@@ -69,7 +69,10 @@ function GuardarTurno() {
                 if (resultado == 0) {
                     $("#exampleModal").modal("hide");
                     VaciarFormulario()
-                    swal(' "Su turno se registró con éxito, espere que sea aceptado por el profesional" ');
+                    swal(' "Su turno se registró con éxito, espere que sea aceptado por el profesional" '),
+                        //function () {
+                        //    window.location.href = "/Views/Shared/_Layout.cshtml";
+                        //};
                 }
                 //if (resultado == 2) {
                 //    $("#Error-ProvinciaNombre").text("La Provincia ingresada Ya Existe. Ingrese una Nueva Provincia");

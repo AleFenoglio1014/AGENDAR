@@ -84,11 +84,16 @@ function CalendarioTorneo() {
                 center: 'title',
                 right: 'dayGridMonth,dayGridDay'
             },
+
             initialDate: new Date(),
             navLinks: true, // can click day/week names to navigate views
            
             locale: 'es',
             events: arrayTurnos,
+            //axisFormat: 'H:mm',
+            //timeFormat: {
+            //    agenda: 'H:mm{ - H:mm}'
+            //}
             //events: [
             //    {
             //        title: 'Lunch',
