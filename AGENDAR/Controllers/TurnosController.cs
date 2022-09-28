@@ -88,11 +88,11 @@ namespace AGENDAR.Controllers
 
             if (!string.IsNullOrEmpty(Nombre) && !string.IsNullOrEmpty(Apellido) && EmpresaID != 0)
             {
-                
+
                 if (TurnoID == 0)
                 {
                     // Antes de CREAR el registro debemos preguntar si existe una TURNO existente
-                    if (_context.Turnos.Any(e => e.ProfesionalID == ProfesionalID && e.HorarioID == HorarioID && e.FechaTurno == FechaTurno ))
+                    if (_context.Turnos.Any(e => e.ProfesionalID == ProfesionalID && e.HorarioID == HorarioID && e.FechaTurno == FechaTurno))
                     {
                         resultado = 2;
                     }
@@ -101,7 +101,7 @@ namespace AGENDAR.Controllers
                         var horarioTurno = _context.Horario.Where(l => l.HorarioID == HorarioID).Select(h => h.HoraInicio).FirstOrDefault();
                         FechaTurno = FechaTurno.AddHours(horarioTurno.Hour);
                         FechaTurno = FechaTurno.AddMinutes(horarioTurno.Minute);
-                        
+
 
                         var turnoNuevo = new Turno
                         {
@@ -118,15 +118,15 @@ namespace AGENDAR.Controllers
                             Estado = 1,
 
                         };
-                            
-                            _context.Add(turnoNuevo);
-                            _context.SaveChanges();
-                        //}
 
-                        
+                        _context.Add(turnoNuevo);
+                        _context.SaveChanges();
 
-                        }
-                    
+
+
+
+                    }
+                
 
                 }
 
