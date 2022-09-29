@@ -89,7 +89,7 @@ function GuardarProfesional() {
 
 // Funcion para Buscar el Profesional
 
-function BuscarProfesional(profesionalID, nombre, apellido, empresaID) {
+function BuscarProfesional(profesionalID, nombre, apellido) {
     $("#titulo-Modal-Profesional").text("EDITAR PROFESIONAL");
     $("#ProfesionalID").val(profesionalID);
     $("#Nombre").val(nombre);

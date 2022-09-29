@@ -95,11 +95,15 @@ function CalendarioTurno() {
                 hour: '2-digit',
                 minute: '2-digit',
             },
-           
+            selectable: true,
+            eventClick: function (turno) {
+                AbrirModal()
+              /*  alert( turno.event.title);*/
+            }
 
 
         });
-
+       
         calendar.render();
     });
 }
@@ -133,3 +137,20 @@ function MostrarTurnosInterno() {
     });
     return false;
 }
+function AbrirModal() {
+    $("#exampleModal").modal("show");
+}
+//function EstadoTurno(turnoID, estado) {
+//    $("#TurnoID").val(turnoID);
+//    $("#Estado").val(estado);
+//        $.ajax({
+//            type: "POST",
+//            url: '../../Turnos/EstadoTurno',
+//            data: { TurnoID: turnoID, Estado: estado },
+//            success: function (turno) {
+              
+//            },
+//            error: function (data) {
+//            }
+//        });
+//}
