@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Threading.Tasks;
 
 namespace AGENDAR.Controllers
@@ -126,8 +127,51 @@ namespace AGENDAR.Controllers
 
 
 
+                        //ACA VAMOS A ENVIAR EL COBRANTE DE TURNO PENDIENTE PARA EL USUARIO QUE LO SOLICITO
+                        try
+                        {
+                            string emailA = Email;
+
+                            string emailDe = "agendar.turnos@hotmail.com";
+
+                            string emailCredencial = "agendar.turnos@hotmail.com";
+                            string contraseñaCredencial = "Agendar123";
+
+                            MailMessage msg = new MailMessage();
+                            msg.To.Add(new MailAddress(emailA));
+
+                            msg.From = new MailAddress(emailDe, "COMPROBANTE DE TURNO", System.Text.Encoding.UTF8);
+
+                            msg.Subject = "Mensaje de " + emailDe;
+                            msg.SubjectEncoding = System.Text.Encoding.UTF8;
+
+                            msg.Body = "<p style= font-size: 12pt; >" + "Estado turno: <b>A CONFIRMAR</b>" + "Nombre: <b>" + Nombre + "</b>" + "Apellido: <b>" + Apellido + "</b> . </p>";
+                            msg.Body = "<p style= font-size: 12pt;>" + "Nombre: <b>" + Nombre + "</b> . </p>";
+                            //msg.Body = "<p style= font-size: 12pt;>" + "Apellido: <b>" + Apellido + "</b> . </p>";
+
+
+
+                            msg.BodyEncoding = System.Text.Encoding.UTF8;
+                            msg.IsBodyHtml = true;
+
+                            SmtpClient clienteSmtp = new SmtpClient();
+                            clienteSmtp.Host = "smtp-mail.outlook.com";
+                            clienteSmtp.Port = 587;
+                            clienteSmtp.UseDefaultCredentials = false;
+                            clienteSmtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                            clienteSmtp.Credentials = new System.Net.NetworkCredential(emailCredencial, contraseñaCredencial);
+                            clienteSmtp.EnableSsl = true;
+                            clienteSmtp.Send(msg);
+
+                            
+                        }
+                        catch (Exception ex)
+                        {
+                            
+                        }
+
                     }
-                
+                    
 
                 }
 
