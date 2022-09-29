@@ -127,6 +127,7 @@ function GuardarHorario() {
                 if (resultado == 0) {
                     $("#exampleModal").modal("hide");
                     CompletarTablaHorario();
+                    VaciarFormulario()
                 }
                 if (resultado == 2) {
                     $("#Error-Hora").text("El horario ingresado Ya Existe. Ingrese un Nuevo horario");
@@ -161,6 +162,11 @@ function VaciarFormulario() {
     $("#Error-CamposHorario").text("");
     $("#Error-HoraMayor").text("");
     $("#Error-HoraMenor").text("");
+  
+    let diasSemana = document.getElementsByName("DiasSemana")
+    for (var i = 0; i < diasSemana.length; i++) {
+        diasSemana[i].checked = false;
+    }
 }
 
 function DesactivarHorario(horarioID, elimina) {

@@ -35,7 +35,7 @@ namespace AGENDAR.Models
         public int HorarioID { get; set; }
         public DateTime FechaTurno { get; set; }
 
-        public int Eliminado { get; set; }
+        public int Estado { get; set; }
         public virtual Horario Horarios { get; set; }
 
     }
@@ -62,7 +62,7 @@ namespace AGENDAR.Models
         public string ProfesionalNombre { get; set; }
       
 
-        public int Eliminado { get; set; }
+        public int Estado { get; set; }
         public int HorarioID { get; set; }
         public string HorarioFecha { get; set; }
 
