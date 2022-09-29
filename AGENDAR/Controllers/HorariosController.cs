@@ -246,7 +246,7 @@ namespace AGENDAR.Controllers
 
                     int cantidadTurnos = minutosDiarios / tiempoMostrar;
 
-                    DateTime fechaApertura = DateTime.Now;
+                    DateTime fechaApertura = DateTime.Now.Date;
                     fechaApertura = fechaApertura.AddHours(HoraInicio.Hour); // Horario de Apertura de la Empresa 7:00 a.m.
                     //Creamos un foreach donde reccorremos la cantidad de turnos y le vamos sumando el tiempo de cada turno
                     for (int i = 0; i < cantidadTurnos; i++)

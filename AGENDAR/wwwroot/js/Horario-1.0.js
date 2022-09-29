@@ -162,7 +162,7 @@ function VaciarFormulario() {
     $("#Error-CamposHorario").text("");
     $("#Error-HoraMayor").text("");
     $("#Error-HoraMenor").text("");
-
+  
     let diasSemana = document.getElementsByName("DiasSemana")
     for (var i = 0; i < diasSemana.length; i++) {
         diasSemana[i].checked = false;

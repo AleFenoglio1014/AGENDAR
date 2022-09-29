@@ -50,34 +50,35 @@ let arrayTurnos = [];
 
 
 function CargaElementos() {
-
+    let profesionalIDFiltro = $("#ProfesionalIDFiltro").val();
     $.ajax({
         type: "GET",
         url: '../../Turnos/MostrarTurnosInterno',
-        data: {},
+        data: { profesionalIDFiltro: profesionalIDFiltro },
         async: false,
-        success: function (listadoTurnos) {
+        success: function (listadoTurnosCalendario) {
 
-            $.each(listadoTurnos, function (index, turno) {
+            $.each(listadoTurnosCalendario, function (index, turno) {
                 arrayTurnos.push({ title: turno.nombre, start: turno.horarioFecha });
-              /*  AbrirModal()*/
+           
             });
-            CalendarioTorneo();
+            CalendarioTurno();
         },
         error: function (data) {
-            alert("Error al cargar los torneos.");
+            alert("Error al cargar los turnos.");
         }
     });
-    //CalendarioTorneo();
+    
 }
 
 
-function CalendarioTorneo() {
+function CalendarioTurno() {
 
     document.addEventListener('DOMContentLoaded', function () {
         var calendarEl = document.getElementById('calendar');
 
         var calendar = new FullCalendar.Calendar(calendarEl, {
+           
             dayMaxEvents: true,
             headerToolbar: {
                 left: 'prev,next today',
@@ -90,28 +91,26 @@ function CalendarioTorneo() {
            
             locale: 'es',
             events: arrayTurnos,
-            //axisFormat: 'H:mm',
-            //timeFormat: {
-            //    agenda: 'H:mm{ - H:mm}'
-            //}
-            //events: [
-            //    {
-            //        title: 'Lunch',
-            //        start: '2022-09-12T12:00:00'
-            //    },
+            eventTimeFormat: {
+                hour: '2-digit',
+                minute: '2-digit',
+            },
+            selectable: true,
+            eventClick: function (turno) {
+                AbrirModal()
+              /*  alert( turno.event.title);*/
+            }
 
-            //]
 
         });
-
+       
         calendar.render();
     });
 }
-
-//FUNCION PARA FILTAR LOS PROFESIONALES 
+//FUNCION PARA FILTAR LOS PROFESIONALES POR HORARIO
 
 $("#ProfesionalIDFiltro").change(function () {
-    MostrarTurnosInterno();
+    CargaElementos();
 });
 function MostrarTurnosInterno() {
     //Se limpia el contenido del dropdownlist
@@ -124,9 +123,9 @@ function MostrarTurnosInterno() {
         //Parametros que se envian al metodo del controlador
         data: { profesionalIDFiltro: $("#ProfesionalIDFiltro").val() },
         //En caso de resultado exitoso
-        success: function (turnoFiltro) {
+        success: function (turnoMostrarCalendario) {
 
-            $.each(turnoFiltro, function (i, profesional) {
+            $.each(turnoMostrarCalendario, function (i, profesional) {
                 $("#TurnoID").append('<option value="' + profesional.value + '">' +
                     profesional.text + '</option>');
             });
@@ -138,8 +137,20 @@ function MostrarTurnosInterno() {
     });
     return false;
 }
-
 function AbrirModal() {
-
     $("#exampleModal").modal("show");
 }
+//function EstadoTurno(turnoID, estado) {
+//    $("#TurnoID").val(turnoID);
+//    $("#Estado").val(estado);
+//        $.ajax({
+//            type: "POST",
+//            url: '../../Turnos/EstadoTurno',
+//            data: { TurnoID: turnoID, Estado: estado },
+//            success: function (turno) {
+              
+//            },
+//            error: function (data) {
+//            }
+//        });
+//}
