@@ -98,6 +98,7 @@ namespace AGENDAR.Controllers
                     }
                     else
                     {
+                        //Hacemos un linkiu para mostrar la hora y la fecha en una variable, y poder mostrarlo en el calendario del profesional
                         var horarioTurno = _context.Horario.Where(l => l.HorarioID == HorarioID).Select(h => h.HoraInicio).FirstOrDefault();
                         FechaTurno = FechaTurno.AddHours(horarioTurno.Hour);
                         FechaTurno = FechaTurno.AddMinutes(horarioTurno.Minute);
@@ -122,14 +123,8 @@ namespace AGENDAR.Controllers
                         _context.Add(turnoNuevo);
                         _context.SaveChanges();
 
-
-
-
                     }
-                
-
                 }
-
             }
             return Json(resultado);
         }
