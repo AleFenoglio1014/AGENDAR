@@ -74,9 +74,7 @@ function GuardarTurno() {
                         //    window.location.href = "/Views/Shared/_Layout.cshtml";
                         //};
                 }
-                //if (resultado == 2) {
-                //    $("#Error-ProvinciaNombre").text("La Provincia ingresada Ya Existe. Ingrese una Nueva Provincia");
-                //}
+              
             },
             error: function (data) {
             }

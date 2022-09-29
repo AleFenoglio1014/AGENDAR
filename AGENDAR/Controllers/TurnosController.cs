@@ -88,7 +88,8 @@ namespace AGENDAR.Controllers
 
             if (!string.IsNullOrEmpty(Nombre) && !string.IsNullOrEmpty(Apellido) && EmpresaID != 0)
             {
-
+                Nombre = Nombre.ToUpper();
+                Apellido = Apellido.ToUpper();
                 if (TurnoID == 0)
                 {
                     // Antes de CREAR el registro debemos preguntar si existe una TURNO existente

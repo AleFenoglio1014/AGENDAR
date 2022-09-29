@@ -162,13 +162,7 @@ function VaciarFormulario() {
     $("#Error-CamposHorario").text("");
     $("#Error-HoraMayor").text("");
     $("#Error-HoraMenor").text("");
-    $("#Lunes").val(false);
-    $("#Martes").val(false);
-    $("#Miercoles").val(false);
-    $("#Jueves").val(false);
-    $("#Viernes").val(false);
-    $("#Sabado").val(false);
-    $("#Domingo").val(false);
+  
     let diasSemana = document.getElementsByName("DiasSemana")
     for (var i = 0; i < diasSemana.length; i++) {
         diasSemana[i].checked = false;
