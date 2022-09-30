@@ -85,9 +85,6 @@ function GuardarTurno() {
     if (guardarTurno) {
 
 
-                        
-
-       
         //$.ajax({
         //    type: "POST",
         //    url: '../../Turnos/GuardarTurno',
