@@ -46,7 +46,7 @@ namespace AGENDAR.Controllers
             //BUSCAR LOCALIDADES
             var localidades = (from o in _context.Localidad where o.ProvinciaID == id  && o.Eliminado == false select o).ToList();
 
-            return Json(new SelectList(localidades, "LocalidadID", "Descripcion"));
+            return Json(new SelectList(localidades.OrderBy(l => l.Descripcion), "LocalidadID", "Descripcion"));
         }
 
         // Funcion para Completar la Tabla  de Localidades 

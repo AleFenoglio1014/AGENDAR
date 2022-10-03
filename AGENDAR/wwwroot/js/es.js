@@ -97,8 +97,8 @@ function CalendarioTurno() {
             },
             selectable: true,
             eventClick: function (turno) {
-                AbrirModal()
-              /*  alert( turno.event.title);*/
+                $("#exampleModal").modal("show");
+                alert(turno.event.id);
             }
 
 
@@ -137,9 +137,7 @@ function MostrarTurnosInterno() {
     });
     return false;
 }
-function AbrirModal() {
-    $("#exampleModal").modal("show");
-}
+
 //function EstadoTurno(turnoID, estado) {
 //    $("#TurnoID").val(turnoID);
 //    $("#Estado").val(estado);
