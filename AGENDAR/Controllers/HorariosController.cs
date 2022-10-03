@@ -123,7 +123,7 @@ namespace AGENDAR.Controllers
             {    // POR CADA HORARIO VAMOS A BUSCAR EN LA TABLA TURNO LO SIGUIENTE
                 //SI EXISTE ALGUN TURNO AL MISMO DIA Y AL MISMO HORARIO ID
 
-                var existeTurno = (from o in _context.Turnos where o.FechaTurno == fechaTurno && o.HorarioID == horario.HorarioID select o).Count();
+                var existeTurno = (from o in _context.Turnos where o.FechaTurno.Date == fechaTurno.Date && o.HorarioID == horario.HorarioID select o).Count();
          
                 if(existeTurno == 0)
                 {
