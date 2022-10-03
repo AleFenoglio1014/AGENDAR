@@ -100,6 +100,7 @@ namespace AGENDAR.Controllers
                     }
                     else
                     {
+                        //Hacemos un linkiu para mostrar la hora y la fecha en una variable, y poder mostrarlo en el calendario del profesional
                         var horarioTurno = _context.Horario.Where(l => l.HorarioID == HorarioID).Select(h => h.HoraInicio).FirstOrDefault();
                         FechaTurno = FechaTurno.AddHours(horarioTurno.Hour);
                         FechaTurno = FechaTurno.AddMinutes(horarioTurno.Minute);
@@ -176,7 +177,6 @@ namespace AGENDAR.Controllers
                     
 
                 }
-
             }
             return Json(resultado);
         }
@@ -184,6 +184,27 @@ namespace AGENDAR.Controllers
 
         //Cancelar y Aceptar Turno
        
+        //public JsonResult EstadoTurno(int TurnoID, int estado)
+        //{
+        //    var turno = _context.Turnos.FirstOrDefault(m => m.TurnoID == TurnoID);
+        //    //if (turno != null)
+        //    //{
+        //    //    if (estado == 2)
+        //    //    {
+        //    //        turno.Estado = 2;
+                    
+        //    //    }
+        //    //    else if (estado == 0)
+        //    //    {
+        //    //        turno.Estado = 0;
+        //    //    }
+        //    //    _context.SaveChanges();
+        //    //}
+
+        //    return Json(turno);
+        //}
+        
+
         private object Include(Func<object, object> p)
         {
             throw new NotImplementedException();

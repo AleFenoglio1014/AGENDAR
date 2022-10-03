@@ -77,6 +77,7 @@ namespace AGENDAR.Controllers
             var fechaTurno = Convert.ToDateTime(fecha);
             var nombreDia = fechaTurno.DayOfWeek;
             string numeroDia = Convert.ToString((int)nombreDia);
+            //var fechaTurnoString = Convert.ToString(fecha);
 
             //BUSCAR HORARIOS DE ACUERDO AL NUMEROS DEL DIA SELECCIONADO
             var horarios = (from o in _context.Horario where o.ProfesionalID == id && o.Eliminado == false select o).ToList();
@@ -115,22 +116,24 @@ namespace AGENDAR.Controllers
                 //Sábado
                 horarios = (from o in horarios where o.Sabado == true select o).ToList();
             }
-
+         
             List<Horario> horarioMostrar = new List<Horario>();
             // RECORREMOS TODOS LOS TURNOS DE ESE DIA
             foreach( var horario in horarios)
             {    // POR CADA HORARIO VAMOS A BUSCAR EN LA TABLA TURNO LO SIGUIENTE
                 //SI EXISTE ALGUN TURNO AL MISMO DIA Y AL MISMO HORARIO ID
-                var existeTurno = (from o in _context.Turnos where o.FechaTurno == fechaTurno && o.HorarioID == horario.HorarioID select o).Count();
-            if(existeTurno == 0)
+
+                var existeTurno = (from o in _context.Turnos where o.FechaTurno.Date == fechaTurno.Date && o.HorarioID == horario.HorarioID select o).Count();
+         
+                if(existeTurno == 0)
                 {
                     horarioMostrar.Add(horario);
                 }
             }
 
-          
 
-            return Json(new SelectList(horarioMostrar, "HorarioID", "HorarioCompleto"));
+
+            return Json(new SelectList(horarioMostrar.OrderBy(p => p.HoraIniciostring), "HorarioID", "HorarioCompleto"));
         }
 
         // Funcion para Completar la Tabla de Horario
@@ -246,7 +249,7 @@ namespace AGENDAR.Controllers
 
                     int cantidadTurnos = minutosDiarios / tiempoMostrar;
 
-                    DateTime fechaApertura = DateTime.Now;
+                    DateTime fechaApertura = DateTime.Now.Date;
                     fechaApertura = fechaApertura.AddHours(HoraInicio.Hour); // Horario de Apertura de la Empresa 7:00 a.m.
                     //Creamos un foreach donde reccorremos la cantidad de turnos y le vamos sumando el tiempo de cada turno
                     for (int i = 0; i < cantidadTurnos; i++)

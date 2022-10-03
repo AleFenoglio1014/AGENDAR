@@ -179,7 +179,7 @@ namespace AGENDAR.Controllers
             //BUSCAR PROFESIONAL
             var profesionales = (from o in _context.Profesional where o.EmpresaID == id && o.Eliminado == false select o).ToList();
 
-            return Json(new SelectList(profesionales, "ProfesionalID", "ProfesionalNombreCompleto"));
+            return Json(new SelectList(profesionales.OrderBy(p => p.ProfesionalNombreCompleto), "ProfesionalID", "ProfesionalNombreCompleto"));
         }
 
 

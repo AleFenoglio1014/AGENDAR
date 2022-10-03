@@ -13,8 +13,11 @@
 
 <style>
 
-
-    .fc-daygrid-day-number {
+    .navbar-light .navbar-nav .nav-link {
+        color: rgba(0,0,0,.5) !important;
+        font-weight:bold;
+    }
+    a {
         color: black !important;
         font-weight: bolder;
     }
@@ -77,8 +80,8 @@
 
                         <div class="form-group aceptarBoton">
 
-                            <button type="button" onclick="AceptarTurno()" class="btn btn-outline-success "> Aceptar </button>
-                            <button type="button" onclick="CancelarTurno()" class="btn btn-outline-danger"> Cancelar</button>
+                            <button type="button" onclick="EstadoTurno()" value="2" class="btn btn-outline-success "> Aceptar </button>
+                            <button type="button" onclick="EstadoTurno()" value="0" class="btn btn-outline-danger"> Cancelar</button>
                         </div>
                     </form>
                 </div>

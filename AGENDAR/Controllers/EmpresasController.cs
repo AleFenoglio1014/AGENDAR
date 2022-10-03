@@ -56,7 +56,7 @@ namespace AGENDAR.Controllers
             //BUSCAR EMPRESAS
             var empresas = (from o in _context.Empresa where o.LocalidadID == id && o.Eliminado == false select o).ToList();
 
-            return Json(new SelectList(empresas, "EmpresaID", "RazonSocial"));
+            return Json(new SelectList(empresas.OrderBy(p => p.RazonSocial), "EmpresaID", "RazonSocial"));
         }
 
         //Funcion para Buscar Empresa y Usuario
