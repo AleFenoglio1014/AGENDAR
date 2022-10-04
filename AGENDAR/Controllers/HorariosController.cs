@@ -121,11 +121,11 @@ namespace AGENDAR.Controllers
             // RECORREMOS TODOS LOS TURNOS DE ESE DIA
             foreach( var horario in horarios)
             {    // POR CADA HORARIO VAMOS A BUSCAR EN LA TABLA TURNO LO SIGUIENTE
-                //SI EXISTE ALGUN TURNO AL MISMO DIA Y AL MISMO HORARIO ID
+                 //SI EXISTE ALGUN TURNO AL MISMO DIA Y AL MISMO HORARIO ID
 
-                var existeTurno = (from o in _context.Turnos where o.FechaTurno.Date == fechaTurno.Date && o.HorarioID == horario.HorarioID select o).Count();
-         
-                if(existeTurno == 0)
+                var existeTurno = (from o in _context.Turnos where o.FechaTurno.Date == fechaTurno.Date && o.Estado != 0 && o.HorarioID == horario.HorarioID select o).Count();
+
+                if (existeTurno == 0)
                 {
                     horarioMostrar.Add(horario);
                 }
@@ -184,7 +184,7 @@ namespace AGENDAR.Controllers
         }
         // Funcion Guardar y Editar los Horarios
 
-        public JsonResult GuardarHorario(DateTime HoraInicio, DateTime HoraFin, int TiempoTurnos, int ProfesionalID, bool Lunes, bool Martes, bool Miercoles, bool Jueves, bool Viernes, bool Sabado, bool Domingo)
+        public JsonResult GuardarHorario(int HorarioID, DateTime HoraInicio, DateTime HoraFin, int TiempoTurnos, int ProfesionalID, bool Lunes, bool Martes, bool Miercoles, bool Jueves, bool Viernes, bool Sabado, bool Domingo)
         {
             //PRIMERO BUSCAMOS EL USUARIO ACTUAL
             var usuarioActual = _userManager.GetUserId(HttpContext.User);
@@ -217,43 +217,43 @@ namespace AGENDAR.Controllers
                 {
                     tiempoMostrar = 60;
                 }
-               
-               
-               
 
-                //    // Antes de CREAR el registro debemos preguntar si existe una Horario igual
-                if (_context.Horario.Any(e => e.HoraInicio == HoraInicio && e.HoraFin == HoraFin  && e.ProfesionalID == ProfesionalID))
-                {
-                    resultado = 2;
-                }
-                if (HoraInicio > HoraFin)
-                {
-                    resultado = 3;
-                }
-                else
-                {
 
-                    // Aca va a ir el codigo para CREAR un Horario
 
-                    //CALCULAMOS LAS HORAS QUE TRABAJA LA EMPRESA
-                    int horasDeTrabajo = HoraFin.Hour - HoraInicio.Hour;
-                    if (horasDeTrabajo < 1)
-                    {
-                        resultado = 4;
+                if (HorarioID == 0)
+                {
+                    //    // Antes de CREAR el registro debemos preguntar si existe una Horario igual
+                    if (_context.Horario.Any(e => e.HoraInicio.Hour == HoraInicio.Hour  && e.ProfesionalID == ProfesionalID))
+                    { 
+                       resultado = 2;
                     }
-                    //PASAMOS LAS HORAS QUE TRABAJA LA EMPRESA A MINUTOS
-                    int minutosDiarios = horasDeTrabajo * 60;
-
-
-                    /*int minutosTurnos = TiempoTurnos;*/ // Tiempo de Duración de los Turnos en Minutos
-
-                    int cantidadTurnos = minutosDiarios / tiempoMostrar;
-
-                    DateTime fechaApertura = DateTime.Now.Date;
-                    fechaApertura = fechaApertura.AddHours(HoraInicio.Hour); // Horario de Apertura de la Empresa 7:00 a.m.
-                    //Creamos un foreach donde reccorremos la cantidad de turnos y le vamos sumando el tiempo de cada turno
-                    for (int i = 0; i < cantidadTurnos; i++)
+                    else if (HoraInicio > HoraFin)
                     {
+                        resultado = 3;
+                    }
+                    else
+                    {
+
+                        // Aca va a ir el codigo para CREAR un Horario
+                        //CALCULAMOS LAS HORAS QUE TRABAJA LA EMPRESA
+                        int horasDeTrabajo = HoraFin.Hour - HoraInicio.Hour;
+                        if (horasDeTrabajo < 1)
+                        {
+                           resultado = 4;
+                        }
+                           //PASAMOS LAS HORAS QUE TRABAJA LA EMPRESA A MINUTOS
+                        int minutosDiarios = horasDeTrabajo * 60;
+
+
+                        /*int minutosTurnos = TiempoTurnos;*/ // Tiempo de Duración de los Turnos en Minutos
+
+                       int cantidadTurnos = minutosDiarios / tiempoMostrar;
+
+                        DateTime fechaApertura = DateTime.Now.Date;
+                        fechaApertura = fechaApertura.AddHours(HoraInicio.Hour); // Horario de Apertura de la Empresa 7:00 a.m.
+                        //Creamos un foreach donde reccorremos la cantidad de turnos y le vamos sumando el tiempo de cada turno
+                      for (int i = 0; i < cantidadTurnos; i++)
+                      {
                         // Para eso creamos un objeto de tipo nuevoHorario con los datos necesarios
                         var nuevoHorario = new Horario
                         {
@@ -276,6 +276,7 @@ namespace AGENDAR.Controllers
                         _context.SaveChanges();
 
                         fechaApertura = fechaApertura.AddMinutes(tiempoMostrar);
+                      }
                     }
                 }
             }
@@ -285,7 +286,7 @@ namespace AGENDAR.Controllers
                 resultado = 1;
             }
             return Json(resultado);
-            }
+        }
        
 
         // Funcion para Buscar el horario

@@ -108,7 +108,8 @@
     </form>
 
     <div class="form-group">
-        <button type="button" onclick="GuardarTurno()" class="btn btn-success"><i class="bi bi-folder-check"></i> Solicitar Turno</button>
+        <button type="button" id="btn-guardar" onclick="GuardarTurno()" class="btn btn-success"><i class="bi bi-folder-check"></i> Solicitar Turno</button>
+        <button type="button" id="btn-guardar-espere" class="btn btn-success ocultar"><i class="bi bi-folder-check"></i> Espere...</button>
     </div>
 
 </body>
@@ -118,5 +119,5 @@
 @section Scripts {
 
     <script src="~/js/Turno.js"></script>
-    <script src="~/js/Sweetalert.js"></script>
+   
 }

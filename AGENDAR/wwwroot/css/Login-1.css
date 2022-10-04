@@ -19,6 +19,9 @@
 .accordion{
     padding-bottom:4px;
 }
+.ocultar {
+    display: none !important;
+}
 .card {
     background-color: transparent !important;
    
