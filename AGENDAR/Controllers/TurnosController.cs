@@ -146,10 +146,12 @@ namespace AGENDAR.Controllers
                             msg.Subject = "Mensaje de " + emailDe;
                             msg.SubjectEncoding = System.Text.Encoding.UTF8;
 
-                            msg.Body = "<p style= font-size: 12pt; >" + "Estado turno: <b>A CONFIRMAR</b>" + "Nombre: <b>" + Nombre + "</b>" + "Apellido: <b>" + Apellido + "</b> . </p>";
-                            msg.Body = "<p style= font-size: 12pt;>" + "Nombre: <b>" + Nombre + "</b> . </p>";
+                            msg.Body = "<p style= font-size: 12px;>" + "Estado turno: <b>A CONFIRMAR</b>" + "</b> . </p>";
+                            //msg.Body = "<p style= font-size: 12px;>" + "Cuando el profesional confirme su truno, se le notificara mediante un mail. </p>";
+                            //msg.Body = "<p style= font-size: 12px;>" + "Nombre: <b>" + Nombre + "</b> . </p>";
                             //msg.Body = "<p style= font-size: 12pt;>" + "Apellido: <b>" + Apellido + "</b> . </p>";
-
+                            //msg.Body = "<p style= font-size: 12pt;>" + "Telefono: <b>" + Telefono + "</b> . </p>";
+                            //msg.Body = "<p style= font-size: 12pt;>" + "Fecha del Turno: <b>" + FechaTurno + "</b> . </p>";
 
 
                             msg.BodyEncoding = System.Text.Encoding.UTF8;
@@ -178,6 +180,8 @@ namespace AGENDAR.Controllers
             }
             return Json(resultado);
         }
+
+
         //Cancelar y Aceptar Turno
        
         //public JsonResult EstadoTurno(int TurnoID, int estado)
