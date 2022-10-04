@@ -98,7 +98,7 @@
                                 <input type="number" class="form-control letrainput" autocomplete="off" required name="telefono" id="Telefono">
                             </div>
                         </div>
-                        <p class="text-danger font-weight-bold" style="font-size:small" id="Error-CamposTurno"></p>
+                       
                     </div>
                 </div>
             </div>
@@ -108,7 +108,9 @@
     </form>
 
     <div class="form-group">
-        <button type="button" onclick="GuardarTurno()" class="btn btn-success"><i class="bi bi-folder-check"></i> Solicitar Turno</button>
+        <p class=" font-weight-bold errorTurno" style="font-size:small" id="Error-CamposTurno"></p>
+        <button type="button" id="btn-guardar" onclick="GuardarTurno()" class="btn btn-success"><i class="bi bi-folder-check"></i> Solicitar Turno</button>
+        <button type="button" id="btn-guardar-espere" class="btn btn-success ocultar"><i class="bi bi-folder-check"></i> Espere...</button>
     </div>
 
 </body>
@@ -118,5 +120,5 @@
 @section Scripts {
 
     <script src="~/js/Turno.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+   
 }

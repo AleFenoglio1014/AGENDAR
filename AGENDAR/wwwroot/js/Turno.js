@@ -61,14 +61,16 @@ function GuardarTurno() {
     }
 
     if (guardarTurno) {
+        $("#btn-guardar").addClass("ocultar");
+        $("#btn-guardar-espere").removeClass("ocultar");
         $.ajax({
             type: "POST",
             url: '../../Turnos/GuardarTurno',
             data: { TurnoID: turnoID, Nombre: nombre, Apellido: apellido, Email: email, Telefono: telefono, FechaTurno: fechaTurno, ProvinciaID: provinciaID, LocalidadID: localidadID, EmpresaID: empresaID, ProfesionalID: profesionalID, HorarioID: horarioID },
             success: function (resultado) {
                 if (resultado == 0) {
-                    $("#exampleModal").modal("hide");
-                    VaciarFormulario()
+                    $("#btn-guardar").removeClass("ocultar");
+                    $("#btn-guardar-espere").addClass("ocultar");
                     swal({
                         title: "¡Turno Solicitado!",
                         text: "Su turno se registró con éxito, en breve le llegará un email sobre el estado de su turno.",
@@ -78,6 +80,7 @@ function GuardarTurno() {
                         window.location.href = '/';
                     });
                 }
+
             },
             error: function (data) {
             }
@@ -87,7 +90,6 @@ function GuardarTurno() {
         $("#Error-CamposTurno").text("Los campos son OBLIGATORIOS.");
     }
 }
-
 
 //    if (guardarTurno) {
 

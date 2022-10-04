@@ -9,7 +9,9 @@
     image-resolution: 300dpi;
     background-image: url('../lib/Imagenes/fondopedirturno.jpg');
 }
-
+.errorTurno {
+    color:white;
+}
 .letrainput {
     font-size: 11px !important;
     color: white;
@@ -18,6 +20,9 @@
 
 .accordion{
     padding-bottom:4px;
+}
+.ocultar {
+    display: none !important;
 }
 .card {
     background-color: transparent !important;

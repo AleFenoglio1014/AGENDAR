@@ -50,7 +50,7 @@ function GuardarProfesional() {
     let profesionalID = $('#ProfesionalID').val();
     let nombre = $('#Nombre').val().trim();
     let apellido = $('#Apellido').val().trim();
-    let empresaID = $('#EmpresaID').val();
+   
 
     let guardarProfesional = true;
 
