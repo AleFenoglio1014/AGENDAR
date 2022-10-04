@@ -4,8 +4,8 @@ FullCalendar.globalLocales.push(function () {
   var es = {
     code: 'es',
     week: {
-      dow: 1, // Monday is the first day of the week.
-      doy: 4, // The week that contains Jan 4th is the first week of the year.
+      dow: 1, 
+      doy: 4, 
     },
     buttonText: {
       prev: 'Ant',
@@ -59,7 +59,7 @@ function CargaElementos() {
         success: function (listadoTurnosCalendario) {
 
             $.each(listadoTurnosCalendario, function (index, turno) {
-                arrayTurnos.push({ title: turno.nombre, start: turno.horarioFecha });
+                arrayTurnos.push({ title: turno.nombre, start: turno.horarioFecha, id: turno.turnoID });
            
             });
             CalendarioTurno();
@@ -87,7 +87,7 @@ function CalendarioTurno() {
             },
 
             initialDate: new Date(),
-            navLinks: true, // can click day/week names to navigate views
+            navLinks: true, 
            
             locale: 'es',
             events: arrayTurnos,
@@ -98,7 +98,8 @@ function CalendarioTurno() {
             selectable: true,
             eventClick: function (turno) {
                 $("#exampleModal").modal("show");
-                alert(turno.event.id);
+                // $("#TurnoID").val(turno.id);
+                //alert(turno.event.id);
             }
 
 
@@ -123,9 +124,9 @@ function MostrarTurnosInterno() {
         //Parametros que se envian al metodo del controlador
         data: { profesionalIDFiltro: $("#ProfesionalIDFiltro").val() },
         //En caso de resultado exitoso
-        success: function (turnoMostrarCalendario) {
+        success: function (turnosCalendario) {
 
-            $.each(turnoMostrarCalendario, function (i, profesional) {
+            $.each(turnosCalendario, function (i, profesional) {
                 $("#TurnoID").append('<option value="' + profesional.value + '">' +
                     profesional.text + '</option>');
             });
@@ -144,9 +145,9 @@ function MostrarTurnosInterno() {
 //        $.ajax({
 //            type: "POST",
 //            url: '../../Turnos/EstadoTurno',
-//            data: { TurnoID: turnoID, Estado: estado },
+//            data: { TurnoID: id, Estado: estado },
 //            success: function (turno) {
-              
+//                $("#TurnoID").val(turno.id);
 //            },
 //            error: function (data) {
 //            }
