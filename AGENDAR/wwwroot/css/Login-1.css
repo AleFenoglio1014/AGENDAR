@@ -9,7 +9,9 @@
     image-resolution: 300dpi;
     background-image: url('../lib/Imagenes/fondopedirturno.jpg');
 }
-
+.errorTurno {
+    color:white;
+}
 .letrainput {
     font-size: 11px !important;
     color: white;
