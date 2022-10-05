@@ -27,7 +27,7 @@
     }
     #calendar {
         max-width: 1100px;
-        max-height: 500px;
+        max-height: 490px;
         margin: 0 auto;
         
     }
@@ -47,10 +47,10 @@
         color: black !important;
     }
     .aceptarBoton {
-        padding-left: 140px;
+        padding-left: 90px;
     }
     .modalAceptar {
-        background-color: #2C3E50 !important;
+        
        
     }
     .fc-event-title {
@@ -59,6 +59,9 @@
 
     .fc-event-time {
         font-size: 10px;
+    }
+    .modal-title{
+        padding-left:160px;
     }
 </style>
 <body>
@@ -72,20 +75,25 @@
     <div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content modalAceptar ">
+                <div class="modal-header">
+                    <h5 class="modal-title">Estado del Turno:</h5>
+                    <button type="button" class="close cerrarModal" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
                 <!--Agregado de Formulario dentro del Modal-->
                 <div class="modal-body">
                     <form>
                         <input type="hidden" id="TurnoID" value="0" />
-                        <button type="button" class="close cerrarModal" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      
 
                         <div class="form-group aceptarBoton">
 
                             <button type="button" onclick="EstadoTurno()" value="2" class="btn btn-outline-success "> Aceptar </button>
-                            <button type="button" onclick="EstadoTurno()" value="0" class="btn btn-outline-danger"> Cancelar</button>
+                            <button type="button" onclick="EstadoTurno()" value="0" class="btn btn-outline-dark"> Cancelar</button>
+                            <button type="button" onclick="EstadoTurno()" value="3" class="btn btn-outline-danger "> Finalizar </button>
                         </div>
                     </form>
                 </div>
-                
+
             </div>
         </div>
     </div>
