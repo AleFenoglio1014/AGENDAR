@@ -2,7 +2,22 @@
 .colorNav {
     background-color: #BFC9CA;
 }
+/* -- Botón volver -- */
+.cerrarSesion {
+    /width: 90px;
+    / color: black;
+    font-family: unset;
+    /font-size: 18px;
+    / font-weight: 400;
+    background-color: #BFC9CA;
+    border: solid 1px;
+    border-radius: 20px;
+}
 
+    .cerrarSesion:hover {
+        color: black;
+        background-color: white;
+    }
 /*CLASES PARA SOLICITAR EL TURNO*/
 
 .imagenSoliitarTurno {

@@ -31,11 +31,11 @@ function GuardarTurno() {
         $("#Error-CamposTurno").text("Los campos son OBLIGATORIOS.");
 
     }
-    if (empresaID == "" || empresaID == null) {
+    if (empresaID == 0 || empresaID == null) {
         guardarTurno = false;
         $("#Error-CamposTurno").text("Los campos son OBLIGATORIOS.");
     }
-    if (horarioID == "" || horarioID == null) {
+    if (horarioID == 0 || horarioID == null) {
         guardarTurno = false;
         $("#Error-CamposTurno").text("Los campos son OBLIGATORIOS.");
     }
@@ -43,11 +43,11 @@ function GuardarTurno() {
         guardarTurno = false;
         $("#Error-CamposTurno").text("Los campos son OBLIGATORIOS.");
     }
-    if (profesionalID == "" || profesionalID == null) {
+    if (profesionalID == 0 || profesionalID == null) {
         guardarTurno = false;
         $("#Error-CamposTurno").text("Los campos son OBLIGATORIOS.");
     }
-    if (localidadID == "" || localidadID == null) {
+    if (localidadID == 0 || localidadID == null) {
         guardarTurno = false;
         $("#Error-CamposTurno").text("Los campos son OBLIGATORIOS.");
     }
@@ -55,7 +55,7 @@ function GuardarTurno() {
         guardarTurno = false;
         $("#Error-CamposTurno").text("Los campos son OBLIGATORIOS.");
     }
-    if (provinciaID == "" || provinciaID == null) {
+    if (provinciaID == 0 || provinciaID == null) {
         guardarTurno = false;
         $("#Error-CamposTurno").text("Los campos son OBLIGATORIOS.");
     }
