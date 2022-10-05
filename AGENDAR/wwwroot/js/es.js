@@ -139,15 +139,14 @@ function MostrarTurnosInterno() {
     return false;
 }
 
-//function EstadoTurno(turnoID, estado) {
+//function EstadoTurno(turnoID) {
 //    $("#TurnoID").val(turnoID);
-//    $("#Estado").val(estado);
 //        $.ajax({
 //            type: "POST",
 //            url: '../../Turnos/EstadoTurno',
-//            data: { TurnoID: id, Estado: estado },
+//            data: { TurnoID: turnoID},
 //            success: function (turno) {
-//                $("#TurnoID").val(turno.id);
+//                CalendarioTurno();
 //            },
 //            error: function (data) {
 //            }

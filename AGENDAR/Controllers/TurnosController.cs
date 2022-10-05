@@ -184,21 +184,21 @@ namespace AGENDAR.Controllers
 
         //Cancelar y Aceptar Turno
 
-        //public JsonResult EstadoTurno(int TurnoID, int estado)
+        //public JsonResult EstadoTurno(int TurnoID)
         //{
         //    var turno = _context.Turnos.FirstOrDefault(m => m.TurnoID == TurnoID);
         //    if (turno != null)
         //    {
-        //        if (estado == 2)
-        //        {
-        //            turno.Estado = 2;
+        //        //if (estado == 2)
+        //        //{
+        //        //    turno.Estado = 2;
 
-        //        }
-        //        else if (estado == 0)
-        //        {
-        //            turno.Estado = 0;
-        //        }
-        //        _context.SaveChanges();
+        //        //}
+        //        //else if (estado == 0)
+        //        //{
+        //        //    turno.Estado = 0;
+        //        //}
+        //        //_context.SaveChanges();
         //    }
 
         //    return Json(turno);
