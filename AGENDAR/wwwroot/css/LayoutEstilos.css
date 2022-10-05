@@ -503,7 +503,7 @@ header {
     }
 
 .home-content h1 {
-    font-family: cursive;
+    font-family: 'Californian FB' !important;
     text-transform: none;
 }
 
