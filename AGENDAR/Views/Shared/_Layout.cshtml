@@ -20,7 +20,7 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light colorNav  box-shadow mb-3  ">
 
             <div class="container">
-                <a class="navbar-brand text-black pl-5" href="#"><img src="~/lib/Imagenes/AgendArLogo.jpg"></a>
+                <a class="navbar-brand text-black" href="#"><img src="~/lib/Imagenes/AgendArLogo.jpg"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                     <span class="navbar-toggler-icon colorMenuHamb"></span>
                 </button>
@@ -30,41 +30,40 @@
                         @if (User.IsInRole("SuperUsuario"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-black text-center" asp-area="" asp-controller="Provincias" asp-action="Index">PROVINCIAS</a>
+                                <a class="nav-link text-black text-center dropdown" asp-area="" asp-controller="Provincias" asp-action="Index">PROVINCIAS</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-black text-center" asp-area="" asp-controller="Localidades" asp-action="Index">LOCALIDADES</a>
+                                <a class="nav-link text-black text-center dropdown" asp-area="" asp-controller="Localidades" asp-action="Index">LOCALIDADES</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-black text-center" asp-area="" asp-controller="Empresas" asp-action="Index">EMPRESAS</a>
+                                <a class="nav-link text-black text-center dropdown" asp-area="" asp-controller="Empresas" asp-action="Index">EMPRESAS</a>
                             </li>
-
                         }
 
                         @if (User.IsInRole("AdministradorEmpresa"))
                         {
-
                             <li class="nav-item">
-                                <a class="nav-link text-black" asp-controller="Profesionales" asp-action="Index">PROFESIONALES</a>
+                                <a class="nav-link text-black dropdown" asp-controller="Profesionales" asp-action="Index">PROFESIONALES</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-black" asp-area="" asp-controller="Horarios" asp-action="Index">HORARIOS</a>
+                                <a class="nav-link text-black dropdown" asp-area="" asp-controller="Horarios" asp-action="Index">HORARIOS</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-black" asp-area="" asp-controller="Turnos" asp-action="Index">TURNOS</a>
+                                <a class="nav-link text-black dropdown" asp-area="" asp-controller="Turnos" asp-action="Index">TURNOS</a>
                             </li>
-
-
-                        }                       
+                        }
                     </ul>
-                    <ul>
-                        <li class="nav-item">
+
+                    <div class="nav-item dropdown">
+                        <button onclick="myFunction()" class="nav-link text-black dropbtn">PERFIL</button>
+                        <div id="myDropdown" class="dropdown-content">
+                            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" style="color: #d0e2ef !important;font-size: 14px;font-weight: bold;">@User.Identity.Name</a>
                             <form class="form-inline nav-link" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                                <button class="cerrarSesion">Salir</button>
+                                <button class="cerrarSesion">Cerrar Sesión</button>
                             </form>
+                           </div>
+                    </div>
 
-                        </li>
-                    </ul>
                 </div>
             </div>
         </nav>

@@ -146,13 +146,9 @@ namespace AGENDAR.Controllers
                             msg.Subject = "Mensaje de " + emailDe;
                             msg.SubjectEncoding = System.Text.Encoding.UTF8;
 
-                            msg.Body = "<p style= font-size: 12px;>" + "Estado turno: <b>A CONFIRMAR</b>" + "</b> . </p>";
-                            //msg.Body = "<p style= font-size: 12px;>" + "Cuando el profesional confirme su truno, se le notificara mediante un mail. </p>";
-                            //msg.Body = "<p style= font-size: 12px;>" + "Nombre: <b>" + Nombre + "</b> . </p>";
-                            //msg.Body = "<p style= font-size: 12pt;>" + "Apellido: <b>" + Apellido + "</b> . </p>";
-                            //msg.Body = "<p style= font-size: 12pt;>" + "Telefono: <b>" + Telefono + "</b> . </p>";
-                            //msg.Body = "<p style= font-size: 12pt;>" + "Fecha del Turno: <b>" + FechaTurno + "</b> . </p>";
-
+                            msg.Body = "<p style= font-size: 25px;>" + "Estado turno: <b>A CONFIRMAR</b>" + "</b> . </p>";
+                            //msg.Body += "<p style= font-size: 20px;>" + "Nombre: <b>"+ Nombre +"</b>" + "</b> . </p>";
+                            //msg.Body += "<p style= font-size: 20px;>" + "Apellido: <b>"+ Apellido +"</b>" + "</b> . </p>";
 
                             msg.BodyEncoding = System.Text.Encoding.UTF8;
                             msg.IsBodyHtml = true;
@@ -170,7 +166,7 @@ namespace AGENDAR.Controllers
                         }
                         catch (Exception ex)
                         {
-                            
+                          
                         }
 
                     }
