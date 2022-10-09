@@ -100,7 +100,7 @@ function CalendarioTurno() {
                 $("#TurnoID").val(turno.event.id);
                 AbrirModal();
 
-                /alert(turno.event.id);/
+                /*alert(turno.event.id);*/
             }
 
 
@@ -115,14 +115,13 @@ function AbrirModal() {
 }
 
 function EstadoTurno(turnoID) {
-    $("#TurnoID").val(turnoID);
+
     $.ajax({
         type: "POST",
         url: '../../Turnos/EstadoTurno',
         data: { TurnoID: turnoID },
         success: function (turno) {
-            $("#TurnoID").val(turno.turnoID);
-
+         
         },
         error: function (data) {
         }

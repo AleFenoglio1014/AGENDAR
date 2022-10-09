@@ -223,7 +223,7 @@ namespace AGENDAR.Controllers
                 if (HorarioID == 0)
                 {
                     //    // Antes de CREAR el registro debemos preguntar si existe una Horario igual
-                    if (_context.Horario.Any(e => e.HoraInicio.Hour == HoraInicio.Hour  && e.ProfesionalID == ProfesionalID))
+                    if (_context.Horario.Any(e => e.HoraInicio.Hour == HoraInicio.Hour && e.ProfesionalID == ProfesionalID && e.Eliminado == false))
                     { 
                        resultado = 2;
                     }
@@ -297,14 +297,18 @@ namespace AGENDAR.Controllers
             return Json(horario);
         }
         
-        public JsonResult DesactivarHorario(int HorarioID, int Elimina)
+        public JsonResult DesactivarHorario(int HorarioID, int Elimina, DateTime HoraInicio, int ProfesionalID)
         {
             bool resultado = true;
 
             var horario = _context.Horario.Find(HorarioID);
             if (horario != null)
             {
-                if (Elimina == 0)
+                if (_context.Horario.Any(e => e.HoraInicio.Hour == HoraInicio.Hour && e.ProfesionalID == ProfesionalID && e.Eliminado == false))
+                {
+                    horario.Eliminado = true;
+                }
+                else if (Elimina == 0)
                 {
                     horario.Eliminado = false;
                 }

@@ -91,38 +91,6 @@ function GuardarTurno() {
     }
 }
 
-//    if (guardarTurno) {
-
-
-//        $.ajax({
-//            type: "POST",
-//            url: '../../Turnos/GuardarTurno',
-//            data: { TurnoID: turnoID, Nombre: nombre, Apellido: apellido, Email: email, Telefono: telefono, FechaTurno: fechaTurno, ProvinciaID: provinciaID, LocalidadID: localidadID, EmpresaID: empresaID, ProfesionalID: profesionalID, HorarioID: horarioID },
-//            success: function (resultado) {
-//                if (resultado == 0) {
-//                    $("#exampleModal").modal("hide");
-//                    VaciarFormulario()
-//                    swal({
-//                        title: "¡Turno Solicitado!",
-//                        text: "Su turno se registró con éxito, espere que sea aceptado por el profesional",
-//                        type: "success",
-//                        confirmButtonText: "Entendido!",
-//                        confirmButtonColor: "#00ff55",
-//                    }).then(function () {
-//                        window.location.href = '/';
-//                    });
-                       
-//                }
-                
-//            },
-//            error: function (data) {
-//            }
-//        });
-//    }
-//    else {
-//        $("#Error-CamposTurno").text("Los campos son OBLIGATORIOS.");
-//    }
-//}
 
 
 
