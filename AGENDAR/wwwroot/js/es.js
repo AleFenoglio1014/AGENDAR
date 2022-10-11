@@ -97,10 +97,9 @@ function CalendarioTurno() {
             },
             selectable: true,
             eventClick: function (turno) {
-                $("#TurnoID").val(turno.event.id);
                 AbrirModal();
 
-                /*alert(turno.event.id);*/
+                
             }
 
 
@@ -109,25 +108,26 @@ function CalendarioTurno() {
         calendar.render();
     });
 }
-function AbrirModal() {
 
+function AbrirModal() {
+   
     $("#modalEstado").modal("show");
 }
-
-function EstadoTurno(turnoID) {
+function EstadoTurno(turnoID, estado) {
 
     $.ajax({
         type: "POST",
         url: '../../Turnos/EstadoTurno',
-        data: { TurnoID: turnoID },
+        data: { TurnoID: turnoID, Estado: estado },
         success: function (turno) {
-         
+
+            $("#modalEstado").modal("hide");
+            CargaElementos();
         },
         error: function (data) {
         }
     });
 }
-
 //FUNCION PARA FILTAR LOS PROFESIONALES POR HORARIO
 
 $("#ProfesionalIDFiltro").change(function () {
