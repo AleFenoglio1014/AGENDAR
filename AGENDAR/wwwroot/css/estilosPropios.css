@@ -213,7 +213,11 @@ ul, ol {
 /*------------------------------------*\
 	LAYOUT PRIVADO
 \*------------------------------------*/
+.perfilUsuario {
+    font-size: 16px;
+    font-weight: bold;
 
+}
 .nav-item :hover {
     background-color: #278475;
 }
@@ -258,6 +262,7 @@ ul, ol {
 
     .navbar-brand img {
         height: 50px;
+        padding-left: 1px;
     }
 
     .navbar-dark .navbar-toggler {
@@ -271,9 +276,17 @@ ul, ol {
         color: #000;
     }
 }
+@media(max-width: 574px){
+    .navbar-nav .nav-link {
+        padding-left: 10px;
+    }
+    .navbar-brand img {
+        height: 50px;
+        padding-left: 10px;
+    }
 
- /*OCULTAR TABLA*/
-
+}
+/*OCULTAR TABLA*/
 @media(max-width:767px) {
     .ocultar767 {
         display: none;
