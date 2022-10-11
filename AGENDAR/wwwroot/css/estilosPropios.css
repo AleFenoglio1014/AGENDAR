@@ -27,7 +27,6 @@
 
 .linksModelos {
     color: black !important;
-    /*padding-left: 100px;*/
 }
 /*------------------------------------*\
 	General
@@ -214,70 +213,16 @@ ul, ol {
 /*------------------------------------*\
 	LAYOUT PRIVADO
 \*------------------------------------*/
-
-
-
-ul {
-    padding: 0 60px;
-    list-style-type: none;
-}
-
-li {
-    padding-bottom: 0px;
-    padding-top: 0px;
-    padding-left: 9px;
-    padding-right: 9px;
-}
-li a:hover {
-    color: blue;
-}
-   /* li a {
-        font-size: 16px;
-        color: #fff;
-    }*/
-
-.navbar-expand-md .navbar-nav .nav-link {
-    padding: 5px 5px 5px 5px;
-}
-
-
-.navbar-dark .navbar-nav .nav-link {
-    color: black;
-    font-family: unset;
+.perfilUsuario {
     font-size: 16px;
-    font-weight: 500;
+    font-weight: bold;
+
 }
-
-
-li a:hover {
-    color: black;
-    /*background: #9c9999;*/
+.nav-item :hover {
+    background-color: #278475;
 }
-
 .navbar {
-    padding: 0;
-}
-
-#top li {
-    padding: 0;
-    line-height: 1.8;
-}
-
-    #top li a {
-        font-size: 16px;
-        padding: 0;
-    }
-
-        #top li a:hover {
-            background: none;
-            text-decoration: none;
-        }
-
-.col-md-2 .fab {
-    font-size: 20px;
-    padding-right: 10px;
-    padding-top: 5px;
-    padding-left: 10px;
+     padding: .0rem 0rem; 
 }
 
 .navbar-brand img {
@@ -298,12 +243,12 @@ li a:hover {
     border-bottom: none;
 }
 
-@media(max-width: 992px) {
+/*@media(max-width: 992px) {
     .col-md-2 .fab {
         font-size: 18px;
         padding-right: 0;
     }
-}
+}*/
 @media (min-width: 768px) {
     .navbar-expand-md .navbar-collapse {
         height: 5vh;
@@ -317,6 +262,7 @@ li a:hover {
 
     .navbar-brand img {
         height: 50px;
+        padding-left: 1px;
     }
 
     .navbar-dark .navbar-toggler {
@@ -326,23 +272,21 @@ li a:hover {
     .cerrarSesion {
         width: 110px;
     }
-
-    ul, li, div {
-        padding: 0;
-        text-align: center;
-    }
-
-    .navbar-nav {
-        padding-bottom: 40px;
-    }
-
     .navbar-dark .navbar-toggler-icon .colorMenuHamb {
         color: #000;
     }
 }
+@media(max-width: 574px){
+    .navbar-nav .nav-link {
+        padding-left: 10px;
+    }
+    .navbar-brand img {
+        height: 50px;
+        padding-left: 10px;
+    }
 
- /*OCULTAR TABLA*/
-
+}
+/*OCULTAR TABLA*/
 @media(max-width:767px) {
     .ocultar767 {
         display: none;
@@ -356,10 +300,8 @@ li a:hover {
 }
     /* -- Botón Cerrar Sesión -- */
 .cerrarSesion {
-    /*width: 90px;*/
     color: black;
     font-family: unset;
-    /*font-size: 18px;*/
     font-weight: 400;
     background-color: #838383;
     border: solid 1px;
@@ -494,58 +436,5 @@ li a:hover {
     outline: none;
     background: white;
     cursor: inherit;
-    display: block;
-}
-
-
-/*DROPDOWN NAVBAR*/
-.dropbtn {
-    font-weight: bold;
-    font-family: 'system-ui';
-    background-color: transparent;
-    color: rgba(0,0,0,.5);
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    border: solid 1px;
-    border-radius: 20px;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 20px;
-}
-
-    .dropbtn:hover, .dropbtn:focus {
-        background-color: #278475;
-    }
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #838383;
-    min-width: 160px;
-    overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-    .dropdown-content a {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-    }
-
-.dropdown a:hover {
-    background-color: #278475;
-}
-
-.show {
     display: block;
 }
