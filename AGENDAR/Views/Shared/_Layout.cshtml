@@ -15,9 +15,7 @@
         <div class="bg-img">
             <div class="overlay"></div>
         </div>
-
-        @*<nav class="navbar  navbar-expand-md navbar-dark ownbg">*@
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light colorNav  box-shadow mb-3  ">
+        <nav class="navbar navbar-expand-lg navbar-toggleable-sm navbar-light colorNav  box-shadow mb-3">
 
             <div class="container">
                 <a class="navbar-brand text-black" href="#"><img src="~/lib/Imagenes/AgendArLogo.jpg"></a>
@@ -26,17 +24,17 @@
                 </button>
                 <partial name="_LoginPartial" />
                 <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                    <ul class="navbar-nav linksModelos m-lg-auto" style="font-weight:bold">
+                    <ul class="navbar-nav linksModelos m-lg-auto text-left" style="font-weight:bold">
                         @if (User.IsInRole("SuperUsuario"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-black text-center dropdown" asp-area="" asp-controller="Provincias" asp-action="Index">PROVINCIAS</a>
+                                <a class="nav-link text-black dropdown" asp-area="" asp-controller="Provincias" asp-action="Index">PROVINCIAS</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-black text-center dropdown" asp-area="" asp-controller="Localidades" asp-action="Index">LOCALIDADES</a>
+                                <a class="nav-link text-black dropdown" asp-area="" asp-controller="Localidades" asp-action="Index">LOCALIDADES</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-black text-center dropdown" asp-area="" asp-controller="Empresas" asp-action="Index">EMPRESAS</a>
+                                <a class="nav-link text-black dropdown" asp-area="" asp-controller="Empresas" asp-action="Index">EMPRESAS</a>
                             </li>
                         }
 
@@ -52,18 +50,15 @@
                                 <a class="nav-link text-black dropdown" asp-area="" asp-controller="Turnos" asp-action="Index">TURNOS</a>
                             </li>
                         }
-                    </ul>
 
-                    <div class="nav-item dropdown">
-                        <button onclick="myFunction()" class="nav-link text-black dropbtn">PERFIL</button>
-                        <div id="myDropdown" class="dropdown-content">
-                            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/ChangePassword" title="Manage" style="color: #d0e2ef !important;font-size: 14px;font-weight: bold;">@User.Identity.Name</a>
-                            <form class="form-inline nav-link" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                                <button class="cerrarSesion">Cerrar Sesión</button>
-                            </form>
-                           </div>
-                    </div>
-
+                    <li class="nav-item">
+                        <a class="nav-link text-dark perfilUsuario" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" style="color: #d0e2ef !important">HOLA @User.Identity.Name!</a>
+                    </li>
+                        </ul>
+                    <form class="form-inline nav-link" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                        <button class="cerrarSesion">Cerrar Sesión</button>
+                    </form>
+                   
                 </div>
             </div>
         </nav>
