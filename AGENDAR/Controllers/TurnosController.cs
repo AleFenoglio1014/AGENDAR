@@ -147,9 +147,10 @@ namespace AGENDAR.Controllers
                             msg.SubjectEncoding = System.Text.Encoding.UTF8;
 
                             msg.Body = "<p style= font-size: 25px;>" + "Estado turno: <b>A CONFIRMAR</b>" + "</b> . </p>";
-                            //msg.Body += "<p style= font-size: 20px;>" + "Nombre: <b>"+ Nombre +"</b>" + "</b> . </p>";
-                            //msg.Body += "<p style= font-size: 20px;>" + "Apellido: <b>"+ Apellido +"</b>" + "</b> . </p>";
-
+                            msg.Body += "<p style= font-size: 20px;>" + "Nombre: <b>" + Nombre + "</b>" + "</b> . </p>";
+                            msg.Body += "<p style= font-size: 20px;>" + "Apellido: <b>" + Apellido + "</b>" + "</b> . </p>";
+                            msg.Body += "<p style= font-size: 25px;>" + "<b>CUANDO EL PROFESIONAL CONFIRME SU TURNO, SE LE NOTIFICARA MEDIANTE UN MAIL.</b>" + "</b> . </p>";
+                            msg.Body += "<p style= font-size: 25px;>" + "<b>MUCHAS GRACIAS..</b>" + "</b> . </p>";
                             msg.BodyEncoding = System.Text.Encoding.UTF8;
                             msg.IsBodyHtml = true;
 

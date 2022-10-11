@@ -57,7 +57,7 @@
                     <div class="nav-item dropdown">
                         <button onclick="myFunction()" class="nav-link text-black dropbtn">PERFIL</button>
                         <div id="myDropdown" class="dropdown-content">
-                            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" style="color: #d0e2ef !important;font-size: 14px;font-weight: bold;">@User.Identity.Name</a>
+                            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/ChangePassword" title="Manage" style="color: #d0e2ef !important;font-size: 14px;font-weight: bold;">@User.Identity.Name</a>
                             <form class="form-inline nav-link" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                                 <button class="cerrarSesion">Cerrar Sesión</button>
                             </form>
