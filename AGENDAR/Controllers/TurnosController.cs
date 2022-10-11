@@ -191,10 +191,10 @@ namespace AGENDAR.Controllers
                     turno.Estado = 2;
 
                 }
-                //else if (estado == 0)
-                //{
-                //    turno.Estado = 0;
-                //}
+                else if (estado == 0)
+                {
+                    turno.Estado = 0;
+                }
                 else
                 {
                     turno.Estado = 3;
