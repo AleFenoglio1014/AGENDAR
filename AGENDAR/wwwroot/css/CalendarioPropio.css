@@ -32,7 +32,7 @@ h2 {
 }
 @media(max-width:414px) {
     .fc-toolbar-chunk {
-        font-size: 11px;
+        font-size: 10px;
         color: black !important;
     }
 }
