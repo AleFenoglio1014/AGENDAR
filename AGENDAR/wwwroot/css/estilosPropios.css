@@ -93,10 +93,10 @@ p {
 }
 
 a {
-    color: #6195FF;
-    text-decoration: none;
+    color: #FFF!important;
+    text-decoration: none;/*
     -webkit-transition: 0.2s opacity;
-    transition: 0.2s opacity;
+    transition: 0.2s opacity;*/
 }
 
     a:hover, a:focus {
