@@ -97,8 +97,8 @@ function CalendarioTurno() {
             },
             selectable: true,
             eventClick: function (turno) {
-                AbrirModal();
-
+                $("#modalEstado").modal("show");
+                
                 
             }
 
@@ -109,11 +109,8 @@ function CalendarioTurno() {
     });
 }
 
-function AbrirModal() {
-   
-    $("#modalEstado").modal("show");
-}
-function EstadoTurno(turnoID, estado) {
+
+function EstadoTurno(estado, turnoID) {
 
     $.ajax({
         type: "POST",
