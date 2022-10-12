@@ -59,7 +59,18 @@ function CargaElementos() {
         success: function (listadoTurnosCalendario) {
 
             $.each(listadoTurnosCalendario, function (index, turno) {
-                arrayTurnos.push({ title: turno.nombre, start: turno.horarioFecha, id: turno.turnoID });
+                let colorMostrar = '';
+
+                if (turno.estado == 2) {
+                    colorMostrar = '#005e11'
+                }
+                else if (turno.estado == 1) {
+                    colorMostrar = '#FFFF00'
+                }
+                else if (turno.estado == 3) {
+                    colorMostrar = '#ff0000'
+                }
+                arrayTurnos.push({ title: turno.nombre, start: turno.horarioFecha, id: turno.turnoID, color: colorMostrar });
            
             });
             CalendarioTurno();
@@ -98,7 +109,7 @@ function CalendarioTurno() {
             selectable: true,
             eventClick: function (turno) {
                 $("#modalEstado").modal("show");
-                
+                $("#TurnoID").val(turno.event.id);
                 
             }
 

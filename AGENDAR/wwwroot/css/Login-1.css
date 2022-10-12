@@ -9,6 +9,9 @@
     image-resolution: 300dpi;
     background-image: url('../lib/Imagenes/fondopedirturno.jpg');
 }
+.btn {
+    padding: 0.375rem 0.75rem !important;
+}
 .errorTurno {
     color:white;
 }

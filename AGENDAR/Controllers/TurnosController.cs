@@ -228,13 +228,14 @@ namespace AGENDAR.Controllers
             foreach(var turno in turnosCalendario)
             {
                 DateTime fechaTurno = turno.FechaTurno;
-                var fechaTurnoString = string.Format("{0:s}", fechaTurno);             
+                var fechaTurnoString = string.Format("{0:s}", fechaTurno);
 
                 var turnoMostrarCalendario = new TurnoMostrar()
                 {
                     TurnoID = turno.TurnoID,
                     HorarioFecha = fechaTurnoString,
                     Nombre = turno.UsuarioNombreCompleto,
+                    Estado = turno.Estado
                 };
                 listadoTurnosCalendario.Add(turnoMostrarCalendario);
             }
