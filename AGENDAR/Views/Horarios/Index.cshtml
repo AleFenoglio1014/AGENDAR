@@ -9,11 +9,15 @@
 
 <h2>Horarios</h2>
 
-<p>
-    <!-- Boton Modal -->
-    <button class="btn btn-success" onclick="AbrirModal()"><i class="bi bi-folder-plus"></i> Agregar Horario</button>
-    <div>@Html.DropDownList("ProfesionalIDFiltro", null, htmlAttributes: new { @class = "form-control inputProfesionales " })</div>
-</p>
+@*<p>*@
+<div class="container botonHorario" style="padding-bottom:10px">
+    <div class="row">
+        <!-- Boton Modal -->
+        <div class="col"><button class="btn btn-success" onclick="AbrirModal()"><i class="bi bi-folder-plus"></i> Agregar Horario</button></div>
+        <div class="col">@Html.DropDownList("ProfesionalIDFiltro", null, htmlAttributes: new { @class = "form-control inputProfesionales " })</div>
+    </div>
+</div>
+@*</p>*@
 
 <div style="height:390px; overflow: auto">
     <table class="table table-bordered table-light">

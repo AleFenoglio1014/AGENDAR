@@ -62,7 +62,7 @@ namespace AGENDAR.Controllers
             BuscarEmpresaActual(usuarioActual, empresaUsuarioActual);
 
             var profesional = _context.Profesional.Where(p => p.Eliminado == false && p.EmpresaID == empresaUsuarioActual.EmpresaID).ToList();
-            profesional.Add(new Profesional { ProfesionalID = 0, Nombre = "[TODOS LOS PROFESIONALES]" });
+            profesional.Add(new Profesional { ProfesionalID = 1, Nombre = "ProfesionalNombreCompleto" });
             ViewBag.ProfesionalID = new SelectList(profesional.OrderBy(p => p.ProfesionalNombreCompleto), "ProfesionalID", "ProfesionalNombreCompleto");
             ViewBag.ProfesionalIDFiltro = new SelectList(profesional.OrderBy(p => p.ProfesionalNombreCompleto), "ProfesionalID", "ProfesionalNombreCompleto");
 
