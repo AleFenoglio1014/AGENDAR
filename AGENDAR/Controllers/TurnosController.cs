@@ -179,24 +179,29 @@ namespace AGENDAR.Controllers
         }
 
 
-        //Cancelar y Aceptar Turno
+        //Funcion para Cancelar  Confirmar  y Finalizar el Turno
 
         public JsonResult EstadoTurno(int estado, int TurnoID)
         {
             var turno = _context.Turnos.Find(TurnoID);
             if (turno != null)
             {
+                //Una vez solicitado, el turno se guarda como a confirmar
                 if (estado == 2)
                 {
+                    //Guardar turno como Confirmado
                     turno.Estado = 2;
 
                 }
+
                 else if (estado == 0)
                 {
+                    //Guardar turno como Cancelado
                     turno.Estado = 0;
                 }
                 else
                 {
+                    //Guardar turno como Finalizado
                     turno.Estado = 3;
                 }
                 _context.SaveChanges();

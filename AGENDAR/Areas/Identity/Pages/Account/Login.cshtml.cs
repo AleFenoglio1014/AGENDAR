@@ -81,7 +81,7 @@ namespace AGENDAR.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            returnUrl = returnUrl ?? Url.Content("~/Horarios/Index");
+            returnUrl = returnUrl ?? Url.Content("~/Turnos/Index");
 
             if (ModelState.IsValid)
             {
