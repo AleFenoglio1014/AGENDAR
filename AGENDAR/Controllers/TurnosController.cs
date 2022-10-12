@@ -181,7 +181,7 @@ namespace AGENDAR.Controllers
 
         //Cancelar y Aceptar Turno
 
-        public JsonResult EstadoTurno(int TurnoID, int estado)
+        public JsonResult EstadoTurno(int estado, int TurnoID)
         {
             var turno = _context.Turnos.Find(TurnoID);
             if (turno != null)
