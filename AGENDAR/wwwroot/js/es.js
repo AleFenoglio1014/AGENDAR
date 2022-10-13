@@ -73,61 +73,61 @@ function CargaElementos() {
                 arrayTurnos.push({ title: turno.nombre, start: turno.horarioFecha, id: turno.turnoID, color: colorMostrar });
            
             });
-            CalendarioTurno();
+            /*CalendarioTurno();*/
+            var ancho = $(window).width();
+            var defecto = '';
+            var vistas = '';
+            if (ancho > 480) {
+                defecto = 'listWeek';
+                vistas = 'listWeek,dayGridMonth,dayGridDay'
+            }
+            else {
+                defecto = 'listWeek';
+                vistas = 'listWeek';
+            }
+            document.addEventListener('DOMContentLoaded', function () {
+                var calendarEl = document.getElementById('calendar');
+
+                var calendar = new FullCalendar.Calendar(calendarEl, {
+
+                    dayMaxEvents: true,
+                    initialView: defecto,
+                    headerToolbar: {
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: vistas
+                    },
+
+                    initialDate: new Date(),
+                    navLinks: true,
+
+                    locale: 'es',
+                    events: arrayTurnos,
+                    eventTimeFormat: {
+                        hour: '2-digit',
+                        minute: '2-digit',
+                    },
+                    selectable: true,
+                    eventClick: function (turno) {
+                        $("#modalEstado").modal("show");
+                        $("#TurnoID").val(turno.event.id);
+
+                    }
+
+
+                });
+
+                calendar.render();
+            });
+
         },
         error: function (data) {
             alert("Error al cargar los turnos.");
         }
     });
-    
+
 }
 
-/*FUNCIÓN PARA SETEAR EL CALENDARIO DE MES A SEMANA CUANDO SE ACHICA LA PANTALLA*/
-//import { Calendar } from '@fullcalendar/core';
-//import listPlugin from '@fullcalendar/list';
-
-//let calendar = new Calendar(calendarEl, {
-//    plugins: [listPlugin],
-//    initialView: 'listWeek'
-//});
-
-
-function CalendarioTurno() {
-
-    document.addEventListener('DOMContentLoaded', function () {
-        var calendarEl = document.getElementById('calendar');
-
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-           
-            dayMaxEvents: true,
-            headerToolbar: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'dayGridMonth,dayGridWeek,dayGridDay'
-            },
-
-            initialDate: new Date(),
-            navLinks: true, 
-           
-            locale: 'es',
-            events: arrayTurnos,
-            eventTimeFormat: {
-                hour: '2-digit',
-                minute: '2-digit',
-            },
-            selectable: true,
-            eventClick: function (turno) {
-                $("#modalEstado").modal("show");
-                $("#TurnoID").val(turno.event.id);
-                
-            }
-
-
-        });
-
-        calendar.render();
-    });
-}
 
 function EstadoTurno(estado) {
     let turnoID = $("#TurnoID").val();

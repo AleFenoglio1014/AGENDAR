@@ -22,7 +22,9 @@ h2 {
     padding-left: 0px;
 }
 
-
+.fc-direction-ltr .fc-list-table .fc-list-event-graphic{
+    padding-right:10px;
+}
 
 .inputProfesionalesfiltro {
     font-size: 9px !important;
