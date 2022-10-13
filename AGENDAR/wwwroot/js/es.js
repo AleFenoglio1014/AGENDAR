@@ -129,8 +129,8 @@ function CalendarioTurno() {
     });
 }
 
-function EstadoTurno(estado, turnoID) {
-
+function EstadoTurno(estado) {
+    let turnoID = $("#TurnoID").val();
     $.ajax({
         type: "POST",
         url: '../../Turnos/EstadoTurno',
