@@ -42,6 +42,7 @@ h2 {
         font-size: 15px;
     }
 }
+
 @media(max-width:414px) {
     .modal-dialog {
         width: 400px;
@@ -82,3 +83,9 @@ h2 {
     .modal-title {
         padding-left: 160px;
     }
+@media(max-width:414px) {
+    .titulo414 {
+        padding-left: 130px !important;
+    }
+}
+

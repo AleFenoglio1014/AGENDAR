@@ -94,7 +94,7 @@ function CalendarioTurno() {
             headerToolbar: {
                 left: 'prev,next today',
                 center: 'title',
-                right: 'dayGridMonth,dayGridDay'
+                right: 'dayGridMonth,dayGridWeek,dayGridDay'
             },
 
             initialDate: new Date(),
@@ -121,8 +121,8 @@ function CalendarioTurno() {
 }
 
 
-function EstadoTurno(estado, turnoID) {
-
+function EstadoTurno(estado) {
+    let turnoID = $("#TurnoID").val();
     $.ajax({
         type: "POST",
         url: '../../Turnos/EstadoTurno',
