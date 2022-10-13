@@ -82,6 +82,15 @@ function CargaElementos() {
     
 }
 
+/*FUNCIÓN PARA SETEAR EL CALENDARIO DE MES A SEMANA CUANDO SE ACHICA LA PANTALLA*/
+//import { Calendar } from '@fullcalendar/core';
+//import listPlugin from '@fullcalendar/list';
+
+//let calendar = new Calendar(calendarEl, {
+//    plugins: [listPlugin],
+//    initialView: 'listWeek'
+//});
+
 
 function CalendarioTurno() {
 
@@ -120,9 +129,8 @@ function CalendarioTurno() {
     });
 }
 
+function EstadoTurno(estado, turnoID) {
 
-function EstadoTurno(estado) {
-    let turnoID = $("#TurnoID").val();
     $.ajax({
         type: "POST",
         url: '../../Turnos/EstadoTurno',

@@ -26,13 +26,13 @@
                 <div class="modal-body">
                     <form>
                         <input type="hidden" id="TurnoID" value="0" />
-                      
+
 
                         <div class="form-group aceptarBoton botones414">
 
-                            <button type="button" onclick="EstadoTurno(2)"  class="btn btn-outline-success "> Confirmar </button>
-                            <button type="button" onclick="EstadoTurno(0)"  class="btn btn-outline-dark"> Cancelar</button>
-                            <button type="button" onclick="EstadoTurno(3)"  class="btn btn-outline-danger "> Finalizar </button>
+                            <button type="button" onclick="EstadoTurno(2)" class="btn btn-outline-success "> Confirmar </button>
+                            <button type="button" onclick="EstadoTurno(0)" class="btn btn-outline-dark"> Cancelar</button>
+                            <button type="button" onclick="EstadoTurno(3)" class="btn btn-outline-danger "> Finalizar </button>
                         </div>
                     </form>
                 </div>
@@ -47,10 +47,18 @@
     <script src="~/js/main.js"></script>
     <script src="~/js/es.js"></script>
 
-    
-<script>
-    window.onload = CargaElementos();
-</script>
+
+    <script>
+        window.onload = CargaElementos();
+    </script>
+    @*//FUNCIÓN PARA DETECTAR LA RESOLUCIÓN DE LA PANTALLA*@
+    <script>
+        $(window).resize(function () {
+            var widthBrowser = $(window).height();
+            var heightBrowser = $(window).width();
+            /*console.log("Tamaño de la pantalla del navegador: width=" + widthBrowser + " height=" + heightBrowser);*/
+        });
+    </script>
 }
 <link href="~/css/main.css" rel="stylesheet" />
 <link href="~/css/CalendarioPropio.css" rel="stylesheet" />
