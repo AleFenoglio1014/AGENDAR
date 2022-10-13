@@ -459,3 +459,11 @@ option {
     cursor: inherit;
     display: block;
 }
+/*/responsivo modal/*/
+@media (max-width: 414px) {
+    .modal-ancho
+
+{
+    width: 80%;
+}
+}

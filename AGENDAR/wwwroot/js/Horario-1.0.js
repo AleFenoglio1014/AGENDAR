@@ -60,7 +60,7 @@ function CompletarTablaHorario() {
 
                 $("#tbody-horario").append('<tr class=' + claseEliminado + '>' +
                     '<td class="text-center ">' + horario.horarioCompleto + '</td>' +
-                    '<td class="text-center ">' + tiempoMostrar + '</td>' +
+                    '<td class="text-center ocultar767  ">' + tiempoMostrar + '</td>' +
                     '<td class="text-center ">' + horario.profesionalNombre + '</td>' +
                     '<td class="text-center ">' + letraDomingo + letraLunes + letraMartes + letraMiercoles + letraJueves + letraViernes + letraSabado + '</td>' +
                     '<td class="text-center ">' +
