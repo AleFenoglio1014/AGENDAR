@@ -78,8 +78,8 @@ function CargaElementos() {
             var defecto = '';
             var vistas = '';
             if (ancho > 480) {
-                defecto = 'listWeek';
-                vistas = 'listWeek,dayGridMonth,dayGridDay'
+                defecto = 'dayGridMonth';
+                vistas = 'dayGridMonth,dayGridDay'
             }
             else {
                 defecto = 'listWeek';
@@ -144,7 +144,7 @@ function EstadoTurno(estado) {
         }
     });
 }
-//FUNCION PARA FILTAR LOS PROFESIONALES POR HORARIO
+//FUNCION PARA FILTAR LOS PROFESIONALES POR TURNO
 
 $("#ProfesionalIDFiltro").change(function () {
     CargaElementos();

@@ -277,7 +277,14 @@ namespace AGENDAR.Controllers
                     TurnoID = turno.TurnoID,
                     HorarioFecha = fechaTurnoString,
                     Nombre = turno.UsuarioNombreCompleto,
-                    Estado = turno.Estado
+                    Estado = turno.Estado,
+                    ProfesionalID = turno.Horarios.Profesionales.ProfesionalID,
+                    ProfesionalNombre = turno.Horarios.Profesionales.ProfesionalNombreCompleto,
+                    HorarioID = turno.Horarios.HorarioID,
+                    HorarioCompleto = turno.Horarios.HorarioCompleto,
+                    FechaTurno = turno.FechaTurno,
+                    FechaTurnostring = turno.FechaTurno.ToString("dd/MM/yyyy"),
+
                 };
                 listadoTurnosCalendario.Add(turnoMostrarCalendario);
             }

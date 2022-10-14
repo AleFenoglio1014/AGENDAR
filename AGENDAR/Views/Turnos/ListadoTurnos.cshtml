@@ -16,27 +16,27 @@
     </div>
 </div>
 
-<table id="imprimir" class="table table-bordered">
-    <thead>
+<table id="imprimir" class="table table-bordered table-light">
+    <thead class="table-dark table-bordered ">
         <tr>
             <th>
                 Profesional
             </th>
             <th class="text-center">
-                Fecha Turno
+                Fecha 
             </th>
             <th class="text-center">
-                Hora Inicio
+                Horario 
             </th>
             <th>
-                Estado Turno
+                Estado 
             </th>
             <th>
                 Nombre del solicitante
             </th>
         </tr>
     </thead>
-    <tbody id="listadoturnoscalendario">
+    <tbody id="tbody-turnos">
     </tbody>
 </table>
 
@@ -46,11 +46,12 @@
 
     <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-    <script src="~/js/es.js"></script>
+
+    <script src="~/js/ListadoTurno.js"></script>
 
 
     <script>
-        window.onload = CargaElementos();
+        window.onload = CompletarTablaTurnos();
     </script>
 
     <script src="~/js/jspdf.debug.js"></script>

@@ -34,6 +34,8 @@ namespace AGENDAR.Models
         public int ProvinciaID { get; set; }
         public int HorarioID { get; set; }
         public DateTime FechaTurno { get; set; }
+        [NotMapped]
+        public string FechaTurnostring { get { return FechaTurno.ToString("dd/MM/yyyy"); } }
 
         public int Estado { get; set; }
         public virtual Horario Horarios { get; set; }
@@ -60,10 +62,12 @@ namespace AGENDAR.Models
         public string EmpresaNombre { get; set; }
         public int ProfesionalID { get; set; }
         public string ProfesionalNombre { get; set; }
-      
 
+        public DateTime FechaTurno { get; set; }
+        public string FechaTurnostring { get; set; }
         public int Estado { get; set; }
         public int HorarioID { get; set; }
+        public string HorarioCompleto { get; set; }
         public string HorarioFecha { get; set; }
 
      
