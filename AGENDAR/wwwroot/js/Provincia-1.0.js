@@ -71,8 +71,8 @@ function VaciarFormulario() {
 // Funcion para limitar los caracteres de los input
 var input = document.getElementById('ProvinciaNombre');
 input.addEventListener('input', function () {
-    if (this.value.length > 30)
+    if (this.value.length > 35)
         swal("HA SUPERADO EL LIMITE DE CARACTERES PERMITIDO.");
-        this.value = this.value.slice(0, 30);
+        this.value = this.value.slice(0, 35);
 
 })
