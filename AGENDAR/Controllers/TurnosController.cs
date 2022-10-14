@@ -139,49 +139,10 @@ namespace AGENDAR.Controllers
                         _context.SaveChanges();
 
 
-
+                        EnviarEmail(Email, Nombre, Apellido, Telefono, HorarioID, FechaTurno, ProvinciaID, LocalidadID, ProfesionalID, 1);
 
                         //ACA VAMOS A ENVIAR EL COBRANTE DE TURNO PENDIENTE PARA EL USUARIO QUE LO SOLICITO
-                        try
-                        {
-                            string emailA = Email;
 
-                            string emailDe = "agendar.turnos@hotmail.com";
-
-                            string emailCredencial = "agendar.turnos@hotmail.com";
-                            string contraseñaCredencial = "Agendar123";
-
-                            MailMessage msg = new MailMessage();
-                            msg.To.Add(new MailAddress(emailA));
-
-                            msg.From = new MailAddress(emailDe, "COMPROBANTE DE TURNO", System.Text.Encoding.UTF8);
-
-                            msg.Subject = "Mensaje de " + emailDe;
-                            msg.SubjectEncoding = System.Text.Encoding.UTF8;
-
-                            msg.Body = "<p style= font-size: 25px;>" + "Estado turno: <b>A CONFIRMAR</b>" + "</b> . </p>";
-                            msg.Body += "<p style= font-size: 20px;>" + "Nombre: <b>" + Nombre + "</b>" + "</b> . </p>";
-                            msg.Body += "<p style= font-size: 20px;>" + "Apellido: <b>" + Apellido + "</b>" + "</b> . </p>";
-                            msg.Body += "<p style= font-size: 25px;>" + "<b>CUANDO EL PROFESIONAL CONFIRME SU TURNO, SE LE NOTIFICARA MEDIANTE UN MAIL.</b>" + "</b> . </p>";
-                            msg.Body += "<p style= font-size: 25px;>" + "<b>MUCHAS GRACIAS..</b>" + "</b> . </p>";
-                            msg.BodyEncoding = System.Text.Encoding.UTF8;
-                            msg.IsBodyHtml = true;
-
-                            SmtpClient clienteSmtp = new SmtpClient();
-                            clienteSmtp.Host = "smtp-mail.outlook.com";
-                            clienteSmtp.Port = 587;
-                            clienteSmtp.UseDefaultCredentials = false;
-                            clienteSmtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-                            clienteSmtp.Credentials = new System.Net.NetworkCredential(emailCredencial, contraseñaCredencial);
-                            clienteSmtp.EnableSsl = true;
-                            clienteSmtp.Send(msg);
-
-                            
-                        }
-                        catch (Exception ex)
-                        {
-                          
-                        }
 
                     }
                     
@@ -191,6 +152,86 @@ namespace AGENDAR.Controllers
             return Json(resultado);
         }
 
+        public void EnviarEmail(string EmailDestino, string Nombre, string Apellido, Int64 Telefono, int Horario, DateTime FechaTurno, int ProvinciaID, int LocalidadID, int ProfesionalID, int Origen)
+        {
+            //0 VIENE DEL CANCELAR
+            //1 VIENE DEL SOLICITAR
+            //2 VIENE DEL CONFIRMAR
+
+
+            try
+            {
+                string emailA = EmailDestino;
+
+                string emailDe = "agendar.turnos@hotmail.com";
+
+                string emailCredencial = "agendar.turnos@hotmail.com";
+                string contraseñaCredencial = "Agendar123";
+
+                MailMessage msg = new MailMessage();
+                msg.To.Add(new MailAddress(emailA));
+
+                msg.From = new MailAddress(emailDe, "COMPROBANTE DE TURNO", System.Text.Encoding.UTF8);
+
+                msg.Subject = "Mensaje de " + emailDe;
+                msg.SubjectEncoding = System.Text.Encoding.UTF8;
+
+                //ACA LE PASAMOS LOS DATOS QUE VA A CONTENER EL EMAIL
+
+                if (Origen == 0)
+                {
+                    msg.Body = "<p style= font-size: 20px;>" + "Hola Sr/a <b>" + Nombre +", "+ Apellido + "</b>" + "</b>. </p>";
+                    msg.Body += "<p style= font-size: 25px;>" + "<b>LAMENTAMOS INFORMALE QUE SU TURNO FUE CANCELADO</b>" + "</b>. </p>";
+                    msg.Body += "<p style= font-size: 25px;>" + "<b>PORFAVOR VUELVA A INTERTARLO, MUCHAS GRACIAS</b>" + "</b>. </p>";
+
+                }
+
+                if (Origen == 1)
+                {
+                    msg.Body = "<p style= font-size: 20px;>" + "Hola Sr/a <b>" + Nombre + ", " + Apellido + "</b>" + "</b>. </p>";
+                    msg.Body += "<p style= font-size: 25px;>" + "Estado turno: <b>SU TURNO ESTA EN PROCESO DE CONFIRMACIÓN</b>" + "</b>. </p>";
+                    msg.Body += "<p style= font-size: 25px;>" + "<b>SE LE NOTIFICARA SI EL PROFESIONAL CONFIRMA O NO SU TURNO</b>" + "</b>. </p>";
+
+                }
+
+                if (Origen == 2)
+                {
+                    msg.Body = "<p style= font-size: 20px;>" + "Hola Sr/a, <b>" + Nombre + ", " + Apellido + "</b>" + "</b>. </p>";
+                    msg.Body += "<p style= font-size: 25px;>" + "Estado turno: <b>SU TURNO FUE CONFIRMADO CON EXITO</b>" + "</b>. </p>";
+                    msg.Body += "<p style= font-size: 25px;>" + "<b>DATOS DEL COMPROBANTE:</b>" + "</b>. </p>";
+                    msg.Body += "<p style= font-size: 20px;>" + "TELEFONO: <b>" + Horario + "</b>" + "</b>. </p>";
+                    //msg.Body += "<p style= font-size: 20px;>" + "HORARIO TURNO: <b>" + Horario + "</b>" + "</b>. </p>";
+                    //msg.Body += "<p style= font-size: 20px;>" + "FECHA TURNO: <b>" + FechaTurno + "</b>" + "</b>. </p>";
+                    //msg.Body += "<p style= font-size: 20px;>" + "PROVINCIA: <b>" + ProvinciaID + "</b>" + "</b>. </p>";
+                    //msg.Body += "<p style= font-size: 20px;>" + "LOCALIDAD: <b>" + LocalidadID + "</b>" + "</b>. </p>";
+                    //msg.Body += "<p style= font-size: 20px;>" + "PREFESIONAL: <b>" + ProfesionalID + "</b>" + "</b>. </p>";
+
+
+                }
+
+                //msg.Body += "<p style= font-size: 20px;>" + "Nombre: <b>" + Nombre + "</b>" + "</b> . </p>";
+                //msg.Body += "<p style= font-size: 20px;>" + "Apellido: <b>" + Apellido + "</b>" + "</b> . </p>";
+                //msg.Body += "<p style= font-size: 25px;>" + "<b>CUANDO EL PROFESIONAL CONFIRME SU TURNO, SE LE NOTIFICARA MEDIANTE UN MAIL.</b>" + "</b> . </p>";
+                //msg.Body += "<p style= font-size: 25px;>" + "<b>MUCHAS GRACIAS..</b>" + "</b> . </p>";
+                msg.BodyEncoding = System.Text.Encoding.UTF8;
+                msg.IsBodyHtml = true;
+
+                SmtpClient clienteSmtp = new SmtpClient();
+                clienteSmtp.Host = "smtp-mail.outlook.com";
+                clienteSmtp.Port = 587;
+                clienteSmtp.UseDefaultCredentials = false;
+                clienteSmtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                clienteSmtp.Credentials = new System.Net.NetworkCredential(emailCredencial, contraseñaCredencial);
+                clienteSmtp.EnableSsl = true;
+                clienteSmtp.Send(msg);
+
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
 
         //Funcion para Cancelar  Confirmar  y Finalizar el Turno
 
@@ -218,6 +259,13 @@ namespace AGENDAR.Controllers
                     turno.Estado = 3;
                 }
                 _context.SaveChanges();
+
+                if (estado != 3)
+                {
+                    EnviarEmail(turno.Email, turno.Nombre, turno.Apellido, turno.Telefono, turno.HorarioID, turno.FechaTurno, turno.ProvinciaID, turno.LocalidadID, turno.ProfesionalID, estado);
+                }
+
+               
             }
 
             return Json(turno);
