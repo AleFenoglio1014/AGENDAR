@@ -25,6 +25,7 @@
     <Content Remove="Views\Empresas\EmpresaIndex.cshtml" />
     <Content Remove="Views\Shared\VistaPublica.cshtml" />
     <Content Remove="Views\Shared\_LayoutCrearTurnos.cshtml" />
+    <Content Remove="wwwroot\css\jquery-ui.css" />
     <Content Remove="wwwroot\css\owl.carousel.min.css" />
     <Content Remove="wwwroot\js\owl.carousel.min.js" />
     <Content Remove="wwwroot\lib\owl.carousel.min.css" />

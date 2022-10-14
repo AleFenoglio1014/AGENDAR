@@ -91,3 +91,13 @@ h2 {
     }
 }
 
+@media(max-width:769px){
+    .fc .fc-toolbar-title {
+        font-size: 1.15em;
+        margin: 0;
+    }
+
+    .fc .fc-button {
+        font-size: 0.8em;
+    }
+}
