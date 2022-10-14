@@ -49,16 +49,19 @@
                             <li class="nav-item">
                                 <a class="nav-link text-black dropdown" asp-area="" asp-controller="Turnos" asp-action="Index">TURNOS</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-black dropdown" asp-area="" asp-controller="Turnos" asp-action="ListadoTurnos">LISTA DE TURNOS</a>
+                            </li>
                         }
 
-                    <li class="nav-item">
-                        <a class="nav-link text-dark perfilUsuario" asp-area="Identity" asp-page="/Account/Manage/ChangePassword" title="Manage" style="color: #e7d719 !important">HOLA @User.Identity.Name!</a>
-                    </li>
-                        </ul>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark perfilUsuario" asp-area="Identity" asp-page="/Account/Manage/ChangePassword" title="Manage" style="color: #e7d719 !important">HOLA @User.Identity.Name!</a>
+                        </li>
+                    </ul>
                     <form class="form-inline nav-link" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                         <button class="cerrarSesion">Cerrar Sesión</button>
                     </form>
-                   
+
                 </div>
             </div>
         </nav>
@@ -74,6 +77,9 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/Sweetalert.js" asp-append-version="true"></script>
     <script src="~/js/LayoutEstilos.js"></script>
+    <script src="~/js/jspdf.min.js"></script>
+    @*<script src="~/js/jspdf.debug.js"></script>
+    <script src="~/js/jspdf.plugin.autotable.js"></script>*@
 
     @RenderSection("Scripts", required: false)
 </body>

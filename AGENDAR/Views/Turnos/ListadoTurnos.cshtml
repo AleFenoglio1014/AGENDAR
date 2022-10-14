@@ -1,0 +1,190 @@
+﻿@model IEnumerable<AGENDAR.Models.Turno>
+
+@{
+    ViewData["Title"] = "ListadoTurnos";
+}
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Listado de Turnos</h2>
+
+<div class="container " style="padding-bottom:10px">
+    <div class="row">
+
+        <div class="botonHorario"><button onclick="Imprimir()" class="btn btn-success"><i class="bi bi-printer"></i> Imprimir</button></div>
+        <div class="">@Html.DropDownList("ProfesionalIDFiltro", null, htmlAttributes: new { @class = "form-control inputProfesionalesFiltro " })</div>
+    </div>
+</div>
+
+<table id="imprimir" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Profesional
+            </th>
+            <th class="text-center">
+                Fecha Turno
+            </th>
+            <th class="text-center">
+                Hora Inicio
+            </th>
+            <th>
+                Estado Turno
+            </th>
+            <th>
+                Nombre del solicitante
+            </th>
+        </tr>
+    </thead>
+    <tbody id="listadoturnoscalendario">
+    </tbody>
+</table>
+
+
+
+@section Scripts {
+
+    <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script src="~/js/es.js"></script>
+
+
+    <script>
+        window.onload = CargaElementos();
+    </script>
+
+    <script src="~/js/jspdf.debug.js"></script>
+    <script src="~/js/jspdf.plugin.autotable.js"></script>
+
+    <script type="text/javascript">
+        function Imprimir() {
+
+            //const doc = new jsPDF();
+            var doc = new jsPDF('l', 'mm', [297, 210]);
+
+            var totalPagesExp = "{total_pages_count_string}";
+            var pageContent = function (data) {
+                //HEADER
+                doc.setLineWidth(10);
+
+                doc.setDrawColor(191, 144, 0);
+                //doc.line(14, 12, 196, 12);
+                doc.line(14, 12, 282, 12);
+
+                doc.setTextColor(255, 255, 255);
+                doc.setFontStyle('bold');
+                doc.setFontSize(15);
+                doc.text(17, 14, "Listado");
+
+                doc.setFontSize(11);
+                doc.text(240, 13.5, "Impreso: ");
+                //FIN HEADER
+
+                doc.setTextColor(40);
+
+                //SEGUNDA LINEA
+                doc.setLineWidth(13);
+                doc.setDrawColor(255, 229, 153);
+                //doc.line(14, 23.1, 196, 23.1);
+                doc.line(14, 23.1, 282, 23.1);
+
+                doc.setFontSize(9);
+                doc.text(17, 21.5, "FILTRO 1: "); doc.text(205, 21.5, "FILTRO 2: ");
+                doc.text(17, 26.9, "FILTRO 3: ");
+
+                //FIN SEGUNDA LINEA
+
+                doc.setFontSize(16);
+
+                doc.setFontStyle('bold');
+
+                var pageHeight = doc.internal.pageSize.height || doc.internal.pageSize.getHeight();
+                var pageWidth = doc.internal.pageSize.width || doc.internal.pageSize.getWidth();
+
+                // FOOTER
+                var str = "Pagina " + data.pageCount;
+                // Total page number plugin only available in jspdf v1.0+
+                if (typeof doc.putTotalPages == 'function') {
+                    str = str + " de " + totalPagesExp;
+                }
+
+                doc.setLineWidth(8);
+                doc.setDrawColor(255, 229, 153);
+                //doc.line(14, pageHeight - 11, 196, pageHeight - 11);
+                doc.line(14, pageHeight - 11, 282, pageHeight - 11);
+
+                doc.setFontSize(10);
+                doc.text("NOMBRE DE LA EMPRESA", 17, pageHeight - 10);
+
+                //doc.text(str, 165, pageHeight - 10);
+                doc.text(str, 250, pageHeight - 10);
+
+            };
+
+            var elem = document.getElementById("imprimir");
+            var res = doc.autoTableHtmlToJson(elem);
+
+            doc.autoTable(res.columns, res.data, {
+                startY: 29.5, addPageContent: pageContent,
+                margin: { top: 29.5 },
+                styles: {
+                    fillStyle: 'DF',
+                    overflow: 'linebreak',
+                    columnWidth: 110,
+                    lineWidth: 0.1,
+                    lineColor: [238, 238, 238]
+                },
+                headerStyles: {
+                    fillColor: [255, 255, 255],
+                },
+                columnStyles: {
+                    0: { columnWidth: 50 },//FECHA
+                    1: { columnWidth: 30 },
+                    2: { columnWidth: 20 },
+                    3: { columnWidth: 20 },
+                    4: { columnWidth: 26 },
+                    5: { columnWidth: 30 },
+                    6: { columnWidth: 24 },
+                },
+                createdHeaderCell: function (cell, opts) {
+                    if (opts.column.index == 0 || opts.column.index == 2 || opts.column.index == 3) {
+                        cell.styles.halign = 'center';
+                    }
+                    if (opts.column.index == 6) {
+                        cell.styles.halign = 'right';
+                    }
+                    cell.styles.fontSize = 8;
+                },
+                createdCell: function (cell, opts) {
+                    cell.styles.fontSize = 7;
+                    if (opts.column.index == 0 || opts.column.index == 2 || opts.column.index == 3) {
+                        cell.styles.halign = 'center';
+                    }
+                    if (opts.column.index == 6) {
+                        cell.styles.halign = 'right';
+                    }
+                }
+            });
+
+
+            // ESTO SE LLAMA ANTES DE ABRIR EL PDF PARA QUE MUESTRE EN EL PDF EL NRO TOTAL DE PAGINAS. ACA CALCULA EL TOTAL DE PAGINAS.
+            if (typeof doc.putTotalPages === 'function') {
+                doc.putTotalPages(totalPagesExp);
+            }
+
+
+            // Output as Data URI.
+
+            var string = doc.output('datauristring');
+            var iframe = "<iframe width='100%' height='100%' src='" + string + "'></iframe>"
+
+            var x = window.open();
+            x.document.open();
+            x.document.write(iframe);
+            x.document.close();
+            //doc.save('table.pdf');
+        }
+    </script>
+
+
+}
