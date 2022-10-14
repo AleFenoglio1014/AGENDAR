@@ -211,9 +211,9 @@ namespace AGENDAR.Controllers
                 if (HorarioID == 0)
                 {
                     //    // Antes de CREAR el registro debemos preguntar si existe una Horario igual
-                    if (_context.Horario.Any(e => e.HoraInicio.Hour == HoraInicio.Hour && e.ProfesionalID == ProfesionalID && e.Eliminado == false))
-                    { 
-                       resultado = 2;
+                    if (_context.Horario.Any(e => e.HoraInicio.TimeOfDay == HoraInicio.TimeOfDay && e.ProfesionalID == ProfesionalID && e.Eliminado == false))
+                    {
+                        resultado = 2;
                     }
                     else if (HoraInicio > HoraFin)
                     {

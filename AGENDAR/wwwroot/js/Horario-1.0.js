@@ -9,13 +9,12 @@ function CompletarTablaHorario() {
         success: function (listadohorario) {
             $("#tbody-horario").empty();
             $.each(listadohorario, function (index, horario) {
-
                 let claseEliminado = '';
-                let botones = '<button type="button" onclick="DesactivarHorario(' + horario.horarioID + ',1)" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash-fill"></i> Desactivar</button>';
+                let botones = '<button type="button" onclick="DesactivarHorario(' + horario.horarioID + ',1,' + horario.profesionalID + ')" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash-fill"></i> Desactivar</button>';
 
                 if (horario.eliminado) {
                     claseEliminado = 'table-danger';
-                    botones = '<button type="button" onclick="DesactivarHorario(' + horario.horarioID + ',0)" class="btn btn-outline-success btn-sm"><i class="bi bi-folder-symlink"></i> Activar</button>';
+                    botones = '<button type="button" onclick="DesactivarHorario(' + horario.horarioID + ',0,' + horario.profesionalID + ')" class="btn btn-outline-success btn-sm"><i class="bi bi-folder-symlink"></i> Activar</button>';
                 }
                 let tiempoMostrar = "15 Minutos";
 
@@ -168,8 +167,7 @@ function VaciarFormulario() {
         diasSemana[i].checked = false;
     }
 }
-
-function DesactivarHorario(horarioID, elimina) {
+function DesactivarHorario(horarioID, elimina, profesionalID) {
 
     if (elimina == 1) {
         var mensajeEliminar = "¿Esta seguro que quiere DESACTIVAR el Horario?"
@@ -181,7 +179,7 @@ function DesactivarHorario(horarioID, elimina) {
         $.ajax({
             type: "POST",
             url: '../../Horarios/DesactivarHorario',
-            data: { HorarioID: horarioID, Elimina: elimina },
+            data: { HorarioID: horarioID, Elimina: elimina, ProfesionalID: profesionalID },
             success: function (horario) {
                 CompletarTablaHorario();
             },

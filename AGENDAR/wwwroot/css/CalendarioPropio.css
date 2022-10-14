@@ -22,8 +22,8 @@ h2 {
     padding-left: 0px;
 }
 
-.fc-direction-ltr .fc-list-table .fc-list-event-graphic{
-    padding-right:10px;
+.fc-direction-ltr .fc-list-table .fc-list-event-graphic {
+    padding-right: 10px;
 }
 
 .inputProfesionalesfiltro {
@@ -32,7 +32,7 @@ h2 {
     color: white !important;
     width: 180px;
 }
-@media(max-width:414px) {
+/*@media(max-width:414px) {
     .fc-toolbar-chunk {
         font-size: 9px;
         color: black !important;
@@ -44,54 +44,49 @@ h2 {
         font-size: 15px;
     }
 }
-
-@media(max-width:414px) {
+*/
+/*@media(max-width:414px) {
     .modal-dialog {
         width: 400px;
     }
 }
-
-@media(max-width:414px) {
-    .diminuir414 {
-        padding-left: 123px !important;
-    }
-}
+*/
 
 @media(max-width:414px) {
     .botones414 {
-        padding-left: 60px !important;
+        padding-left: 20px !important;
     }
 }
 
-    .fc .fc-daygrid-more-link {
-        color: black !important;
-    }
+.fc .fc-daygrid-more-link {
+    color: black !important;
+}
 
-    .aceptarBoton {
-        padding-left: 90px;
-    }
+.aceptarBoton {
+    padding-left: 90px;
+}
 
-    .modalAceptar {
-    }
 
-    .fc-event-title {
-        font-size: 11px;
-    }
 
-    .fc-event-time {
-        font-size: 10px;
-    }
+.fc-event-title {
+    font-size: 11px;
+}
 
-    .modal-title {
-        padding-left: 160px;
-    }
+.fc-event-time {
+    font-size: 10px;
+}
+
+.modal-title {
+    padding-left: 160px;
+}
+
 @media(max-width:414px) {
     .titulo414 {
-        padding-left: 130px !important;
+        padding-left: 100px !important;
     }
 }
 
-@media(max-width:769px){
+@media(max-width:769px) {
     .fc .fc-toolbar-title {
         font-size: 1.15em;
         margin: 0;
