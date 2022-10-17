@@ -11,7 +11,7 @@
 <div class="container " style="padding-bottom:10px">
     <div class="row">
 
-        <div class="botonHorario"><button onclick="Imprimir()" class="btn btn-success"><i class="bi bi-printer"></i> Imprimir</button></div>
+        <div class="botonHorario"><button class="btn btn-success" onclick="Imprimir()"><i class="bi bi-filetype-pdf"></i> Descargar PDF</button></div>
         <div class="">@Html.DropDownList("ProfesionalIDFiltro", null, htmlAttributes: new { @class = "form-control inputProfesionalesFiltro " })</div>
     </div>
 </div>
@@ -51,13 +51,14 @@
 
     <script src="~/js/ListadoTurno.js"></script>
 
+    <script src="~/js/jspdf.min.js"></script>
+    <script src="~/js/jspdf.debug.js"></script>
+    <script src="~/js/jspdf.plugin.autotable.js"></script>
 
     <script>
         window.onload = CompletarTablaTurnos();
     </script>
 
-    <script src="~/js/jspdf.debug.js"></script>
-    <script src="~/js/jspdf.plugin.autotable.js"></script>
 
     <script type="text/javascript">
         function Imprimir() {
