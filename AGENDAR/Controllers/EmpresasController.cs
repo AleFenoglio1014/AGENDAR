@@ -217,11 +217,11 @@ namespace AGENDAR.Controllers
             return Json(empresa);
         }
 
-        //Desactivar Empresa
+        //Activar Empresa
 
-        //Desactivar Empresa
+    
 
-        public JsonResult DesactivarEmpresa(int EmpresaID, int Elimina)
+        public JsonResult ActivarEmpresa(int EmpresaID, int Elimina)
         {
             bool resultado = true;
 

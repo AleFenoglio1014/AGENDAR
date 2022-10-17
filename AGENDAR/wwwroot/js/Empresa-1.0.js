@@ -12,12 +12,12 @@ function CompletarTablaEmpresas() {
                 let claseEliminado = '';
 
                 let botones = '<button type="button" onclick="BuscarEmpresa(' + empresa.empresaID + ')" class="btn btn-outline-primary btn-sm" style="margin-right:5px"><i class="bi bi-pencil-square"></i></button>' +
-                              '<button type="button" onclick="DesactivarEmpresa(' + empresa.empresaID + ',1)" class="btn btn-outline-danger btn-sm"> <i class="bi bi-x-lg"></i> </button>';
+                              '<button type="button" onclick="ActivarEmpresa(' + empresa.empresaID + ',1)" class="btn btn-outline-danger btn-sm"> <i class="bi bi-x-lg"></i> </button>';
 
 
                 if (empresa.eliminado) {
                     claseEliminado = 'table-danger';
-                    botones =  '<button type="button" onclick="DesactivarEmpresa(' + empresa.empresaID + ',0)" class="btn btn-outline-success btn-sm"><i class="bi bi-check-circle"></i></button>';
+                    botones =  '<button type="button" onclick="ActivarEmpresa(' + empresa.empresaID + ',0)" class="btn btn-outline-success btn-sm"><i class="bi bi-check-circle"></i></button>';
 
                 }
 
@@ -84,7 +84,7 @@ function VaciarFormulario() {
 
 //Funcion para eliminar la empresa
 
-function DesactivarEmpresa(empresaID, elimina) {
+function ActivarEmpresa(empresaID, elimina) {
     if (elimina == 1) {
         var mensajeEliminar = "¿Esta seguro que quiere DESACTIVAR la Empresa?"
     } else {
@@ -94,7 +94,7 @@ function DesactivarEmpresa(empresaID, elimina) {
     if (confirm(mensajeEliminar)) {
         $.ajax({
             type: "POST",
-            url: '../../Empresas/DesactivarEmpresa',
+            url: '../../Empresas/ActivarEmpresa',
             data: { EmpresaID: empresaID, Elimina: elimina },
             success: function (empresa) {
 
