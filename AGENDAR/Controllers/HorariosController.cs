@@ -285,18 +285,15 @@ namespace AGENDAR.Controllers
             return Json(horario);
         }
         
-        public JsonResult DesactivarHorario(int HorarioID, int Elimina, DateTime HoraInicio, int ProfesionalID)
+        public JsonResult DesactivarHorario(int HorarioID, int Elimina)
         {
             bool resultado = true;
 
             var horario = _context.Horario.Find(HorarioID);
             if (horario != null)
             {
-                if (_context.Horario.Any(e => e.HoraInicio.Hour == HoraInicio.Hour && e.ProfesionalID == ProfesionalID && e.Eliminado == false))
-                {
-                    horario.Eliminado = true;
-                }
-                else if (Elimina == 0)
+               
+                if (Elimina == 0)
                 {
                     horario.Eliminado = false;
                 }
