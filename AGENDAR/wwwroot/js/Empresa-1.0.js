@@ -156,6 +156,8 @@ function GuardarEmpresa() {
 
 
     if (guardarEmpresa) {
+        $("#btn-guardar").addClass("ocultar");
+        $("#btn-guardar-espere").removeClass("ocultar");
         //realizamos la petición ajax con la función de jquery
         $.ajax({
             type: "POST",
@@ -164,11 +166,19 @@ function GuardarEmpresa() {
             contentType: false, //importante enviar este parametro en false
             processData: false, //importante enviar este parametro en false
             success: function (resultado) {
-
+             
                 if (resultado == 0) {
-                    $("#exampleModal").modal("hide");
+                    $("#btn-guardar").removeClass("ocultar");
+                    $("#btn-guardar-espere").addClass("ocultar");
                     CompletarTablaEmpresas();
-                    AbrirModal();
+                    swal({
+                        title: "¡ESPERE A QUE SU EMPRESA SEA ACTIVADA...!",
+                        text: "Mientas tanto cree sus Profesionales y sus Horarios",
+                        icon: "success",
+                        button: "¡Entendido!",
+                    }).then(function () {
+                        window.location.href = '/Profesionales';
+                    });
                   
                 }
                 if (resultado == 2) {
