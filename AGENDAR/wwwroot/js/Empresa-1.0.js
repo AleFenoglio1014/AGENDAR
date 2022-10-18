@@ -221,3 +221,20 @@ input.addEventListener('input', function () {
         swal("HA SUPERADO EL LIMITE DE CARACTERES PERMITIDO.");
         this.value = this.value.slice(0, 30);
 })
+
+
+//Funcion para renderizar la imagen 
+function readImage(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#blah').attr('src', e.target.result); // Renderizamos la imagen
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#Archivo").change(function () {
+    // Código a ejecutar cuando se detecta un cambio de archivO
+    readImage(this);
+});
