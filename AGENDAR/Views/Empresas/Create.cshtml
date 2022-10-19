@@ -53,35 +53,21 @@
                 <span class="btn btn-secondary btn-file">
                     <i class="bi bi-cloud-arrow-up-fill"></i> Subir Imagen <input type="file" autocomplete="off" required name="archivo" id="Archivo">
                 </span>
-
-                <p class="text-danger font-weight-bold" style="font-size:small" id="Error-CamposEmpresas"></p>
             </div>
+            <div class="col-lg-3 espacioImagen ">
+                <img id="blah" src="" class="tamañoImagen " />
+            </div>
+            <p class="text-danger font-weight-bold" style="font-size:small" id="Error-CamposEmpresas"></p>
+
 
         </div>
         <div class="form-group">
-            <button type="button" onclick="GuardarEmpresa()" class="btn btn-success"><i class="bi bi-folder-check"></i> Guardar</button>
-            <button type="button" onclick="VaciarFormulario()" class="btn btn-danger" data-dismiss="modal"><i class="bi bi-backspace"></i> Borrar</button>
+            <button type="button" id="btn-guardar"  onclick="GuardarEmpresa()" class="btn btn-success"><i class="bi bi-folder-check"></i> Guardar</button>
+            <button type="button" id="btn-guardar-espere" class="btn btn-success ocultar"><i class="bi bi-folder-check"></i> Espere...</button>
         </div>
 
     </form>
-    <!-- Modal -->
-    <div class="modal fade  " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-        <div class="modal-dialog dialogEmpresa " role="document">
-            <div class="modal-content ">
-
-
-
-                <div class="modal-body bodyEmpresa">
-                    <h3 class="text-center alertaEmpresa">ESPERE A QUE SU EMPRESA SEA ACTIVADA...</h3>
-                    <a class="btn btn-outline-success" href="~/Profesionales/Index">Crear Profesionales y Horarios <i class="bi bi-cloud-plus"></i>  </a>
-
-                </div>
-
-
-
-            </div>
-        </div>
-    </div>
+   
 </body>
 
 @section Scripts {

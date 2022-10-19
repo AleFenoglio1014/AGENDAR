@@ -92,7 +92,7 @@ namespace AGENDAR.Controllers
                     LocalidadNombre = empresa.Localidades.Descripcion,
                     ImagenEmpresa = empresa.ImagenEmpresa,
                     ImagenEmpresaString = Convert.ToBase64String(empresa.ImagenEmpresa),
-                    Eliminado = empresa.Eliminado
+                    Eliminado = empresa.Eliminado,
                 };
                 listadoEmpresas.Add(empresasMostrar);
             }
@@ -217,11 +217,11 @@ namespace AGENDAR.Controllers
             return Json(empresa);
         }
 
-        //Desactivar Empresa
+        //Activar Empresa
 
-        //Desactivar Empresa
+    
 
-        public JsonResult DesactivarEmpresa(int EmpresaID, int Elimina)
+        public JsonResult ActivarEmpresa(int EmpresaID, int Elimina)
         {
             bool resultado = true;
 

@@ -12,12 +12,12 @@ function CompletarTablaEmpresas() {
                 let claseEliminado = '';
 
                 let botones = '<button type="button" onclick="BuscarEmpresa(' + empresa.empresaID + ')" class="btn btn-outline-primary btn-sm" style="margin-right:5px"><i class="bi bi-pencil-square"></i></button>' +
-                              '<button type="button" onclick="DesactivarEmpresa(' + empresa.empresaID + ',1)" class="btn btn-outline-danger btn-sm"> <i class="bi bi-x-lg"></i> </button>';
+                              '<button type="button" onclick="ActivarEmpresa(' + empresa.empresaID + ',1)" class="btn btn-outline-danger btn-sm"> <i class="bi bi-x-lg"></i> </button>';
 
 
                 if (empresa.eliminado) {
                     claseEliminado = 'table-danger';
-                    botones =  '<button type="button" onclick="DesactivarEmpresa(' + empresa.empresaID + ',0)" class="btn btn-outline-success btn-sm"><i class="bi bi-check-circle"></i></button>';
+                    botones =  '<button type="button" onclick="ActivarEmpresa(' + empresa.empresaID + ',0)" class="btn btn-outline-success btn-sm"><i class="bi bi-check-circle"></i></button>';
 
                 }
 
@@ -25,6 +25,7 @@ function CompletarTablaEmpresas() {
                     '<td class="text-center">' + empresa.razonSocial + '</td>' +
                     '<td class="text-center">' + empresa.localidadNombre + '</td>' +
                     '<td class="text-center">' + empresa.direccion + '</td>' +
+                    '<td class="text-center">' + empresa.emailUsuario + '</td>' +
                     '<td class="text-center ocultar767">' + empresa.telefono + '</td>' +
                     '<td class="text-center ocultar767">' + empresa.cuit + '</td>' +
                     '<td class="text-center ocultar767">' + "<img class=' card-tamaño ' src='data:img/jpeg;base64," + empresa.imagenEmpresaString + "' />" + '</td >' +
@@ -77,14 +78,13 @@ function VaciarFormulario() {
     $("#Cuit").val('');
     $("#Direccion").val('');
     $("#Telefono").val('');
-    $("#Archivo").val('');
     $("#Error-RazonSocial").text("");
     $("#Error-CamposEmpresas").text("");
 }
 
 //Funcion para eliminar la empresa
 
-function DesactivarEmpresa(empresaID, elimina) {
+function ActivarEmpresa(empresaID, elimina) {
     if (elimina == 1) {
         var mensajeEliminar = "¿Esta seguro que quiere DESACTIVAR la Empresa?"
     } else {
@@ -94,7 +94,7 @@ function DesactivarEmpresa(empresaID, elimina) {
     if (confirm(mensajeEliminar)) {
         $.ajax({
             type: "POST",
-            url: '../../Empresas/DesactivarEmpresa',
+            url: '../../Empresas/ActivarEmpresa',
             data: { EmpresaID: empresaID, Elimina: elimina },
             success: function (empresa) {
 
@@ -156,6 +156,8 @@ function GuardarEmpresa() {
 
 
     if (guardarEmpresa) {
+        $("#btn-guardar").addClass("ocultar");
+        $("#btn-guardar-espere").removeClass("ocultar");
         //realizamos la petición ajax con la función de jquery
         $.ajax({
             type: "POST",
@@ -164,11 +166,19 @@ function GuardarEmpresa() {
             contentType: false, //importante enviar este parametro en false
             processData: false, //importante enviar este parametro en false
             success: function (resultado) {
-
+             
                 if (resultado == 0) {
-                    $("#exampleModal").modal("hide");
+                    $("#btn-guardar").removeClass("ocultar");
+                    $("#btn-guardar-espere").addClass("ocultar");
                     CompletarTablaEmpresas();
-                    AbrirModal();
+                    swal({
+                        title: "¡ESPERE A QUE SU EMPRESA SEA ACTIVADA...!",
+                        text: "Mientas tanto cree sus Profesionales y sus Horarios",
+                        icon: "success",
+                        button: "¡Entendido!",
+                    }).then(function () {
+                        window.location.href = '/Profesionales';
+                    });
                   
                 }
                 if (resultado == 2) {
@@ -211,3 +221,20 @@ input.addEventListener('input', function () {
         swal("HA SUPERADO EL LIMITE DE CARACTERES PERMITIDO.");
         this.value = this.value.slice(0, 30);
 })
+
+
+//Funcion para renderizar la imagen 
+function readImage(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#blah').attr('src', e.target.result); // Renderizamos la imagen
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#Archivo").change(function () {
+    // Código a ejecutar cuando se detecta un cambio de archivO
+    readImage(this);
+});

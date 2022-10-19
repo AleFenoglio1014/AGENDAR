@@ -390,7 +390,7 @@ option {
     }
 
     .botonDias {
-        width: 216px;
+       
         background-color: white !important;
         font-size: 11px !important;
     }
@@ -557,4 +557,18 @@ option {
         body {
         font-size: 12px;
     }
+}
+.tamañoImagen {
+    width: 150px !important;
+    height: 100px !important;
+    border: 2px solid black;
+}
+
+.espacioImagen {
+    padding-top: 10px;
+}
+
+.espacioBotones {
+    padding-bottom: 5px;
+    padding-top: 45px;
 }
