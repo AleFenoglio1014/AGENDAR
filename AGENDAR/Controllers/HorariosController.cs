@@ -260,12 +260,45 @@ namespace AGENDAR.Controllers
 
 
                         };
-                        _context.Add(nuevoHorario);
-                        _context.SaveChanges();
+                            if (_context.Horario.Any(e => e.HoraInicio.TimeOfDay == fechaApertura.TimeOfDay && e.ProfesionalID == ProfesionalID && e.Eliminado == false))
+                            {
 
-                        fechaApertura = fechaApertura.AddMinutes(tiempoMostrar);
+                                resultado = 0;
+                            }
+                            else
+                            {
+                                _context.Add(nuevoHorario);
+                                _context.SaveChanges();
+                                fechaApertura = fechaApertura.AddMinutes(tiempoMostrar);
+                            }
                       }
                     }
+                }
+                else
+                {
+                    // Antes de EDITAR el registro debemos preguntar si existe un Horario con la misma Descripcion
+                    if (_context.Horario.Any(e => e.HoraInicio.TimeOfDay == HoraInicio.TimeOfDay && e.ProfesionalID == ProfesionalID && e.Eliminado == false && e.HorarioID != HorarioID))
+                    {
+                        resultado = 2;
+                    }
+
+
+                    else
+                    {
+                        // Aca va a ir el codigo para EDITAR un Horario
+                        // Buscamos el registro en la Base de Datos
+                        var horario = _context.Horario.Single(m => m.HorarioID == HorarioID);
+                        // Cambiamos la Descripcion por la que ingreso el Usuario en la Vista
+                        horario.Lunes = Lunes;
+                        horario.Martes = Martes;
+                        horario.Miercoles = Miercoles;
+                        horario.Jueves = Jueves;
+                        horario.Viernes = Viernes;
+                        horario.Sabado = Sabado;
+                        horario.Domingo = Domingo;
+                        _context.SaveChanges();
+                    }
+
                 }
             }
             else
@@ -285,15 +318,19 @@ namespace AGENDAR.Controllers
             return Json(horario);
         }
         
-        public JsonResult DesactivarHorario(int HorarioID, int Elimina)
+        public JsonResult DesactivarHorario(int HorarioID, int Elimina, DateTime HoraInicio, int ProfesionalID)
         {
             bool resultado = true;
 
             var horario = _context.Horario.Find(HorarioID);
             if (horario != null)
             {
-               
-                if (Elimina == 0)
+                if (_context.Horario.Any(e => e.HoraInicio.TimeOfDay == HoraInicio.TimeOfDay && e.ProfesionalID == ProfesionalID && e.Eliminado == false))
+                {
+
+                    horario.Eliminado = true;
+                }
+               else  if (Elimina == 0)
                 {
                     horario.Eliminado = false;
                 }
