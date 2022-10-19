@@ -25,6 +25,7 @@ function CompletarTablaEmpresas() {
                     '<td class="text-center">' + empresa.razonSocial + '</td>' +
                     '<td class="text-center">' + empresa.localidadNombre + '</td>' +
                     '<td class="text-center">' + empresa.direccion + '</td>' +
+                    '<td class="text-center">' + empresa.emailUsuario + '</td>' +
                     '<td class="text-center ocultar767">' + empresa.telefono + '</td>' +
                     '<td class="text-center ocultar767">' + empresa.cuit + '</td>' +
                     '<td class="text-center ocultar767">' + "<img class=' card-tamaño ' src='data:img/jpeg;base64," + empresa.imagenEmpresaString + "' />" + '</td >' +
@@ -77,7 +78,6 @@ function VaciarFormulario() {
     $("#Cuit").val('');
     $("#Direccion").val('');
     $("#Telefono").val('');
-    $("#Archivo").val('');
     $("#Error-RazonSocial").text("");
     $("#Error-CamposEmpresas").text("");
 }
