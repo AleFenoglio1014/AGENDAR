@@ -247,7 +247,7 @@ namespace AGENDAR.Controllers
                         {
                             HoraInicio = fechaApertura,
                             HoraFin = fechaApertura.AddMinutes(tiempoMostrar),
-                            TiempoTurnos = tiempoMostrar,
+                            TiempoTurnos = TiempoTurnos,
                             ProfesionalID = ProfesionalID,
                             EmpresaID = empresaUsuarioActual.EmpresaID,
                             Lunes = Lunes,

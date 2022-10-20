@@ -11,21 +11,21 @@ function CompletarTablaHorario() {
             $.each(listadohorario, function (index, horario) {
                 let claseEliminado = '';
                 let botones = '<button type="button" onclick="BuscarHorario(' + horario.horarioID + ')" class="btn btn-outline-primary btn-sm" style="margin-right:5px"><i class="bi bi-pencil-square"></i> Editar</button>' +
-                    '<button type="button" onclick="DesactivarHorario(' + horario.horarioID + ',1,' + horario.profesionalID + ')" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash-fill"></i> Desactivar</button>';
+                    '<button type="button" onclick="DesactivarHorario(' + horario.horarioID + ',1,' + horario.profesionalID + ',' + horario.horaInicio + ')" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash-fill"></i> Desactivar</button>';
 
                 if (horario.eliminado) {
                     claseEliminado = 'table-danger';
-                    botones = '<button type="button" onclick="DesactivarHorario(' + horario.horarioID + ',0,' + horario.profesionalID + ')" class="btn btn-outline-success btn-sm"><i class="bi bi-folder-symlink"></i> Activar</button>';
+                    botones = '<button type="button" onclick="DesactivarHorario(' + horario.horarioID + ',0,' + horario.profesionalID + ',' + horario.horaInicio + ')" class="btn btn-outline-success btn-sm"><i class="bi bi-folder-symlink"></i> Activar</button>';
                 }
                 let tiempoMostrar = "15 Minutos";
 
-                if (horario.tiempoTurnos == 30) {
+                if (horario.tiempoTurnos == 1) {
                     tiempoMostrar = "30 Minutos"
                 }
-                if (horario.tiempoTurnos == 45) {
+                if (horario.tiempoTurnos == 2) {
                     tiempoMostrar = "45 Minutos"
                 }
-                if (horario.tiempoTurnos == 60) {
+                if (horario.tiempoTurnos == 3) {
                     tiempoMostrar = "60 Minutos"
                 }
 
@@ -78,10 +78,10 @@ function CompletarTablaHorario() {
 function AbrirModal() {
     $("#titulo-Modal-Horario").text("NUEVO HORARIO");
     $("#HorarioID").val(0);
-    $("#HoraInicio").val('00:00');
-    $("#HoraFin").val('00:00');
-    $("#TiempoTurnos").val('');
-    $("#ProfesionalID").val(0);
+    $("#HoraInicio").val('00:00').removeAttr('disabled');
+    $("#HoraFin").val('00:00').removeAttr('disabled');
+    $("#TiempoTurnos").val('').removeAttr('disabled');
+    $("#ProfesionalID").val(0).removeAttr('disabled');
     $("#exampleModal").modal("show");
 }
 // Funcion para Guardar el Horario
@@ -168,8 +168,7 @@ function VaciarFormulario() {
         diasSemana[i].checked = false;
     }
 }
-function DesactivarHorario(horarioID, elimina, profesionalID) {
-
+function DesactivarHorario(horarioID, elimina, profesionalID, horaInicio ) {
     if (elimina == 1) {
         var mensajeEliminar = "¿Esta seguro que quiere DESACTIVAR el Horario?"
     } else {
@@ -180,7 +179,7 @@ function DesactivarHorario(horarioID, elimina, profesionalID) {
         $.ajax({
             type: "POST",
             url: '../../Horarios/DesactivarHorario',
-            data: { HorarioID: horarioID, Elimina: elimina, ProfesionalID: profesionalID  },
+            data: { HorarioID: horarioID, Elimina: elimina, ProfesionalID: profesionalID, HoraInicio: horaInicio },
             success: function (horario) {
                 CompletarTablaHorario();
             },
@@ -192,7 +191,7 @@ function DesactivarHorario(horarioID, elimina, profesionalID) {
 // Funcion para Buscar un horario
 
 function BuscarHorario(horarioID, lunes, martes, miercoles, jueves, viernes, sabado, domingo) {
-   
+  
     $("#titulo-Modal-Horario").text("EDITAR LOS DIAS DEL HORARIO");
     $("#HorarioID").val(horarioID);
    
@@ -201,10 +200,11 @@ function BuscarHorario(horarioID, lunes, martes, miercoles, jueves, viernes, sab
         url: '../../Horarios/BuscarHorario',
         data: { HorarioID: horarioID, Lunes: lunes, Martes: martes, Miercoles: miercoles, Jueves: jueves, Viernes: viernes, Sabado: sabado, Domingo: domingo },
         success: function (horario) {
-            $("#HoraInicio").val(horario.horaIniciostring);
-            $("#HoraFin").val(horario.horaFinstring);
-            $("#ProfesionalID").val(horario.profesionalID);
-            $("#TiempoTurnos").val(horario.tiempoMostrar);
+       
+            $("#HoraInicio").val(horario.horaIniciostring).attr('disabled','true');
+            $("#HoraFin").val(horario.horaFinstring).attr('disabled', 'true');
+            $("#ProfesionalID").val(horario.profesionalID).attr('disabled', 'true');
+            $("#TiempoTurnos").val(horario.tiempoTurnos).attr('disabled', 'true');
             $("#Lunes").val(horario.lunes);
             $("#Martes").val(horario.martes);
             $("#Miercoles").val(horario.miercoles);

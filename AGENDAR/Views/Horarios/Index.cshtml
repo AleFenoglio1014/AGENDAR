@@ -67,14 +67,14 @@
 
                         <div class="form-group inputInicio text-center  col-md-6 col-sm-6 col-xl-6">
                             <label for="recipient-name" class="control-label font-weight-bold">Hora Fin de la Jornada</label>
-                            <input type="time" name="hora" class="form-control tamañoLetra" autocomplete="off" required id="HoraFin">
+                            <input type="time" name="hora"  class="form-control tamañoLetra" autocomplete="off" required id="HoraFin">
                         </div>
                         <p class="text-danger font-weight-bold" style="font-size:small" id="Error-HoraMenor"></p>
                         <p class="text-danger font-weight-bold" style="font-size:small" id="Error-HoraMayor"></p>
 
                         <div class="text-center col-md-6 col-sm-6 col-xl-6">
                             <label for="recipient-name" class="control-label font-weight-bold">Duración de los Turnos </label>
-                            <select id="TiempoTurnos" class="form-control" required>
+                            <select id="TiempoTurnos"  class="form-control" required>
                                 <option class="text-center" value="">ELIJA UNA OPCIÓN</option>
                                 <option value="0">15 Minutos</option>
                                 <option value="1">30 Minutos</option>
@@ -84,7 +84,7 @@
                         </div>
                         <div class="form-group text-center inputInicio  col-md-6 col-sm-6 col-xl-6">
                             <label for="recipient-name" class="control-label font-weight-bold">Profesional</label>
-                            @Html.DropDownList("ProfesionalID", null, htmlAttributes: new { @class = "form-control inputProfesionales " })
+                            @Html.DropDownList("ProfesionalID", null, htmlAttributes:  new   { @class = "form-control inputProfesionales " })
 
                         </div>
 
