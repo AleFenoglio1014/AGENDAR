@@ -92,7 +92,7 @@ namespace AGENDAR.Controllers
                     LocalidadNombre = empresa.Localidades.Descripcion,
                     ImagenEmpresa = empresa.ImagenEmpresa,
                     ImagenEmpresaString = Convert.ToBase64String(empresa.ImagenEmpresa),
-                    Eliminado = empresa.Eliminado
+                    Eliminado = empresa.Eliminado,
                 };
                 listadoEmpresas.Add(empresasMostrar);
             }

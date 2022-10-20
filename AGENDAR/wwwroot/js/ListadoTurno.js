@@ -24,11 +24,11 @@ function CompletarTablaTurnos() {
 
 
                 $("#tbody-turnos").append('<tr class=>' +
-                    '<td class="ocultar767">' + turno.profesionalNombre + '</td>' +
                     '<td>' + turno.fechaTurnostring + '</td>' +
                     '<td>' + turno.horarioCompleto + '</td>' +
                     '<td>' + estadoTurno + '</td>' +
                     '<td>' + turno.nombre + '</td>' +
+                    '<td>' + turno.email + '</td>' +
 
 
                     '</tr>');

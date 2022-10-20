@@ -10,11 +10,12 @@ function CompletarTablaHorario() {
             $("#tbody-horario").empty();
             $.each(listadohorario, function (index, horario) {
                 let claseEliminado = '';
-                let botones = '<button type="button" onclick="DesactivarHorario(' + horario.horarioID + ',1)" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash-fill"></i> Desactivar</button>';
+                let botones = '<button type="button" onclick="BuscarHorario(' + horario.horarioID + ')" class="btn btn-outline-primary btn-sm" style="margin-right:5px"><i class="bi bi-pencil-square"></i> Editar</button>' +
+                    '<button type="button" onclick="DesactivarHorario(' + horario.horarioID + ',1,' + horario.profesionalID + ')" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash-fill"></i> Desactivar</button>';
 
                 if (horario.eliminado) {
                     claseEliminado = 'table-danger';
-                    botones = '<button type="button" onclick="DesactivarHorario(' + horario.horarioID + ',0)" class="btn btn-outline-success btn-sm"><i class="bi bi-folder-symlink"></i> Activar</button>';
+                    botones = '<button type="button" onclick="DesactivarHorario(' + horario.horarioID + ',0,' + horario.profesionalID + ')" class="btn btn-outline-success btn-sm"><i class="bi bi-folder-symlink"></i> Activar</button>';
                 }
                 let tiempoMostrar = "15 Minutos";
 
@@ -167,7 +168,7 @@ function VaciarFormulario() {
         diasSemana[i].checked = false;
     }
 }
-function DesactivarHorario(horarioID, elimina) {
+function DesactivarHorario(horarioID, elimina, profesionalID) {
 
     if (elimina == 1) {
         var mensajeEliminar = "¿Esta seguro que quiere DESACTIVAR el Horario?"
@@ -179,7 +180,7 @@ function DesactivarHorario(horarioID, elimina) {
         $.ajax({
             type: "POST",
             url: '../../Horarios/DesactivarHorario',
-            data: { HorarioID: horarioID, Elimina: elimina  },
+            data: { HorarioID: horarioID, Elimina: elimina, ProfesionalID: profesionalID  },
             success: function (horario) {
                 CompletarTablaHorario();
             },
@@ -188,6 +189,36 @@ function DesactivarHorario(horarioID, elimina) {
         });
     }
 }
+// Funcion para Buscar un horario
+
+function BuscarHorario(horarioID, lunes, martes, miercoles, jueves, viernes, sabado, domingo) {
+   
+    $("#titulo-Modal-Horario").text("EDITAR LOS DIAS DEL HORARIO");
+    $("#HorarioID").val(horarioID);
+   
+    $.ajax({
+        type: "POST",
+        url: '../../Horarios/BuscarHorario',
+        data: { HorarioID: horarioID, Lunes: lunes, Martes: martes, Miercoles: miercoles, Jueves: jueves, Viernes: viernes, Sabado: sabado, Domingo: domingo },
+        success: function (horario) {
+            $("#HoraInicio").val(horario.horaIniciostring);
+            $("#HoraFin").val(horario.horaFinstring);
+            $("#ProfesionalID").val(horario.profesionalID);
+            $("#TiempoTurnos").val(horario.tiempoMostrar);
+            $("#Lunes").val(horario.lunes);
+            $("#Martes").val(horario.martes);
+            $("#Miercoles").val(horario.miercoles);
+            $("#Jueves").val(horario.jueves);
+            $("#Viernes").val(horario.viernes);
+            $("#Sabado").val(horario.sabado);
+            $("#Domingo").val(horario.domingo);
+            $("#exampleModal").modal("show");
+        },
+        error: function (data) {
+        }
+    });
+}
+
 
 
 //FUNCION PARA GUARDAR COMO TRUE SI SELECCIONA EL CASILLERO Y FALSE SI NO SELECCIONA EL CASILLERO

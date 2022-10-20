@@ -25,6 +25,7 @@ function CompletarTablaEmpresas() {
                     '<td class="text-center">' + empresa.razonSocial + '</td>' +
                     '<td class="text-center">' + empresa.localidadNombre + '</td>' +
                     '<td class="text-center">' + empresa.direccion + '</td>' +
+                    '<td class="text-center">' + empresa.emailUsuario + '</td>' +
                     '<td class="text-center ocultar767">' + empresa.telefono + '</td>' +
                     '<td class="text-center ocultar767">' + empresa.cuit + '</td>' +
                     '<td class="text-center ocultar767">' + "<img class=' card-tamaño ' src='data:img/jpeg;base64," + empresa.imagenEmpresaString + "' />" + '</td >' +
@@ -77,7 +78,6 @@ function VaciarFormulario() {
     $("#Cuit").val('');
     $("#Direccion").val('');
     $("#Telefono").val('');
-    $("#Archivo").val('');
     $("#Error-RazonSocial").text("");
     $("#Error-CamposEmpresas").text("");
 }
@@ -156,6 +156,8 @@ function GuardarEmpresa() {
 
 
     if (guardarEmpresa) {
+        $("#btn-guardar").addClass("ocultar");
+        $("#btn-guardar-espere").removeClass("ocultar");
         //realizamos la petición ajax con la función de jquery
         $.ajax({
             type: "POST",
@@ -164,11 +166,19 @@ function GuardarEmpresa() {
             contentType: false, //importante enviar este parametro en false
             processData: false, //importante enviar este parametro en false
             success: function (resultado) {
-
+             
                 if (resultado == 0) {
-                    $("#exampleModal").modal("hide");
+                    $("#btn-guardar").removeClass("ocultar");
+                    $("#btn-guardar-espere").addClass("ocultar");
                     CompletarTablaEmpresas();
-                    AbrirModal();
+                    swal({
+                        title: "¡ESPERE A QUE SU EMPRESA SEA ACTIVADA...!",
+                        text: "Mientas tanto cree sus Profesionales y sus Horarios",
+                        icon: "success",
+                        button: "¡Entendido!",
+                    }).then(function () {
+                        window.location.href = '/Profesionales';
+                    });
                   
                 }
                 if (resultado == 2) {
@@ -211,3 +221,20 @@ input.addEventListener('input', function () {
         swal("HA SUPERADO EL LIMITE DE CARACTERES PERMITIDO.");
         this.value = this.value.slice(0, 30);
 })
+
+
+//Funcion para renderizar la imagen 
+function readImage(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#blah').attr('src', e.target.result); // Renderizamos la imagen
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#Archivo").change(function () {
+    // Código a ejecutar cuando se detecta un cambio de archivO
+    readImage(this);
+});

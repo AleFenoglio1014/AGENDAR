@@ -162,8 +162,8 @@ ul, ol {
 /* --  background image section  -- */
 
 .bg-img {
-    height: 110vh;
-    width: 120%;
+    height: 100vh;
+    width: 100%;
     min-height:100%;
     position: absolute;
     left: 0;
@@ -550,7 +550,25 @@ option {
 }
 
 @media (max-width: 425px) {
-    body {
+    .bg-img {
+        height: 100vh;
+        width: 100%;
+    }
+        body {
         font-size: 12px;
     }
+}
+.tamañoImagen {
+    width: 150px !important;
+    height: 100px !important;
+    border: 2px solid black;
+}
+
+.espacioImagen {
+    padding-top: 10px;
+}
+
+.espacioBotones {
+    padding-bottom: 5px;
+    padding-top: 45px;
 }
