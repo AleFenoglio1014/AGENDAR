@@ -1,10 +1,14 @@
 ﻿using AGENDAR.Data;
+using AGENDAR.Migrations;
 using AGENDAR.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic;
+using Microsoft.VisualStudio.Web.CodeGeneration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -182,7 +186,6 @@ namespace AGENDAR.Controllers
             //1 VIENE DEL SOLICITAR
             //2 VIENE DEL CONFIRMAR
 
-
             try
             {
                 string emailA = EmailDestino;
@@ -199,44 +202,44 @@ namespace AGENDAR.Controllers
 
                 msg.Subject = "Mensaje de " + emailDe;
                 msg.SubjectEncoding = System.Text.Encoding.UTF8;
-
+                
                 //ACA LE PASAMOS LOS DATOS QUE VA A CONTENER EL EMAIL
+
+
 
                 if (Origen == 0)
                 {
                     msg.Body = "<p style= font-size: 20px;>" + "Hola Sr/a <b>" + Nombre +", "+ Apellido + "</b>" + "</b>. </p>";
-                    msg.Body += "<p style= font-size: 25px;>" + "<b>LAMENTAMOS INFORMALE QUE SU TURNO FUE CANCELADO</b>" + "</b>. </p>";
-                    msg.Body += "<p style= font-size: 25px;>" + "<b>PORFAVOR VUELVA A INTERTARLO, MUCHAS GRACIAS</b>" + "</b>. </p>";
+                    msg.Body += "<p style= font-size: 25px;>" + "<b>SU TURNO FUE CANCELADO</b>" + "</b>. </p>";
+                    msg.Body += "<p style= font-size: 25px;>" + "<b>PORFAVOR INTENTE EN DIFERENTE DIA Y HORARIO, MUCHAS GRACIAS</b>" + "</b>. </p>";
 
                 }
+
+
 
                 if (Origen == 1)
                 {
                     msg.Body = "<p style= font-size: 20px;>" + "Hola Sr/a <b>" + Nombre + ", " + Apellido + "</b>" + "</b>. </p>";
-                    msg.Body += "<p style= font-size: 25px;>" + "Estado turno: <b>SU TURNO ESTA EN PROCESO DE CONFIRMACIÓN</b>" + "</b>. </p>";
-                    msg.Body += "<p style= font-size: 25px;>" + "<b>SE LE NOTIFICARA SI EL PROFESIONAL CONFIRMA O NO SU TURNO</b>" + "</b>. </p>";
+                    msg.Body += "<p style = font - size: 40px; color: red; >" + "Estado turno: <b>SU TURNO ESTA EN PROCESO DE CONFIRMACIÓN</b>" + "</b>. </p>";
+                    msg.Body += "<p style= font-size: 25px;>" + "<b>SE LE NOTIFICARA SI EL PROFESIONAL CONFIRMA O CANCELA SU TURNO</b>" + "</b>. </p>";
 
                 }
 
                 if (Origen == 2)
                 {
-                    msg.Body = "<p style= font-size: 20px;>" + "Hola Sr/a, <b>" + Nombre + ", " + Apellido + "</b>" + "</b>. </p>";
-                    msg.Body += "<p style= font-size: 25px;>" + "Estado turno: <b>SU TURNO FUE CONFIRMADO CON EXITO</b>" + "</b>. </p>";
-                    msg.Body += "<p style= font-size: 25px;>" + "<b>DATOS DEL COMPROBANTE:</b>" + "</b>. </p>";
-                    msg.Body += "<p style= font-size: 20px;>" + "TELEFONO: <b>" + Horario + "</b>" + "</b>. </p>";
-                    //msg.Body += "<p style= font-size: 20px;>" + "HORARIO TURNO: <b>" + Horario + "</b>" + "</b>. </p>";
-                    //msg.Body += "<p style= font-size: 20px;>" + "FECHA TURNO: <b>" + FechaTurno + "</b>" + "</b>. </p>";
-                    //msg.Body += "<p style= font-size: 20px;>" + "PROVINCIA: <b>" + ProvinciaID + "</b>" + "</b>. </p>";
-                    //msg.Body += "<p style= font-size: 20px;>" + "LOCALIDAD: <b>" + LocalidadID + "</b>" + "</b>. </p>";
-                    //msg.Body += "<p style= font-size: 20px;>" + "PREFESIONAL: <b>" + ProfesionalID + "</b>" + "</b>. </p>";
+                    
 
+                    msg.Body = "<p style= font-size: 20px;>" + "Hola Sr/a, <b>" + Nombre + ", " + Apellido + "</b>" + "</b>. </p>";
+                    msg.Body += "<p class=tituloturno>" + "Estado turno: <b>SU TURNO FUE CONFIRMADO CON EXITO</b>" + "</b>. </p>";
+                    msg.Body += "<p style= font-size: 25px;>" + "<b>DATOS DEL COMPROBANTE:</b>" + "</b>. </p>";
+                    msg.Body += "<p style= font-size: 20px;>" + "<b>TELEFONO:</b> <b>" + Telefono + "</b>" + "</b>. </p>";
+                    msg.Body += "<p style= font-size: 20px;>" + "<b>FECHA Y HORA:</b> <b>" + FechaTurno + "</b>" + "</b>. </p>";
+                    msg.Body += "<p style= font-size: 20px;>" + "<b>PROVINCIA:</b> <b>" + ProvinciaID + "</b>" + "</b>. </p>";
+                    msg.Body += "<p style= font-size: 20px;>" + "<b>LOCALIDAD:</b> <b>" + LocalidadID + "</b>" + "</b>. </p>";
+                    msg.Body += "<p style= font-size: 20px;>" + "<b>PROFESIONAL:</b> <b>" + ProfesionalID + "</b>" + "</b>. </p>";
+                    
 
                 }
-
-                //msg.Body += "<p style= font-size: 20px;>" + "Nombre: <b>" + Nombre + "</b>" + "</b> . </p>";
-                //msg.Body += "<p style= font-size: 20px;>" + "Apellido: <b>" + Apellido + "</b>" + "</b> . </p>";
-                //msg.Body += "<p style= font-size: 25px;>" + "<b>CUANDO EL PROFESIONAL CONFIRME SU TURNO, SE LE NOTIFICARA MEDIANTE UN MAIL.</b>" + "</b> . </p>";
-                //msg.Body += "<p style= font-size: 25px;>" + "<b>MUCHAS GRACIAS..</b>" + "</b> . </p>";
                 msg.BodyEncoding = System.Text.Encoding.UTF8;
                 msg.IsBodyHtml = true;
 
@@ -253,7 +256,7 @@ namespace AGENDAR.Controllers
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine("No se pudo realizar el tramite!!");
             }
         }
 
