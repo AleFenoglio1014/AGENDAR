@@ -10,7 +10,7 @@ function CompletarTablaLocalidades() {
             $.each(listadoLocalidadesMostrar, function (index, localidad) {
 
                 let claseEliminado = '';
-                let botones = '<button type="button" onclick="BuscarLocalidad(' + localidad.localidadID + ',' + localidad.provinciaID + ')" class="btn btn-outline-primary btn-sm" style="margin-right:5px"><i class="bi bi-pencil-square"></i> Editar</button>' +
+                let botones = '<button type="button" onclick="BuscarLocalidad(' + localidad.localidadID + ')" class="btn btn-outline-primary btn-sm" style="margin-right:5px"><i class="bi bi-pencil-square"></i> Editar</button>' +
                     '<button type="button" onclick="DesactivarLocalidad(' + localidad.localidadID + ',1)" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash-fill"></i> Desactivar</button>';
                 if (localidad.eliminado) {
                     claseEliminado = 'table-danger';
@@ -71,12 +71,11 @@ function GuardarLocalidad() {
 }
 // Funcion para Buscar las Localidades
 
-function BuscarLocalidad(localidadID, codPostal, provinciaID) {
+function BuscarLocalidad(localidadID) {
     VaciarFormulario();
     $("#titulo-Modal-Localidades").text("EDITAR LOCALIDAD");
     $("#LocalidadID").val(localidadID);
-    $("#CodPostal").val(codPostal);
-    $("#ProvinciaID").val(provinciaID);
+
     $.ajax({
         type: "POST",
         url: '../../Localidades/BuscarLocalidad',

@@ -117,7 +117,7 @@ namespace AGENDAR.Controllers
                 else
                 {
                     // Antes de EDITAR el registro debemos preguntar si existe una Localidad con la misma Descripcion
-                    if (_context.Localidad.Any(e => e.Descripcion == Descripcion && e.LocalidadID == LocalidadID && e.CodPostal == CodPostal))
+                    if (_context.Localidad.Any(e => e.Descripcion == Descripcion && e.LocalidadID != LocalidadID && e.CodPostal == CodPostal))
                     {
                         resultado = 2;
                     }
