@@ -11,8 +11,9 @@
 <div class="container " style="padding-bottom:10px">
     <div class="row">
 
-        <div class="botonHorario"><button class="btn btn-success" onclick="Imprimir()"><i class="bi bi-filetype-pdf"></i> Descargar PDF</button></div>
-        <div class="">@Html.DropDownList("ProfesionalIDFiltro", null, htmlAttributes: new { @class = "form-control inputProfesionalesFiltro " })</div>
+        <div class="botonHorario"><button class="btn btn-success botonAchicar " onclick="Imprimir()"><i class="bi bi-filetype-pdf"></i> Descargar PDF</button></div>
+        <div class="">@Html.DropDownList("ProfesionalIDFiltro", null, htmlAttributes: new { @class = "form-control inputProfesionalesFiltro botonAchicar " })</div>
+        <div class="botonEmpresaActual">@Html.DropDownList("EmpresaActual", null, htmlAttributes: new { @class = "form-control empresaActual no-arrow ", @disabled = "disabled" })</div>
     </div>
 </div>
 

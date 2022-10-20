@@ -94,13 +94,13 @@ function GuardarHorario() {
     let tiempoTurnos = $('#TiempoTurnos').val();
     let profesionalID = $('#ProfesionalID').val();
 
-    //let lunes = document.getElementById("#Lunes");
-    //let martes = document.getElementById("#Martes");
-    //let miercoles = document.getElementById("#Miercoles");
-    //let jueves = document.getElementById("#Jueves");
-    //let viernes = document.getElementById("#Viernes");
-    //let sabado = document.getElementById("#Sabado");
-    //let domingo = document.getElementById("#Domingo");
+    let lunes = document.getElementById("Lunes").checked;
+    let martes = document.getElementById("Martes").checked;
+    let miercoles = document.getElementById("Miercoles").checked;
+    let jueves = document.getElementById("Jueves").checked;
+    let viernes = document.getElementById("Viernes").checked;
+    let sabado = document.getElementById("Sabado").checked;
+    let domingo = document.getElementById("Domingo").checked;
 
 
     let guardarHorario = true;
@@ -208,13 +208,13 @@ function BuscarHorario(horarioID) {
             $("#ProfesionalID").val(horario.profesionalID).attr('disabled', 'true');
             $("#TiempoTurnos").val(horario.tiempoTurnos).attr('disabled', 'true');
 
-            //document.getElementById("#Lunes").checked = horario.lunes;
-            //document.getElementById("#Martes").checked = horario.martes;
-            //document.getElementById("#Miercoles").checked = horario.miercoles;
-            //document.getElementById("#Jueves").checked = horario.jueves;
-            //document.getElementById("#Viernes").checked = horario.viernes;
-            //document.getElementById("#Sabado").checked = horario.sabado;
-            //document.getElementById("#Domingo").checked = horario.domingo;
+            document.getElementById("Lunes").checked = horario.lunes;
+            document.getElementById("Martes").checked = horario.martes;
+            document.getElementById("Miercoles").checked = horario.miercoles;
+            document.getElementById("Jueves").checked = horario.jueves;
+            document.getElementById("Viernes").checked = horario.viernes;
+            document.getElementById("Sabado").checked = horario.sabado;
+            document.getElementById("Domingo").checked = horario.domingo;
 
             $("#exampleModal").modal("show");
         },

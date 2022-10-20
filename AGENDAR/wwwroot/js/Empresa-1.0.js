@@ -105,9 +105,16 @@ function ActivarEmpresa(empresaID, elimina) {
         });
     }
 }
-function AbrirModal() {
-   
-    $("#exampleModal").modal("show");
+function VerImagen() {
+    $("#imagen-ver").addClass("ocultar");
+    $("#blah").removeClass("ocultar");
+    $("#imagen-ocultar").removeClass("ocultar");
+}
+
+function OcultarImagen() {
+    $("#imagen-ver").removeClass("ocultar");
+    $("#blah").addClass("ocultar");
+    $("#imagen-ocultar").addClass("ocultar");
 }
 // FUncion para Guardar las Empresas
 

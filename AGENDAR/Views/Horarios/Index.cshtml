@@ -10,126 +10,128 @@
 <h2>Horarios</h2>
 
 <div class="container " style="padding-bottom:10px">
-    <div class="row">
-       
-        <div class="botonHorario"><button class="btn btn-success " onclick="AbrirModal()"><i class="bi bi-folder-plus"></i> Nuevo Horario</button></div>
-        <div class="">@Html.DropDownList("ProfesionalIDFiltro", null, htmlAttributes: new { @class = "form-control inputProfesionalesFiltro " })</div>
+
+        <div class="row">
+
+            <div class="botonHorario"><button class="btn btn-success botonAchicar" onclick="AbrirModal()"><i class="bi bi-folder-plus"></i> Nuevo Horario</button></div>
+            <div class="">@Html.DropDownList("ProfesionalIDFiltro", null, htmlAttributes: new { @class = "form-control inputProfesionalesFiltro botonAchicar " })</div>
+            <div class="botonEmpresaActual">@Html.DropDownList("EmpresaActual", null, htmlAttributes: new { @class = "form-control empresaActual no-arrow ", @disabled = "disabled" })</div>
+        </div>
     </div>
-</div>
 
-<div style="height:390px; overflow: auto">
-    <table class="table table-bordered table-light">
-        <thead class="table-dark table-bordered ">
-            <tr>
-                <th class="text-center ">
-                    Horario
-                </th>
+    <div style="height:390px; overflow: auto">
+        <table class="table table-bordered table-light">
+            <thead class="table-dark table-bordered ">
+                <tr>
+                    <th class="text-center ">
+                        Horario
+                    </th>
 
-                <th class="text-center ocultar767 ">
-                    Duración
-                </th>
-                <th class="text-center ">
-                    Profesional
-                </th>
-                <th class="text-center ">
-                    Días
-                </th>
+                    <th class="text-center ocultar767 ">
+                        Duración
+                    </th>
+                    <th class="text-center ">
+                        Profesional
+                    </th>
+                    <th class="text-center ">
+                        Días
+                    </th>
 
-                <th class="text-center">Opciones</th>
-            </tr>
-        </thead>
-        <tbody id="tbody-horario">
-        </tbody>
-    </table>
+                    <th class="text-center">Opciones</th>
+                </tr>
+            </thead>
+            <tbody id="tbody-horario">
+            </tbody>
+        </table>
 
-</div>
+    </div>
 
-<!-- Modal -->
-<div class="modal fade modal-ancho " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title tituloHorario" id="titulo-Modal-Horario"></h3>
-                <button type="button" class="close" data-dismiss="modal" onclick="VaciarFormulario()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            </div>
-
-
-            <!--Agregado de Formulario dentro del Modal-->
-            <div class="modal-body">
-                <form>
-                    <input type="hidden" id="HorarioID" value="0" />
-
-                    <div class="row">
-                        <div class="form-group text-center inputInicio  col-md-6 col-sm-6 col-xl-6">
-                            <label for="recipient-name" class="control-label font-weight-bold">Hora Inicio de la Jornada</label>
-                            <input type="time" name="hora"    class="form-control tamañoLetra" autocomplete="off" required id="HoraInicio">
-                        </div>
-
-                        <div class="form-group inputInicio text-center  col-md-6 col-sm-6 col-xl-6">
-                            <label for="recipient-name" class="control-label font-weight-bold">Hora Fin de la Jornada</label>
-                            <input type="time" name="hora"  class="form-control tamañoLetra" autocomplete="off" required id="HoraFin">
-                        </div>
-                        <p class="text-danger font-weight-bold" style="font-size:small" id="Error-HoraMenor"></p>
-                        <p class="text-danger font-weight-bold" style="font-size:small" id="Error-HoraMayor"></p>
-
-                        <div class="text-center col-md-6 col-sm-6 col-xl-6">
-                            <label for="recipient-name" class="control-label font-weight-bold">Duración de los Turnos </label>
-                            <select id="TiempoTurnos"  class="form-control" required>
-                                <option class="text-center" value="">ELIJA UNA OPCIÓN</option>
-                                <option value="0">15 Minutos</option>
-                                <option value="1">30 Minutos</option>
-                                <option value="2">45 Minutos</option>
-                                <option value="3">60 Minutos</option>
-                            </select>
-                        </div>
-                        <div class="form-group text-center inputInicio  col-md-6 col-sm-6 col-xl-6">
-                            <label for="recipient-name" class="control-label font-weight-bold">Profesional</label>
-                            @Html.DropDownList("ProfesionalID", null, htmlAttributes:  new   { @class = "form-control inputProfesionales " })
-
-                        </div>
-
-                        <div class="text-center col-md-6 col-sm-6 col-xl-6">
-                            <label for="recipient-name" class="control-label font-weight-bold">  Dias de Trabajo</label>
-                            <div class="accordion" id="accordionExample">
+    <!-- Modal -->
+    <div class="modal fade modal-ancho " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title tituloHorario" id="titulo-Modal-Horario"></h3>
+                    <button type="button" class="close" data-dismiss="modal" onclick="VaciarFormulario()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
 
 
-                                <div class="card tarjetaHorario">
-                                    <button class="btn btn-light  text-center collapsed botonDias" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        SELECCIONE LOS DIAS DE TRABAJO <i class="bi bi-caret-down"></i>
-                                    </button>
-                                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                                        <div class="card-body horario">
-                                            <div><input type="checkbox" name="DiasSemana" id="Lunes"> <label for="Lunes">Lunes</label></div>
-                                            <div><input type="checkbox" name="DiasSemana" id="Martes"> <label for="Martes">Martes</label></div>
-                                            <div><input type="checkbox" name="DiasSemana" id="Miercoles"> <label for="Miercoles">Miercoles</label></div>
-                                            <div><input type="checkbox" name="DiasSemana" id="Jueves"> <label for="Jueves">Jueves</label></div>
-                                            <div><input type="checkbox" name="DiasSemana" id="Viernes"> <label for="Viernes">Viernes</label></div>
-                                            <div><input type="checkbox" name="DiasSemana" id="Sabado"> <label for="Sabado">Sabado</label></div>
-                                            <div><input type="checkbox" name="DiasSemana" id="Domingo"> <label for="Domingo">Domingo</label></div>
+                <!--Agregado de Formulario dentro del Modal-->
+                <div class="modal-body">
+                    <form>
+                        <input type="hidden" id="HorarioID" value="0" />
+
+                        <div class="row">
+                            <div class="form-group text-center inputInicio  col-md-6 col-sm-6 col-xl-6">
+                                <label for="recipient-name" class="control-label font-weight-bold">Hora Inicio de la Jornada</label>
+                                <input type="time" name="hora" class="form-control tamañoLetra" autocomplete="off" required id="HoraInicio">
+                            </div>
+
+                            <div class="form-group inputInicio text-center  col-md-6 col-sm-6 col-xl-6">
+                                <label for="recipient-name" class="control-label font-weight-bold">Hora Fin de la Jornada</label>
+                                <input type="time" name="hora" class="form-control tamañoLetra" autocomplete="off" required id="HoraFin">
+                            </div>
+                            <p class="text-danger font-weight-bold" style="font-size:small" id="Error-HoraMenor"></p>
+                            <p class="text-danger font-weight-bold" style="font-size:small" id="Error-HoraMayor"></p>
+
+                            <div class="text-center col-md-6 col-sm-6 col-xl-6">
+                                <label for="recipient-name" class="control-label font-weight-bold">Duración de los Turnos </label>
+                                <select id="TiempoTurnos" class="form-control" required>
+                                    <option class="text-center" value="">ELIJA UNA OPCIÓN</option>
+                                    <option value="0">15 Minutos</option>
+                                    <option value="1">30 Minutos</option>
+                                    <option value="2">45 Minutos</option>
+                                    <option value="3">60 Minutos</option>
+                                </select>
+                            </div>
+                            <div class="form-group text-center inputInicio  col-md-6 col-sm-6 col-xl-6">
+                                <label for="recipient-name" class="control-label font-weight-bold">Profesional</label>
+                                @Html.DropDownList("ProfesionalID", null, htmlAttributes: new { @class = "form-control inputProfesionales " })
+
+                            </div>
+
+                            <div class="text-center col-md-6 col-sm-6 col-xl-6">
+                                <label for="recipient-name" class="control-label font-weight-bold">  Dias de Trabajo</label>
+                                <div class="accordion" id="accordionExample">
+
+
+                                    <div class="card tarjetaHorario">
+                                        <button class="btn btn-light  text-center collapsed botonDias" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                            SELECCIONE LOS DIAS DE TRABAJO <i class="bi bi-caret-down"></i>
+                                        </button>
+                                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                            <div class="card-body horario">
+                                                <div><input type="checkbox" name="DiasSemana" id="Lunes"> <label for="Lunes">Lunes</label></div>
+                                                <div><input type="checkbox" name="DiasSemana" id="Martes"> <label for="Martes">Martes</label></div>
+                                                <div><input type="checkbox" name="DiasSemana" id="Miercoles"> <label for="Miercoles">Miercoles</label></div>
+                                                <div><input type="checkbox" name="DiasSemana" id="Jueves"> <label for="Jueves">Jueves</label></div>
+                                                <div><input type="checkbox" name="DiasSemana" id="Viernes"> <label for="Viernes">Viernes</label></div>
+                                                <div><input type="checkbox" name="DiasSemana" id="Sabado"> <label for="Sabado">Sabado</label></div>
+                                                <div><input type="checkbox" name="DiasSemana" id="Domingo"> <label for="Domingo">Domingo</label></div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <p class="text-danger font-weight-bold" style="font-size:small" id="Error-Hora"></p>
-                        <p class="text-danger font-weight-bold" style="font-size:small" id="Error-CamposHorario"></p>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" onclick="VaciarFormulario()" class="btn btn-outline-danger" data-dismiss="modal"><i class="bi bi-backspace"></i> Cerrar</button>
-                <button type="button" onclick="GuardarHorario()" class="btn btn-outline-success"><i class="bi bi-folder-check"></i> Guardar</button>
+                            <p class="text-danger font-weight-bold" style="font-size:small" id="Error-Hora"></p>
+                            <p class="text-danger font-weight-bold" style="font-size:small" id="Error-CamposHorario"></p>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" onclick="VaciarFormulario()" class="btn btn-outline-danger" data-dismiss="modal"><i class="bi bi-backspace"></i> Cerrar</button>
+                    <button type="button" onclick="GuardarHorario()" class="btn btn-outline-success"><i class="bi bi-folder-check"></i> Guardar</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-@*//Funcion para Completar la Tabla del Tipo de Empresa*@
+    @*//Funcion para Completar la Tabla del Tipo de Empresa*@
 
-@section Scripts {
-    <script src="~/js/Horario-1.0.js"></script>
+    @section Scripts {
+        <script src="~/js/Horario-1.0.js"></script>
 
-    <script>
-        window.onload = CompletarTablaHorario();
-    </script>
-}
+        <script>
+            window.onload = CompletarTablaHorario();
+        </script>
+    }
