@@ -520,7 +520,7 @@ option {
         padding: .35rem .5rem;
         font-size: 0.75rem;
         width: 140px;
-        height: 30px;
+        height: 50px;
     }
 }
 @media (max-width: 529px){
