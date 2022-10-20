@@ -212,9 +212,26 @@ namespace AGENDAR.Controllers
         // Funcion para Buscar la empresa
         public JsonResult BuscarEmpresa(int EmpresaID)
         {
-            var empresa = _context.Empresa.FirstOrDefault(m => m.EmpresaID == EmpresaID);
+            var empresa = _context.Empresa.Include(m => m.Localidades).FirstOrDefault(m => m.EmpresaID == EmpresaID);
+            var empresasMostrar = new EmpresasMostrar
+            {
+                EmpresaID = empresa.EmpresaID,
+                RazonSocial = empresa.RazonSocial,
+                CUIT = empresa.CUIT,
+                Direccion = empresa.Direccion,
+                Telefono = empresa.Telefono,
+                LocalidadID = empresa.LocalidadID,
+                LocalidadNombre = empresa.Localidades.Descripcion,
+                ImagenEmpresa = empresa.ImagenEmpresa,
+                ImagenEmpresaString = Convert.ToBase64String(empresa.ImagenEmpresa),
+                Eliminado = empresa.Eliminado,
+            };
 
-            return Json(empresa);
+            if (empresa.ImagenEmpresa != null)
+            {
+                empresasMostrar.ImagenBase64 = Convert.ToBase64String(empresa.ImagenEmpresa);
+            }
+            return Json(empresasMostrar);
         }
 
         //Activar Empresa

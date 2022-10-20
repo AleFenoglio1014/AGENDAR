@@ -192,7 +192,7 @@ namespace AGENDAR.Controllers
             //0 VIENE DEL CANCELAR
             //1 VIENE DEL SOLICITAR
             //2 VIENE DEL CONFIRMAR
-
+            var empresa = _context.Empresa.FirstOrDefault(m => m.EmpresaID == 1);
             try
             {
                 string emailA = EmailDestino;
@@ -222,7 +222,7 @@ namespace AGENDAR.Controllers
 
                 }
 
-
+               
 
                 if (Origen == 1)
                 {
@@ -247,6 +247,8 @@ namespace AGENDAR.Controllers
                     
 
                 }
+
+
                 msg.BodyEncoding = System.Text.Encoding.UTF8;
                 msg.IsBodyHtml = true;
 

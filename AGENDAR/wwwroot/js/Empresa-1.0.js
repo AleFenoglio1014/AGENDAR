@@ -59,7 +59,9 @@ function BuscarEmpresa(empresaID) {
             $("#Telefono").val(empresa.telefono);
             $("#Cuit").val(empresa.cuit);
             $("#Direccion").val(empresa.direccion);
-            
+            $("#div-imagenActual").empty();
+            $("#div-imagenActual").append('<img src="data:' + empresa.imagenEmpresaString + ';base64, ' + empresa.imagenBase64 + '" class="tamañoImagen ">');
+
             
             $("#exampleModal").modal("show");
         },

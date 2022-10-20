@@ -21,6 +21,7 @@ namespace AGENDAR.Models
         public bool Eliminado { get; set; }
         public byte[] ImagenEmpresa { get; set; }
         public string ImagenEmpresaString { get; set; }
+
         public int LocalidadID { get; set; }
         public virtual Localidad Localidades { get; set; }
 
@@ -40,6 +41,8 @@ namespace AGENDAR.Models
         public int LocalidadID { get; set; }
         public string LocalidadNombre { get; set; }
         public byte[] ImagenEmpresa { get; set; }
+
+        public string ImagenBase64 { get; set; }
         public string ImagenEmpresaString { get; set; }
         public string EmailUsuario { get; set; }
 
