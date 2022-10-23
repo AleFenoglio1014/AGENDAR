@@ -109,11 +109,11 @@ function CargaElementos() {
                     },
                     selectable: true,
                     eventClick: function (turno) {
+                       /* if (Date > today.getDate()) {*/
                         $("#modalEstado").modal("show");
-                        $("#TurnoID").val(turno.event.id);
-
-                    }
-
+                            $("#TurnoID").val(turno.event.id);
+                        }
+                    /*}*/
 
                 });
 
@@ -131,6 +131,7 @@ function CargaElementos() {
 
 function EstadoTurno(estado) {
     let turnoID = $("#TurnoID").val();
+
     $.ajax({
         type: "POST",
         url: '../../Turnos/EstadoTurno',
@@ -144,6 +145,7 @@ function EstadoTurno(estado) {
         }
     });
 }
+
 //FUNCION PARA FILTAR LOS PROFESIONALES POR TURNO
 
 $("#ProfesionalIDFiltro").change(function () {

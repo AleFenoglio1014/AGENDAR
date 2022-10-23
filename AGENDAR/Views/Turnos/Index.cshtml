@@ -54,7 +54,21 @@
     <script>
         window.onload = CargaElementos();
     </script>
-    @*//FUNCIÓN PARA DETECTAR LA RESOLUCIÓN DE LA PANTALLA*@
+    @*<script>
+        select: function diasSeleccionados(start, end) {
+
+            $('#modalEstado #start').val(moment(start).format('YYYY-MM-DD'));
+            $('#modalEstado #end').val(moment(end).format('YYYY-MM-DD'));
+            console.log();
+            if (Date.parse(end._d) > Date.now()) {
+                $('#modalEstado').modal('show');
+            }
+            else {
+                alert('No se puede agendar esta fecha');
+            }
+
+        }
+    </script>*@
    
 }
 <link href="~/css/main.css" rel="stylesheet" />
