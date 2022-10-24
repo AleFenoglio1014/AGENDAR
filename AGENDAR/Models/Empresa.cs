@@ -44,7 +44,6 @@ namespace AGENDAR.Models
 
         public string ImagenBase64 { get; set; }
         public string ImagenEmpresaString { get; set; }
-        public string EmailUsuario { get; set; }
 
         public bool Eliminado { get; set; }
 
