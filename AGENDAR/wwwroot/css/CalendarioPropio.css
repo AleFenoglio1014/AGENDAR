@@ -108,6 +108,22 @@ h2 {
         padding-left: 40px;
     }
 }
+@media(max-width:350px) {
+    .inputProfesionalesfiltro {
+        width: 120px;
+    }
+    .form-control:disabled, .form-control[readonly] {
+        width: 120px;
+    }
+}
+    .swal-modal {
+    background-color: bisque;
+}
+.swal-icon {
+    color: red;
+    border-width: 5px;
+}
+}
 .turnoPasado {
     padding-left:140px !important;
 }
