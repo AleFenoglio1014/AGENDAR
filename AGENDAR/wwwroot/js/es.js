@@ -44,7 +44,11 @@ FullCalendar.globalLocales.push(function () {
   return es;
 
 }());
-
+function AbrirModal() {
+    $("#btn-confirmar").removeClass("ocultar");
+    $("#btn-estado").removeClass("turnoPasado");
+    $("#modalEstado").modal("show");
+}
 
 let arrayTurnos = [];
 
@@ -125,7 +129,7 @@ function CargaElementos() {
                             });
                         }
                         else {
-                            $("#modalEstado").modal("show");
+                            AbrirModal();
                             $("#TurnoID").val(turno.event.id);
                         }
 
@@ -156,6 +160,9 @@ function EstadoTurno(estado) {
         success: function (turno) {
             $("#btn-estado").removeClass("ocultar");
             $("#btn-estado-espere").addClass("ocultar");
+
+            $("#btn-confirmar").removeClass("ocultar");
+            $("#btn-estado").removeClass("turnoPasado");
             $("#modalEstado").modal("hide");
             CargaElementos();
         },
