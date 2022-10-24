@@ -117,6 +117,7 @@ function CargaElementos() {
                                 text: "EL TURNO AH FINALIZADO",
                                 icon: "warning",
                                 button: "Entendido",
+                                ButtonColor: "#000",
                             });
                         }
                         else {
