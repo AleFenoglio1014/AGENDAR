@@ -82,6 +82,7 @@ function AbrirModal() {
     $("#HoraFin").val('00:00').removeAttr('disabled');
     $("#TiempoTurnos").val('').removeAttr('disabled');
     $("#ProfesionalID").val(0).removeAttr('disabled');
+    $("#collapseThree").removeClass("show");
     $("#exampleModal").modal("show");
 }
 // Funcion para Guardar el Horario
@@ -160,10 +161,12 @@ function VaciarFormulario() {
     $("#TiempoTurnos").val('');
     $("#DiaTurno").val('');
     $("#ProfesionalID").val(0);
+    $("#collapseThree").removeClass("show");
     $("#Error-Hora").text("");
     $("#Error-CamposHorario").text("");
     $("#Error-HoraMayor").text("");
     $("#Error-HoraMenor").text("");
+
   
     let diasSemana = document.getElementsByName("DiasSemana")
     for (var i = 0; i < diasSemana.length; i++) {
@@ -194,9 +197,9 @@ function DesactivarHorario(horarioID, elimina, profesionalID  ) {
 
 function BuscarHorario(horarioID) {
   
-    $("#titulo-Modal-Horario").text("EDITAR LOS DIAS LABORALES");
+    $("#titulo-Modal-Horario").text("EDITAR LOS DIAS DE TRABAJO");
     $("#HorarioID").val(horarioID);
-   
+    $("#collapseThree").addClass("show");
     $.ajax({
         type: "POST",
         url: '../../Horarios/BuscarHorario',

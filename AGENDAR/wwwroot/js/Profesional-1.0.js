@@ -28,7 +28,7 @@ function CompletarTablaProfesionales() {
 
 //Funcion Abrir Modal
 function AbrirModal() {
-    $("#titulo-Modal-Profesional").text("REGISTRAR UN NUEVO PROFESIONAL");
+    $("#titulo-Modal-Profesional").text("NUEVO PROFESIONAL");
     $("#ProfesionalID").val(0);
     $("#exampleModal").modal("show");
 }

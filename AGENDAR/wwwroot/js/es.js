@@ -109,11 +109,22 @@ function CargaElementos() {
                     },
                     selectable: true,
                     eventClick: function (turno) {
-                       /* if (Date > today.getDate()) {*/
-                        $("#modalEstado").modal("show");
+                        var check = moment(turno.event.start).format('YYYY-MM-DD');
+                        var today = moment(new Date()).format('YYYY-MM-DD');
+                        if (check < today) {
+                            swal({
+                                title: "",
+                                text: "EL TURNO AH FINALIZADO",
+                                icon: "warning",
+                                button: "Entendido",
+                            });
+                        }
+                        else {
+                            $("#modalEstado").modal("show");
                             $("#TurnoID").val(turno.event.id);
                         }
-                    /*}*/
+
+                    }
 
                 });
 
@@ -131,13 +142,15 @@ function CargaElementos() {
 
 function EstadoTurno(estado) {
     let turnoID = $("#TurnoID").val();
-
+    $("#btn-estado").addClass("ocultar");
+    $("#btn-estado-espere").removeClass("ocultar");
     $.ajax({
         type: "POST",
         url: '../../Turnos/EstadoTurno',
         data: { TurnoID: turnoID, Estado: estado },
         success: function (turno) {
-
+            $("#btn-estado").removeClass("ocultar");
+            $("#btn-estado-espere").addClass("ocultar");
             $("#modalEstado").modal("hide");
             CargaElementos();
         },

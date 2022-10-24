@@ -63,11 +63,6 @@ h2 {
     padding-left: 160px;
 }
 
-@media(max-width:414px) {
-    .titulo414 {
-        padding-left: 100px !important;
-    }
-}
 
 @media(max-width:769px) {
     .fc .fc-toolbar-title {
@@ -88,4 +83,28 @@ h2 {
     cursor: pointer;
     color: white;
     background-color: #2C3E50 !important;
+}
+.ocultar {
+    display: none !important;
+}
+
+.cargando {
+    width: 200px;
+    height: 100px;
+}
+
+.centrarGif {
+    padding-left: 130px;
+}
+
+@media(max-width:414px) {
+    .titulo414 {
+        padding-left: 70px !important;
+    }
+}
+
+@media(max-width:414px) {
+    .centrarGif {
+        padding-left: 40px;
+    }
 }

@@ -31,11 +31,15 @@
                         <input type="hidden" id="TurnoID" value="0" />
 
 
-                        <div class="form-group aceptarBoton botones414">
+                        <div class="form-group aceptarBoton botones414 " id="btn-estado">
 
                             <button type="button" onclick="EstadoTurno(2)" class="btn btn-outline-success "> Confirmar </button>
                             <button type="button" onclick="EstadoTurno(0)" class="btn btn-outline-dark"> Cancelar</button>
                             <button type="button" onclick="EstadoTurno(3)" class="btn btn-outline-danger "> Finalizar </button>
+                        </div>
+                        <div id="btn-estado-espere" class="form-group  centrarGif ocultar">
+                            <img class=" cargando" src="~/lib/Imagenes/R.gif" alt="">
+
                         </div>
                     </form>
                 </div>
@@ -49,26 +53,12 @@
 
     <script src="~/js/main.js"></script>
     <script src="~/js/es.js"></script>
-
+    <script src="~/js/moment.min.js"></script>
 
     <script>
         window.onload = CargaElementos();
     </script>
-    @*<script>
-        select: function diasSeleccionados(start, end) {
-
-            $('#modalEstado #start').val(moment(start).format('YYYY-MM-DD'));
-            $('#modalEstado #end').val(moment(end).format('YYYY-MM-DD'));
-            console.log();
-            if (Date.parse(end._d) > Date.now()) {
-                $('#modalEstado').modal('show');
-            }
-            else {
-                alert('No se puede agendar esta fecha');
-            }
-
-        }
-    </script>*@
+   
    
 }
 <link href="~/css/main.css" rel="stylesheet" />
