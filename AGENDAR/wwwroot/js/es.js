@@ -113,11 +113,15 @@ function CargaElementos() {
                         var today = moment(new Date()).format('YYYY-MM-DD');
                         if (check < today) {
                             swal({
-                                title: "",
-                                text: "EL TURNO AH FINALIZADO",
+                                title: "EL TURNO EXPIRÓ",
+                                text: "DEBE FINALIZAR O CANCELAR EL TURNO!",
                                 icon: "warning",
                                 button: "Entendido",
-                                ButtonColor: "#000",
+                            }).then(function () {
+                                $("#modalEstado").modal("show");
+                                $("#TurnoID").val(turno.event.id);
+                                $("#btn-confirmar").addClass("ocultar");
+                                $("#btn-estado").addClass("turnoPasado");
                             });
                         }
                         else {
