@@ -108,3 +108,11 @@ h2 {
         padding-left: 40px;
     }
 }
+.turnoPasado {
+    padding-left:140px !important;
+}
+@media(max-width:414px) {
+    .turnoPasado {
+        padding-left: 40px !important;
+    }
+}
