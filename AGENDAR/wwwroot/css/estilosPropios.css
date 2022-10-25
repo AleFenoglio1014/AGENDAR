@@ -1,15 +1,14 @@
-﻿
-
-.colorNav {
+﻿.colorNav {
     background-color: #838383;
 }
 
- /*CLASES MODAL PRIVADO */
+/*CLASES MODAL PRIVADO */
 .modal-header {
     text-align: center;
     background-color: #c6c8ca;
     color: white;
 }
+
 .inputProfesionalesFiltro {
     font-size: 12px !important;
     width: 240px;
@@ -18,12 +17,7 @@
     text-align: left;
     cursor: pointer;
 }
-@media(max-width:501px) {
-    .botonAchicar {
-        width: 130px !important;
-        font-size:13px;
-    }
-}
+
 
 .no-arrow {
     -webkit-appearance: none;
@@ -43,8 +37,9 @@
     text-align: left;
     cursor: pointer;
     color: black;
-    background-color:white !important;
+    background-color: white !important;
 }
+
 .botonEmpresaActual {
     margin-left: auto;
 }
@@ -54,6 +49,7 @@
     height: 38px;
     font-weight: 400;
 }
+
 .botonHorario {
     padding-right: 5px;
 }
@@ -62,14 +58,15 @@
     color: #090909 !important;
     opacity: 10;
 }
+
 .cerrarModal {
     color: white !important;
     opacity: 10;
 }
 
 
-.margen{
-    margin-bottom:0px !important;
+.margen {
+    margin-bottom: 0px !important;
 }
 
 .linksModelos {
@@ -123,8 +120,8 @@ p {
 }
 
 a {
-    color: #FFF!important;
-    text-decoration: none;/*
+    color: #FFF !important;
+    text-decoration: none; /*
     -webkit-transition: 0.2s opacity;
     transition: 0.2s opacity;*/
 }
@@ -194,7 +191,7 @@ ul, ol {
 .bg-img {
     height: 100vh;
     width: 100%;
-    min-height:100%;
+    min-height: 100%;
     position: absolute;
     left: 0;
     top: 0;
@@ -248,15 +245,6 @@ ul, ol {
     display: none;
 }
 
-@media only screen and (max-width: 767px) {
-    #nav.nav-transparent .navbar-brand .logo-alt {
-        display: none !important;
-    }
-
-    #nav.nav-transparent .navbar-brand .logo {
-        display: block !important;
-    }
-}
 /*------------------------------------*\
 	LAYOUT PRIVADO
 \*------------------------------------*/
@@ -264,13 +252,14 @@ ul, ol {
 .perfilUsuario {
     font-size: 16px;
     font-weight: bold;
-
 }
+
 .nav-item :hover {
     background-color: #3D3F3F;
 }
+
 .navbar {
-     padding: .0rem 0rem; 
+    padding: .0rem 0rem;
 }
 
 .navbar-brand img {
@@ -290,66 +279,14 @@ ul, ol {
     background: transparent;
     border-bottom: none;
 }
-.botonHorario{
+
+.botonHorario {
     padding-left: 0 !important;
 }
 
-/*@media(max-width: 992px) {
-    .col-md-2 .fab {
-        font-size: 18px;
-        padding-right: 0;
-    }
-}*/
-@media (min-width: 768px) {
-    .navbar-expand-md .navbar-collapse {
-        height: 5vh;
-    }
-}
 
-@media(max-width: 768px) {
-    #top {
-        display: none;
-    }
 
-    .navbar-brand img {
-        height: 50px;
-        padding-left: 1px;
-    }
-
-    .navbar-dark .navbar-toggler {
-        outline: none;
-        border-color: rgba(255, 255, 255, 0);
-    }
-    .cerrarSesion {
-        width: 110px;
-    }
-    .navbar-dark .navbar-toggler-icon .colorMenuHamb {
-        color: #000;
-    }
-}
-@media(max-width: 574px){
-    .navbar-nav .nav-link {
-        padding-left: 10px;
-    }
-    .navbar-brand img {
-        height: 50px;
-        padding-left: 10px;
-    }
-
-}
-/*OCULTAR TABLA*/
-@media(max-width:767px) {
-    .ocultar767 {
-        display: none;
-    }
-}
-
-@media(max-width:820px) {
-    .ocultar820 {
-        display: none;
-    }
-}
-    /* -- Botón Cerrar Sesión -- */
+/* -- Botón Cerrar Sesión -- */
 .cerrarSesion {
     color: black;
     font-family: unset;
@@ -364,106 +301,107 @@ ul, ol {
         background-color: red;
     }
 
-    .bodyEmpresa {
-        background-color: #252422;
-    }
+.bodyEmpresa {
+    background-color: #252422;
+}
 
-    .dialogEmpresa {
-        background-color: white;
-    }
+.dialogEmpresa {
+    background-color: white;
+}
 
-    /*Clases input Internos*/
-    .tituloHorario {
-        text-align: center;
-    }
+/*Clases input Internos*/
+.tituloHorario {
+    text-align: center;
+}
 
-    .letrainput {
-        font-size: 11px !important;
-    }
+.letrainput {
+    font-size: 11px !important;
+}
 
-    .inputInicio {
-        padding-left: 20px;
-    }
+.inputInicio {
+    padding-left: 20px;
+}
 
-    .inputDias {
-        height: 166px !important;
-        overflow-y: hidden
-    }
+.inputDias {
+    height: 166px !important;
+    overflow-y: hidden
+}
 
-    .inputLetra {
-        font-size: 12px !important;
-    }
+.inputLetra {
+    font-size: 12px !important;
+}
 
 
 option {
     font-weight: bold;
 }
 
-    .tamañoLetra {
-        font-size: 2rem;
-    }
+.tamañoLetra {
+    font-size: 2rem;
+}
 
-    .horario {
-        text-align: left !important;
-        font-size: 10px !important;
-        padding: 0px !important;
-    }
+.horario {
+    text-align: left !important;
+    font-size: 10px !important;
+    padding: 0px !important;
+}
 
-    label {
-        font-size: 13px;
-        display: inline-block;
-        margin-bottom: .5rem;
-    }
+label {
+    font-size: 13px;
+    display: inline-block;
+    margin-bottom: .5rem;
+}
 
-    #DiaTurno {
-        height: 9px !important;
-    }
+#DiaTurno {
+    height: 9px !important;
+}
 
-    .botonDias {
-       
-        background-color: white !important;
-        font-size: 11px !important;
-    }
+.botonDias {
+    background-color: white !important;
+    font-size: 11px !important;
+}
 
-    .tarjetaHorario {
-        width: 100% !important;
-    }
+.tarjetaHorario {
+    width: 100% !important;
+}
 
-    /*Imagen Tablas Emplresas Interna*/
-    .card-tamaño {
-        height: 70px;
-        width: 70px;
-    }
+/*Imagen Tablas Emplresas Interna*/
+.card-tamaño {
+    height: 70px;
+    width: 70px;
+}
 
-    .espacioBotones {
-        padding-bottom: 5px;
-        padding-top: 16px;
-    }
+.espacioBotones {
+    padding-bottom: 5px;
+    padding-top: 16px;
+}
 
-    
 
-    table, th, td {
-        border: 1px solid black !important;
-    }
 
-    thead {
-        background: #a5a5a5 !important;
-    }
+table, th, td {
+    border: 1px solid black !important;
+}
 
-    .table {
-        color: #000;
-    }
+thead {
+    background: #a5a5a5 !important;
+}
 
-    .table-dark {
-        color: #000 !important;
-    }
+.table {
+    color: #000;
+}
 
-    .labelCrearEmpresa {
-        font-size: 20px;
-    }
+.table-dark {
+    color: #000 !important;
+}
+
+.labelCrearEmpresa {
+    font-size: 20px;
+}
+
 .alertaEmpresa {
     color: white;
 }
+
 .accordion {
     padding-bottom: 5px;
 }
@@ -474,31 +412,105 @@ option {
     width: 200px;
 }
 
-.btn-file input[type=file] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    min-width: 100%;
-    min-height: 100%;
-    font-size: 100px;
-    text-align: right;
- 
-     opacity: 0;
-    outline: none;
-    background: white;
-    cursor: inherit;
-    display: block;
-}
-/*/responsivo modal/*/
-@media (max-width: 414px) {
-    .modal-ancho
+    .btn-file input[type=file] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        min-width: 100%;
+        min-height: 100%;
+        font-size: 100px;
+        text-align: right;
+        opacity: 0;
+        outline: none;
+        background: white;
+        cursor: inherit;
+        display: block;
+    }
 
-{
-    width: 80%;
-}
+.tamañoImagen {
+    width: 150px !important;
+    height: 100px !important;
+    border: 2px solid black;
 }
 
-@media (max-width: 250px){
+.espacioImagen {
+    padding-top: 10px;
+}
+
+.espacioBotones {
+    padding-bottom: 5px;
+    padding-top: 45px;
+}
+
+
+@media(max-width:501px) {
+    .botonAchicar {
+        width: 130px !important;
+        font-size: 13px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    #nav.nav-transparent .navbar-brand .logo-alt {
+        display: none !important;
+    }
+
+    #nav.nav-transparent .navbar-brand .logo {
+        display: block !important;
+    }
+}
+
+@media(max-width: 768px) {
+    .ocultar767 {
+        display: none;
+    }
+
+    .navbar-expand-md .navbar-collapse {
+        height: 5vh;
+    }
+
+    #top {
+        display: none;
+    }
+
+    .navbar-brand img {
+        height: 50px;
+        padding-left: 1px;
+    }
+
+    .navbar-dark .navbar-toggler {
+        outline: none;
+        border-color: rgba(255, 255, 255, 0);
+    }
+
+    .cerrarSesion {
+        width: 110px;
+    }
+
+    .navbar-dark .navbar-toggler-icon .colorMenuHamb {
+        color: #000;
+    }
+}
+
+@media(max-width: 574px) {
+    .navbar-nav .nav-link {
+        padding-left: 10px;
+    }
+
+    .navbar-brand img {
+        height: 50px;
+        padding-left: 10px;
+    }
+}
+
+
+@media(max-width:820px) {
+    .ocultar820 {
+        display: none;
+    }
+}
+
+@media (max-width: 250px) {
 
     .inputProfesionales {
         /*font-size: 11px !important;
@@ -513,28 +525,30 @@ option {
         font-size: 0.75rem;
         width: 120px;
     }
-
-    }
+}
 
 @media (max-width: 421px) {
     .inputProfesionalesFiltro {
         width: 200px;
     }
-    .btn-group-sm > .btn, .btn-sm {
-        padding: .25rem .5rem;
-        font-size: .79rem;
-    }
-    }
 
-@media (max-width: 381px) {
-    .inputProfesionalesFiltro {
-        width: 180px;
-    }
     .btn-group-sm > .btn, .btn-sm {
         padding: .25rem .5rem;
         font-size: .79rem;
     }
 }
+
+@media (max-width: 381px) {
+    .inputProfesionalesFiltro {
+        width: 180px;
+    }
+
+    .btn-group-sm > .btn, .btn-sm {
+        padding: .25rem .5rem;
+        font-size: .79rem;
+    }
+}
+
 @media (max-width: 361px) {
     .inputProfesionalesFiltro {
         width: 160px;
@@ -553,26 +567,32 @@ option {
         height: 50px;
     }
 }
-@media (max-width: 529px){
+
+@media (max-width: 529px) {
     body {
-    font-size: 14px;
-}
+        font-size: 14px;
+    }
+
     .table td, .table th {
         padding: .5rem;
     }
+
     .btn-group-sm > .btn, .btn-sm {
         padding: .25rem .5rem;
         font-size: .79rem;
     }
+
     .btn-group-sm > .btn, .btn-sm {
         padding: .25rem .5rem;
         font-size: .79rem;
     }
 }
+
 @media (max-width: 443px) {
     .table td, .table th {
         padding: .35rem;
     }
+
     .btn-group-sm > .btn, .btn-sm {
         padding: .25rem .5rem;
         font-size: .79rem;
@@ -584,21 +604,8 @@ option {
         height: 100vh;
         width: 100%;
     }
-        body {
+
+    body {
         font-size: 12px;
     }
-}
-.tamañoImagen {
-    width: 150px !important;
-    height: 100px !important;
-    border: 2px solid black;
-}
-
-.espacioImagen {
-    padding-top: 10px;
-}
-
-.espacioBotones {
-    padding-bottom: 5px;
-    padding-top: 45px;
 }

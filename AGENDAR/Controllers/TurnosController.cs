@@ -174,7 +174,7 @@ namespace AGENDAR.Controllers
                         _context.SaveChanges();
 
 
-                        EnviarEmail(Email, Nombre, Apellido, Telefono, HorarioID, FechaTurno, ProvinciaID, LocalidadID, ProfesionalID, 1);
+                        EnviarEmail(Email, Nombre, Apellido, Telefono, FechaTurno, ProvinciaID, LocalidadID, ProfesionalID, 1);
 
                         //ACA VAMOS A ENVIAR EL COBRANTE DE TURNO PENDIENTE PARA EL USUARIO QUE LO SOLICITO
 
@@ -187,7 +187,7 @@ namespace AGENDAR.Controllers
             return Json(resultado);
         }
 
-        public void EnviarEmail(string EmailDestino, string Nombre, string Apellido, Int64 Telefono, int Horario, DateTime FechaTurno, int ProvinciaID, int LocalidadID, int ProfesionalID, int Origen)
+        public void EnviarEmail(string EmailDestino, string Nombre, string Apellido, Int64 Telefono, DateTime FechaTurno, int ProvinciaID, int LocalidadID, int ProfesionalID, int Origen)
         {
             //0 VIENE DEL CANCELAR
             //1 VIENE DEL SOLICITAR
@@ -216,9 +216,9 @@ namespace AGENDAR.Controllers
 
                 if (Origen == 0)
                 {
-                    msg.Body = "<p style= font-size: 20px;>" + "Hola Sr/a <b>" + Nombre +", "+ Apellido + "</b>" + "</b>. </p>";
-                    msg.Body += "<p style= font-size: 25px;>" + "<b>SU TURNO FUE CANCELADO</b>" + "</b>. </p>";
-                    msg.Body += "<p style= font-size: 25px;>" + "<b>PORFAVOR INTENTE EN DIFERENTE DIA Y HORARIO, MUCHAS GRACIAS</b>" + "</b>. </p>";
+                    msg.Body = "<h2 style=color:black;>" + "Hola Sr/a <b>" + Nombre +", "+ Apellido + "</b>" + "</b>. </h2>";
+                    msg.Body += "<h2 style=color:red;>" + "<b>¡SU TURNO FUE CANCELADO!</b>" + "</b></h2>";
+                    msg.Body += "<h3>" + "<b>PORFAVOR INTENTE EN DIFERENTE DIA Y HORARIO, MUCHAS GRACIAS</b>" + "</b>.</h3>";
 
                 }
 
@@ -226,9 +226,10 @@ namespace AGENDAR.Controllers
 
                 if (Origen == 1)
                 {
-                    msg.Body = "<p style= font-size: 20px;>" + "Hola Sr/a <b>" + Nombre + ", " + Apellido + "</b>" + "</b>. </p>";
-                    msg.Body += "<p style = font - size: 40px; color: red; >" + "Estado turno: <b>SU TURNO ESTA EN PROCESO DE CONFIRMACIÓN</b>" + "</b>. </p>";
-                    msg.Body += "<p style= font-size: 25px;>" + "<b>SE LE NOTIFICARA SI EL PROFESIONAL CONFIRMA O CANCELA SU TURNO</b>" + "</b>. </p>";
+                    msg.Body = "style=background-color: #c6c8ca;";
+                    msg.Body = "<h2 style=color:black;>" + "Hola Sr/a <b>" + Nombre + ", " + Apellido + "</b>" + "</b>. </h2>";
+                    msg.Body += "<h2 style=color:orange;>" + "<b>SU TURNO ESTA EN PROCESO DE CONFIRMACIÓN</b>" + "</b>. </h2>";
+                    msg.Body += "<h4 style:font-size>" + "<b>SE LE NOTIFICARA SI EL PROFESIONAL CONFIRMA O CANCELA SU TURNO</b>" + "</b>. </p>";
 
                 }
 
@@ -236,14 +237,14 @@ namespace AGENDAR.Controllers
                 {
                     
 
-                    msg.Body = "<p style= font-size: 20px;>" + "Hola Sr/a, <b>" + Nombre + ", " + Apellido + "</b>" + "</b>. </p>";
-                    msg.Body += "<p class=tituloturno>" + "Estado turno: <b>SU TURNO FUE CONFIRMADO CON EXITO</b>" + "</b>. </p>";
-                    msg.Body += "<p style= font-size: 25px;>" + "<b>DATOS DEL COMPROBANTE:</b>" + "</b>. </p>";
-                    msg.Body += "<p style= font-size: 20px;>" + "<b>TELEFONO:</b> <b>" + Telefono + "</b>" + "</b>. </p>";
-                    msg.Body += "<p style= font-size: 20px;>" + "<b>FECHA Y HORA:</b> <b>" + FechaTurno + "</b>" + "</b>. </p>";
-                    msg.Body += "<p style= font-size: 20px;>" + "<b>PROVINCIA:</b> <b>" + ProvinciaID + "</b>" + "</b>. </p>";
-                    msg.Body += "<p style= font-size: 20px;>" + "<b>LOCALIDAD:</b> <b>" + LocalidadID + "</b>" + "</b>. </p>";
-                    msg.Body += "<p style= font-size: 20px;>" + "<b>PROFESIONAL:</b> <b>" + ProfesionalID + "</b>" + "</b>. </p>";
+                    msg.Body = "<h2 style=color:black;>" + "Hola Sr/a, <b>" + Nombre + ", " + Apellido + "</b>" + "</b>. </h2>";
+                    msg.Body += "<h2 style=color:green;>" + "<b>¡SU TURNO FUE CONFIRMADO CON EXITO!</b>" + "</b></h3>";
+                    msg.Body += "<h3 style= font-size: 20px;>" + "<b>DATOS DEL COMPROBANTE:</b>" + "</b></h3>";
+                    msg.Body += "<h3 style= font-size: 20px;>" + "<b>TELEFONO:</b> <b>" + Telefono + "</b>" + "</b>. </h3>";
+                    msg.Body += "<h3 style= font-size: 20px;>" + "<b>FECHA Y HORA:</b> <b>" + FechaTurno + "</b>" + "</b>. </h3>";
+                    msg.Body += "<h3 style= font-size: 20px;>" + "<b>PROVINCIA:</b> <b>" + ProvinciaID + "</b>" + "</b>. </h3>";
+                    msg.Body += "<h3 style= font-size: 20px;>" + "<b>LOCALIDAD:</b> <b>" + LocalidadID + "</b>" + "</b>. </h3>";
+                    msg.Body += "<h3 style= font-size: 20px;>" + "<b>PROFESIONAL:</b> <b>" + ProfesionalID + "</b>" + "</b>. </h3>";
                     
 
                 }
@@ -298,7 +299,7 @@ namespace AGENDAR.Controllers
 
                 if (estado != 3)
                 {
-                    EnviarEmail(turno.Email, turno.Nombre, turno.Apellido, turno.Telefono, turno.HorarioID, turno.FechaTurno, turno.ProvinciaID, turno.LocalidadID, turno.ProfesionalID, estado);
+                    EnviarEmail(turno.Email, turno.Nombre, turno.Apellido, turno.Telefono, turno.FechaTurno, turno.ProvinciaID, turno.LocalidadID, turno.ProfesionalID, estado);
                 }
 
                
@@ -345,6 +346,7 @@ namespace AGENDAR.Controllers
                     FechaTurno = turno.FechaTurno,
                     FechaTurnostring = turno.FechaTurno.ToString("dd/MM/yyyy"),
                     Email = turno.Email,
+                    Telefono = turno.Telefono
 
                 };
                 listadoTurnosCalendario.Add(turnoMostrarCalendario);
