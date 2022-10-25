@@ -217,8 +217,8 @@ namespace AGENDAR.Controllers
                 if (Origen == 0)
                 {
                     msg.Body = "<h2 style=color:black;>" + "Hola Sr/a <b>" + Nombre +", "+ Apellido + "</b>" + "</b>. </h2>";
-                    msg.Body += "<h2 style=color:red;>" + "<b>SU TURNO FUE CANCELADO</b>" + "</b>. </h2>";
-                    msg.Body += "<h4>" + "<b>PORFAVOR INTENTE EN DIFERENTE DIA Y HORARIO, MUCHAS GRACIAS</b>" + "</b>. </h4>";
+                    msg.Body += "<h2 style=color:red;>" + "<b>¡SU TURNO FUE CANCELADO!</b>" + "</b></h2>";
+                    msg.Body += "<h3>" + "<b>PORFAVOR INTENTE EN DIFERENTE DIA Y HORARIO, MUCHAS GRACIAS</b>" + "</b>.</h3>";
 
                 }
 
@@ -226,6 +226,7 @@ namespace AGENDAR.Controllers
 
                 if (Origen == 1)
                 {
+                    msg.Body = "style=background-color: #c6c8ca;";
                     msg.Body = "<h2 style=color:black;>" + "Hola Sr/a <b>" + Nombre + ", " + Apellido + "</b>" + "</b>. </h2>";
                     msg.Body += "<h2 style=color:orange;>" + "<b>SU TURNO ESTA EN PROCESO DE CONFIRMACIÓN</b>" + "</b>. </h2>";
                     msg.Body += "<h4 style:font-size>" + "<b>SE LE NOTIFICARA SI EL PROFESIONAL CONFIRMA O CANCELA SU TURNO</b>" + "</b>. </p>";
@@ -237,8 +238,8 @@ namespace AGENDAR.Controllers
                     
 
                     msg.Body = "<h2 style=color:black;>" + "Hola Sr/a, <b>" + Nombre + ", " + Apellido + "</b>" + "</b>. </h2>";
-                    msg.Body += "<h2 style=color:green;>" + "<b>SU TURNO FUE CONFIRMADO CON EXITO</b>" + "</b>. </h3>";
-                    msg.Body += "<h3 style= font-size: 20px;>" + "<b>DATOS DEL COMPROBANTE:</b>" + "</b>. </h3>";
+                    msg.Body += "<h2 style=color:green;>" + "<b>¡SU TURNO FUE CONFIRMADO CON EXITO!</b>" + "</b></h3>";
+                    msg.Body += "<h3 style= font-size: 20px;>" + "<b>DATOS DEL COMPROBANTE:</b>" + "</b></h3>";
                     msg.Body += "<h3 style= font-size: 20px;>" + "<b>TELEFONO:</b> <b>" + Telefono + "</b>" + "</b>. </h3>";
                     msg.Body += "<h3 style= font-size: 20px;>" + "<b>FECHA Y HORA:</b> <b>" + FechaTurno + "</b>" + "</b>. </h3>";
                     msg.Body += "<h3 style= font-size: 20px;>" + "<b>PROVINCIA:</b> <b>" + ProvinciaID + "</b>" + "</b>. </h3>";
