@@ -211,7 +211,7 @@ namespace AGENDAR.Controllers
                 if (HorarioID == 0)
                 {
                     //    // Antes de CREAR el registro debemos preguntar si existe una Horario igual
-                    if (_context.Horario.Any(e => e.HoraInicio.TimeOfDay == HoraInicio.TimeOfDay && e.ProfesionalID == ProfesionalID && e.Eliminado == false))
+                    if (_context.Horario.Any(e => e.HoraInicio.TimeOfDay == HoraInicio.TimeOfDay && e.ProfesionalID == ProfesionalID))
                     {
                         resultado = 2;
                     }
@@ -260,7 +260,7 @@ namespace AGENDAR.Controllers
 
 
                         };
-                            if (_context.Horario.Any(e => e.HoraInicio.TimeOfDay == fechaApertura.TimeOfDay && e.ProfesionalID == ProfesionalID && e.Eliminado == false))
+                            if (_context.Horario.Any(e => e.HoraInicio.TimeOfDay == fechaApertura.TimeOfDay && e.ProfesionalID == ProfesionalID))
                             {
 
                                 resultado = 0;
@@ -277,7 +277,7 @@ namespace AGENDAR.Controllers
                 else
                 {
                     // Antes de EDITAR el registro debemos preguntar si existe un Horario con la misma Descripcion
-                    if (_context.Horario.Any(e => e.HoraInicio.TimeOfDay == HoraInicio.TimeOfDay && e.ProfesionalID == ProfesionalID && e.Eliminado == false && e.HorarioID != HorarioID))
+                    if (_context.Horario.Any(e => e.HoraInicio.TimeOfDay == HoraInicio.TimeOfDay && e.ProfesionalID == ProfesionalID && e.HorarioID != HorarioID))
                     {
                         resultado = 2;
                     }
@@ -318,19 +318,14 @@ namespace AGENDAR.Controllers
             return Json(horario);
         }
         
-        public JsonResult DesactivarHorario(int HorarioID, int Elimina, DateTime HoraInicio, int ProfesionalID)
+        public JsonResult DesactivarHorario(int HorarioID, int Elimina)
         {
             bool resultado = true;
 
             var horario = _context.Horario.Find(HorarioID);
             if (horario != null)
             {
-                if (_context.Horario.Any(e => e.HoraInicio.TimeOfDay == HoraInicio.TimeOfDay && e.ProfesionalID == ProfesionalID && e.Eliminado == false))
-                {
-
-                    horario.Eliminado = true;
-                }
-               else  if (Elimina == 0)
+              if (Elimina == 0)
                 {
                     horario.Eliminado = false;
                 }
