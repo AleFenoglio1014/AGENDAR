@@ -82,6 +82,7 @@ function AbrirModal() {
     $("#HoraFin").val('00:00').removeAttr('disabled');
     $("#TiempoTurnos").val('').removeAttr('disabled');
     $("#ProfesionalID").val(0).removeAttr('disabled');
+    $("#collapseThree").removeClass("show");
     $("#exampleModal").modal("show");
 }
 // Funcion para Guardar el Horario
@@ -93,13 +94,15 @@ function GuardarHorario() {
     let horaFin = $('#HoraFin').val().trim();
     let tiempoTurnos = $('#TiempoTurnos').val();
     let profesionalID = $('#ProfesionalID').val();
-    let lunes = $('#Lunes').val().trim();
-    let martes = $('#Martes').val().trim();
-    let miercoles = $('#Miercoles').val().trim();
-    let jueves = $('#Jueves').val().trim();
-    let viernes = $('#Viernes').val().trim();
-    let sabado = $('#Sabado').val().trim();
-    let domingo = $('#Domingo').val().trim();
+
+    let lunes = document.getElementById("Lunes").checked;
+    let martes = document.getElementById("Martes").checked;
+    let miercoles = document.getElementById("Miercoles").checked;
+    let jueves = document.getElementById("Jueves").checked;
+    let viernes = document.getElementById("Viernes").checked;
+    let sabado = document.getElementById("Sabado").checked;
+    let domingo = document.getElementById("Domingo").checked;
+
 
     let guardarHorario = true;
     if (horaInicio == "" || horaInicio == null) {
@@ -158,17 +161,19 @@ function VaciarFormulario() {
     $("#TiempoTurnos").val('');
     $("#DiaTurno").val('');
     $("#ProfesionalID").val(0);
+    $("#collapseThree").removeClass("show");
     $("#Error-Hora").text("");
     $("#Error-CamposHorario").text("");
     $("#Error-HoraMayor").text("");
     $("#Error-HoraMenor").text("");
+
   
     let diasSemana = document.getElementsByName("DiasSemana")
     for (var i = 0; i < diasSemana.length; i++) {
         diasSemana[i].checked = false;
     }
 }
-function DesactivarHorario(horarioID, elimina, profesionalID, horaInicio ) {
+function DesactivarHorario(horarioID, elimina, profesionalID  ) {
     if (elimina == 1) {
         var mensajeEliminar = "¿Esta seguro que quiere DESACTIVAR el Horario?"
     } else {
@@ -179,7 +184,7 @@ function DesactivarHorario(horarioID, elimina, profesionalID, horaInicio ) {
         $.ajax({
             type: "POST",
             url: '../../Horarios/DesactivarHorario',
-            data: { HorarioID: horarioID, Elimina: elimina, ProfesionalID: profesionalID, HoraInicio: horaInicio },
+            data: { HorarioID: horarioID, Elimina: elimina, ProfesionalID: profesionalID },
             success: function (horario) {
                 CompletarTablaHorario();
             },
@@ -190,28 +195,30 @@ function DesactivarHorario(horarioID, elimina, profesionalID, horaInicio ) {
 }
 // Funcion para Buscar un horario
 
-function BuscarHorario(horarioID, lunes, martes, miercoles, jueves, viernes, sabado, domingo) {
+function BuscarHorario(horarioID) {
   
-    $("#titulo-Modal-Horario").text("EDITAR LOS DIAS DEL HORARIO");
+    $("#titulo-Modal-Horario").text("EDITAR LOS DIAS DE TRABAJO");
     $("#HorarioID").val(horarioID);
-   
+    $("#collapseThree").addClass("show");
     $.ajax({
         type: "POST",
         url: '../../Horarios/BuscarHorario',
-        data: { HorarioID: horarioID, Lunes: lunes, Martes: martes, Miercoles: miercoles, Jueves: jueves, Viernes: viernes, Sabado: sabado, Domingo: domingo },
+        data: { HorarioID: horarioID},
         success: function (horario) {
        
             $("#HoraInicio").val(horario.horaIniciostring).attr('disabled','true');
             $("#HoraFin").val(horario.horaFinstring).attr('disabled', 'true');
             $("#ProfesionalID").val(horario.profesionalID).attr('disabled', 'true');
             $("#TiempoTurnos").val(horario.tiempoTurnos).attr('disabled', 'true');
-            $("#Lunes").val(horario.lunes);
-            $("#Martes").val(horario.martes);
-            $("#Miercoles").val(horario.miercoles);
-            $("#Jueves").val(horario.jueves);
-            $("#Viernes").val(horario.viernes);
-            $("#Sabado").val(horario.sabado);
-            $("#Domingo").val(horario.domingo);
+
+            document.getElementById("Lunes").checked = horario.lunes;
+            document.getElementById("Martes").checked = horario.martes;
+            document.getElementById("Miercoles").checked = horario.miercoles;
+            document.getElementById("Jueves").checked = horario.jueves;
+            document.getElementById("Viernes").checked = horario.viernes;
+            document.getElementById("Sabado").checked = horario.sabado;
+            document.getElementById("Domingo").checked = horario.domingo;
+
             $("#exampleModal").modal("show");
         },
         error: function (data) {
@@ -220,95 +227,6 @@ function BuscarHorario(horarioID, lunes, martes, miercoles, jueves, viernes, sab
 }
 
 
-
-//FUNCION PARA GUARDAR COMO TRUE SI SELECCIONA EL CASILLERO Y FALSE SI NO SELECCIONA EL CASILLERO
-$('#checkbox-value').text($('#Lunes').val());
-
-$("#Lunes").on('change', function () {
-    if ($(this).is(':checked')) {
-        $(this).attr('value', 'true');
-    } else {
-        $(this).attr('value', 'false');
-    }
-
-    $('#checkbox-value').text($('#Lunes').val());
-});
-
-
-
-
-$('#checkbox-value').text($('#Martes').val());
-
-$("#Martes").on('change', function () {
-    if ($(this).is(':checked')) {
-        $(this).attr('value', 'true');
-    } else {
-        $(this).attr('value', 'false');
-    }
-
-    $('#checkbox-value').text($('#Martes').val());
-});
-
-$('#checkbox-value').text($('#Miercoles').val());
-
-$("#Miercoles").on('change', function () {
-    if ($(this).is(':checked')) {
-        $(this).attr('value', 'true');
-    } else {
-        $(this).attr('value', 'false');
-    }
-
-    $('#checkbox-value').text($('#Miercoles').val());
-});
-
-$('#checkbox-value').text($('#Jueves').val());
-
-$("#Jueves").on('change', function () {
-    if ($(this).is(':checked')) {
-        $(this).attr('value', 'true');
-    } else {
-        $(this).attr('value', 'false');
-    }
-
-    $('#checkbox-value').text($('#Jueves').val());
-});
-
-$('#checkbox-value').text($('#Viernes').val());
-
-$("#Viernes").on('change', function () {
-    if ($(this).is(':checked')) {
-        $(this).attr('value', 'true');
-    } else {
-        $(this).attr('value', 'false');
-    }
-
-    $('#checkbox-value').text($('#Viernes').val());
-});
-
-$('#checkbox-value').text($('#Sabado').val());
-
-$("#Sabado").on('change', function () {
-    if ($(this).is(':checked')) {
-        $(this).attr('value', 'true');
-    } else {
-        $(this).attr('value', 'false');
-    }
-
-    $('#checkbox-value').text($('#Sabado').val());
-});
-
-
-$('#checkbox-value').text($('#Domingo').val());
-
-$("#Domingo").on('change', function () {
-    if ($(this).is(':checked')) {
-        $(this).attr('value', 'true');
-    } else {
-        $(this).attr('value', 'false');
-    }
-
-    $('#checkbox-value').text($('#Domingo').val());
-});
 
 //FUNCION PARA FILTAR LOS PROFESIONALES POR HORARIO
 

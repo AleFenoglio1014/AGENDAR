@@ -53,6 +53,9 @@ namespace AGENDAR.Controllers
             var profesionalFiltro = _context.Profesional.Where(p => p.Eliminado == false && p.EmpresaID == empresaUsuarioActual.EmpresaID).ToList();
             ViewBag.ProfesionalIDFiltro = new SelectList(profesionalFiltro.OrderBy(p => p.ProfesionalNombreCompleto), "ProfesionalID", "ProfesionalNombreCompleto");
 
+            var empresaActual = _context.Empresa.Where(p => p.Eliminado == false && p.EmpresaID == empresaUsuarioActual.EmpresaID).ToList();
+            ViewBag.EmpresaActual = new SelectList(empresaActual.OrderBy(p => p.RazonSocial), "EmpresaID", "RazonSocial");
+
 
             return View();
         }
@@ -189,10 +192,7 @@ namespace AGENDAR.Controllers
             if (HoraInicio != null && HoraFin != null )
             {
                 int tiempoMostrar = 15;
-                //if (TiempoTurnos == 0)
-                //{
-                //    tiempoMostrar = 15;
-                //}
+              
                 if (TiempoTurnos == 1)
                 {
                     tiempoMostrar = 30;
@@ -238,9 +238,9 @@ namespace AGENDAR.Controllers
                        int cantidadTurnos = minutosDiarios / tiempoMostrar;
 
                         DateTime fechaApertura = DateTime.Now.Date;
-                        fechaApertura = fechaApertura.AddHours(HoraInicio.Hour); // Horario de Apertura de la Empresa 7:00 a.m.
+                        fechaApertura = fechaApertura.Add(HoraInicio.TimeOfDay);
                         //Creamos un foreach donde reccorremos la cantidad de turnos y le vamos sumando el tiempo de cada turno
-                      for (int i = 0; i < cantidadTurnos; i++)
+                        for (int i = 0; i < cantidadTurnos; i++)
                       {
                         // Para eso creamos un objeto de tipo nuevoHorario con los datos necesarios
                         var nuevoHorario = new Horario

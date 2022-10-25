@@ -8,9 +8,12 @@
 }
 
 <body>
-
-    <div class="form-group text-center inputTurno  col-md-4 col-sm-4 col-xl-4">
-        @Html.DropDownList("ProfesionalIDFiltro", null, htmlAttributes: new { @class = "form-control inputProfesionalesfiltro " })
+    <div class="container " style="padding-bottom:10px">
+        <div class="row inputTurno">
+            @*<div class="form-group text-center inputTurno  col-md-4 col-sm-4 col-xl-4">*@
+            @Html.DropDownList("ProfesionalIDFiltro", null, htmlAttributes: new { @class = "form-control inputProfesionalesfiltro " })
+            <div class="botonEmpresaActual">@Html.DropDownList("EmpresaActual", null, htmlAttributes: new { @class = "form-control empresaActual no-arrow ", @disabled = "disabled" })</div>
+        </div>
     </div>
 
     <div id='calendar'></div>
@@ -28,11 +31,15 @@
                         <input type="hidden" id="TurnoID" value="0" />
 
 
-                        <div class="form-group aceptarBoton botones414">
+                        <div class="form-group aceptarBoton botones414 " id="btn-estado">
 
-                            <button type="button" onclick="EstadoTurno(2)" class="btn btn-outline-success "> Confirmar </button>
-                            <button type="button" onclick="EstadoTurno(0)" class="btn btn-outline-dark"> Cancelar</button>
-                            <button type="button" onclick="EstadoTurno(3)" class="btn btn-outline-danger "> Finalizar </button>
+                            <button type="button" onclick="EstadoTurno(2)" id="btn-confirmar" class="btn btn-outline-success tamañoBoton "> Confirmar </button>
+                            <button type="button" onclick="EstadoTurno(0)" class="btn btn-outline-dark tamañoBoton"> Cancelar</button>
+                            <button type="button" onclick="EstadoTurno(3)" class="btn btn-outline-danger tamañoBoton "> Finalizar </button>
+                        </div>
+                        <div id="btn-estado-espere" class="form-group  centrarGif ocultar">
+                            <img class=" cargando" src="~/lib/Imagenes/R.gif" alt="">
+
                         </div>
                     </form>
                 </div>
@@ -46,12 +53,12 @@
 
     <script src="~/js/main.js"></script>
     <script src="~/js/es.js"></script>
-
+    <script src="~/js/moment.min.js"></script>
 
     <script>
         window.onload = CargaElementos();
     </script>
-    @*//FUNCIÓN PARA DETECTAR LA RESOLUCIÓN DE LA PANTALLA*@
+   
    
 }
 <link href="~/css/main.css" rel="stylesheet" />

@@ -44,7 +44,12 @@ FullCalendar.globalLocales.push(function () {
   return es;
 
 }());
-
+function AbrirModal() {
+    $("#btn-confirmar").removeClass("ocultar");
+    $("#btn-estado").removeClass("turnoPasado");
+    $("#btn-estado").addClass("botones414");
+    $("#modalEstado").modal("show");
+}
 
 let arrayTurnos = [];
 
@@ -109,11 +114,28 @@ function CargaElementos() {
                     },
                     selectable: true,
                     eventClick: function (turno) {
-                        $("#modalEstado").modal("show");
-                        $("#TurnoID").val(turno.event.id);
+                        var check = moment(turno.event.start).format('YYYY-MM-DD');
+                        var today = moment(new Date()).format('YYYY-MM-DD');
+                        if (check < today) {
+                            swal({
+                                title: "EL TURNO EXPIRÓ",
+                                text: "DEBE FINALIZAR O CANCELAR EL TURNO!",
+                                icon: "warning",
+                                button: "Entendido",
+                            }).then(function () {
+                                $("#modalEstado").modal("show");
+                                $("#TurnoID").val(turno.event.id);
+                                $("#btn-confirmar").addClass("ocultar");
+                                $("#btn-estado").addClass("turnoPasado");
+                                $("#btn-estado").removeClass("botones414");
+                            });
+                        }
+                        else {
+                            AbrirModal();
+                            $("#TurnoID").val(turno.event.id);
+                        }
 
                     }
-
 
                 });
 
@@ -131,12 +153,18 @@ function CargaElementos() {
 
 function EstadoTurno(estado) {
     let turnoID = $("#TurnoID").val();
+    $("#btn-estado").addClass("ocultar");
+    $("#btn-estado-espere").removeClass("ocultar");
     $.ajax({
         type: "POST",
         url: '../../Turnos/EstadoTurno',
         data: { TurnoID: turnoID, Estado: estado },
         success: function (turno) {
+            $("#btn-estado").removeClass("ocultar");
+            $("#btn-estado-espere").addClass("ocultar");
 
+            $("#btn-confirmar").removeClass("ocultar");
+            $("#btn-estado").removeClass("turnoPasado");
             $("#modalEstado").modal("hide");
             CargaElementos();
         },
@@ -144,6 +172,7 @@ function EstadoTurno(estado) {
         }
     });
 }
+
 //FUNCION PARA FILTAR LOS PROFESIONALES POR TURNO
 
 $("#ProfesionalIDFiltro").change(function () {

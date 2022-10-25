@@ -28,7 +28,7 @@ function CompletarTablaProfesionales() {
 
 //Funcion Abrir Modal
 function AbrirModal() {
-    $("#titulo-Modal-Profesional").text("REGISTRAR UN NUEVO PROFESIONAL");
+    $("#titulo-Modal-Profesional").text("NUEVO PROFESIONAL");
     $("#ProfesionalID").val(0);
     $("#exampleModal").modal("show");
 }
@@ -89,16 +89,15 @@ function GuardarProfesional() {
 
 // Funcion para Buscar el Profesional
 
-function BuscarProfesional(profesionalID, nombre, apellido) {
+function BuscarProfesional(profesionalID,) {
     $("#titulo-Modal-Profesional").text("EDITAR PROFESIONAL");
     $("#ProfesionalID").val(profesionalID);
-    $("#Nombre").val(nombre);
-    $("#Apellido").val(apellido);
+  
 
     $.ajax({
         type: "POST",
         url: '../../Profesionales/BuscarProfesional',
-        data: { ProfesionalID: profesionalID, Nombre: nombre, Apellido: apellido },
+        data: { ProfesionalID: profesionalID},
         success: function (profesional) {
             $("#Nombre").val(profesional.nombre);
             $("#Apellido").val(profesional.apellido);

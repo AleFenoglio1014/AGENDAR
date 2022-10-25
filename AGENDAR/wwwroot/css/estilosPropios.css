@@ -18,6 +18,36 @@
     text-align: left;
     cursor: pointer;
 }
+@media(max-width:501px) {
+    .botonAchicar {
+        width: 130px !important;
+        font-size:13px;
+    }
+}
+
+.no-arrow {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+    .no-arrow::-ms-expand {
+        display: none;
+    }
+
+
+.empresaActual {
+    font-size: 12px !important;
+    width: 100%;
+    height: 40px;
+    font-weight: bold;
+    text-align: left;
+    cursor: pointer;
+    color: black;
+    background-color:white !important;
+}
+.botonEmpresaActual {
+    margin-left: auto;
+}
 
 .inputProfesionales {
     font-size: 11px !important;

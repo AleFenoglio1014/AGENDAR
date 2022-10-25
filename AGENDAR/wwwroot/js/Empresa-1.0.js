@@ -25,7 +25,6 @@ function CompletarTablaEmpresas() {
                     '<td class="text-center">' + empresa.razonSocial + '</td>' +
                     '<td class="text-center">' + empresa.localidadNombre + '</td>' +
                     '<td class="text-center">' + empresa.direccion + '</td>' +
-                    '<td class="text-center">' + empresa.emailUsuario + '</td>' +
                     '<td class="text-center ocultar767">' + empresa.telefono + '</td>' +
                     '<td class="text-center ocultar767">' + empresa.cuit + '</td>' +
                     '<td class="text-center ocultar767">' + "<img class=' card-tamaño ' src='data:img/jpeg;base64," + empresa.imagenEmpresaString + "' />" + '</td >' +
@@ -59,7 +58,9 @@ function BuscarEmpresa(empresaID) {
             $("#Telefono").val(empresa.telefono);
             $("#Cuit").val(empresa.cuit);
             $("#Direccion").val(empresa.direccion);
-            
+            $("#div-imagenActual").empty();
+            $("#div-imagenActual").append('<img src="data:' + empresa.imagenEmpresaString + ';base64, ' + empresa.imagenBase64 + '" class="tamañoImagen ">');
+
             
             $("#exampleModal").modal("show");
         },
@@ -105,9 +106,16 @@ function ActivarEmpresa(empresaID, elimina) {
         });
     }
 }
-function AbrirModal() {
-   
-    $("#exampleModal").modal("show");
+function VerImagen() {
+    $("#imagen-ver").addClass("ocultar");
+    $("#blah").removeClass("ocultar");
+    $("#imagen-ocultar").removeClass("ocultar");
+}
+
+function OcultarImagen() {
+    $("#imagen-ver").removeClass("ocultar");
+    $("#blah").addClass("ocultar");
+    $("#imagen-ocultar").addClass("ocultar");
 }
 // FUncion para Guardar las Empresas
 

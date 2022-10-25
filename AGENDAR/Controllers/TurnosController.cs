@@ -89,8 +89,11 @@ namespace AGENDAR.Controllers
             BuscarEmpresaActual(usuarioActual, empresaUsuarioActual);
 
             var profesionalFiltro = _context.Profesional.Where(p => p.Eliminado == false && p.EmpresaID == empresaUsuarioActual.EmpresaID).ToList();
-           
             ViewBag.ProfesionalIDFiltro = new SelectList(profesionalFiltro.OrderBy(p => p.ProfesionalNombreCompleto), "ProfesionalID", "ProfesionalNombreCompleto");
+
+
+            var empresaActual = _context.Empresa.Where(p => p.Eliminado == false && p.EmpresaID == empresaUsuarioActual.EmpresaID).ToList();
+            ViewBag.EmpresaActual = new SelectList(empresaActual.OrderBy(p => p.RazonSocial), "EmpresaID", "RazonSocial");
 
             return View();
 
@@ -115,7 +118,11 @@ namespace AGENDAR.Controllers
 
             var profesionalFiltro = _context.Profesional.Where(p => p.Eliminado == false && p.EmpresaID == empresaUsuarioActual.EmpresaID).ToList();
             ViewBag.ProfesionalIDFiltro = new SelectList(profesionalFiltro.OrderBy(p => p.ProfesionalNombreCompleto), "ProfesionalID", "ProfesionalNombreCompleto");
-            
+
+
+            var empresaActual = _context.Empresa.Where(p => p.Eliminado == false && p.EmpresaID == empresaUsuarioActual.EmpresaID).ToList();
+            ViewBag.EmpresaActual = new SelectList(empresaActual.OrderBy(p => p.RazonSocial), "EmpresaID", "RazonSocial");
+
             return View();
 
         }
@@ -185,7 +192,7 @@ namespace AGENDAR.Controllers
             //0 VIENE DEL CANCELAR
             //1 VIENE DEL SOLICITAR
             //2 VIENE DEL CONFIRMAR
-
+            var empresa = _context.Empresa.FirstOrDefault(m => m.EmpresaID == 1);
             try
             {
                 string emailA = EmailDestino;
@@ -215,7 +222,7 @@ namespace AGENDAR.Controllers
 
                 }
 
-
+               
 
                 if (Origen == 1)
                 {
@@ -240,6 +247,8 @@ namespace AGENDAR.Controllers
                     
 
                 }
+
+
                 msg.BodyEncoding = System.Text.Encoding.UTF8;
                 msg.IsBodyHtml = true;
 
