@@ -36,6 +36,9 @@
                 <th>
                     Email
                 </th>
+                <th>
+                    Telefono
+                </th>
             </tr>
         </thead>
         <tbody id="tbody-turnos">
@@ -119,7 +122,7 @@
                 doc.line(14, pageHeight - 11, 282, pageHeight - 11);
                 doc.setTextColor(255, 255, 255);
                 doc.setFontSize(10);
-                doc.text("NOMBRE DE LA EMPRESA", 17, pageHeight - 10);
+                doc.text("NOMBRE DEL PROFESIONAL:", 17, pageHeight - 10);
 
                 //doc.text(str, 165, pageHeight - 10);
                 doc.text(str, 250, pageHeight - 10);
@@ -144,12 +147,12 @@
                     fillColor: [139, 142, 247],
                 },
                 columnStyles: {
-                    0: { columnWidth: 70 },//FECHA
+                    0: { columnWidth: 50 },//FECHA
                     1: { columnWidth: 40 },
                     2: { columnWidth: 38 },
                     3: { columnWidth: 50 },
-                    4: { columnWidth: 70 },
-                    //5: { columnWidth: 30 },
+                    4: { columnWidth: 50 },
+                    5: { columnWidth: 40 },
                     //6: { columnWidth: 60 },
                 },
                 createdHeaderCell: function (cell, opts) {

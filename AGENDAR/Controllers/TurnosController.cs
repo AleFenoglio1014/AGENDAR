@@ -345,6 +345,7 @@ namespace AGENDAR.Controllers
                     FechaTurno = turno.FechaTurno,
                     FechaTurnostring = turno.FechaTurno.ToString("dd/MM/yyyy"),
                     Email = turno.Email,
+                    Telefono = turno.Telefono
 
                 };
                 listadoTurnosCalendario.Add(turnoMostrarCalendario);
