@@ -29,6 +29,7 @@ function CompletarTablaTurnos() {
                     '<td>' + estadoTurno + '</td>' +
                     '<td>' + turno.nombre + '</td>' +
                     '<td>' + turno.email + '</td>' +
+                    '<td>' + turno.telefono + '</td>' +
 
 
                     '</tr>');
