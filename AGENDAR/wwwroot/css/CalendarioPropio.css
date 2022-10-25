@@ -35,12 +35,6 @@ h2 {
 }
 
 
-@media(max-width:414px) {
-    .botones414 {
-        padding-left: 20px !important;
-    }
-}
-
 .fc .fc-daygrid-more-link {
     color: black !important;
 }
@@ -97,38 +91,70 @@ h2 {
     padding-left: 130px;
 }
 
-@media(max-width:414px) {
-    .titulo414 {
-        padding-left: 70px !important;
-    }
-}
-
-@media(max-width:414px) {
-    .centrarGif {
-        padding-left: 40px;
-    }
-}
-@media(max-width:350px) {
-    .inputProfesionalesfiltro {
-        width: 120px;
-    }
-    .form-control:disabled, .form-control[readonly] {
-        width: 120px;
-    }
-}
-    .swal-modal {
+.swal-modal {
     background-color: bisque;
 }
 .swal-icon {
     color: red;
     border-width: 5px;
 }
+.swal-button {
+    background-color: lightcoral;
 }
+
 .turnoPasado {
     padding-left:140px !important;
 }
 @media(max-width:414px) {
     .turnoPasado {
+        padding-left: 60px !important;
+    }
+    .tamañoBoton{
+        width:80px;
+        font-size:10px;
+    }
+    .centrarGif {
+        padding-left: 40px;
+    }
+    .titulo414 {
+        padding-left: 70px !important;
+    }
+    .botones414 {
+        padding-left: 20px !important;
+    }
+    
+}
+@media (max-width: 361px) {
+    .btn {
+        
+        width: 67px !important;
+        height: 40px !important;
+    }
+    .inputProfesionalesfiltro {
+        width: 120px;
+        font-size: 7px !important;
+    }
+
+    .form-control:disabled, .form-control[readonly] {
+        width: 100%;
+    }
+ .titulo414 {
         padding-left: 40px !important;
     }
+    .turnoPasado {
+        padding-left: 30px !important;
+    }
+}
+@media (max-width: 375px) {
+   
+    .inputProfesionalesfiltro {
+        width: 120px;
+        font-size: 7px !important;
+    }
+
+    .form-control:disabled, .form-control[readonly] {
+        width: 100%;
+    }
+
+    
 }

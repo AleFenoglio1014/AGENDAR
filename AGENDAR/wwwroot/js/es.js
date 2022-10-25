@@ -47,6 +47,7 @@ FullCalendar.globalLocales.push(function () {
 function AbrirModal() {
     $("#btn-confirmar").removeClass("ocultar");
     $("#btn-estado").removeClass("turnoPasado");
+    $("#btn-estado").addClass("botones414");
     $("#modalEstado").modal("show");
 }
 
@@ -126,6 +127,7 @@ function CargaElementos() {
                                 $("#TurnoID").val(turno.event.id);
                                 $("#btn-confirmar").addClass("ocultar");
                                 $("#btn-estado").addClass("turnoPasado");
+                                $("#btn-estado").removeClass("botones414");
                             });
                         }
                         else {
