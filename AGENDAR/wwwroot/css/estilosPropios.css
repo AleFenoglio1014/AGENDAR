@@ -609,3 +609,9 @@ thead {
         font-size: 12px;
     }
 }
+.swal-modal {
+    background-color: bisque;
+}
+.swal-button {
+    background-color: lightcoral;
+}

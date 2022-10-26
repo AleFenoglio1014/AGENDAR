@@ -141,6 +141,16 @@ function GuardarHorario() {
                 else if (resultado == 4) {
                     $("#Error-HoraMenor").text("La diferencia entre la Hora Inicio y Hora Fin debe ser MIN de una hora");
                 }
+                else if (resultado == 5) {
+                    swal({
+                        title: "Ya existen horarios con una hora de inicio y hora de fin en la jornada.",
+                        text: "Los demas horarios se registraron correctamente",
+                        icon: "warning",
+                        button: "Entendido",
+                    });
+                    $("#exampleModal").modal("hide");
+                    CompletarTablaHorario();
+                }
             },
             error: function (data) {
             }
@@ -150,7 +160,6 @@ function GuardarHorario() {
         $("#Error-CamposHorario").text("Los campos son OBLIGATORIOS.");
     }
 }
-
 
 //Funcion para Vaciar el Formulario
 

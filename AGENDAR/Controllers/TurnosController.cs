@@ -320,8 +320,8 @@ namespace AGENDAR.Controllers
             //LUEGO EN BASE A ESE USUARIO BUSCAMOS LA EMPRESA CON LA QUE ESTA RELACIONADA
             EmpresaUsuario empresaUsuarioActual = new EmpresaUsuario();
             BuscarEmpresaActual(usuarioActual, empresaUsuarioActual);
-            var turnosCalendario = _context.Turnos.Include(r => r.Horarios).Include(r => r.Horarios.Profesionales).Where(l => l.EmpresaID == empresaUsuarioActual.EmpresaID && l.Estado != 0).ToList();
-
+            var turnosCalendario = _context.Turnos.Include(r => r.Horarios).Include(r => r.Horarios.Profesionales).OrderBy(r => r.FechaTurno).Where(l => l.EmpresaID == empresaUsuarioActual.EmpresaID && l.Estado != 0).ToList();
+         
             if (profesionalIDFiltro > 0)
             {
 
