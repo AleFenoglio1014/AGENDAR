@@ -195,6 +195,7 @@ namespace AGENDAR.Controllers
                                 empresa.ImagenEmpresaString = tipoImg;
                                 empresa.ImagenEmpresa = img;
                             }
+                            resultado = 3;
                             _context.SaveChanges();
                         }
 

@@ -92,7 +92,7 @@ namespace AGENDAR.Controllers
             ViewBag.ProfesionalIDFiltro = new SelectList(profesionalFiltro.OrderBy(p => p.ProfesionalNombreCompleto), "ProfesionalID", "ProfesionalNombreCompleto");
 
 
-            var empresaActual = _context.Empresa.Where(p => p.Eliminado == false && p.EmpresaID == empresaUsuarioActual.EmpresaID).ToList();
+            var empresaActual = _context.Empresa.Where(p => p.EmpresaID == empresaUsuarioActual.EmpresaID).ToList();
             ViewBag.EmpresaActual = new SelectList(empresaActual.OrderBy(p => p.RazonSocial), "EmpresaID", "RazonSocial");
 
             return View();
@@ -174,25 +174,32 @@ namespace AGENDAR.Controllers
                         _context.SaveChanges();
 
 
-                        EnviarEmail(Email, Nombre, Apellido, FechaTurno, ProvinciaID, LocalidadID, ProfesionalID, 1);
+                        EnviarEmail(Email, Nombre, Apellido, FechaTurno, EmpresaID, ProvinciaID, LocalidadID, ProfesionalID, 1);
 
                         //ACA VAMOS A ENVIAR EL COBRANTE DE TURNO PENDIENTE PARA EL USUARIO QUE LO SOLICITO
 
 
                     }
-                    
+
 
                 }
             }
             return Json(resultado);
         }
 
-        public void EnviarEmail(string EmailDestino, string Nombre, string Apellido, DateTime FechaTurno, int ProvinciaID, int LocalidadID, int ProfesionalID, int Origen)
+        public void EnviarEmail(string EmailDestino, string Nombre, string Apellido, DateTime FechaTurno, int EmpresaID, int ProvinciaID, int LocalidadID, int ProfesionalID, int Origen)
         {
             //0 VIENE DEL CANCELAR
             //1 VIENE DEL SOLICITAR
             //2 VIENE DEL CONFIRMAR
             var empresa = _context.Empresa.FirstOrDefault(m => m.EmpresaID == 1);
+            var nombreProfesional = _context.Profesional.Where(l => l.ProfesionalID == ProfesionalID).Select(h => h.ProfesionalNombreCompleto).FirstOrDefault();
+            var nombreEmpresa = _context.Empresa.Where(l => l.EmpresaID == EmpresaID).Select(h => h.RazonSocial).FirstOrDefault();
+            var direccionEmpresa = _context.Empresa.Where(l => l.EmpresaID == EmpresaID).Select(h => h.Direccion).FirstOrDefault();
+            var telfonoEmpresa = _context.Empresa.Where(l => l.EmpresaID == EmpresaID).Select(h => h.Telefono).FirstOrDefault();
+            var nombreProvincia = _context.Provincia.Where(l => l.ProvinciaID == ProvinciaID).Select(h => h.Descripcion).FirstOrDefault();
+            var nombreLocalidad = _context.Localidad.Where(l => l.LocalidadID == LocalidadID).Select(h => h.Descripcion).FirstOrDefault();
+            var fechaTurno = _context.Turnos.Where(l => l.FechaTurno == FechaTurno).Select(h => h.FechaTurno.ToString("dd/MM/yyyy HH:mm")).FirstOrDefault();
             try
             {
                 string emailA = EmailDestino;
@@ -209,20 +216,20 @@ namespace AGENDAR.Controllers
 
                 msg.Subject = "Mensaje de " + emailDe;
                 msg.SubjectEncoding = System.Text.Encoding.UTF8;
-                
+
                 //ACA LE PASAMOS LOS DATOS QUE VA A CONTENER EL EMAIL
 
 
 
                 if (Origen == 0)
                 {
-                    msg.Body = "<h2 style=color:black;>" + "Hola Sr/a <b>" + Nombre +", "+ Apellido + "</b>" + "</b>. </h2>";
+                    msg.Body = "<h2 style=color:black;>" + "Hola Sr/a <b>" + Nombre + ", " + Apellido + "</b>" + "</b>. </h2>";
                     msg.Body += "<h2 style=color:red;>" + "<b>¡SU TURNO FUE CANCELADO!</b>" + "</b></h2>";
                     msg.Body += "<h3>" + "<b>PORFAVOR INTENTE EN DIFERENTE DIA Y HORARIO, MUCHAS GRACIAS</b>" + "</b>.</h3>";
 
                 }
 
-               
+
 
                 if (Origen == 1)
                 {
@@ -235,16 +242,19 @@ namespace AGENDAR.Controllers
 
                 if (Origen == 2)
                 {
-                    
+
 
                     msg.Body = "<h2 style=color:black;>" + "Hola Sr/a, <b>" + Nombre + ", " + Apellido + "</b>" + "</b>. </h2>";
                     msg.Body += "<h2 style=color:green;>" + "<b>¡SU TURNO FUE CONFIRMADO CON EXITO!</b>" + "</b></h3>";
                     msg.Body += "<h3 style= font-size: 20px;>" + "<b>DATOS DEL COMPROBANTE:</b>" + "</b></h3>";
-                    msg.Body += "<h3 style= font-size: 20px;>" + "<b>FECHA Y HORA:</b> <b>" + FechaTurno + "</b>" + "</b>. </h3>";
-                    msg.Body += "<h3 style= font-size: 20px;>" + "<b>PROVINCIA:</b> <b>" + ProvinciaID + "</b>" + "</b>. </h3>";
-                    msg.Body += "<h3 style= font-size: 20px;>" + "<b>LOCALIDAD:</b> <b>" + LocalidadID + "</b>" + "</b>. </h3>";
-                    msg.Body += "<h3 style= font-size: 20px;>" + "<b>PROFESIONAL:</b> <b>" + ProfesionalID + "</b>" + "</b>. </h3>";
-                    
+                    msg.Body += "<h3 style= font-size: 20px;>" + "<b>EMPRESA:</b> <b>" + nombreEmpresa + "</b>" + "</b>. </h3>";
+                    msg.Body += "<h3 style= font-size: 20px;>" + "<b>UBICACION:</b> <b>" + direccionEmpresa + "</b>" + "<b>, </b> <b>" + nombreLocalidad + "</b>" + "<b>, </b> <b>" + nombreProvincia + "</b>" + "</h3>";
+                    msg.Body += "<h3 style= font-size: 20px;>" + "<b>TELEFONO:</b> <b>" + telfonoEmpresa + "</b>" + "</b>. </h3>";
+                    msg.Body += "<h3 style= font-size: 20px;>" + "<b>PROFESIONAL:</b> <b>" + nombreProfesional + "</b>" + "</b>. </h3>";
+                    msg.Body += "<h3 style= font-size: 20px;>" + "<b>FECHA Y HORA:</b> <b>" + fechaTurno + "</b>" + "</b>. </h3>";
+
+
+
 
                 }
 
@@ -298,10 +308,10 @@ namespace AGENDAR.Controllers
 
                 if (estado != 3)
                 {
-                    EnviarEmail(turno.Email, turno.Nombre, turno.Apellido, turno.FechaTurno, turno.ProvinciaID, turno.LocalidadID, turno.ProfesionalID, estado);
+                    EnviarEmail(turno.Email, turno.Nombre, turno.Apellido, turno.FechaTurno, turno.EmpresaID, turno.ProvinciaID, turno.LocalidadID, turno.ProfesionalID, estado);
                 }
 
-               
+
             }
 
             return Json(turno);
@@ -319,8 +329,8 @@ namespace AGENDAR.Controllers
             //LUEGO EN BASE A ESE USUARIO BUSCAMOS LA EMPRESA CON LA QUE ESTA RELACIONADA
             EmpresaUsuario empresaUsuarioActual = new EmpresaUsuario();
             BuscarEmpresaActual(usuarioActual, empresaUsuarioActual);
-            var turnosCalendario = _context.Turnos.Include(r => r.Horarios).Include(r => r.Horarios.Profesionales).Where(l => l.EmpresaID == empresaUsuarioActual.EmpresaID && l.Estado != 0).ToList();
-
+            var turnosCalendario = _context.Turnos.Include(r => r.Horarios).Include(r => r.Horarios.Profesionales).OrderBy(r => r.FechaTurno).Where(l => l.EmpresaID == empresaUsuarioActual.EmpresaID && l.Estado != 0).ToList();
+         
             if (profesionalIDFiltro > 0)
             {
 

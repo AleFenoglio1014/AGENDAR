@@ -111,19 +111,25 @@ function DesactivarLocalidad(localidadID, elimina) {
     } else {
         var mensajeEliminar = "¿Esta seguro que quiere ACTIVAR la Localidad?"
     }
-    
-    if (confirm(mensajeEliminar)) {
-        $.ajax({
-            type: "POST",
-            url: '../../Localidades/DesactivarLocalidad',
-            data: { LocalidadID: localidadID, Elimina: elimina },
-            success: function (localidad) {
-                CompletarTablaLocalidades();
-            },
-            error: function (data) {
+
+    swal({
+        text: mensajeEliminar,
+        buttons: ["Cancelar", "Aceptar"],
+    }).then(
+        function (isConfirm) {
+            if (isConfirm) {
+                $.ajax({
+                    type: "POST",
+                    url: '../../Localidades/DesactivarLocalidad',
+                    data: { LocalidadID: localidadID, Elimina: elimina },
+                    success: function (localidad) {
+                        CompletarTablaLocalidades();
+                    },
+                    error: function (data) {
+                    }
+                });
             }
         });
-    }
 }
 
 // Funcion para limitar los caracteres de los input

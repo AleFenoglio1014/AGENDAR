@@ -92,19 +92,25 @@ function ActivarEmpresa(empresaID, elimina) {
         var mensajeEliminar = "¿Esta seguro que quiere ACTIVAR la Empresa?"
 
     }
-    if (confirm(mensajeEliminar)) {
-        $.ajax({
-            type: "POST",
-            url: '../../Empresas/ActivarEmpresa',
-            data: { EmpresaID: empresaID, Elimina: elimina },
-            success: function (empresa) {
+    swal({
+        text: mensajeEliminar,
+        buttons: ["Cancelar", "Aceptar"],
+    }).then(
+        function (isConfirm) {
+            if (isConfirm) {
+                $.ajax({
+                    type: "POST",
+                    url: '../../Empresas/ActivarEmpresa',
+                    data: { EmpresaID: empresaID, Elimina: elimina },
+                    success: function (empresa) {
 
-                CompletarTablaEmpresas();
-            },
-            error: function (data) {
+                        CompletarTablaEmpresas();
+                    },
+                    error: function (data) {
+                    }
+                });
             }
         });
-    }
 }
 function VerImagen() {
     $("#imagen-ver").addClass("ocultar");
@@ -179,6 +185,7 @@ function GuardarEmpresa() {
                     $("#btn-guardar").removeClass("ocultar");
                     $("#btn-guardar-espere").addClass("ocultar");
                     CompletarTablaEmpresas();
+                    VaciarFormulario();
                     swal({
                         title: "¡ESPERE A QUE SU EMPRESA SEA ACTIVADA...!",
                         text: "Mientas tanto cree sus Profesionales y sus Horarios",
@@ -189,8 +196,17 @@ function GuardarEmpresa() {
                     });
                   
                 }
-                if (resultado == 2) {
+              
+               else  if (resultado == 2) {
                     $("#Error-RazonSocial").text("La Empresa ingresada Ya Existe. Ingrese una Nueva Empresa");
+                }
+                else if (resultado == 3) {
+                    CompletarTablaEmpresas();
+                    VaciarFormulario();
+                    $("#exampleModal").modal("hide");
+
+                   
+
                 }
             },
             error: function (r) {

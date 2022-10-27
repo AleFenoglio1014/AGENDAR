@@ -180,3 +180,31 @@ h2 {
         padding-left: 35px !important;
     }
 }
+@media (max-height: 625px) {
+    .bg-img {
+        height: 120vh;
+        width: 100%;
+        min-height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        background-image: url(../lib/Imagenes/turnosWebImagen3.jpg);
+        background-position: center;
+        background-size: cover;
+        background-attachment: fixed;
+        opacity: 0.4;
+    }
+
+        .bg-img .overlay {
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            opacity: .5;
+            background: #1C1D21;
+        }
+}

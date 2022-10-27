@@ -141,6 +141,16 @@ function GuardarHorario() {
                 else if (resultado == 4) {
                     $("#Error-HoraMenor").text("La diferencia entre la Hora Inicio y Hora Fin debe ser MIN de una hora");
                 }
+                else if (resultado == 5) {
+                    swal({
+                        title: "Ya existen horarios con una hora de inicio y hora de fin en la jornada.",
+                        text: "Los demas horarios se registraron correctamente",
+                        icon: "warning",
+                        button: "Entendido",
+                    });
+                    $("#exampleModal").modal("hide");
+                    CompletarTablaHorario();
+                }
             },
             error: function (data) {
             }
@@ -150,7 +160,6 @@ function GuardarHorario() {
         $("#Error-CamposHorario").text("Los campos son OBLIGATORIOS.");
     }
 }
-
 
 //Funcion para Vaciar el Formulario
 
@@ -173,25 +182,31 @@ function VaciarFormulario() {
         diasSemana[i].checked = false;
     }
 }
-function DesactivarHorario(horarioID, elimina, profesionalID  ) {
+function DesactivarHorario(horarioID, elimina) {
     if (elimina == 1) {
         var mensajeEliminar = "¿Esta seguro que quiere DESACTIVAR el Horario?"
+
     } else {
         var mensajeEliminar = "¿Esta seguro que quiere ACTIVAR el Horario?"
     }
-
-    if (confirm(mensajeEliminar)) {
-        $.ajax({
-            type: "POST",
-            url: '../../Horarios/DesactivarHorario',
-            data: { HorarioID: horarioID, Elimina: elimina, ProfesionalID: profesionalID },
-            success: function (horario) {
-                CompletarTablaHorario();
-            },
-            error: function (data) {
+    swal({
+        text: mensajeEliminar,
+        buttons: ["Cancelar", "Aceptar"],
+    }).then(
+        function (isConfirm) {
+            if (isConfirm) {
+                $.ajax({
+                    type: "POST",
+                    url: '../../Horarios/DesactivarHorario',
+                    data: { HorarioID: horarioID, Elimina: elimina },
+                    success: function (horario) {
+                        CompletarTablaHorario();
+                    },
+                    error: function (data) {
+                    }
+                });
             }
         });
-    }
 }
 // Funcion para Buscar un horario
 
@@ -233,28 +248,3 @@ function BuscarHorario(horarioID) {
 $("#ProfesionalIDFiltro").change(function () {
     CompletarTablaHorario();
 });
-function BuscarHorarios() {
-    //Se limpia el contenido del dropdownlist
-    $("#HorarioID").empty();
-    $.ajax({
-        type: 'POST',
-        //Llamado al metodo en el controlador
-        url: "../../Horarios/BuscarHorarios",
-        dataType: 'json',
-        //Parametros que se envian al metodo del controlador
-        data: { profesionalIDFiltro: $("#ProfesionalIDFiltro").val() },
-        //En caso de resultado exitoso
-        success: function (horarios) {
-
-            $.each(horarios, function (i, profesional) {
-                $("#HorarioID").append('<option value="' + profesional.value + '">' +
-                    profesional.text + '</option>');
-            });
-            CompletarTablaHorario()
-        },
-        ////Mensaje de error en caso de fallo
-        error: function (ex) {
-        }
-    });
-    return false;
-}

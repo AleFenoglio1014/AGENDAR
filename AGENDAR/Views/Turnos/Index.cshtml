@@ -11,10 +11,12 @@
     <div class="container " style="padding-bottom:10px">
         <div class="row inputTurno">
             @*<div class="form-group text-center inputTurno  col-md-4 col-sm-4 col-xl-4">*@
-            @Html.DropDownList("ProfesionalIDFiltro", null, htmlAttributes: new { @class = "form-control inputProfesionalesfiltro " })
+            @Html.DropDownList("ProfesionalIDFiltro", null, htmlAttributes: new { @class = "form-control inputProfesionalesfiltro " }) 
             <div class="botonEmpresaActual">@Html.DropDownList("EmpresaActual", null, htmlAttributes: new { @class = "form-control empresaActual no-arrow ", @disabled = "disabled" })</div>
         </div>
     </div>
+
+    <a onclick="CargaElementos();">Insertar</a>
 
     <div id='calendar'></div>
     <!-- Modal -->
@@ -58,8 +60,8 @@
     <script>
         window.onload = CargaElementos();
     </script>
-   
-   
+    
+
 }
 <link href="~/css/main.css" rel="stylesheet" />
 <link href="~/css/CalendarioPropio.css" rel="stylesheet" />

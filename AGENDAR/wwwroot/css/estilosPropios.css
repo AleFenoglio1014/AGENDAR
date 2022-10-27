@@ -619,3 +619,14 @@ thead, th {
         font-size: 12px;
     }
 }
+
+@media (max-height: 625px) {
+
+    a {
+        font-size: 14px;
+    }
+
+    .perfilUsuario {
+        font-size: 14px;
+    }
+}
