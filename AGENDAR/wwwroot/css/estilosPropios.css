@@ -538,7 +538,10 @@ thead, th {
 }
 
 @media (max-width: 421px) {
-    .inputProfesionalesFiltro {
+    .empresaActual {
+        font-size: 10px !important;
+    }
+        .inputProfesionalesFiltro {
         width: 200px;
     }
 
@@ -549,7 +552,10 @@ thead, th {
 }
 
 @media (max-width: 381px) {
-    .inputProfesionalesFiltro {
+    .empresaActual {
+        font-size: 10px !important;
+    }
+        .inputProfesionalesFiltro {
         width: 180px;
     }
 
@@ -568,8 +574,10 @@ thead, th {
         text-align: left;
         cursor: pointer;
     }
-
-    .btn {
+    .empresaActual {
+        font-size: 10px !important;
+    }
+        .btn {
         font-weight: bold;
         padding: .35rem .5rem;
         font-size: 0.75rem;
@@ -599,10 +607,20 @@ thead, th {
 }
 
 @media (max-width: 443px) {
-    .table td, .table th {
+    .empresaActual {
+        font-size: 10px !important;
+    }
+        .table td, .table th {
         padding: .35rem;
     }
+    .form-control {
+        padding: .3rem .2rem;
+    }
 
+    .inputProfesionalesFiltro {
+        font-size: 9px !important;
+        height: 35px;
+    }
     .btn-group-sm > .btn, .btn-sm {
         padding: .25rem .5rem;
         font-size: .79rem;
@@ -615,18 +633,31 @@ thead, th {
         width: 100%;
     }
 
+    .empresaActual {
+        font-size: 10px !important;
+    }
+
     body {
         font-size: 12px;
     }
-}
 
-@media (max-height: 625px) {
-
-    a {
-        font-size: 14px;
+    .form-control {
+        padding: .3rem .2rem;
     }
 
-    .perfilUsuario {
-        font-size: 14px;
+    .inputProfesionalesFiltro {
+        font-size: 9px !important;
+        height: 35px;
+    }
+
+    @media (max-height: 625px) {
+
+        a {
+            font-size: 14px;
+        }
+
+        .perfilUsuario {
+            font-size: 14px;
+        }
     }
 }

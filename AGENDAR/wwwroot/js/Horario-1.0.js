@@ -10,12 +10,12 @@ function CompletarTablaHorario() {
             $("#tbody-horario").empty();
             $.each(listadohorario, function (index, horario) {
                 let claseEliminado = '';
-                let botones = '<button type="button" onclick="BuscarHorario(' + horario.horarioID + ')" class="btn btn-outline-primary btn-sm" style="margin-right:5px"><i class="bi bi-pencil-square"></i> Editar</button>' +
-                    '<button type="button" onclick="DesactivarHorario(' + horario.horarioID + ',1,' + horario.profesionalID + ')" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash-fill"></i> Desactivar</button>';
+                let botones = '<button type="button" onclick="BuscarHorario(' + horario.horarioID + ')" class="btn btn-outline-primary btn-sm" style="margin-right:5px"><i class="bi bi-pencil-square"></i> </button>' +
+                    '<button type="button" onclick="DesactivarHorario(' + horario.horarioID + ',1,' + horario.profesionalID + ')" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash-fill"></i> </button>';
 
                 if (horario.eliminado) {
                     claseEliminado = 'table-danger';
-                    botones = '<button type="button" onclick="DesactivarHorario(' + horario.horarioID + ',0,' + horario.profesionalID + ')" class="btn btn-outline-success btn-sm"><i class="bi bi-folder-symlink"></i> Activar</button>';
+                    botones = '<button type="button" onclick="DesactivarHorario(' + horario.horarioID + ',0,' + horario.profesionalID + ')" class="btn btn-outline-success btn-sm"><i class="bi bi-folder-symlink"></i> </button>';
                 }
                 let tiempoMostrar = "15 Minutos";
 
