@@ -36,7 +36,7 @@ namespace AGENDAR.Areas.Identity.Pages.Account.Manage
             
             [DataType(DataType.Password)]
             [Required(ErrorMessage = "La Contraseña es obligatoria.")]
-            [Display(Name = "Contraseña Actual")]
+            [Display (Name = "Código de Verificación")]
             public string OldPassword { get; set; }
 
             
@@ -47,7 +47,7 @@ namespace AGENDAR.Areas.Identity.Pages.Account.Manage
             public string NewPassword { get; set; }
 
             [DataType(DataType.Password)]
-            [Display(Name = "Confirmar Nueva Contraseña")]
+            [Display(Name = "Confirmar Contraseña")]
             [Compare("NewPassword", ErrorMessage = "La nueva contraseña y la contraseña de confirmación no coinciden.")]
             public string ConfirmPassword { get; set; }
         }

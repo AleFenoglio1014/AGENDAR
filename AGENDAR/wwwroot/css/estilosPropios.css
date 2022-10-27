@@ -350,6 +350,7 @@ label {
     font-size: 13px;
     display: inline-block;
     margin-bottom: .5rem;
+    font-weight:bold;
 }
 
 #DiaTurno {
@@ -380,11 +381,20 @@ label {
 
 table, th, td {
     border: 1px solid black !important;
+
 }
 
 thead {
     background: #a5a5a5 !important;
 }
+
+thead, th {
+    position: sticky;
+    top: -1px;
+    z-index: 10;
+    background-color: #838383;
+}
+
 
 .table {
     color: #000;
