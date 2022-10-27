@@ -190,8 +190,17 @@ function GuardarEmpresa() {
                     });
                   
                 }
-                if (resultado == 2) {
+              
+               else  if (resultado == 2) {
                     $("#Error-RazonSocial").text("La Empresa ingresada Ya Existe. Ingrese una Nueva Empresa");
+                }
+                else if (resultado == 3) {
+                    CompletarTablaEmpresas();
+                    VaciarFormulario();
+                    $("#exampleModal").modal("hide");
+
+                   
+
                 }
             },
             error: function (r) {
