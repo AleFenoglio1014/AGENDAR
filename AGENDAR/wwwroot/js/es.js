@@ -51,10 +51,11 @@ function AbrirModal() {
     $("#modalEstado").modal("show");
 }
 
-let arrayTurnos = [];
+
 
 
 function CargaElementos() {
+    let arrayTurnos = [];
     let profesionalIDFiltro = $("#ProfesionalIDFiltro").val();
     $.ajax({
         type: "GET",
@@ -90,7 +91,7 @@ function CargaElementos() {
                 defecto = 'listWeek';
                 vistas = 'listWeek';
             }
-            document.addEventListener('DOMContentLoaded', function () {
+        
                 var calendarEl = document.getElementById('calendar');
 
                 var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -140,7 +141,7 @@ function CargaElementos() {
                 });
                
                 calendar.render();
-            });
+          
         },
         error: function (data) {
             alert("Error al cargar los turnos.");
