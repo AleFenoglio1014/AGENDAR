@@ -113,18 +113,24 @@ function BuscarProfesional(profesionalID,) {
 
 function Eliminarprofesional(profesionalID) {
     var mensajeEliminar = "¿Esta seguro que quiere ELIMINAR al Profesional?"
-    if (confirm(mensajeEliminar)) {
-    $.ajax({
-        type: "POST",
-        url: '../../Profesionales/Eliminarprofesional',
-        data: { ProfesionalID: profesionalID },
-        success: function (profesional) {
-            CompletarTablaProfesionales();
-        },
-        error: function (data) {
-        }
-    });
-    }
+    swal({
+        text: mensajeEliminar,
+        buttons: ["Cancelar", "Aceptar"],
+    }).then(
+        function (isConfirm) {
+            if (isConfirm) {
+                $.ajax({
+                    type: "POST",
+                    url: '../../Profesionales/Eliminarprofesional',
+                    data: { ProfesionalID: profesionalID },
+                    success: function (profesional) {
+                        CompletarTablaProfesionales();
+                    },
+                    error: function (data) {
+                    }
+                });
+            }
+        });
 }
 
 // Funcion para limitar los caracteres de los input

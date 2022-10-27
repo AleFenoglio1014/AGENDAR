@@ -609,9 +609,14 @@ thead {
         font-size: 12px;
     }
 }
-.swal-modal {
-    background-color: bisque;
-}
-.swal-button {
-    background-color: lightcoral;
+
+@media (max-height: 625px) {
+
+    a {
+        font-size: 14px;
+    }
+
+    .perfilUsuario {
+        font-size: 14px;
+    }
 }
