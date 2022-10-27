@@ -242,28 +242,3 @@ function BuscarHorario(horarioID) {
 $("#ProfesionalIDFiltro").change(function () {
     CompletarTablaHorario();
 });
-function BuscarHorarios() {
-    //Se limpia el contenido del dropdownlist
-    $("#HorarioID").empty();
-    $.ajax({
-        type: 'POST',
-        //Llamado al metodo en el controlador
-        url: "../../Horarios/BuscarHorarios",
-        dataType: 'json',
-        //Parametros que se envian al metodo del controlador
-        data: { profesionalIDFiltro: $("#ProfesionalIDFiltro").val() },
-        //En caso de resultado exitoso
-        success: function (horarios) {
-
-            $.each(horarios, function (i, profesional) {
-                $("#HorarioID").append('<option value="' + profesional.value + '">' +
-                    profesional.text + '</option>');
-            });
-            CompletarTablaHorario()
-        },
-        ////Mensaje de error en caso de fallo
-        error: function (ex) {
-        }
-    });
-    return false;
-}

@@ -42,7 +42,7 @@ namespace AGENDAR.Controllers
             BuscarEmpresaActual(usuarioActual, empresaUsuarioActual);
 
 
-            var empresaActual = _context.Empresa.Where(p => p.Eliminado == false && p.EmpresaID == empresaUsuarioActual.EmpresaID).ToList();
+            var empresaActual = _context.Empresa.Where(p => p.EmpresaID == empresaUsuarioActual.EmpresaID).ToList();
             ViewBag.EmpresaActual = new SelectList(empresaActual.OrderBy(p => p.RazonSocial), "EmpresaID", "RazonSocial");
 
 

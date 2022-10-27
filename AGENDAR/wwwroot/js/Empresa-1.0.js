@@ -179,6 +179,7 @@ function GuardarEmpresa() {
                     $("#btn-guardar").removeClass("ocultar");
                     $("#btn-guardar-espere").addClass("ocultar");
                     CompletarTablaEmpresas();
+                    VaciarFormulario();
                     swal({
                         title: "¡ESPERE A QUE SU EMPRESA SEA ACTIVADA...!",
                         text: "Mientas tanto cree sus Profesionales y sus Horarios",

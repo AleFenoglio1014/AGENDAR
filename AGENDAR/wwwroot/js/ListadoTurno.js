@@ -45,29 +45,4 @@ function CompletarTablaTurnos() {
 $("#ProfesionalIDFiltro").change(function () {
     CompletarTablaTurnos();
 });
-function MostrarTurnosInterno() {
-    //Se limpia el contenido del dropdownlist
-    $("#TurnoID").empty();
-    $.ajax({
-        type: 'POST',
-        //Llamado al metodo en el controlador
-        url: "../../Turnos/MostrarTurnosInterno",
-        dataType: 'json',
-        //Parametros que se envian al metodo del controlador
-        data: { profesionalIDFiltro: $("#ProfesionalIDFiltro").val() },
-        //En caso de resultado exitoso
-        success: function (turnosCalendario) {
-
-            $.each(turnosCalendario, function (i, profesional) {
-                $("#TurnoID").append('<option value="' + profesional.value + '">' +
-                    profesional.text + '</option>');
-            });
-            CompletarTablaTurnos()
-        },
-        ////Mensaje de error en caso de fallo
-        error: function (ex) {
-        }
-    });
-    return false;
-}
 
