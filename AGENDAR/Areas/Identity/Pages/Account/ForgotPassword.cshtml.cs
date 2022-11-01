@@ -90,7 +90,7 @@ namespace AGENDAR.Areas.Identity.Pages.Account
                             msg.Subject = "Mensaje de " + emailDe;
                             msg.SubjectEncoding = System.Text.Encoding.UTF8;
 
-                            msg.Body = "<p>" + "Su nueva contraseña es: <b>" + nuevacadena + "</b> . </p>";
+                            msg.Body = "<h2 style=color:red;>" + "Su código de recuperación es: <b>" + nuevacadena + "</b> </h2>";
 
                             msg.BodyEncoding = System.Text.Encoding.UTF8;
                             msg.IsBodyHtml = true;

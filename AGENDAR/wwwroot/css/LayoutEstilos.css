@@ -104,7 +104,7 @@ ul, ol {
 /* --  background section  -- */
 
 .bg-grey {
-    background-color: #FAFAFA;
+    background-color: #a9a9a9;
     border-top: 1px solid #EEE;
     border-bottom: 1px solid #EEE;
 }
@@ -172,7 +172,7 @@ ul, ol {
     padding: 10px 35px;
     margin: 3px;
     border: 2px solid transparent;
-    border-radius: 3px;
+    border-radius: 5px;
     -webkit-transition: 0.2s;
     transition: 0.2s;
 }
