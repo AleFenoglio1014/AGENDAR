@@ -96,3 +96,10 @@ h5 {
 .ocultar {
     display: none !important;
 }
+.btnContinuar{
+    width: 100%;
+}
+.center {
+    text-align: center;
+    font-weight: bold;
+}
