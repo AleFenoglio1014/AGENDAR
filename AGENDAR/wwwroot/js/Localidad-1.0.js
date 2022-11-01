@@ -10,11 +10,11 @@ function CompletarTablaLocalidades() {
             $.each(listadoLocalidadesMostrar, function (index, localidad) {
 
                 let claseEliminado = '';
-                let botones = '<button type="button" onclick="BuscarLocalidad(' + localidad.localidadID + ')" class="btn btn-outline-primary btn-sm" style="margin-right:5px"><i class="bi bi-pencil-square"></i> Editar</button>' +
-                    '<button type="button" onclick="DesactivarLocalidad(' + localidad.localidadID + ',1)" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash-fill"></i> Desactivar</button>';
+                let botones = '<button type="button" onclick="BuscarLocalidad(' + localidad.localidadID + ')" class="btn btn-outline-primary btn-sm" style="margin-right:5px"><i class="bi bi-pencil-square"></i> </button>' +
+                    '<button type="button" onclick="DesactivarLocalidad(' + localidad.localidadID + ',1)" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash-fill"></i> </button>';
                 if (localidad.eliminado) {
                     claseEliminado = 'table-danger';
-                    botones = '<button type="button" onclick="DesactivarLocalidad(' + localidad.localidadID + ',0)" class="btn btn-outline-success btn-sm"><i class="bi bi-folder-symlink"></i> Activar</button>';
+                    botones = '<button type="button" onclick="DesactivarLocalidad(' + localidad.localidadID + ',0)" class="btn btn-outline-success btn-sm"><i class="bi bi-folder-symlink"></i> </button>';
                 }
 
                 $("#tbody-localidades").append('<tr class=' + claseEliminado + '>' +
