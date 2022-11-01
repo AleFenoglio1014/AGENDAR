@@ -15,7 +15,6 @@
 
             <div class="botonHorario"><button class="btn btn-success botonAchicar" onclick="AbrirModal()"><i class="bi bi-folder-plus"></i> Nuevo Horario</button></div>
             <div class="">@Html.DropDownList("ProfesionalIDFiltro", null, htmlAttributes: new { @class = "form-control inputProfesionalesFiltro botonAchicar " })</div>
-            <div class="botonEmpresaActual">@Html.DropDownList("EmpresaActual", null, htmlAttributes: new { @class = "form-control empresaActual no-arrow ", @disabled = "disabled" })</div>
         </div>
     </div>
 
@@ -44,6 +43,11 @@
             </tbody>
         </table>
 
+    </div>
+    <div class="container " style="padding-top:5px">
+        <div class="row">
+            <div class="botonEmpresaActual">@Html.DropDownList("EmpresaActual", null, htmlAttributes: new { @class = "form-control empresaActual no-arrow ", @disabled = "disabled" })</div>
+        </div>
     </div>
 
     <!-- Modal -->

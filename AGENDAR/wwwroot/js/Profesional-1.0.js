@@ -114,7 +114,8 @@ function BuscarProfesional(profesionalID,) {
 function Eliminarprofesional(profesionalID) {
     var mensajeEliminar = "¿Esta seguro que quiere ELIMINAR al Profesional?"
     swal({
-        text: mensajeEliminar,
+        title: mensajeEliminar,
+        text: "Se eliminaran sus horarios y el registro de sus turnos.",
         buttons: ["Cancelar", "Aceptar"],
     }).then(
         function (isConfirm) {
