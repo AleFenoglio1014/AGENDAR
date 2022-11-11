@@ -10,10 +10,9 @@
 <body>
     <div class="container " style="padding-bottom:10px">
         <div class="row inputTurno">
-           
             @Html.DropDownList("ProfesionalIDFiltro", null, htmlAttributes: new { @class = "form-control inputProfesionalesfiltro " })
-         
         </div>
+        
     </div>
 
 
@@ -51,7 +50,16 @@
     </div>
     <div class="container " style="padding-top:5px">
         <div class="row">
-            <div class="botonEmpresaActual">@Html.DropDownList("EmpresaActual", null, htmlAttributes: new { @class = "form-control empresaActual no-arrow ", @disabled = "disabled" })</div>
+            <div class="turnosColores col-3">
+                <p><i class="bi bi-circle-fill" style="color:green"></i> Turno Confirmado</p>
+            </div>
+            <div class="turnosColores col-3">
+                <p><i class="bi bi-circle-fill" style="color: red"></i> Turno Cancelado</p>
+            </div>
+            <div class="turnosColores col-3">
+                <p><i class="bi bi-circle-fill" style="color: orange"></i> Turno Pendiente</p>
+            </div>
+            <div class="botonEmpresaActual col-3">@Html.DropDownList("EmpresaActual", null, htmlAttributes: new { @class = "form-control empresaActual no-arrow ", @disabled = "disabled" })</div>
         </div>
     </div>
 </body>
