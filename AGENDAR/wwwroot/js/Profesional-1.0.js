@@ -9,8 +9,8 @@ function CompletarTablaProfesionales() {
             $("#tbody-profesional").empty();
             $.each(listadoProfesionalesMostrar, function (index, profesional) {
 
-                let botones = '<button type="button" onclick="BuscarProfesional(' + profesional.profesionalID + ')" class="btn btn-outline-primary btn-sm" style="margin-right:5px"><i class="bi bi-pencil-square"></i> Editar</button>' +
-                    '<button type="button" onclick="Eliminarprofesional(' + profesional.profesionalID + ')" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash-fill"></i> Eliminar</button>';
+                let botones = '<button type="button" onclick="BuscarProfesional(' + profesional.profesionalID + ')" class="btn btn-outline-primary btn-sm" style="margin-right:5px"><i class="fa-regular fa-pen-to-square"></i> </button>' +
+                    '<button type="button" onclick="Eliminarprofesional(' + profesional.profesionalID + ')" class="btn btn-outline-danger btn-sm"><i class="fa-solid fa-user-xmark"></i></button>';
 
                 $("#tbody-profesional").append('<tr>' +
                     '<td class="text-center ">' + profesional.profesionalNombreCompleto + '</td>' +

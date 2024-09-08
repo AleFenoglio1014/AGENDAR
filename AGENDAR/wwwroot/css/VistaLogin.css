@@ -11675,3 +11675,8 @@ h1, h2, h3, h4, h5,
                 background: #e3b04b;
                 color: #fff;
             }
+.inputProfesionales {
+    font-size: 11px !important;
+    height: 38px;
+    font-weight: 400;
+}

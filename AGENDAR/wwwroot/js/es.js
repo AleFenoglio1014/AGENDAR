@@ -46,8 +46,7 @@ FullCalendar.globalLocales.push(function () {
 }());
 function AbrirModal() {
     $("#btn-confirmar").removeClass("ocultar");
-    $("#btn-estado").removeClass("turnoPasado");
-    $("#btn-estado").addClass("botones414");
+    $("#btn-cancelar").removeClass("ocultar");
     $("#modalEstado").modal("show");
 }
 

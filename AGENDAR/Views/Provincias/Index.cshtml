@@ -6,60 +6,59 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="card shadow">
+    <div class="card-body">
 
-<h2>Provincias</h2>
+        <div class="d-flex justify-content-between align-items-center"><h2>Provincias</h2><button class="btn btn-success" onclick="AbrirModal()"><i class="fa-solid fa-plus"></i></button></div>
+        <hr>
 
-<p>
-    <!-- Boton Modal -->
-    <button class="btn btn-success" onclick="AbrirModal()"><i class="bi bi-folder-plus"></i> Agregar Provincia</button>
-</p>
-
-
-<div style="height:390px; overflow: auto">
-    <table class="table table-bordered table-light" >
-        <thead class="table-dark table-bordered ">
-            <tr>
+        <div style="height:60vh; overflow: auto">
+            <table id="t-veterinario-lis" class="table table-striped table-bordered ">
+                <thead class="table-dark">
+                  <tr>
                 <th>
                     Descripción
                 </th>
 
             </tr>
-        </thead>
-        <tbody id="tbody-provincias">
-        </tbody>
-    </table>
+                </thead>
+                <tbody id="tbody-provincias">
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
-
 <!-- Modal -->
-<div class="modal fade modal-ancho " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-    <div class="modal-dialog" role="document">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="titulo-Modal-Provincias"></h5>
-                <button type="button" class="close" data-dismiss="modal" onclick="VaciarFormulario()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="VaciarFormulario()" aria-label="Close"></button>
             </div>
-
-            <!--Agregado de Formulario dentro del Modal-->
             <div class="modal-body">
                 <form>
                     <input type="hidden" id="ProvinciaID" value="0" />
-                    <div class="form-group">
-                        <label for="recipient-name" class="control-label font-weight-bold">Descripción</label>
-                        <input type="text" class="form-control" autocomplete="off" required id="ProvinciaNombre" oninput="this.value = this.value.replace(/[^a-zA-Z ]/,'')"/>
-                        <p class="text-danger font-weight-bold" style="font-size:small" id="Error-ProvinciaNombre"></p>
+
+                    <div class="form-group mb-3">
+                        <label class="control-label" for="ProvinciaNombre">Nombre </label>
+                        <input type="text" class="form-control  " id="ProvinciaNombre" autocomplete="off" maxlength="30" onkeyup="this.value = this.value.toUpperCase()" required />
                     </div>
+                    <p class="text-danger font-weight-bold" style="font-size:small" id="Error-ProvinciaNombre"></p>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" onclick="VaciarFormulario()" class="btn btn-outline-danger" data-dismiss="modal"><i class="bi bi-backspace"></i> Cerrar</button>
-                <button type="button" onclick="GuardarProvincia()" class="btn btn-outline-success"><i class="bi bi-folder-check"></i> Guardar</button>
+                <button type="button" onclick="VaciarFormulario()" class="btn btn-danger" data-bs-dismiss="modal"><i class="fa-solid fa-xmark"></i>  Cerrar</button>
+                <button type="button" onclick="GuardarProvincia()" class="btn btn-success"><i class="fa-regular fa-bookmark"></i> Guardar</button>
             </div>
         </div>
     </div>
 </div>
 
-@*//Funcion para Completar la Tabla de Provincias*@
 
+
+@*//Funcion para Completar la Tabla de Provincias*@
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 @section Scripts {
     <script src="~/js/Provincia-1.0.js"></script>
     <script>

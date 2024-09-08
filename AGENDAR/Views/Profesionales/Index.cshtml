@@ -7,7 +7,33 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Profesionales</h2>
+<div class="card shadow">
+    <div class="card-body">
+
+        <div class="d-flex justify-content-between align-items-center"><h2>Profesionales</h2><button class="btn btn-success" onclick="AbrirModal()"><i class="fa-solid fa-plus"></i></button></div>
+        <hr>
+
+        <div style="height:60vh; overflow: auto">
+            <table id="t-veterinario-lis" class="table table-striped table-bordered ">
+                <thead class="table-dark">
+                    <tr>
+                        <th>
+                            Profesional
+                        </th>
+
+                        <th>
+                            Opciones
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="tbody-profesional">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@*<h2>Profesionales</h2>
 
 
 <div class="container " style="padding-bottom:10px">
@@ -34,9 +60,9 @@
     <div class="row">
         <div class="botonEmpresaActual">@Html.DropDownList("EmpresaActual", null, htmlAttributes: new { @class = "form-control empresaActual no-arrow ", @disabled = "disabled" })</div>
     </div>
-</div>
+</div>*@
 
-<!-- Modal -->
+@*<!-- Modal -->
 <div class="modal fade modal-ancho " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -69,10 +95,41 @@
             </div>
         </div>
     </div>
+</div>*@
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="titulo-Modal-Profesional"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="VaciarFormulario()" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input type="hidden" id="ProfesionalID" value="0" />
+
+                    <div class="form-group mb-3">
+                        <label class="control-label" for="Nombre">Nombre </label>
+                        <input type="text" class="form-control  " id="Nombre" autocomplete="off" maxlength="30" onkeyup="this.value = this.value.toUpperCase()" required />
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="control-label" for="Apellido">Apellido  </label>
+                        <input type="text" class="form-control  " id="Apellido" autocomplete="off" maxlength="30" onkeyup="this.value = this.value.toUpperCase()" required />
+                    </div>
+                    <p class="text-danger font-weight-bold" style="font-size:small" id="Error-Nombre"></p>
+                    <p class="text-danger font-weight-bold" style="font-size:small" id="Error-CamposProfesional"></p>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="VaciarFormulario()" class="btn btn-danger" data-bs-dismiss="modal"><i class="fa-solid fa-xmark"></i>  Cerrar</button>
+                <button type="button" onclick="GuardarProfesional()" class="btn btn-success"><i class="fa-regular fa-bookmark"></i> Guardar</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 @*//Funcion para Completar la Tabla de Profesional*@
-
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 @section Scripts {
 
 

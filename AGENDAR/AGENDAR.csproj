@@ -51,6 +51,14 @@
     <Folder Include="wwwroot\NewFolder\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\lib\bootstrap-5.3.3-dist\js\bootstrap.bundle.min.js" />
+    <None Include="wwwroot\lib\bootstrap-5.3.3-dist\js\bootstrap.bundle.min.js.map" />
+    <None Include="wwwroot\lib\bootstrap-5.3.3-dist\js\bootstrap.js" />
+    <None Include="wwwroot\lib\bootstrap-5.3.3-dist\js\bootstrap.min.js" />
+    <None Include="wwwroot\lib\sweetalert\sweetalert2.all.min.js" />
+  </ItemGroup>
+
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>

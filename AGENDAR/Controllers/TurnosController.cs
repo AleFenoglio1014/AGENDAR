@@ -336,6 +336,8 @@ namespace AGENDAR.Controllers
 
                 turnosCalendario = (from o in turnosCalendario where o.ProfesionalID == profesionalIDFiltro select o).ToList();
             }
+
+            var fechaActual = DateTime.Now/*DateTime.Now.Date*/;
             List<TurnoMostrar> listadoTurnosCalendario = new List<TurnoMostrar>();
             foreach(var turno in turnosCalendario)
             {
@@ -358,6 +360,20 @@ namespace AGENDAR.Controllers
                     Telefono = turno.Telefono
 
                 };
+                //SI EL TURNO ESTA PENDIENTE(1) Y LA FECHA ES ANTIGUA SE CANCELARA EL TURNO
+                if (turno.Estado == 1 && turno.FechaTurno < fechaActual)
+                {
+                    turno.Estado = 0;
+                    _context.SaveChanges();
+
+                }
+                //SI EL TURNO ESTA CONFIRMADO(2) Y LA FECHA ES ANTIGUA SE FINALIZARA EL TURNO
+                if (turno.Estado == 2 && turno.FechaTurno < fechaActual)
+                {
+                    turno.Estado = 3;
+                    _context.SaveChanges();
+                }
+
                 listadoTurnosCalendario.Add(turnoMostrarCalendario);
             }
             return Json(listadoTurnosCalendario);

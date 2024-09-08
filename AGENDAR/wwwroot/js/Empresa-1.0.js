@@ -11,13 +11,13 @@ function CompletarTablaEmpresas() {
 
                 let claseEliminado = '';
 
-                let botones = '<button type="button" onclick="BuscarEmpresa(' + empresa.empresaID + ')" class="btn btn-outline-primary btn-sm" style="margin-right:5px"><i class="bi bi-pencil-square"></i></button>' +
-                              '<button type="button" onclick="ActivarEmpresa(' + empresa.empresaID + ',1)" class="btn btn-outline-danger btn-sm"> <i class="bi bi-x-lg"></i> </button>';
+                let botones = '<button type="button" onclick="BuscarEmpresa(' + empresa.empresaID + ')" class="btn btn-outline-primary btn-sm" style="margin-right:5px"><i class="fa-regular fa-pen-to-square"></i></button>' +
+                    '<button type="button" onclick="ActivarEmpresa(' + empresa.empresaID + ',1)" class="btn btn-outline-danger btn-sm"><i class="fa-solid fa-user-check"></i></button>';
 
 
                 if (empresa.eliminado) {
                     claseEliminado = 'table-danger';
-                    botones =  '<button type="button" onclick="ActivarEmpresa(' + empresa.empresaID + ',0)" class="btn btn-outline-success btn-sm"><i class="bi bi-check-circle"></i></button>';
+                    botones = '<button type="button" onclick="ActivarEmpresa(' + empresa.empresaID + ',0)" class="btn btn-outline-success btn-sm"><i class="fa-solid fa-user-xmark"></i></button>';
 
                 }
 
@@ -27,7 +27,7 @@ function CompletarTablaEmpresas() {
                     '<td class="text-center">' + empresa.direccion + '</td>' +
                     '<td class="text-center ocultar767">' + empresa.telefono + '</td>' +
                     '<td class="text-center ocultar767">' + empresa.cuit + '</td>' +
-                    '<td class="text-center ocultar767">' + "<img class=' card-tamaño ' src='data:img/jpeg;base64," + empresa.imagenEmpresaString + "' />" + '</td >' +
+                    '<td class="text-center ocultar767">' + "<img style='width: 40%' ' src='data:img/jpeg;base64," + empresa.imagenEmpresaString + "' />" + '</td >' +
                     '<td class="text-center">' +
                     botones +
                     '</td>' +
@@ -59,7 +59,7 @@ function BuscarEmpresa(empresaID) {
             $("#Cuit").val(empresa.cuit);
             $("#Direccion").val(empresa.direccion);
             $("#div-imagenActual").empty();
-            $("#div-imagenActual").append('<img src="data:' + empresa.imagenEmpresaString + ';base64, ' + empresa.imagenBase64 + '" class="tamañoImagen ">');
+            $("#div-imagenActual").append('<img  src="data:' + empresa.imagenEmpresaString + ';base64, ' + empresa.imagenBase64 + ' "  class="tamañoImagen ">');
 
             
             $("#exampleModal").modal("show");

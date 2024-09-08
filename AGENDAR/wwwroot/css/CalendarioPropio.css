@@ -4,8 +4,11 @@
 }
 
 a {
-    color: black !important;
+    color: black ;
     font-weight: bolder;
+}
+.fc-daygrid-day-number {
+    color: black !important;
 }
 
 h2 {
@@ -207,4 +210,9 @@ h2 {
             opacity: .5;
             background: #1C1D21;
         }
+}
+.espere {
+    font-size: 25px;
+    color: #333;
+    font-weight: 700;
 }
