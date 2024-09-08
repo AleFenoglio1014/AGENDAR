@@ -119,14 +119,14 @@ function CargaElementos() {
                         if (check < today) {
                             swal({
                                 title: "EL TURNO EXPIRÓ",
-                                text: "DEBE FINALIZAR O CANCELAR EL TURNO!",
+                                text: "Debe cancelar el turno si así lo desea!",
                                 icon: "warning",
                                 button: "Entendido",
                             }).then(function () {
                                 $("#modalEstado").modal("show");
                                 $("#TurnoID").val(turno.event.id);
                                 $("#btn-confirmar").addClass("ocultar");
-                                $("#btn-estado").addClass("turnoPasado");
+                             
                                 $("#btn-estado").removeClass("botones414");
                             });
                         }
